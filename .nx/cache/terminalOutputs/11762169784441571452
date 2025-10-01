@@ -1,0 +1,3 @@
+> nx run user-service:build:production
+
+

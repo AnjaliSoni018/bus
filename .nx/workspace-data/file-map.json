@@ -1,0 +1,183 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.5.3",
+  "pathMappings": {},
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".gitignore",
+        "hash": "13119912102255678890"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "4134969992917317260"
+      },
+      {
+        "file": "README.md",
+        "hash": "10557806678416533374"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/client.d.ts",
+        "hash": "6801102947810818358"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/client.js",
+        "hash": "10400671776495891936"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/default.d.ts",
+        "hash": "6801102947810818358"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/default.js",
+        "hash": "6000848800246251414"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/edge.d.ts",
+        "hash": "11303388507078878756"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/edge.js",
+        "hash": "3064281806519553842"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/index-browser.js",
+        "hash": "7628227045548609662"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/index.d.ts",
+        "hash": "13581560035348974172"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/index.js",
+        "hash": "4664142197356275400"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node",
+        "hash": "15199411739903005681"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/package.json",
+        "hash": "18374957362707056359"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/query_engine_bg.js",
+        "hash": "5578298088787173498"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/query_engine_bg.wasm",
+        "hash": "4855165616400727377"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/runtime/edge-esm.js",
+        "hash": "2046298304353654718"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/runtime/edge.js",
+        "hash": "13902811713723185394"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/runtime/index-browser.d.ts",
+        "hash": "4654535025334731519"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/runtime/index-browser.js",
+        "hash": "17568067715518458519"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/runtime/library.d.ts",
+        "hash": "7343917298122178086"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/runtime/library.js",
+        "hash": "16967954633099124560"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/runtime/react-native.js",
+        "hash": "13010509690274226280"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/runtime/wasm-compiler-edge.js",
+        "hash": "1490073719446443211"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/runtime/wasm-engine-edge.js",
+        "hash": "8817018877712874583"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/schema.prisma",
+        "hash": "7165685224328942840"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/wasm-edge-light-loader.mjs",
+        "hash": "3932339460120700138"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/wasm-worker-loader.mjs",
+        "hash": "4591685620909226447"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/wasm.d.ts",
+        "hash": "11303388507078878756"
+      },
+      {
+        "file": "apps/user-service/src/generated/prisma/wasm.js",
+        "hash": "2906513624906752908"
+      },
+      {
+        "file": "nx.json",
+        "hash": "16798737734475652640"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "9616889722969061478"
+      },
+      {
+        "file": "package.json",
+        "hash": "6079640226367217687"
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "tmp/user-service/main-with-require-overrides.js",
+        "hash": "5803729257484543891"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "937043261538441029"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "1379983966652230747"
+      }
+    ],
+    "projectFileMap": {}
+  },
+  "externalNodesHash": "11173694390739102440"
+}
