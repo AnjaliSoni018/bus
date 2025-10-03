@@ -32,8 +32,8 @@ services:
 
   user-service:
     build:
-      context: ./apps/user-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: apps/user-service/Dockerfile
     restart: on-failure
     env_file:
       - ./apps/user-service/.env
