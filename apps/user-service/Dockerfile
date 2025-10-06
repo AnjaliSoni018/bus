@@ -1,5 +1,3 @@
-# apps/user-service/Dockerfile
-
 # ========== Build Stage ==========
 FROM node:22-alpine AS build
 
@@ -25,6 +23,9 @@ RUN npx prisma generate
 
 # Transpile TypeScript to JavaScript
 RUN npm run build
+
+# Copy generated Prisma client to dist
+RUN cp -r src/generated dist/
 
 # ========== Production Stage ==========
 FROM node:22-alpine AS prod
