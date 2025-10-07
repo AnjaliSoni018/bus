@@ -10,6 +10,7 @@ services:
       - redis_data:/data
     networks:
       - user_net
+    container_name: redis_container
 
   user-service:
     build:
@@ -26,6 +27,9 @@ services:
       - user_net
     environment:
       DATABASE_URL: 'postgresql://my_user:32oHINflGWcTNkQ3RS1m4kcv5X1HIMcS@dpg-d34lju95pdvs73e1vqsg-a.oregon-postgres.render.com/user-service'
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    container_name: user_service_container
 
 volumes:
   redis_data:
