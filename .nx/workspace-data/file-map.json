@@ -37,8 +37,44 @@
         "hash": "7920675408075305446"
       },
       {
-        "file": "package.json",
-        "hash": "10854820730701423747"
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "1379983966652230747"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "7379898450094090892"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "13455748945344899060"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "3494843969422251966"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "13119912102255678890"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "8965237677768068718"
+      },
+      {
+        "file": "README.md",
+        "hash": "10557806678416533374"
       },
       {
         "file": "jest.preset.js",
@@ -49,52 +85,16 @@
         "hash": "12387134966429578294"
       },
       {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "13455748945344899060"
-      },
-      {
         "file": ".vscode/extensions.json",
         "hash": "4934098906304722861"
-      },
-      {
-        "file": "eslint.config.js",
-        "hash": "8965237677768068718"
-      },
-      {
-        "file": "tsconfig.json",
-        "hash": "1379983966652230747"
-      },
-      {
-        "file": "packages/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
-      },
-      {
-        "file": "README.md",
-        "hash": "10557806678416533374"
       },
       {
         "file": "tmp/user-service/main-with-require-overrides.js",
         "hash": "5803729257484543891"
       },
       {
-        "file": "docker-compose.yml",
-        "hash": "7379898450094090892"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "13119912102255678890"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "3494843969422251966"
+        "file": "package.json",
+        "hash": "10854820730701423747"
       }
     ],
     "projectFileMap": {
@@ -161,11 +161,11 @@
         },
         {
           "file": "apps/user-service/package-lock.json",
-          "hash": "7732824972235342201"
+          "hash": "4762455812884637325"
         },
         {
           "file": "apps/user-service/package.json",
-          "hash": "16283291168614203591",
+          "hash": "8231030791312631483",
           "deps": [
             "npm:@types/bcrypt",
             "npm:@types/express",
@@ -237,7 +237,7 @@
         },
         {
           "file": "apps/user-service/src/main.ts",
-          "hash": "15773503442314957245",
+          "hash": "10610974251415117802",
           "deps": [
             "npm:express",
             "npm:dotenv@16.6.1"
