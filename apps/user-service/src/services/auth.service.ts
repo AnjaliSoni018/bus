@@ -69,6 +69,7 @@ export const verifyOtp = async (
   const normPhone = phone.trim();
 
   const lockKey = `otp:lock:phone:${normPhone}`;
+
   const isLocked = await redis.exists(lockKey);
   if (isLocked) {
     throw new AppError(
@@ -102,44 +103,31 @@ export const verifyOtp = async (
     throw new AppError(errorMessages.OTP_EXPIRED, 400);
   }
 
+  let validOtp = false;
+
   if (redisOtp !== null) {
-    if (redisOtp !== otp) {
-      const attempts = tokenRecord.attempts + 1;
-      await prisma.verificationToken.update({
-        where: { id: tokenRecord.id },
-        data: { attempts },
-      });
-
-      if (attempts >= OTP_MAX_ATTEMPTS) {
-        await redis.set(lockKey, '1', 'EX', OTP_LOCKOUT_MINUTES * 60);
-        throw new AppError(
-          `Too many failed OTP attempts. Phone locked for ${OTP_LOCKOUT_MINUTES} minutes.`,
-          429
-        );
-      }
-
-      throw new AppError(errorMessages.INVALID_OTP, 400);
-    }
+    validOtp = redisOtp === otp;
   } else {
-    if (tokenRecord.token !== otp) {
-      const attempts = tokenRecord.attempts + 1;
-      await prisma.verificationToken.update({
-        where: { id: tokenRecord.id },
-        data: { attempts },
-      });
-
-      if (attempts >= OTP_MAX_ATTEMPTS) {
-        await redis.set(lockKey, '1', 'EX', OTP_LOCKOUT_MINUTES * 60);
-        throw new AppError(
-          `Too many failed OTP attempts. Phone locked for ${OTP_LOCKOUT_MINUTES} minutes.`,
-          429
-        );
-      }
-
-      throw new AppError(errorMessages.INVALID_OTP, 400);
-    }
+    validOtp = tokenRecord.token === otp;
   }
 
+  if (!validOtp) {
+    const attempts = tokenRecord.attempts + 1;
+
+    await prisma.verificationToken.update({
+      where: { id: tokenRecord.id },
+      data: { attempts },
+    });
+    if (attempts >= OTP_MAX_ATTEMPTS) {
+      await redis.set(lockKey, '1', 'EX', OTP_LOCKOUT_MINUTES * 60);
+      throw new AppError(
+        `Too many failed OTP attempts. Phone locked for ${OTP_LOCKOUT_MINUTES} minutes.`,
+        429
+      );
+    }
+
+    throw new AppError(errorMessages.INVALID_OTP, 400);
+  }
   let user = await prisma.user.findUnique({ where: { phone: normPhone } });
 
   const jwtPayload = {};
