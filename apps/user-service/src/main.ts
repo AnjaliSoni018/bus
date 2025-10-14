@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.routes';
 import prisma from './config/prisma.service';
 import errorMiddleware from './middlewares/error.middleware';
 import { errorMessages } from './constants/errorMessages';
+import { seedSuperAdmin } from './seed/superadmin.seed';
 
 dotenv.config();
 
@@ -21,12 +22,13 @@ app.get('/health', (req, res) => res.json({ ok: true }));
 
 app.use(errorMiddleware);
 
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT ?? 5000;
 
 app.listen(PORT, async () => {
   try {
     await prisma.$connect();
     console.log(`User Service running on port ${PORT}`);
+    await seedSuperAdmin();
   } catch (err) {
     console.error(errorMessages.DB_CONNECTION_ERROR, err);
     process.exit(1);

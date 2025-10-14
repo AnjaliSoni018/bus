@@ -27,6 +27,8 @@ model user {
   phone      String?  @unique
   password   String?
   name       String?
+  gender     String?         
+  dob        DateTime? 
   role       role     @default(CUSTOMER)
   isActive   Boolean  @default(true)
   isVerified Boolean  @default(false)
@@ -41,6 +43,7 @@ model user {
   sessions       session[]
   verification   verificationToken[]
   passwordResets passwordResetToken[] 
+  busOperator    busOperator? 
 }
 
 model session {
@@ -75,3 +78,30 @@ model passwordResetToken {
   user user @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model busOperator {
+  id                      String   @id @default(uuid())
+  userId                  String   @unique
+  travelsName             String
+  ownerName               String
+  businessBackground      String
+  businessBackgroundOther String?
+  address                 String
+  city                    String
+  district                String
+  state                   String
+  country                 String   @default("India")
+  pincode                 String
+  mobile                  String
+  phone                   String?
+  email                   String
+  alternateEmail          String?
+  pan                     String   @unique
+  isMSMERegistered        Boolean  @default(false)
+  msmeNumber              String?  @unique
+  cin                     String?  @unique
+  isApproved              Boolean  @default(false)
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

@@ -33,12 +33,8 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "tsconfig.json",
-        "hash": "1379983966652230747"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
+        "file": ".gitignore",
+        "hash": "13119912102255678890"
       },
       {
         "file": "eslint.config.js",
@@ -49,24 +45,44 @@
         "hash": "13455748945344899060"
       },
       {
+        "file": "tmp/user-service/main-with-require-overrides.js",
+        "hash": "5803729257484543891"
+      },
+      {
+        "file": "README.md",
+        "hash": "10557806678416533374"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "1379983966652230747"
+      },
+      {
         "file": "jest.config.ts",
         "hash": "3494843969422251966"
-      },
-      {
-        "file": "docker-compose.yml",
-        "hash": "7379898450094090892"
-      },
-      {
-        "file": "nx.json",
-        "hash": "7920675408075305446"
       },
       {
         "file": "package-lock.json",
         "hash": "12387134966429578294"
       },
       {
-        "file": "tmp/user-service/main-with-require-overrides.js",
-        "hash": "5803729257484543891"
+        "file": "package.json",
+        "hash": "10854820730701423747"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "4934098906304722861"
+      },
+      {
+        "file": "nx.json",
+        "hash": "7920675408075305446"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
       },
       {
         "file": "packages/.gitkeep",
@@ -77,24 +93,8 @@
         "hash": "9430166341120122740"
       },
       {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
-      },
-      {
-        "file": ".vscode/extensions.json",
-        "hash": "4934098906304722861"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "13119912102255678890"
-      },
-      {
-        "file": "README.md",
-        "hash": "10557806678416533374"
-      },
-      {
-        "file": "package.json",
-        "hash": "10854820730701423747"
+        "file": "docker-compose.yml",
+        "hash": "7379898450094090892"
       }
     ],
     "projectFileMap": {
@@ -185,12 +185,28 @@
           "hash": "10145406328984075303"
         },
         {
+          "file": "apps/user-service/prisma/migrations/20251010055138_add_profile_fields/migration.sql",
+          "hash": "5549770159287641185"
+        },
+        {
+          "file": "apps/user-service/prisma/migrations/20251014064236_add_bus_operator/migration.sql",
+          "hash": "1455214966363417065"
+        },
+        {
           "file": "apps/user-service/prisma/migrations/migration_lock.toml",
           "hash": "872437952673290735"
         },
         {
           "file": "apps/user-service/prisma/schema.prisma",
-          "hash": "13291669663508093118"
+          "hash": "3090036701393869069"
+        },
+        {
+          "file": "apps/user-service/prisma/seed/superadmin.seeder.ts",
+          "hash": "5161114515350778559",
+          "deps": [
+            "npm:@prisma/client",
+            "npm:bcrypt"
+          ]
         },
         {
           "file": "apps/user-service/project.json",
@@ -210,7 +226,7 @@
         },
         {
           "file": "apps/user-service/src/config/redis.service.ts",
-          "hash": "10906701523860202372"
+          "hash": "1084673421530077054"
         },
         {
           "file": "apps/user-service/src/constants/SuccessMessages.ts",
@@ -222,14 +238,17 @@
         },
         {
           "file": "apps/user-service/src/controllers/auth.controller.ts",
-          "hash": "17878093288745754971",
+          "hash": "15691122796717769518",
           "deps": [
             "npm:express"
           ]
         },
         {
           "file": "apps/user-service/src/controllers/user.controller.ts",
-          "hash": "515095183890286232"
+          "hash": "3830419947542739450",
+          "deps": [
+            "npm:express"
+          ]
         },
         {
           "file": "apps/user-service/src/errors/AppError.ts",
@@ -237,7 +256,7 @@
         },
         {
           "file": "apps/user-service/src/main.ts",
-          "hash": "10610974251415117802",
+          "hash": "6475366599728753580",
           "deps": [
             "npm:express",
             "npm:dotenv@16.6.1"
@@ -258,22 +277,40 @@
           ]
         },
         {
+          "file": "apps/user-service/src/middlewares/requireRole.ts",
+          "hash": "15711688434613206246",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
           "file": "apps/user-service/src/routes/auth.routes.ts",
-          "hash": "8207169655509283522",
+          "hash": "2257674179945521773",
           "deps": [
             "npm:express"
           ]
         },
         {
           "file": "apps/user-service/src/routes/user.routes.ts",
-          "hash": "10885457608119810518",
+          "hash": "8514146128820133134",
           "deps": [
             "npm:express"
           ]
         },
         {
+          "file": "apps/user-service/src/seed/superadmin.seed.ts",
+          "hash": "3822327101392928656",
+          "deps": [
+            "npm:bcrypt"
+          ]
+        },
+        {
           "file": "apps/user-service/src/services/auth.service.ts",
-          "hash": "11156111959407091299"
+          "hash": "11334583856039079169"
+        },
+        {
+          "file": "apps/user-service/src/services/user.service.ts",
+          "hash": "17112523292506053036"
         },
         {
           "file": "apps/user-service/src/utils/jwt.util.ts",
@@ -284,8 +321,19 @@
           ]
         },
         {
+          "file": "apps/user-service/src/utils/loginProtection.util.ts",
+          "hash": "18268274614761801690"
+        },
+        {
           "file": "apps/user-service/src/utils/otp.utils.ts",
           "hash": "3453649255065516768"
+        },
+        {
+          "file": "apps/user-service/src/utils/password.util.ts",
+          "hash": "6255834630622461885",
+          "deps": [
+            "npm:bcrypt"
+          ]
         },
         {
           "file": "apps/user-service/src/utils/rateLimiter.util.ts",

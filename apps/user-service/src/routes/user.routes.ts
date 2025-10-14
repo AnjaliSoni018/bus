@@ -1,9 +1,10 @@
 import { Router } from 'express';
-// import { getMe } from '../controllers/user.controller';
-// import { requireAuth } from '../middlewares/auth.middleware';
+import { getProfile, updateProfile } from '../controllers/user.controller';
+import { requireAuth } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-// router.get('/me', requireAuth, getMe);
+router.get('/profile', requireAuth, getProfile);
+router.patch('/profile', requireAuth, updateProfile);
 
 export default router;

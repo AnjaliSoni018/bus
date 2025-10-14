@@ -11,6 +11,12 @@ import {
 } from '../config/constants';
 import { SUCCESS_MESSAGES } from '../constants/SuccessMessages';
 import { errorMessages } from '../constants/errorMessages';
+import { comparePassword, hashPassword } from '../utils/password.util';
+import {
+  clearFailedLogin,
+  isLockedLogin,
+  recordFailedLogin,
+} from '../utils/loginProtection.util';
 
 export const sendOtp = async (
   phone: string,
@@ -176,4 +182,221 @@ export const verifyOtp = async (
   }
 
   return result;
+};
+
+interface RegisterOperatorDTO {
+  email: string;
+  password: string;
+  name: string;
+  travelsName: string;
+  ownerName: string;
+  businessBackground: string;
+  businessBackgroundOther?: string;
+  address: string;
+  city: string;
+  district: string;
+  state: string;
+  country?: string;
+  pincode: string;
+  mobile: string;
+  phone?: string;
+  alternateEmail?: string;
+  pan: string;
+  isMSMERegistered?: boolean;
+  msmeNumber?: string;
+  cin?: string;
+}
+
+export const registerOperator = async (payload: RegisterOperatorDTO) => {
+  const {
+    email,
+    password,
+    name,
+    travelsName,
+    ownerName,
+    businessBackground,
+    businessBackgroundOther,
+    address,
+    city,
+    district,
+    state,
+    country = 'India',
+    pincode,
+    mobile,
+    phone,
+    alternateEmail,
+    pan,
+    isMSMERegistered = false,
+    msmeNumber,
+    cin,
+  } = payload;
+
+  if (!email || !password || !travelsName || !ownerName || !pan) {
+    throw new AppError('Missing required fields', 400);
+  }
+
+  const existingUser = await prisma.user.findUnique({ where: { email } });
+  if (existingUser) throw new AppError('Email already registered', 400);
+
+  const existingPan = await prisma.busOperator.findUnique({ where: { pan } });
+  if (existingPan) throw new AppError('PAN already registered', 400);
+
+  if (msmeNumber) {
+    const existingMsme = await prisma.busOperator.findUnique({
+      where: { msmeNumber },
+    });
+    if (existingMsme) throw new AppError('MSME Number already registered', 400);
+  }
+
+  if (cin) {
+    const existingCin = await prisma.busOperator.findUnique({
+      where: { cin },
+    });
+    if (existingCin) throw new AppError('CIN already registered', 400);
+  }
+
+  const hashedPassword = await hashPassword(password);
+
+  const result = await prisma.$transaction(async (tx) => {
+    const user = await tx.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+        name,
+        role: 'BUS_OPERATOR',
+        isVerified: true,
+      },
+    });
+
+    const operator = await tx.busOperator.create({
+      data: {
+        userId: user.id,
+        travelsName,
+        ownerName,
+        businessBackground,
+        businessBackgroundOther,
+        address,
+        city,
+        district,
+        state,
+        country,
+        pincode,
+        mobile,
+        phone,
+        email,
+        alternateEmail,
+        pan,
+        isMSMERegistered,
+        msmeNumber,
+        cin,
+        isApproved: false,
+      },
+    });
+
+    return {
+      userId: user.id,
+      operatorId: operator.id,
+      status: 'PENDING_APPROVAL',
+    };
+  });
+
+  return result;
+};
+
+export const loginWithPassword = async (
+  email: string,
+  password: string,
+  ip: string
+) => {
+  if (!email || !password)
+    throw new AppError('Email and password required', 400);
+
+  if (await isLockedLogin(email, ip)) {
+    throw new AppError('Too many failed login attempts. Try later.', 429);
+  }
+
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user) {
+    await recordFailedLogin(email, ip);
+    throw new AppError('Invalid credentials', 401);
+  }
+
+  if (user.role === 'BUS_OPERATOR') {
+    const profile = await prisma.busOperator.findUnique({
+      where: { userId: user.id },
+    });
+    if (!profile || !profile.isApproved) {
+      throw new AppError('Operator account not approved yet', 403);
+    }
+  }
+
+  if (!user.password) {
+    await recordFailedLogin(email, ip);
+    throw new AppError('Invalid credentials', 401);
+  }
+
+  const ok = await comparePassword(password, user.password);
+  if (!ok) {
+    await recordFailedLogin(email, ip);
+    throw new AppError('Invalid credentials', 401);
+  }
+
+  await clearFailedLogin(email, ip);
+
+  const token = signJwt({ id: user.id, role: user.role, email: user.email });
+
+  await prisma.session.create({
+    data: {
+      userId: user.id,
+      token,
+      expiresAt: new Date(
+        Date.now() + Number(process.env.SESSION_TTL_HOURS ?? 24) * 3600 * 1000
+      ),
+    },
+  });
+
+  return { token, user };
+};
+
+export const createAdmin = async (
+  creatorId: string,
+  payload: { email: string; password: string; name?: string }
+) => {
+  const { email, password, name } = payload;
+  if (!email || !password)
+    throw new AppError('Email and password required', 400);
+
+  const existing = await prisma.user.findUnique({ where: { email } });
+  if (existing) throw new AppError('Email already exists', 400);
+
+  const hashed = await hashPassword(password);
+
+  const admin = await prisma.user.create({
+    data: {
+      email,
+      password: hashed,
+      name: name ?? null,
+      role: 'ADMIN',
+      isVerified: true,
+      createdBy: creatorId,
+      updatedBy: creatorId,
+    },
+  });
+
+  return admin;
+};
+
+export const approveOperator = async (operatorId: string) => {
+  const profile = await prisma.busOperator.update({
+    where: { userId: operatorId },
+    data: { isApproved: true },
+  });
+  return profile;
+};
+
+export const listOperators = async () => {
+  const items = await prisma.busOperator.findMany({
+    include: { user: true },
+  });
+  return items;
 };
