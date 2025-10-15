@@ -10,13 +10,24 @@ import {
 } from '../controllers/auth.controller';
 import { requireRole } from '../middlewares/requireRole';
 import { requireAuth } from '../middlewares/auth.middleware';
+import { validate } from '../middlewares/zod.middleware';
+import {
+  loginSchema,
+  registerOperatorSchema,
+  sendOtpSchema,
+  verifyOtpSchema,
+} from '../validators/authValidator';
 
 const router = Router();
 
-router.post('/send-otp', sendOtpController);
-router.post('/verify-otp', verifyOtpController);
-router.post('/register', registerOperatorController);
-router.post('/login', passwordLogin);
+router.post('/send-otp', validate(sendOtpSchema), sendOtpController);
+router.post('/verify-otp', validate(verifyOtpSchema), verifyOtpController);
+router.post(
+  '/register',
+  validate(registerOperatorSchema),
+  registerOperatorController
+);
+router.post('/login', validate(loginSchema), passwordLogin);
 router.post(
   '/',
   requireAuth,

@@ -1,19 +1,26 @@
 import { Request, Response, NextFunction } from 'express';
-
-interface CustomError extends Error {
-  status?: number;
-}
+import { AppError } from '../errors/AppError';
 
 export default function errorMiddleware(
-  err: CustomError,
+  err: unknown,
   req: Request,
   res: Response,
   _next: NextFunction
 ) {
-  console.error(err);
+  console.error('Error:', err);
 
-  res.status(err.status || 500).json({
+  const status = err instanceof AppError ? err.status : 500;
+  const message =
+    err instanceof AppError ? err.message : 'Something went wrong';
+
+  const response: { success: boolean; message: string; details?: unknown } = {
     success: false,
-    message: err.message || 'Internal Server Error',
-  });
+    message,
+  };
+
+  if (err instanceof AppError && err.details) {
+    response['details'] = err.details;
+  }
+
+  res.status(status).json(response);
 }
