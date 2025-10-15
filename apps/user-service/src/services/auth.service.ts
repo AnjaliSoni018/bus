@@ -44,7 +44,7 @@ export const sendOtp = async (
   try {
     await redis.set(redisOtpKey, otp, 'EX', OTP_TTL_SECONDS);
   } catch (err) {
-    console.warn('Redis set failed for OTP (continuing, DB has record):', err);
+    console.warn(errorMessages.REDIS_SET_FAILED, err);
   }
 
   const message = `Your verification code is ${otp}. It will expire in ${Math.floor(
@@ -53,7 +53,7 @@ export const sendOtp = async (
   try {
     await sendOTP(normPhone, message);
   } catch (err) {
-    console.error('SMS provider error:', err);
+    console.error(errorMessages.SMS_PROVIDER_ERROR, err);
     throw new AppError(errorMessages.OTP_SEND_FAILED, 500);
   }
 
@@ -89,7 +89,7 @@ export const verifyOtp = async (
   try {
     redisOtp = (await redis.get(redisOtpKey)) ?? null;
   } catch (err) {
-    console.warn('Redis get failed: falling back to DB', err);
+    console.warn(errorMessages.REDIS_GET_FAILED, err);
   }
 
   const tokenRecord = await prisma.verificationToken.findFirst({
@@ -178,7 +178,7 @@ export const verifyOtp = async (
   try {
     await redis.del(redisOtpKey);
   } catch (err) {
-    console.warn('Redis DEL failed on OTP cleanup:', err);
+    console.warn(errorMessages.REDIS_DEL_FAILED, err);
   }
 
   return result;
@@ -232,27 +232,31 @@ export const registerOperator = async (payload: RegisterOperatorDTO) => {
   } = payload;
 
   if (!email || !password || !travelsName || !ownerName || !pan) {
-    throw new AppError('Missing required fields', 400);
+    throw new AppError(errorMessages.MISSING_REQUIRED_FIELDS, 400);
   }
 
   const existingUser = await prisma.user.findUnique({ where: { email } });
-  if (existingUser) throw new AppError('Email already registered', 400);
+  if (existingUser)
+    throw new AppError(errorMessages.EMAIL_ALREADY_REGISTERED, 400);
 
   const existingPan = await prisma.busOperator.findUnique({ where: { pan } });
-  if (existingPan) throw new AppError('PAN already registered', 400);
+  if (existingPan)
+    throw new AppError(errorMessages.PAN_ALREADY_REGISTERED, 400);
 
   if (msmeNumber) {
     const existingMsme = await prisma.busOperator.findUnique({
       where: { msmeNumber },
     });
-    if (existingMsme) throw new AppError('MSME Number already registered', 400);
+    if (existingMsme)
+      throw new AppError(errorMessages.MSME_ALREADY_REGISTERED, 400);
   }
 
   if (cin) {
     const existingCin = await prisma.busOperator.findUnique({
       where: { cin },
     });
-    if (existingCin) throw new AppError('CIN already registered', 400);
+    if (existingCin)
+      throw new AppError(errorMessages.CIN_ALREADY_REGISTERED, 400);
   }
 
   const hashedPassword = await hashPassword(password);

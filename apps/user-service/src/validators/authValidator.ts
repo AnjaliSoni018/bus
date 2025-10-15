@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const loginSchema = z.object({
-  email: z.string().email(),
+  email: z.string().regex(emailRegex, { message: 'Invalid email address' }),
   password: z.string().min(6),
 });
 
@@ -13,11 +15,14 @@ export const verifyOtpSchema = z.object({
   phone: z.string().min(10).max(15),
   otp: z.string().min(4).max(6),
   name: z.string().optional(),
-  email: z.string().email().optional(),
+  email: z
+    .string()
+    .regex(emailRegex, { message: 'Invalid email address' })
+    .optional(),
 });
 
 export const registerOperatorSchema = z.object({
-  email: z.string().email(),
+  email: z.string().regex(emailRegex, { message: 'Invalid email address' }),
   password: z.string().min(6),
   name: z.string(),
   travelsName: z.string(),

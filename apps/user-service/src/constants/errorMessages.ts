@@ -7,4 +7,13 @@ export const errorMessages = {
   INVALID_OTP: 'Invalid OTP',
   OTP_EXPIRED: 'OTP expired',
   NAME_EMAIL_REQUIRED: 'Name and email are required for new users',
+  REDIS_SET_FAILED: 'Redis set failed for OTP (continuing, DB has record):',
+  SMS_PROVIDER_ERROR: 'SMS provider error:',
+  REDIS_GET_FAILED: 'Redis get failed: falling back to DB',
+  REDIS_DEL_FAILED: 'Redis DEL failed on OTP cleanup:',
+  MISSING_REQUIRED_FIELDS: 'Missing required fields',
+  EMAIL_ALREADY_REGISTERED: 'Email already registered',
+  PAN_ALREADY_REGISTERED: 'PAN already registered',
+  MSME_ALREADY_REGISTERED: 'MSME Number already registered',
+  CIN_ALREADY_REGISTERED: 'CIN already registered',
 };
