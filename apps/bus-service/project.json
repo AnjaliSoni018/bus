@@ -1,0 +1,58 @@
+{
+  "name": "bus-service",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "bus-service/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/bus-service",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "bus-service/src/main.ts",
+        "tsConfig": "bus-service/tsconfig.app.json",
+        "assets": ["bus-service/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "bus-service:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "bus-service:build:development"
+        },
+        "production": {
+          "buildTarget": "bus-service:build:production"
+        }
+      }
+    }
+  }
+}

@@ -24,7 +24,6 @@ export const verifyOtpSchema = z.object({
 export const registerOperatorSchema = z.object({
   email: z.string().regex(emailRegex, { message: 'Invalid email address' }),
   password: z.string().min(6),
-  name: z.string(),
   travelsName: z.string(),
   ownerName: z.string(),
   businessBackground: z.string(),

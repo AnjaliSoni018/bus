@@ -1,4 +1,544 @@
 {
+  "apps/bus-service": {
+    "root": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "apps/bus-service/tsconfig.app.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "apps/bus-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.lint": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.cache": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.inputs": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.outputs": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.executor": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.cwd": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.command": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies.0": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.description": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.command": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.example": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.test": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "apps/bus-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.defaultConfiguration": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.platform": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.format": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.bundle": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.main": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.generatePackageJson": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.esbuildOptions": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.esbuildOptions": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.dependsOn": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.runBuildTargetDependencies": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "apps/bus-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "apps/bus-service-e2e": {
+    "root": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "apps/bus-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.lint": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.cache": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.inputs": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.outputs": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.executor": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.cwd": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.command": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies.0": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.description": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.command": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.example": [
+      "apps/bus-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "name": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.bus-service": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.executor": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.outputs": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.dependsOn": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options.jestConfig": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options.passWithNoTests": [
+      "apps/bus-service-e2e/project.json",
+      "nx/core/project-json"
+    ]
+  },
   "apps/user-service": {
     "root": [
       "apps/user-service/project.json",
