@@ -15,7 +15,7 @@ COPY apps/user-service/prisma ./apps/user-service/prisma
 COPY apps/user-service/src ./apps/user-service/src
 
 # Copy shared libraries from root
-COPY libs ./libs
+# COPY libs ./libs
 
 # Install dependencies (using root-level context)
 RUN npm ci --legacy-peer-deps
