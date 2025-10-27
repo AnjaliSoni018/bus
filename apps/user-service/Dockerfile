@@ -9,10 +9,10 @@ COPY package*.json ./
 COPY nx.json tsconfig.base.json ./
 
 # Copy the service-specific files
-COPY apps/user-service/package*.json ./apps/user-service/
-COPY apps/user-service/tsconfig*.json ./apps/user-service/
-COPY apps/user-service/prisma ./apps/user-service/prisma
-COPY apps/user-service/src ./apps/user-service/src/
+COPY src ./src
+COPY prisma ./prisma
+COPY tsconfig*.json ./
+COPY package*.json ./
 
 # Copy shared libraries from root
 # COPY libs ./libs
