@@ -8,22 +8,22 @@ WORKDIR /app
 COPY package*.json ./
 COPY nx.json tsconfig.base.json ./
 
-# Copy the service-specific files
-COPY src ./src
-COPY prisma ./prisma
-COPY tsconfig*.json ./
-COPY package*.json ./
+# Copy only user-service specific files
+COPY apps/user-service/package*.json ./apps/user-service/
+COPY apps/user-service/tsconfig*.json ./apps/user-service/
+COPY apps/user-service/prisma ./apps/user-service/prisma
+COPY apps/user-service/src ./apps/user-service/src
 
-# Copy shared libraries from root
+# Copy shared libraries (if any, optional)
 # COPY libs ./libs
 
-# Install dependencies (using root-level context)
+# Install dependencies from root
 RUN npm ci --legacy-peer-deps
 
 # Generate Prisma client for the service
 RUN npx prisma generate --schema=apps/user-service/prisma/schema.prisma
 
-# Build the service using Nx
+# Build the specific service
 RUN npx nx build user-service
 
 # ========== Production Stage ==========
