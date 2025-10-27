@@ -4,42 +4,46 @@ FROM node:22-alpine AS build
 # Set working directory inside the container
 WORKDIR /app
 
-# Copy package files from user-service
-COPY apps/user-service/package*.json ./
+# Copy root-level package files and Nx/TS configs (important for monorepos)
+COPY package*.json ./
+COPY nx.json tsconfig.base.json ./
 
-# Install dependencies
+# Copy the service-specific files
+COPY apps/user-service/package*.json ./apps/user-service/
+COPY apps/user-service/tsconfig*.json ./apps/user-service/
+COPY apps/user-service/prisma ./apps/user-service/prisma
+COPY apps/user-service/src ./apps/user-service/src
+
+# Copy shared libraries from root
+COPY libs ./libs
+
+# Install dependencies (using root-level context)
 RUN npm ci --legacy-peer-deps
 
-# Copy TypeScript config files
-COPY apps/user-service/tsconfig*.json ./
-COPY tsconfig.base.json ../../tsconfig.base.json
+# Generate Prisma client for the service
+RUN npx prisma generate --schema=apps/user-service/prisma/schema.prisma
 
-# Copy Prisma and source code
-COPY apps/user-service/prisma ./prisma
-COPY apps/user-service/src ./src
-
-# Generate Prisma client
-RUN npx prisma generate
-
-# Transpile TypeScript to JavaScript
-RUN npm run build
-
-# Copy generated Prisma client to dist
-RUN cp -r src/generated dist/
+# Build the service using Nx
+RUN npx nx build user-service
 
 # ========== Production Stage ==========
 FROM node:22-alpine AS prod
 
-# Set working directory
 WORKDIR /app
 ENV NODE_ENV=production
 
-# Copy only necessary files from build stage
-COPY --from=build /app/package*.json ./
+# Copy only the build output and necessary files
+COPY --from=build /app/dist/apps/user-service ./dist
+COPY --from=build /app/apps/user-service/prisma ./prisma
 COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/prisma ./prisma
+COPY --from=build /app/package*.json ./
 
-# Expose port and start app
 EXPOSE 3000
-CMD ["node", "dist/main.js"]
+
+# Run Prisma migrations before starting app
+ENTRYPOINT ["sh", "-c", "\
+  echo 'Running Prisma migrations...'; \
+  npx prisma migrate deploy --schema=./prisma/schema.prisma && \
+  echo 'Migrations applied successfully! Starting app...'; \
+  node dist/main.js \
+"]

@@ -76,66 +76,6 @@
       "apps/bus-service/tsconfig.json",
       "@nx/js/typescript"
     ],
-    "targets.lint": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.cache": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.options": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.inputs": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.outputs": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.executor": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.options.cwd": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.options.command": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.technologies": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.technologies.0": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.description": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.help": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.help.command": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.help.example": [
-      "apps/bus-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
     "targets.test": [
       "apps/bus-service/jest.config.ts",
       "@nx/jest/plugin"
@@ -200,6 +140,214 @@
       "apps/bus-service/project.json",
       "nx/core/project-json"
     ],
+    "tags": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.2": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.3": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.4": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start:dev": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start:dev.executor": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start:dev.options": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start:dev.metadata": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start:dev.options.script": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start:dev.metadata.scriptContent": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start:dev.metadata.runCommand": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.executor": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options.script": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.scriptContent": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.runCommand": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.executor": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.options": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.metadata": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.options.script": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.metadata.scriptContent": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.metadata.runCommand": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.executor": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.options": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.metadata": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.options.script": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.metadata.scriptContent": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.metadata.runCommand": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.executor": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options.script": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.scriptContent": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.runCommand": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
     "$schema": [
       "apps/bus-service/project.json",
       "nx/core/project-json"
@@ -209,10 +357,6 @@
       "nx/core/project-json"
     ],
     "projectType": [
-      "apps/bus-service/project.json",
-      "nx/core/project-json"
-    ],
-    "tags": [
       "apps/bus-service/project.json",
       "nx/core/project-json"
     ],

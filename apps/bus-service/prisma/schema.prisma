@@ -1,0 +1,115 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum BusType {
+  SLEEPER
+  SEATER
+  SEMI_SLEEPER
+  A_C
+  NON_AC
+  VOLVO
+}
+
+enum TripStatus {
+  ACTIVE
+  CANCELLED
+  COMPLETED
+  DRAFT
+}
+
+model User {
+  id        String   @id @default(uuid())
+  phone     String   @unique
+  email     String?  @unique
+  role      String
+  createdAt DateTime @default(now())
+}
+
+model Bus {
+  id                 String    @id @default(uuid())
+  operatorId         String
+  name               String
+  registrationNumber String    @unique
+  busType            BusType
+  totalSeats         Int
+  seatLayout         Json
+  amenities          Json?
+  isActive           Boolean   @default(true)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  operator           User      @relation(fields: [operatorId], references: [id], onDelete: Cascade)
+
+  @@index([operatorId])
+}
+
+model Route {
+  id              String   @id @default(uuid())
+  originCity      String
+  originCode      String?
+  destinationCity String
+  destinationCode String?
+  distanceKm      Int?
+  durationMins    Int?
+  viaPoints       Json?
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([originCity, destinationCity])
+}
+
+model Trip {
+  id             String     @id @default(uuid())
+  busId          String
+  routeId        String
+  operatorId     String
+  departureTime  DateTime
+  arrivalTime    DateTime
+  tripDate       DateTime
+  fare           Decimal    @db.Decimal(10,2)
+  availableSeats Int
+  status         TripStatus @default(ACTIVE)
+  frequency      String?
+  metadata       Json?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  bus     Bus   @relation(fields: [busId], references: [id], onDelete: Cascade)
+  route   Route @relation(fields: [routeId], references: [id], onDelete: Restrict)
+  operator User  @relation(fields: [operatorId], references: [id], onDelete: Cascade)
+
+  @@index([routeId, tripDate])
+  @@index([operatorId])
+}
+
+model Stop {
+  id          String   @id @default(uuid())
+  tripId      String
+  city        String
+  arrivalTime DateTime
+  departureTime DateTime
+  sequence    Int
+  createdAt   DateTime @default(now())
+
+  trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
+}
+
+model SeatLock {
+  id        String   @id @default(uuid())
+  tripId    String
+  seatNo    String
+  userId    String
+  lockedAt  DateTime @default(now())
+  expiresAt DateTime
+  lockKey   String   @unique
+  createdAt DateTime @default(now())
+
+  @@index([tripId, seatNo])
+}

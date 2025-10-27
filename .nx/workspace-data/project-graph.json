@@ -542,15 +542,7 @@
             },
             "cache": true,
             "inputs": [
-              "{workspaceRoot}/tsconfig.base.json",
-              "{projectRoot}/tsconfig.json",
-              "{projectRoot}/tsconfig.app.json",
-              "{projectRoot}/tsconfig.spec.json",
-              "{projectRoot}/src/**/*.ts",
-              "{projectRoot}/jest.config.ts",
-              "{projectRoot}/src/**/*.test.ts",
-              "{projectRoot}/src/**/*.spec.ts",
-              "{projectRoot}/src/**/*.d.ts",
+              "production",
               "^production",
               {
                 "externalDependencies": [
@@ -559,9 +551,8 @@
               }
             ],
             "outputs": [
-              "{workspaceRoot}/apps/dist/out-tsc/**/*.d.ts",
-              "{workspaceRoot}/apps/dist/out-tsc/**/*.d.ts.map",
-              "{workspaceRoot}/apps/dist/out-tsc/tsconfig.tsbuildinfo"
+              "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/*.tsbuildinfo"
             ],
             "syncGenerators": [
               "@nx/js:typescript-sync"
@@ -585,26 +576,10 @@
             "parallelism": true
           },
           "lint": {
-            "cache": true,
+            "executor": "nx:run-script",
             "options": {
-              "cwd": "apps/bus-service",
-              "command": "eslint ."
+              "script": "lint"
             },
-            "inputs": [
-              "default",
-              "^default",
-              "{workspaceRoot}/eslint.config.js",
-              "{projectRoot}/eslint.config.js",
-              "{workspaceRoot}/tools/eslint-rules/**/*",
-              {
-                "externalDependencies": [
-                  "eslint"
-                ]
-              }
-            ],
-            "outputs": [
-              "{options.outputFile}"
-            ],
             "metadata": {
               "technologies": [
                 "eslint"
@@ -617,9 +592,10 @@
                     "max-warnings": 0
                   }
                 }
-              }
+              },
+              "scriptContent": "eslint . --ext .ts",
+              "runCommand": "npm run lint"
             },
-            "executor": "nx:run-commands",
             "configurations": {},
             "parallelism": true
           },
@@ -657,6 +633,63 @@
               "{workspaceRoot}/coverage/bus-service"
             ],
             "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "start:dev": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "start:dev"
+            },
+            "metadata": {
+              "scriptContent": "ts-node-dev --respawn --transpile-only src/main.ts",
+              "runCommand": "npm run start:dev"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "start": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "start"
+            },
+            "metadata": {
+              "scriptContent": "node dist/main.js",
+              "runCommand": "npm run start"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "prisma:generate": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "prisma:generate"
+            },
+            "metadata": {
+              "scriptContent": "prisma generate --schema prisma/schema.prisma",
+              "runCommand": "npm run prisma:generate"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "prisma:migrate": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "prisma:migrate"
+            },
+            "metadata": {
+              "scriptContent": "prisma migrate dev --name init --schema prisma/schema.prisma",
+              "runCommand": "npm run prisma:migrate"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "nx-release-publish": {
+            "executor": "@nx/js:release-publish",
+            "dependsOn": [
+              "^nx-release-publish"
+            ],
+            "options": {},
             "configurations": {},
             "parallelism": true
           },
@@ -729,10 +762,28 @@
           }
         },
         "name": "bus-service",
+        "tags": [
+          "npm:public"
+        ],
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "start:dev",
+              "start",
+              "prisma:generate",
+              "prisma:migrate",
+              "lint"
+            ]
+          },
+          "js": {
+            "packageName": "bus-service",
+            "packageMain": "dist/main.js",
+            "isInPackageManagerWorkspaces": false
+          }
+        },
         "$schema": "../node_modules/nx/schemas/project-schema.json",
         "sourceRoot": "bus-service/src",
         "projectType": "application",
-        "tags": [],
         "implicitDependencies": []
       }
     }
@@ -8263,7 +8314,62 @@
     "bus-service": [
       {
         "source": "bus-service",
+        "target": "npm:@types/express",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:@types/node",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:@typescript-eslint/eslint-plugin",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:@typescript-eslint/parser",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:eslint",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:prisma",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:typescript",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:@prisma/client",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:body-parser",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:dotenv@16.6.1",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
         "target": "npm:express",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:jsonwebtoken",
         "type": "static"
       }
     ],
@@ -18531,5 +18637,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1760611502709
+  "computedAt": 1761559433321
 }

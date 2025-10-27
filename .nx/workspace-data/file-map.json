@@ -33,52 +33,48 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "apps/eslint.config.js",
-        "hash": "17012108287991280227"
-      },
-      {
-        "file": "packages/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
-      },
-      {
-        "file": ".vscode/extensions.json",
-        "hash": "4934098906304722861"
-      },
-      {
-        "file": "apps/jest.config.ts",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "13455748945344899060"
-      },
-      {
-        "file": "eslint.config.js",
-        "hash": "8965237677768068718"
+        "file": "apps/tsconfig.json",
+        "hash": "9420862676426701392"
       },
       {
         "file": "apps-e2e/jest.config.ts",
         "hash": "3244421341483603138"
       },
       {
-        "file": "apps-e2e/eslint.config.js",
-        "hash": "17012108287991280227"
+        "file": "jest.config.ts",
+        "hash": "3494843969422251966"
+      },
+      {
+        "file": "apps/tsconfig.spec.json",
+        "hash": "15632768803430051377"
+      },
+      {
+        "file": "nx.json",
+        "hash": "14775129647607812896"
       },
       {
         "file": "tsconfig.json",
         "hash": "1379983966652230747"
       },
       {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
+        "file": "tmp/user-service/main-with-require-overrides.js",
+        "hash": "5803729257484543891"
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "apps/tsconfig.app.json",
+        "hash": "3062189852699194213"
       },
       {
         "file": "package-lock.json",
         "hash": "17638912987409687101"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "12456585487980810333"
       },
       {
         "file": "apps-e2e/tsconfig.spec.json",
@@ -89,52 +85,108 @@
         "hash": "2346920493880922870"
       },
       {
-        "file": "README.md",
-        "hash": "4055606894390288348"
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
       },
       {
-        "file": "jest.config.ts",
-        "hash": "3494843969422251966"
-      },
-      {
-        "file": "docker-compose.yml",
-        "hash": "7379898450094090892"
-      },
-      {
-        "file": "tmp/user-service/main-with-require-overrides.js",
-        "hash": "5803729257484543891"
-      },
-      {
-        "file": "apps/tsconfig.spec.json",
-        "hash": "15632768803430051377"
+        "file": "apps/jest.config.ts",
+        "hash": "3244421341483603138"
       },
       {
         "file": ".gitignore",
         "hash": "10052046223518464685"
       },
       {
-        "file": "apps/tsconfig.app.json",
-        "hash": "3062189852699194213"
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "README.md",
+        "hash": "4055606894390288348"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "8965237677768068718"
+      },
+      {
+        "file": "apps-e2e/eslint.config.js",
+        "hash": "17012108287991280227"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "13455748945344899060"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
       },
       {
         "file": "package.json",
         "hash": "9570944232550248711"
       },
       {
-        "file": "nx.json",
-        "hash": "14775129647607812896"
+        "file": "apps/eslint.config.js",
+        "hash": "17012108287991280227"
       },
       {
-        "file": "apps/tsconfig.json",
-        "hash": "9420862676426701392"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
+        "file": ".vscode/extensions.json",
+        "hash": "4934098906304722861"
       }
     ],
     "projectFileMap": {
+      "user-service-e2e": [
+        {
+          "file": "apps/user-service-e2e/eslint.config.js",
+          "hash": "17472210594086834595"
+        },
+        {
+          "file": "apps/user-service-e2e/jest.config.ts",
+          "hash": "14101698721330714857"
+        },
+        {
+          "file": "apps/user-service-e2e/project.json",
+          "hash": "10585251015563642200"
+        },
+        {
+          "file": "apps/user-service-e2e/src/support/global-setup.ts",
+          "hash": "2568409276037275290"
+        },
+        {
+          "file": "apps/user-service-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "apps/user-service-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/user-service-e2e/src/user-service/user-service.spec.ts",
+          "hash": "4579662685003779048",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/user-service-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
+        },
+        {
+          "file": "apps/user-service-e2e/tsconfig.spec.json",
+          "hash": "14954872453723519891"
+        }
+      ],
       "bus-service": [
+        {
+          "file": "apps/bus-service/.gitignore",
+          "hash": "12975187279384539528"
+        },
+        {
+          "file": "apps/bus-service/Dockerfile",
+          "hash": "2800939804629365691"
+        },
         {
           "file": "apps/bus-service/eslint.config.js",
           "hash": "17012108287991280227"
@@ -144,23 +196,73 @@
           "hash": "17074098086281657297"
         },
         {
+          "file": "apps/bus-service/package-lock.json",
+          "hash": "14832751369784215631"
+        },
+        {
+          "file": "apps/bus-service/package.json",
+          "hash": "13558276787989440540",
+          "deps": [
+            "npm:@types/express",
+            "npm:@types/node",
+            "npm:@typescript-eslint/eslint-plugin",
+            "npm:@typescript-eslint/parser",
+            "npm:eslint",
+            "npm:prisma",
+            "npm:typescript",
+            "npm:@prisma/client",
+            "npm:body-parser",
+            "npm:dotenv@16.6.1",
+            "npm:express",
+            "npm:jsonwebtoken"
+          ]
+        },
+        {
+          "file": "apps/bus-service/prisma/schema.prisma",
+          "hash": "1704773203261817042"
+        },
+        {
           "file": "apps/bus-service/project.json",
           "hash": "11608927303638515306"
+        },
+        {
+          "file": "apps/bus-service/src/app.ts",
+          "hash": "14095239163415493931"
         },
         {
           "file": "apps/bus-service/src/assets/.gitkeep",
           "hash": "3244421341483603138"
         },
         {
+          "file": "apps/bus-service/src/config/prisma.service.ts",
+          "hash": "10899044901762862960"
+        },
+        {
+          "file": "apps/bus-service/src/controllers/busController.ts",
+          "hash": "6688353308011701716"
+        },
+        {
+          "file": "apps/bus-service/src/dtos/createTrip.ts",
+          "hash": "7206670042952239424"
+        },
+        {
           "file": "apps/bus-service/src/main.ts",
-          "hash": "12003555863464044675",
+          "hash": "6331287237562002910"
+        },
+        {
+          "file": "apps/bus-service/src/routes/bus-routes.ts",
+          "hash": "16434247036185370881"
+        },
+        {
+          "file": "apps/bus-service/src/routes/health.ts",
+          "hash": "9312243921456232878",
           "deps": [
             "npm:express"
           ]
         },
         {
-          "file": "apps/bus-service/src/routes/bus-routes.ts.ts",
-          "hash": "8541901104086105736"
+          "file": "apps/bus-service/src/services/busService.ts",
+          "hash": "18073310511525830417"
         },
         {
           "file": "apps/bus-service/tsconfig.app.json",
@@ -168,55 +270,11 @@
         },
         {
           "file": "apps/bus-service/tsconfig.json",
-          "hash": "3490524966360018312"
+          "hash": "13411947426035520851"
         },
         {
           "file": "apps/bus-service/tsconfig.spec.json",
           "hash": "15632768803430051377"
-        }
-      ],
-      "bus-service-e2e": [
-        {
-          "file": "apps/bus-service-e2e/eslint.config.js",
-          "hash": "17012108287991280227"
-        },
-        {
-          "file": "apps/bus-service-e2e/jest.config.ts",
-          "hash": "16040300586669143754"
-        },
-        {
-          "file": "apps/bus-service-e2e/project.json",
-          "hash": "9829868153917457007"
-        },
-        {
-          "file": "apps/bus-service-e2e/src/bus-service/bus-service.spec.ts",
-          "hash": "4579662685003779048",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/bus-service-e2e/src/support/global-setup.ts",
-          "hash": "2568409276037275290"
-        },
-        {
-          "file": "apps/bus-service-e2e/src/support/global-teardown.ts",
-          "hash": "5275447082211835490"
-        },
-        {
-          "file": "apps/bus-service-e2e/src/support/test-setup.ts",
-          "hash": "10984585515912236441",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/bus-service-e2e/tsconfig.json",
-          "hash": "15443990093475294480"
-        },
-        {
-          "file": "apps/bus-service-e2e/tsconfig.spec.json",
-          "hash": "13058925111467353993"
         }
       ],
       "user-service": [
@@ -226,7 +284,7 @@
         },
         {
           "file": "apps/user-service/Dockerfile",
-          "hash": "15485144234668804551"
+          "hash": "9259028473829238802"
         },
         {
           "file": "apps/user-service/eslint.config.js",
@@ -432,48 +490,48 @@
           "hash": "16410836228125477868"
         }
       ],
-      "user-service-e2e": [
+      "bus-service-e2e": [
         {
-          "file": "apps/user-service-e2e/eslint.config.js",
-          "hash": "17472210594086834595"
+          "file": "apps/bus-service-e2e/eslint.config.js",
+          "hash": "17012108287991280227"
         },
         {
-          "file": "apps/user-service-e2e/jest.config.ts",
-          "hash": "14101698721330714857"
+          "file": "apps/bus-service-e2e/jest.config.ts",
+          "hash": "16040300586669143754"
         },
         {
-          "file": "apps/user-service-e2e/project.json",
-          "hash": "10585251015563642200"
+          "file": "apps/bus-service-e2e/project.json",
+          "hash": "9829868153917457007"
         },
         {
-          "file": "apps/user-service-e2e/src/support/global-setup.ts",
-          "hash": "2568409276037275290"
-        },
-        {
-          "file": "apps/user-service-e2e/src/support/global-teardown.ts",
-          "hash": "5275447082211835490"
-        },
-        {
-          "file": "apps/user-service-e2e/src/support/test-setup.ts",
-          "hash": "10984585515912236441",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/user-service-e2e/src/user-service/user-service.spec.ts",
+          "file": "apps/bus-service-e2e/src/bus-service/bus-service.spec.ts",
           "hash": "4579662685003779048",
           "deps": [
             "npm:axios"
           ]
         },
         {
-          "file": "apps/user-service-e2e/tsconfig.json",
+          "file": "apps/bus-service-e2e/src/support/global-setup.ts",
+          "hash": "2568409276037275290"
+        },
+        {
+          "file": "apps/bus-service-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "apps/bus-service-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/bus-service-e2e/tsconfig.json",
           "hash": "15443990093475294480"
         },
         {
-          "file": "apps/user-service-e2e/tsconfig.spec.json",
-          "hash": "14954872453723519891"
+          "file": "apps/bus-service-e2e/tsconfig.spec.json",
+          "hash": "13058925111467353993"
         }
       ]
     }

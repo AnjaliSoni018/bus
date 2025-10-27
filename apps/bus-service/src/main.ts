@@ -1,14 +1,9 @@
-import express from 'express';
+// import app from './app';
+// import pino from 'pino';
 
-const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+// const logger = pino();
+// const PORT = process.env.PORT || 3333;
 
-const app = express();
-
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
-});
-
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
-});
+// app.listen(PORT, () => {
+//   logger.info(`bus-service listening on ${PORT}`);
+// });
