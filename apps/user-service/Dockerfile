@@ -1,53 +1,42 @@
-# =========================
-# ===== Build Stage =======
-# =========================
+# ========== Build Stage ==========
 FROM node:22-alpine AS build
-
 WORKDIR /app
 
-# Copy required files
+# Copy root configs
 COPY package*.json ./
 COPY nx.json tsconfig.base.json ./
 
-# Copy user-service specific files
+# Copy service files
 COPY apps/user-service/package*.json ./apps/user-service/
 COPY apps/user-service/tsconfig*.json ./apps/user-service/
 COPY apps/user-service/prisma ./apps/user-service/prisma
 COPY apps/user-service/src ./apps/user-service/src
 
-# 1️⃣ Install root dependencies (shared deps like cors, dotenv, etc.)
+# Install root + service dependencies
 RUN npm ci --legacy-peer-deps
-
-# 2️⃣ Install user-service-specific deps
 WORKDIR /app/apps/user-service
 RUN npm ci --legacy-peer-deps
 
-# 3️⃣ Go back to root for building
-WORKDIR /app
-
 # Generate Prisma client
+WORKDIR /app
 RUN npx prisma generate --schema=apps/user-service/prisma/schema.prisma
 
-# Build service using its own build script
+# Build service
 WORKDIR /app/apps/user-service
 RUN npm run build
 
-# Show build output
-RUN echo "Build output structure:" && ls -R dist || echo "dist not found!"
-
-# =========================
-# ==== Production Stage ===
-# =========================
+# ========== Production Stage ==========
 FROM node:22-alpine AS prod
-
 WORKDIR /app
 ENV NODE_ENV=production
 
-# Copy build output from correct path
+# Copy built files
 COPY --from=build /app/apps/user-service/dist ./dist
 COPY --from=build /app/apps/user-service/prisma ./prisma
-COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/apps/user-service/package*.json ./
+
+# Install only production dependencies (fixes depd issue)
+RUN npm ci --omit=dev --legacy-peer-deps
 
 EXPOSE 3000
 

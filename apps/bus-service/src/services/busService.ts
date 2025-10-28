@@ -1,8 +1,9 @@
 // import prisma from '../config/prisma.service';
 // import { v4 as uuidv4 } from 'uuid';
+// import { ERROR_MESSAGES } from '../constants/errorMessages';
 
 // const createBus = async (payload: any, operatorId: string) => {
-//   if (!operatorId) throw new Error('operatorId required');
+//   if (!operatorId) throw new Error(ERROR_MESSAGES.OPERATORID_REQUIRED);
 //   const bus = await prisma.bus.create({
 //     data: {
 //       id: uuidv4(),
@@ -24,9 +25,9 @@
 
 // const updateBus = async (id: string, payload: any, operatorId?: string) => {
 //   const existing = await prisma.bus.findUnique({ where: { id } });
-//   if (!existing) throw new Error('Bus not found');
+//   if (!existing) throw new Error(ERROR_MESSAGES.BUS_NOT_FOUND);
 //   if (operatorId && existing.operatorId !== operatorId)
-//     throw new Error('Not authorized');
+//     throw new Error(ERROR_MESSAGES.NOT_AUTORIZED);
 //   const updated = await prisma.bus.update({
 //     where: { id },
 //     data: {
