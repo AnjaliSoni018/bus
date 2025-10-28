@@ -15,8 +15,15 @@ COPY apps/user-service/tsconfig*.json ./apps/user-service/
 COPY apps/user-service/prisma ./apps/user-service/prisma
 COPY apps/user-service/src ./apps/user-service/src
 
-# Install dependencies
+# 1️⃣ Install root dependencies (shared deps like cors, dotenv, etc.)
 RUN npm ci --legacy-peer-deps
+
+# 2️⃣ Install user-service-specific deps
+WORKDIR /app/apps/user-service
+RUN npm ci --legacy-peer-deps
+
+# 3️⃣ Go back to root for building
+WORKDIR /app
 
 # Generate Prisma client
 RUN npx prisma generate --schema=apps/user-service/prisma/schema.prisma
