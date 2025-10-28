@@ -31,6 +31,7 @@ RUN npx prisma generate --schema=apps/user-service/prisma/schema.prisma
 
 # Build service
 WORKDIR /app/apps/user-service
+RUN npm install --save-dev @types/node
 RUN npm run build
 
 # ========== Production Stage ==========
