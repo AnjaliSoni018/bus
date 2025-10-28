@@ -18,7 +18,7 @@ COPY apps/user-service/src ./apps/user-service/src
 # COPY libs ./libs
 
 # Install dependencies from root
-RUN npm ci --legacy-peer-deps
+RUN npm ci --include=dev --legacy-peer-deps
 
 # Generate Prisma client for the service
 RUN npx prisma generate --schema=apps/user-service/prisma/schema.prisma
