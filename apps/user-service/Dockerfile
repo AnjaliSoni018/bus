@@ -24,8 +24,8 @@ RUN npm ci --include=dev --legacy-peer-deps
 RUN npx prisma generate --schema=apps/user-service/prisma/schema.prisma
 
 # Build the specific service
-RUN npx nx build user-service
-
+# RUN npx nx build user-service
+RUN ./node_modules/.bin/nx build user-service
 # ========== Production Stage ==========
 FROM node:22-alpine AS prod
 
