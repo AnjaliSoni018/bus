@@ -17,12 +17,15 @@ COPY apps/user-service/tsconfig*.json ./apps/user-service/
 COPY apps/user-service/prisma ./apps/user-service/prisma
 COPY apps/user-service/src ./apps/user-service/src
 
-# Install root + service dependencies (with reduced memory footprint)
+# Install root + service dependencies
 RUN npm install --omit=dev --legacy-peer-deps
 WORKDIR /app/apps/user-service
 RUN npm install --omit=dev --legacy-peer-deps
 
-# Generate Prisma client safely
+# ✅ Install TypeScript + ts-node temporarily for build
+RUN npm install -g typescript ts-node
+
+# Generate Prisma client
 WORKDIR /app
 RUN npx prisma generate --schema=apps/user-service/prisma/schema.prisma
 
