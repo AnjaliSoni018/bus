@@ -13,9 +13,9 @@ COPY apps/user-service/prisma ./apps/user-service/prisma
 COPY apps/user-service/src ./apps/user-service/src
 
 # Install root + service dependencies
-RUN npm ci --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 WORKDIR /app/apps/user-service
-RUN npm ci --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 
 # Generate Prisma client
 WORKDIR /app
@@ -36,7 +36,7 @@ COPY --from=build /app/apps/user-service/prisma ./prisma
 COPY --from=build /app/apps/user-service/package*.json ./
 
 # Install only production dependencies (fixes depd issue)
-RUN npm ci --omit=dev --legacy-peer-deps
+RUN npm install --omit=dev --legacy-peer-deps
 
 EXPOSE 3000
 
