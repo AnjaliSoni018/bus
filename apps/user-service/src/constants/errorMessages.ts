@@ -16,4 +16,6 @@ export const errorMessages = {
   PAN_ALREADY_REGISTERED: 'PAN already registered',
   MSME_ALREADY_REGISTERED: 'MSME Number already registered',
   CIN_ALREADY_REGISTERED: 'CIN already registered',
+  SUPERADMIN_EXISTS: 'Super Admin already exists:',
+  SUPERADMIN_CREATE_ERROR: 'Error creating Super Admin:',
 };

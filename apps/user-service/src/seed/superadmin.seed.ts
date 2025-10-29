@@ -1,5 +1,7 @@
 import prisma from '../config/prisma.service';
 import * as bcrypt from 'bcrypt';
+import { errorMessages } from '../constants/errorMessages';
+import { SUCCESS_MESSAGES } from '../constants/SuccessMessages';
 
 export async function seedSuperAdmin() {
   try {
@@ -12,7 +14,7 @@ export async function seedSuperAdmin() {
     });
 
     if (existingAdmin) {
-      console.log('Super Admin already exists:', existingAdmin.email);
+      console.log(errorMessages.SUPERADMIN_EXISTS, existingAdmin.email);
       return;
     }
 
@@ -31,9 +33,9 @@ export async function seedSuperAdmin() {
       },
     });
 
-    console.log('Super Admin created successfully:', superAdmin.email);
+    console.log(SUCCESS_MESSAGES.SUPERADMIN_CREATED, superAdmin.email);
   } catch (error) {
-    console.error('Error creating Super Admin:', error);
+    console.error(errorMessages.SUPERADMIN_CREATE_ERROR, error);
     process.exit(1);
   } finally {
     await prisma.$disconnect();
