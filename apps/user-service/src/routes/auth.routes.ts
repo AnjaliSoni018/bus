@@ -34,7 +34,7 @@ router.post(
   requireRole('SUPER_ADMIN'),
   createAdminController
 );
-router.post(
+router.patch(
   '/operators/:id/approve',
   requireAuth,
   requireRole('ADMIN'),

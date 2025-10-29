@@ -33,8 +33,8 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "apps/tsconfig.json",
-        "hash": "9420862676426701392"
+        "file": "package.json",
+        "hash": "6127814829631685347"
       },
       {
         "file": "jest.preset.js",
@@ -45,20 +45,20 @@
         "hash": "14688272390704683536"
       },
       {
-        "file": "package.json",
-        "hash": "6127814829631685347"
+        "file": "apps/tsconfig.json",
+        "hash": "9420862676426701392"
       },
       {
-        "file": "tsconfig.base.json",
-        "hash": "13455748945344899060"
-      },
-      {
-        "file": "apps/eslint.config.js",
+        "file": "apps-e2e/eslint.config.js",
         "hash": "17012108287991280227"
       },
       {
-        "file": "docker-compose.yml",
-        "hash": "12456585487980810333"
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "4934098906304722861"
       },
       {
         "file": "apps-e2e/tsconfig.spec.json",
@@ -69,12 +69,44 @@
         "hash": "2346920493880922870"
       },
       {
+        "file": "apps/tsconfig.app.json",
+        "hash": "3062189852699194213"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "12456585487980810333"
+      },
+      {
+        "file": "apps/jest.config.ts",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "apps/eslint.config.js",
+        "hash": "17012108287991280227"
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
         "file": "jest.config.ts",
         "hash": "3494843969422251966"
       },
       {
-        "file": "apps-e2e/jest.config.ts",
-        "hash": "3244421341483603138"
+        "file": "README.md",
+        "hash": "4055606894390288348"
+      },
+      {
+        "file": "nx.json",
+        "hash": "14775129647607812896"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "1379983966652230747"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "13455748945344899060"
       },
       {
         "file": "package-lock.json",
@@ -85,31 +117,7 @@
         "hash": "15632768803430051377"
       },
       {
-        "file": "tmp/user-service/main-with-require-overrides.js",
-        "hash": "5803729257484543891"
-      },
-      {
-        "file": "apps-e2e/eslint.config.js",
-        "hash": "17012108287991280227"
-      },
-      {
-        "file": "apps/tsconfig.app.json",
-        "hash": "3062189852699194213"
-      },
-      {
-        "file": "nx.json",
-        "hash": "14775129647607812896"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
-      },
-      {
-        "file": "README.md",
-        "hash": "4055606894390288348"
-      },
-      {
-        "file": "apps/jest.config.ts",
+        "file": "apps-e2e/jest.config.ts",
         "hash": "3244421341483603138"
       },
       {
@@ -121,16 +129,8 @@
         "hash": "10052046223518464685"
       },
       {
-        "file": ".vscode/extensions.json",
-        "hash": "4934098906304722861"
-      },
-      {
-        "file": "packages/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "tsconfig.json",
-        "hash": "1379983966652230747"
+        "file": "tmp/user-service/main-with-require-overrides.js",
+        "hash": "5803729257484543891"
       }
     ],
     "projectFileMap": {
@@ -490,7 +490,7 @@
         },
         {
           "file": "apps/user-service/src/routes/auth.routes.ts",
-          "hash": "16006262364368102710",
+          "hash": "15472873985044327709",
           "deps": [
             "npm:express@4.21.2"
           ]
