@@ -176,6 +176,10 @@
       "apps/bus-service/package.json",
       "nx/core/package-json"
     ],
+    "metadata.targetGroups.NPM Scripts.5": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
     "metadata.js": [
       "apps/bus-service/package.json",
       "nx/core/package-json"
@@ -329,6 +333,34 @@
       "nx/core/package-json"
     ],
     "targets.lint.metadata.runCommand": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.executor": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.options": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.options.script": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata.scriptContent": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata.runCommand": [
       "apps/bus-service/package.json",
       "nx/core/package-json"
     ],
@@ -1393,6 +1425,76 @@
     "targets.e2e.options.passWithNoTests": [
       "apps/user-service-e2e/project.json",
       "nx/core/project-json"
+    ]
+  },
+  "apps/bus-service/src/generated/prisma": {
+    "root": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.cache": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.inputs": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.outputs": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.executor": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.cwd": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.command": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies.0": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.description": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.command": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.example": [
+      "apps/bus-service/eslint.config.js",
+      "@nx/eslint/plugin"
     ]
   }
 }
