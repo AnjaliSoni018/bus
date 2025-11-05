@@ -703,18 +703,6 @@
             "configurations": {},
             "parallelism": true
           },
-          "start:dev": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "start:dev"
-            },
-            "metadata": {
-              "scriptContent": "ts-node-dev --respawn --transpile-only src/server.ts",
-              "runCommand": "npm run start:dev"
-            },
-            "configurations": {},
-            "parallelism": true
-          },
           "start": {
             "executor": "nx:run-script",
             "options": {
@@ -723,6 +711,18 @@
             "metadata": {
               "scriptContent": "node dist/server.js",
               "runCommand": "npm run start"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "dev": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "dev"
+            },
+            "metadata": {
+              "scriptContent": "ts-node-dev --respawn --transpile-only src/server.ts",
+              "runCommand": "npm run dev"
             },
             "configurations": {},
             "parallelism": true
@@ -747,18 +747,6 @@
             "metadata": {
               "scriptContent": "prisma migrate dev --name init --schema prisma/schema.prisma",
               "runCommand": "npm run prisma:migrate"
-            },
-            "configurations": {},
-            "parallelism": true
-          },
-          "dev": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "dev"
-            },
-            "metadata": {
-              "scriptContent": "ts-node-dev --respawn --transpile-only src/server.ts",
-              "runCommand": "npm run dev"
             },
             "configurations": {},
             "parallelism": true
@@ -847,12 +835,11 @@
         "metadata": {
           "targetGroups": {
             "NPM Scripts": [
-              "start:dev",
               "start",
+              "dev",
               "prisma:generate",
               "prisma:migrate",
-              "lint",
-              "dev"
+              "lint"
             ]
           },
           "js": {
@@ -6116,6 +6103,15 @@
         "hash": "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA=="
       }
     },
+    "npm:date-fns": {
+      "type": "npm",
+      "name": "npm:date-fns",
+      "data": {
+        "version": "4.1.0",
+        "packageName": "date-fns",
+        "hash": "sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg=="
+      }
+    },
     "npm:dateformat": {
       "type": "npm",
       "name": "npm:dateformat",
@@ -9564,6 +9560,11 @@
       {
         "source": "bus-service",
         "target": "npm:cors",
+        "type": "static"
+      },
+      {
+        "source": "bus-service",
+        "target": "npm:date-fns",
         "type": "static"
       },
       {
@@ -21511,5 +21512,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1761912543757
+  "computedAt": 1762323167157
 }

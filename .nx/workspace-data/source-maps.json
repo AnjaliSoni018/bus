@@ -176,10 +176,6 @@
       "apps/bus-service/package.json",
       "nx/core/package-json"
     ],
-    "metadata.targetGroups.NPM Scripts.5": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
     "metadata.js": [
       "apps/bus-service/package.json",
       "nx/core/package-json"
@@ -193,34 +189,6 @@
       "nx/core/package-json"
     ],
     "metadata.js.isInPackageManagerWorkspaces": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.start:dev": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.start:dev.executor": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.start:dev.options": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.start:dev.metadata": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.start:dev.options.script": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.start:dev.metadata.scriptContent": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.start:dev.metadata.runCommand": [
       "apps/bus-service/package.json",
       "nx/core/package-json"
     ],
@@ -249,6 +217,34 @@
       "nx/core/package-json"
     ],
     "targets.start.metadata.runCommand": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.executor": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.options": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.options.script": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata.scriptContent": [
+      "apps/bus-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata.runCommand": [
       "apps/bus-service/package.json",
       "nx/core/package-json"
     ],
@@ -333,34 +329,6 @@
       "nx/core/package-json"
     ],
     "targets.lint.metadata.runCommand": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.dev": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.dev.executor": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.dev.options": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.dev.metadata": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.dev.options.script": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.dev.metadata.scriptContent": [
-      "apps/bus-service/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.dev.metadata.runCommand": [
       "apps/bus-service/package.json",
       "nx/core/package-json"
     ],
