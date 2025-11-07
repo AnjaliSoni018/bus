@@ -1,11 +1,11 @@
-import redis from '../config/redis.service';
-// import { AppError } from "../errors/AppError";
+import createRedisInstance from '../config/redis.service';
 
 const MAX_FAILED = Number(process.env.MAX_FAILED_LOGIN ?? 5);
 const WINDOW_SEC = Number(process.env.FAILED_LOGIN_WINDOW_SEC ?? 900);
 const LOCK_MIN = Number(process.env.FAILED_LOGIN_LOCK_MIN ?? 15);
 
 export const recordFailedLogin = async (email: string, ip: string) => {
+  const redis = createRedisInstance();
   const emailKey = `auth:fail:email:${email}`;
   const ipKey = `auth:fail:ip:${ip}`;
 
@@ -24,12 +24,14 @@ export const recordFailedLogin = async (email: string, ip: string) => {
 };
 
 export const isLockedLogin = async (email: string, ip: string) => {
+  const redis = createRedisInstance();
   const isEmailLocked = await redis.exists(`auth:lock:email:${email}`);
   const isIpLocked = await redis.exists(`auth:lock:ip:${ip}`);
   return Boolean(isEmailLocked || isIpLocked);
 };
 
 export const clearFailedLogin = async (email: string, ip: string) => {
+  const redis = createRedisInstance();
   await redis.del(`auth:fail:email:${email}`);
   await redis.del(`auth:fail:ip:${ip}`);
   await redis.del(`auth:lock:email:${email}`);

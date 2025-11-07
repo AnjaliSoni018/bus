@@ -1,5 +1,4 @@
 import prisma from '../config/prisma.service';
-import redis from '../config/redis.service';
 import { generateOtp, sendOTP } from '../utils/otp.utils';
 import { signJwt } from '../utils/jwt.util';
 import { AppError } from '../errors/AppError';
@@ -17,6 +16,7 @@ import {
   isLockedLogin,
   recordFailedLogin,
 } from '../utils/loginProtection.util';
+import redis from '../config/redis.service';
 
 export const sendOtp = async (
   phone: string,
@@ -312,43 +312,68 @@ export const loginWithPassword = async (
   password: string,
   ip: string
 ) => {
+  console.time('loginWithPassword total');
+
   if (!email || !password)
     throw new AppError('Email and password required', 400);
 
+  console.time('check locked login');
   if (await isLockedLogin(email, ip)) {
+    console.timeEnd('check locked login');
     throw new AppError('Too many failed login attempts. Try later.', 429);
   }
+  console.timeEnd('check locked login');
 
+  console.time('find user');
   const user = await prisma.user.findUnique({ where: { email } });
+  console.timeEnd('find user');
+
   if (!user) {
+    console.time('record failed login');
     await recordFailedLogin(email, ip);
+    console.timeEnd('record failed login');
     throw new AppError('Invalid credentials', 401);
   }
 
   if (user.role === 'BUS_OPERATOR') {
+    console.time('find bus operator profile');
     const profile = await prisma.busOperator.findUnique({
       where: { userId: user.id },
     });
+    console.timeEnd('find bus operator profile');
+
     if (!profile || !profile.isApproved) {
       throw new AppError('Operator account not approved yet', 403);
     }
   }
 
   if (!user.password) {
+    console.time('record failed login');
     await recordFailedLogin(email, ip);
+    console.timeEnd('record failed login');
     throw new AppError('Invalid credentials', 401);
   }
 
+  console.time('compare password');
   const ok = await comparePassword(password, user.password);
+  console.timeEnd('compare password');
+
   if (!ok) {
+    console.time('record failed login');
     await recordFailedLogin(email, ip);
+    console.timeEnd('record failed login');
     throw new AppError('Invalid credentials', 401);
   }
 
+  console.time('clear failed login');
   await clearFailedLogin(email, ip);
+  console.timeEnd('clear failed login');
 
+  console.time('sign JWT');
   const token = signJwt({ id: user.id, role: user.role, email: user.email });
+  console.timeEnd('sign JWT');
 
+  console.time('create session');
   await prisma.session.create({
     data: {
       userId: user.id,
@@ -358,6 +383,9 @@ export const loginWithPassword = async (
       ),
     },
   });
+  console.timeEnd('create session');
+
+  console.timeEnd('loginWithPassword total');
 
   return { token, user };
 };
