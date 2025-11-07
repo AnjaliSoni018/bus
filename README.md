@@ -5,11 +5,11 @@ output = "../src/generated/prisma"
 
 datasource db {
 provider = "postgresql"
-url = env("DATABASE_URL")
+url = env("DATABASE*URL")
 }
-/_
+/*
 Enums
-_/
+\_/
 enum BusStatus {
 ACTIVE
 INACTIVE
@@ -830,4 +830,183 @@ Trip search API — allow users to find available trips between cities.
 
 Seat booking + hold logic — introduce transaction-safe seat reservation.
 
-Cancellation policies CRUD + refund logic — finalize operator-side controls.
+## Cancellation policies CRUD + refund logic — finalize operator-side controls.
+
+The Core Idea
+
+Every bus has a seat layout (SeatTemplate) and actual seat records (Seat).
+When a bus runs a trip, system creates TripSeatState to track seat bookings.
+
+So basically:
+
+SeatTemplate → defines seat layout design
+Seat → defines each physical seat in that template
+Bus → uses that template
+TripSeatState → shows seat’s status (available/booked) for a trip
+
+🧩 Step-by-Step Real World Flow
+STEP 1: SeatTemplate banta hai (layout design stage)
+
+Imagine ek bus company “Orange Travels” new Volvo Sleeper bus la rahi hai.
+Designer decide karta hai:
+
+Bus mein 40 seats honge
+
+2 decks (upper/lower)
+
+2+1 arrangement
+
+Kuch seats "woman-only" hongi
+
+They create a record in DB:
+
+SeatTemplate:
+id = tpl-1
+title = "Volvo Sleeper 2+1 Layout"
+totalSeats = 40
+layoutJson = {... seat positions map ...}
+
+Then they create 40 Seat records linked to that template:
+
+Seat No Type Deck Row Column
+L1 LOWER LOWER 1 1
+L2 LOWER LOWER 1 2
+U1 UPPER UPPER 1 1
+U2 UPPER UPPER 1 2
+... ... ... ... ...
+
+So now we have a reusable blueprint — this can be assigned to many buses.
+
+STEP 2: Bus banta hai (physical vehicle)
+
+Now the company adds a new bus:
+
+Bus:
+id = bus-101
+registrationNo = KA09A1234
+brand = Volvo
+category = SLEEPER_AC
+capacity = 40
+totalSeats = 40
+busTemplateId = tpl-1 (links to SeatTemplate)
+
+👉 This means:
+This physical bus follows the Volvo Sleeper 2+1 layout.
+
+STEP 3: Route define hoti hai
+
+They add a route:
+
+Bengaluru → Hyderabad
+
+Route table mein:
+
+Route:
+id = route-1
+sourceCity = "Bengaluru"
+destinationCity = "Hyderabad"
+
+STEP 4: Bus assign hoti hai route pe
+
+They create a BusRoute record:
+
+BusRoute:
+busId = bus-101
+routeId = route-1
+
+Now this bus can run trips on that route.
+
+STEP 5: Trip schedule hota hai (daily journey)
+
+Operator creates a trip for 5th Nov 2025:
+
+Trip:
+id = trip-5001
+busId = bus-101
+routeId = route-1
+departureAt = 2025-11-05 9:00 PM
+arrivalAt = 2025-11-06 6:00 AM
+totalSeats = 40
+availableSeats = 40
+baseFare = 1200
+
+STEP 6: System creates seat states for the trip
+
+Now comes the most important part → TripSeatState.
+
+For this trip, the system copies all seats from SeatTemplate and makes a record for each in TripSeatState:
+
+Trip ID Seat ID SeatLabel State Price
+trip-5001 seat-1 L1 AVAILABLE 1200
+trip-5001 seat-2 L2 AVAILABLE 1200
+trip-5001 seat-3 U1 AVAILABLE 1200
+... ... ... ... ...
+
+So each seat now has its own live status for that trip.
+
+STEP 7: User searches and selects seats
+
+User opens app → searches Bengaluru → Hyderabad, 5th Nov
+Backend shows available trips with available seats.
+
+From TripSeatState, system shows:
+
+L1, L2, U1, U2 → AVAILABLE
+
+User selects seat L1 → state changes to HELD (temporarily locked for payment):
+
+TripSeatState:
+seatLabel = "L1"
+state = HELD
+holdToken = "xyz123"
+heldUntil = 5 minutes from now
+
+STEP 8: User completes payment
+
+After successful payment:
+
+Seat L1 → BOOKED
+
+availableSeats in Trip → decreases from 40 to 39
+
+If user doesn’t pay in time, HELD seats automatically revert to AVAILABLE.
+
+STEP 9: Trip runs
+
+Once the bus departs:
+
+Trip.status → DEPARTED
+
+After arrival → COMPLETED
+
+All TripSeatState are frozen for records.
+
+🧭 Visual Summary (Flow)
+SeatTemplate → defines design
+│
+├── Seat (each seat in layout)
+│
+└── Bus (uses that template)
+│
+├── BusRoute (assigns route)
+│
+└── Trip (specific date/time journey)
+│
+└── TripSeatState (each seat’s live status)
+
+💡 Example Analogy
+
+Think of it like this:
+
+Real World Database
+Bus designer makes a seating plan SeatTemplate
+Seats are numbered and fixed Seat
+Physical bus is built using that layout Bus
+Bus runs a journey on a date Trip
+Each seat’s status for that trip (free/booked) TripSeatState
+🔁 Why this design is powerful
+
+✅ Reusability → one layout (SeatTemplate) used by 100 buses.
+✅ Flexibility → each bus can have its own seat states per trip.
+✅ Performance → live booking only touches TripSeatState (fast updates).
+✅ Accuracy → physical layout never changes, only seat states change trip to trip.

@@ -4,9 +4,6 @@ import { AppError } from '../../utils/AppError';
 import { emitBusEvent } from '../../kafka/producers/bus.producer';
 import { logger } from '../../config/logger';
 
-/**
- * Create a new bus
- */
 export async function createBus(dto: CreateBusDTO, actorId?: string) {
   try {
     const data: any = {
@@ -67,9 +64,6 @@ export async function createBus(dto: CreateBusDTO, actorId?: string) {
   }
 }
 
-/**
- * Get all buses (paginated + filter)
- */
 export async function getAllBuses(query: any) {
   const page = Math.max(Number(query.page || 1), 1);
   const limit = Math.min(Number(query.limit || 20), 100);
@@ -111,9 +105,6 @@ export async function getAllBuses(query: any) {
   };
 }
 
-/**
- * Get bus by ID
- */
 export async function getBusById(id: string) {
   const bus = await prisma.bus.findUnique({
     where: { id },
@@ -129,9 +120,6 @@ export async function getBusById(id: string) {
   return bus;
 }
 
-/**
- * Update bus
- */
 export async function updateBus(
   id: string,
   dto: UpdateBusDTO,
@@ -207,9 +195,6 @@ export async function updateBus(
   return updated;
 }
 
-/**
- * Soft delete bus
- */
 export async function softDeleteBus(
   id: string,
   actor?: { id?: string; role?: string }
