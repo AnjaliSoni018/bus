@@ -11,6 +11,7 @@ import { authMiddleware } from '../../middlewares/auth.middleware';
 const router = Router();
 
 router.get('/', validate(listBusesSchema, 'query'), controller.getAllBuses);
+router.get('/my-buses', authMiddleware, controller.getMyBuses);
 router.get('/:id', controller.getBusById);
 router.post(
   '/',

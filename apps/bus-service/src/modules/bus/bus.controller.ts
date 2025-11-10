@@ -19,6 +19,21 @@ export const getBusById = asyncHandler(async (req: Request, res: Response) => {
   return apiResponse.success(res, bus, 'OK');
 });
 
+export const getMyBuses = asyncHandler(async (req: Request, res: Response) => {
+  const operatorUserId = req.user?.id;
+
+  if (!operatorUserId) {
+    return apiResponse.unauthorized(res, 'Unauthorized');
+  }
+  const result = await service.getAllBuses({ ...req.query, operatorUserId });
+
+  return apiResponse.success(
+    res,
+    result,
+    'Buses fetched for logged-in operator'
+  );
+});
+
 export const updateBus = asyncHandler(async (req: Request, res: Response) => {
   const actor = req.user as { id?: string; role?: string } | undefined;
   const updated = await service.updateBus(req.params.id, req.body, actor);
