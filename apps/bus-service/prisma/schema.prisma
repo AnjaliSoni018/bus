@@ -153,26 +153,26 @@
     @@index([sourceCity, destinationCity])
   }
 
-  model RouteStop {
-    id               String   @id @default(uuid())
-    routeId          String
-    name             String
-    city             String
-    latitude         Float?
-    longitude        Float?
-    sequence         Int
-    arrivalOffsetMin Int?
-    isBoardingPoint  Boolean  @default(true)
-    isDroppingPoint  Boolean  @default(true)
-    createdAt        DateTime @default(now())
-    updatedAt        DateTime @updatedAt
-    isDeleted        Boolean  @default(false)
+    model RouteStop {
+      id               String   @id @default(uuid())
+      routeId          String
+      name             String
+      city             String
+      latitude         Float?
+      longitude        Float?
+      sequence         Int
+      arrivalOffsetMin Int?
+      isBoardingPoint  Boolean  @default(true)
+      isDroppingPoint  Boolean  @default(true)
+      createdAt        DateTime @default(now())
+      updatedAt        DateTime @updatedAt
+      isDeleted        Boolean  @default(false)
 
-    route     Route      @relation(fields: [routeId], references: [id], onDelete: Cascade)
-    tripStops TripStop[]
+      route     Route      @relation(fields: [routeId], references: [id], onDelete: Cascade)
+      tripStops TripStop[]
 
-    @@index([routeId, sequence])
-  }
+      @@index([routeId, sequence])
+    }
 
   model BusRoute {
     id            String    @id @default(uuid())

@@ -47,6 +47,14 @@ export const searchTrips = async (
     include: {
       bus: { include: { busAmenities: true } },
       route: true,
+      tripStops: {
+        include: {
+          routeStop: true,
+        },
+        orderBy: {
+          sequence: 'asc',
+        },
+      },
     },
     orderBy: { departureAt: 'asc' },
   });
@@ -71,6 +79,16 @@ export const searchTrips = async (
       distanceKm: t.route.distanceKm ?? undefined,
       durationMin: t.route.durationMin ?? undefined,
     },
+    tripStops: t.tripStops.map((ts) => ({
+      id: ts.id,
+      name: ts.routeStop.name,
+      city: ts.routeStop.city,
+      sequence: ts.sequence,
+      isBoarding: ts.isBoarding,
+      isDropping: ts.isDropping,
+      scheduledArrival: ts.scheduledArrival,
+      scheduledDeparture: ts.scheduledDeparture,
+    })),
     departureAt: t.departureAt,
     arrivalAt: t.arrivalAt,
     availableSeats: t.availableSeats,

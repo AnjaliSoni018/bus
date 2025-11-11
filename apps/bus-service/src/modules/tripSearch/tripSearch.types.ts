@@ -7,6 +7,17 @@ export interface TripSearchQuery {
   maxFare?: number;
 }
 
+export interface TripStopResult {
+  id: string;
+  name: string;
+  city: string;
+  sequence: number;
+  isBoarding: boolean;
+  isDropping: boolean;
+  scheduledArrival?: Date | null;
+  scheduledDeparture?: Date | null;
+}
+
 export interface TripSearchResult {
   tripId: string;
   bus: {
@@ -23,6 +34,7 @@ export interface TripSearchResult {
     distanceKm?: number;
     durationMin?: number;
   };
+  tripStops: TripStopResult[];
   departureAt: Date;
   arrivalAt: Date;
   availableSeats: number;
