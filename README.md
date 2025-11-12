@@ -776,35 +776,3 @@ Each seat’s status for that trip (free/booked) TripSeatState
 ✅ Flexibility → each bus can have its own seat states per trip.
 ✅ Performance → live booking only touches TripSeatState (fast updates).
 ✅ Accuracy → physical layout never changes, only seat states change trip to trip.
-
-as you know we're making production-grade redbus website in which our lifecycle is:
-Bus-Service → Create Bus
-Registers the physical bus.
-Route-Service → Create Route
-Defines available routes (city-to-city).
-Bus-Service → Assign Route
-Create record in BusRoute table linking them.
-Trip-Service → Schedule Trip
-in which we're adding effective and end date at the time of bus-route linking, and just this:
-{
-"busId": "24347071-2e53-40ac-b580-41bd387f5dd5",
-"routeId": "00df6af3-0199-4476-81b2-93d1163330b2",
-"busRouteId": "9923060d-c99e-485e-981e-c029106b4406",
-"departureAt": "2025-11-06T08:00:00Z",
-"arrivalAt": "2025-11-06T12:00:00Z",
-"durationMin": 240,
-"baseFare": 599,
-"currency": "INR",
-"status": "SCHEDULED",
-"totalSeats": 40,
-"availableSeats": 40,
-"pricingStrategy": "FIXED"
-}
-at the time of trip scheduling, so I want, it shouldn't save date but only time because at the time of bus-route linking, we're adding:
-{
-"busId": "24347071-2e53-40ac-b580-41bd387f5dd5",
-"routeId": "00df6af3-0199-4476-81b2-93d1163330b2",
-"effectiveFrom": "2025-11-01T00:00:00Z",
-"effectiveTo": "2025-12-31T23:59:59Z"
-}
-so it should effective from the dates mentioned above, right, so tell me what I need to change and also explain me clear flow as still I'm not not that much clear about this flow like if we've already linked bus to route then why we're adding bus and route again at the time of trip scheduling, right

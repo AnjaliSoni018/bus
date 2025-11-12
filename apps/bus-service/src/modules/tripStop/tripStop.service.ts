@@ -27,7 +27,7 @@ export const listTripStops = async (tripId?: string) => {
     where: { tripId },
     include: {
       routeStop: true,
-      trip: { select: { id: true, departureAt: true } },
+      trip: { select: { id: true, departureTime: true } },
     },
     orderBy: { sequence: 'asc' },
   });
