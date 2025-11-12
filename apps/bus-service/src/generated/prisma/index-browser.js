@@ -214,11 +214,9 @@ exports.Prisma.BusRouteScalarFieldEnum = {
 
 exports.Prisma.TripScalarFieldEnum = {
   id: 'id',
-  busId: 'busId',
-  routeId: 'routeId',
   busRouteId: 'busRouteId',
-  departureAt: 'departureAt',
-  arrivalAt: 'arrivalAt',
+  departureTime: 'departureTime',
+  arrivalTime: 'arrivalTime',
   durationMin: 'durationMin',
   baseFare: 'baseFare',
   currency: 'currency',

@@ -2250,14 +2250,12 @@ export namespace Prisma {
     busAmenities: number
     busImages: number
     busRoutes: number
-    trips: number
   }
 
   export type BusCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     busAmenities?: boolean | BusCountOutputTypeCountBusAmenitiesArgs
     busImages?: boolean | BusCountOutputTypeCountBusImagesArgs
     busRoutes?: boolean | BusCountOutputTypeCountBusRoutesArgs
-    trips?: boolean | BusCountOutputTypeCountTripsArgs
   }
 
   // Custom InputTypes
@@ -2290,13 +2288,6 @@ export namespace Prisma {
    */
   export type BusCountOutputTypeCountBusRoutesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BusRouteWhereInput
-  }
-
-  /**
-   * BusCountOutputType without action
-   */
-  export type BusCountOutputTypeCountTripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TripWhereInput
   }
 
 
@@ -2378,14 +2369,12 @@ export namespace Prisma {
   export type RouteCountOutputType = {
     stops: number
     busRoutes: number
-    trips: number
     cancellationPolicies: number
   }
 
   export type RouteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     stops?: boolean | RouteCountOutputTypeCountStopsArgs
     busRoutes?: boolean | RouteCountOutputTypeCountBusRoutesArgs
-    trips?: boolean | RouteCountOutputTypeCountTripsArgs
     cancellationPolicies?: boolean | RouteCountOutputTypeCountCancellationPoliciesArgs
   }
 
@@ -2412,13 +2401,6 @@ export namespace Prisma {
    */
   export type RouteCountOutputTypeCountBusRoutesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BusRouteWhereInput
-  }
-
-  /**
-   * RouteCountOutputType without action
-   */
-  export type RouteCountOutputTypeCountTripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TripWhereInput
   }
 
   /**
@@ -2871,7 +2853,6 @@ export namespace Prisma {
     busAmenities?: boolean | Bus$busAmenitiesArgs<ExtArgs>
     busImages?: boolean | Bus$busImagesArgs<ExtArgs>
     busRoutes?: boolean | Bus$busRoutesArgs<ExtArgs>
-    trips?: boolean | Bus$tripsArgs<ExtArgs>
     _count?: boolean | BusCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["bus"]>
 
@@ -2925,7 +2906,6 @@ export namespace Prisma {
     busAmenities?: boolean | Bus$busAmenitiesArgs<ExtArgs>
     busImages?: boolean | Bus$busImagesArgs<ExtArgs>
     busRoutes?: boolean | Bus$busRoutesArgs<ExtArgs>
-    trips?: boolean | Bus$tripsArgs<ExtArgs>
     _count?: boolean | BusCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BusIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2939,7 +2919,6 @@ export namespace Prisma {
       busAmenities: Prisma.$BusAmenityPayload<ExtArgs>[]
       busImages: Prisma.$BusImagePayload<ExtArgs>[]
       busRoutes: Prisma.$BusRoutePayload<ExtArgs>[]
-      trips: Prisma.$TripPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3329,7 +3308,6 @@ export namespace Prisma {
     busAmenities<T extends Bus$busAmenitiesArgs<ExtArgs> = {}>(args?: Subset<T, Bus$busAmenitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusAmenityPayload<ExtArgs>, T, "findMany"> | Null>
     busImages<T extends Bus$busImagesArgs<ExtArgs> = {}>(args?: Subset<T, Bus$busImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusImagePayload<ExtArgs>, T, "findMany"> | Null>
     busRoutes<T extends Bus$busRoutesArgs<ExtArgs> = {}>(args?: Subset<T, Bus$busRoutesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "findMany"> | Null>
-    trips<T extends Bus$tripsArgs<ExtArgs> = {}>(args?: Subset<T, Bus$tripsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3768,26 +3746,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BusRouteScalarFieldEnum | BusRouteScalarFieldEnum[]
-  }
-
-  /**
-   * Bus.trips
-   */
-  export type Bus$tripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Trip
-     */
-    select?: TripSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TripInclude<ExtArgs> | null
-    where?: TripWhereInput
-    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
-    cursor?: TripWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TripScalarFieldEnum | TripScalarFieldEnum[]
   }
 
   /**
@@ -6200,7 +6158,6 @@ export namespace Prisma {
     isDeleted?: boolean
     stops?: boolean | Route$stopsArgs<ExtArgs>
     busRoutes?: boolean | Route$busRoutesArgs<ExtArgs>
-    trips?: boolean | Route$tripsArgs<ExtArgs>
     cancellationPolicies?: boolean | Route$cancellationPoliciesArgs<ExtArgs>
     _count?: boolean | RouteCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["route"]>
@@ -6234,7 +6191,6 @@ export namespace Prisma {
   export type RouteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     stops?: boolean | Route$stopsArgs<ExtArgs>
     busRoutes?: boolean | Route$busRoutesArgs<ExtArgs>
-    trips?: boolean | Route$tripsArgs<ExtArgs>
     cancellationPolicies?: boolean | Route$cancellationPoliciesArgs<ExtArgs>
     _count?: boolean | RouteCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -6245,7 +6201,6 @@ export namespace Prisma {
     objects: {
       stops: Prisma.$RouteStopPayload<ExtArgs>[]
       busRoutes: Prisma.$BusRoutePayload<ExtArgs>[]
-      trips: Prisma.$TripPayload<ExtArgs>[]
       cancellationPolicies: Prisma.$CancellationPolicyPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -6625,7 +6580,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     stops<T extends Route$stopsArgs<ExtArgs> = {}>(args?: Subset<T, Route$stopsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RouteStopPayload<ExtArgs>, T, "findMany"> | Null>
     busRoutes<T extends Route$busRoutesArgs<ExtArgs> = {}>(args?: Subset<T, Route$busRoutesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "findMany"> | Null>
-    trips<T extends Route$tripsArgs<ExtArgs> = {}>(args?: Subset<T, Route$tripsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findMany"> | Null>
     cancellationPolicies<T extends Route$cancellationPoliciesArgs<ExtArgs> = {}>(args?: Subset<T, Route$cancellationPoliciesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CancellationPolicyPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7017,26 +6971,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BusRouteScalarFieldEnum | BusRouteScalarFieldEnum[]
-  }
-
-  /**
-   * Route.trips
-   */
-  export type Route$tripsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Trip
-     */
-    select?: TripSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TripInclude<ExtArgs> | null
-    where?: TripWhereInput
-    orderBy?: TripOrderByWithRelationInput | TripOrderByWithRelationInput[]
-    cursor?: TripWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TripScalarFieldEnum | TripScalarFieldEnum[]
   }
 
   /**
@@ -9204,11 +9138,9 @@ export namespace Prisma {
 
   export type TripMinAggregateOutputType = {
     id: string | null
-    busId: string | null
-    routeId: string | null
     busRouteId: string | null
-    departureAt: Date | null
-    arrivalAt: Date | null
+    departureTime: string | null
+    arrivalTime: string | null
     durationMin: number | null
     baseFare: number | null
     currency: string | null
@@ -9225,11 +9157,9 @@ export namespace Prisma {
 
   export type TripMaxAggregateOutputType = {
     id: string | null
-    busId: string | null
-    routeId: string | null
     busRouteId: string | null
-    departureAt: Date | null
-    arrivalAt: Date | null
+    departureTime: string | null
+    arrivalTime: string | null
     durationMin: number | null
     baseFare: number | null
     currency: string | null
@@ -9246,11 +9176,9 @@ export namespace Prisma {
 
   export type TripCountAggregateOutputType = {
     id: number
-    busId: number
-    routeId: number
     busRouteId: number
-    departureAt: number
-    arrivalAt: number
+    departureTime: number
+    arrivalTime: number
     durationMin: number
     baseFare: number
     currency: number
@@ -9285,11 +9213,9 @@ export namespace Prisma {
 
   export type TripMinAggregateInputType = {
     id?: true
-    busId?: true
-    routeId?: true
     busRouteId?: true
-    departureAt?: true
-    arrivalAt?: true
+    departureTime?: true
+    arrivalTime?: true
     durationMin?: true
     baseFare?: true
     currency?: true
@@ -9306,11 +9232,9 @@ export namespace Prisma {
 
   export type TripMaxAggregateInputType = {
     id?: true
-    busId?: true
-    routeId?: true
     busRouteId?: true
-    departureAt?: true
-    arrivalAt?: true
+    departureTime?: true
+    arrivalTime?: true
     durationMin?: true
     baseFare?: true
     currency?: true
@@ -9327,11 +9251,9 @@ export namespace Prisma {
 
   export type TripCountAggregateInputType = {
     id?: true
-    busId?: true
-    routeId?: true
     busRouteId?: true
-    departureAt?: true
-    arrivalAt?: true
+    departureTime?: true
+    arrivalTime?: true
     durationMin?: true
     baseFare?: true
     currency?: true
@@ -9437,11 +9359,9 @@ export namespace Prisma {
 
   export type TripGroupByOutputType = {
     id: string
-    busId: string
-    routeId: string
-    busRouteId: string | null
-    departureAt: Date
-    arrivalAt: Date
+    busRouteId: string
+    departureTime: string
+    arrivalTime: string
     durationMin: number | null
     baseFare: number
     currency: string
@@ -9479,11 +9399,9 @@ export namespace Prisma {
 
   export type TripSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    busId?: boolean
-    routeId?: boolean
     busRouteId?: boolean
-    departureAt?: boolean
-    arrivalAt?: boolean
+    departureTime?: boolean
+    arrivalTime?: boolean
     durationMin?: boolean
     baseFare?: boolean
     currency?: boolean
@@ -9498,9 +9416,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdBy?: boolean
     updatedBy?: boolean
-    bus?: boolean | BusDefaultArgs<ExtArgs>
-    route?: boolean | RouteDefaultArgs<ExtArgs>
-    busRoute?: boolean | Trip$busRouteArgs<ExtArgs>
+    busRoute?: boolean | BusRouteDefaultArgs<ExtArgs>
     tripStops?: boolean | Trip$tripStopsArgs<ExtArgs>
     tripSeatStates?: boolean | Trip$tripSeatStatesArgs<ExtArgs>
     tripLogs?: boolean | Trip$tripLogsArgs<ExtArgs>
@@ -9510,11 +9426,9 @@ export namespace Prisma {
 
   export type TripSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    busId?: boolean
-    routeId?: boolean
     busRouteId?: boolean
-    departureAt?: boolean
-    arrivalAt?: boolean
+    departureTime?: boolean
+    arrivalTime?: boolean
     durationMin?: boolean
     baseFare?: boolean
     currency?: boolean
@@ -9529,18 +9443,14 @@ export namespace Prisma {
     isDeleted?: boolean
     createdBy?: boolean
     updatedBy?: boolean
-    bus?: boolean | BusDefaultArgs<ExtArgs>
-    route?: boolean | RouteDefaultArgs<ExtArgs>
-    busRoute?: boolean | Trip$busRouteArgs<ExtArgs>
+    busRoute?: boolean | BusRouteDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["trip"]>
 
   export type TripSelectScalar = {
     id?: boolean
-    busId?: boolean
-    routeId?: boolean
     busRouteId?: boolean
-    departureAt?: boolean
-    arrivalAt?: boolean
+    departureTime?: boolean
+    arrivalTime?: boolean
     durationMin?: boolean
     baseFare?: boolean
     currency?: boolean
@@ -9558,9 +9468,7 @@ export namespace Prisma {
   }
 
   export type TripInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bus?: boolean | BusDefaultArgs<ExtArgs>
-    route?: boolean | RouteDefaultArgs<ExtArgs>
-    busRoute?: boolean | Trip$busRouteArgs<ExtArgs>
+    busRoute?: boolean | BusRouteDefaultArgs<ExtArgs>
     tripStops?: boolean | Trip$tripStopsArgs<ExtArgs>
     tripSeatStates?: boolean | Trip$tripSeatStatesArgs<ExtArgs>
     tripLogs?: boolean | Trip$tripLogsArgs<ExtArgs>
@@ -9568,17 +9476,13 @@ export namespace Prisma {
     _count?: boolean | TripCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TripIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bus?: boolean | BusDefaultArgs<ExtArgs>
-    route?: boolean | RouteDefaultArgs<ExtArgs>
-    busRoute?: boolean | Trip$busRouteArgs<ExtArgs>
+    busRoute?: boolean | BusRouteDefaultArgs<ExtArgs>
   }
 
   export type $TripPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Trip"
     objects: {
-      bus: Prisma.$BusPayload<ExtArgs>
-      route: Prisma.$RoutePayload<ExtArgs>
-      busRoute: Prisma.$BusRoutePayload<ExtArgs> | null
+      busRoute: Prisma.$BusRoutePayload<ExtArgs>
       tripStops: Prisma.$TripStopPayload<ExtArgs>[]
       tripSeatStates: Prisma.$TripSeatStatePayload<ExtArgs>[]
       tripLogs: Prisma.$TripLogPayload<ExtArgs>[]
@@ -9586,11 +9490,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      busId: string
-      routeId: string
-      busRouteId: string | null
-      departureAt: Date
-      arrivalAt: Date
+      busRouteId: string
+      departureTime: string
+      arrivalTime: string
       durationMin: number | null
       baseFare: number
       currency: string
@@ -9969,9 +9871,7 @@ export namespace Prisma {
    */
   export interface Prisma__TripClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    bus<T extends BusDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BusDefaultArgs<ExtArgs>>): Prisma__BusClient<$Result.GetResult<Prisma.$BusPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
-    route<T extends RouteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RouteDefaultArgs<ExtArgs>>): Prisma__RouteClient<$Result.GetResult<Prisma.$RoutePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
-    busRoute<T extends Trip$busRouteArgs<ExtArgs> = {}>(args?: Subset<T, Trip$busRouteArgs<ExtArgs>>): Prisma__BusRouteClient<$Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    busRoute<T extends BusRouteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BusRouteDefaultArgs<ExtArgs>>): Prisma__BusRouteClient<$Result.GetResult<Prisma.$BusRoutePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     tripStops<T extends Trip$tripStopsArgs<ExtArgs> = {}>(args?: Subset<T, Trip$tripStopsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripStopPayload<ExtArgs>, T, "findMany"> | Null>
     tripSeatStates<T extends Trip$tripSeatStatesArgs<ExtArgs> = {}>(args?: Subset<T, Trip$tripSeatStatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripSeatStatePayload<ExtArgs>, T, "findMany"> | Null>
     tripLogs<T extends Trip$tripLogsArgs<ExtArgs> = {}>(args?: Subset<T, Trip$tripLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TripLogPayload<ExtArgs>, T, "findMany"> | Null>
@@ -10006,11 +9906,9 @@ export namespace Prisma {
    */ 
   interface TripFieldRefs {
     readonly id: FieldRef<"Trip", 'String'>
-    readonly busId: FieldRef<"Trip", 'String'>
-    readonly routeId: FieldRef<"Trip", 'String'>
     readonly busRouteId: FieldRef<"Trip", 'String'>
-    readonly departureAt: FieldRef<"Trip", 'DateTime'>
-    readonly arrivalAt: FieldRef<"Trip", 'DateTime'>
+    readonly departureTime: FieldRef<"Trip", 'String'>
+    readonly arrivalTime: FieldRef<"Trip", 'String'>
     readonly durationMin: FieldRef<"Trip", 'Int'>
     readonly baseFare: FieldRef<"Trip", 'Float'>
     readonly currency: FieldRef<"Trip", 'String'>
@@ -10340,21 +10238,6 @@ export namespace Prisma {
      * Filter which Trips to delete
      */
     where?: TripWhereInput
-  }
-
-  /**
-   * Trip.busRoute
-   */
-  export type Trip$busRouteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the BusRoute
-     */
-    select?: BusRouteSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BusRouteInclude<ExtArgs> | null
-    where?: BusRouteWhereInput
   }
 
   /**
@@ -19227,11 +19110,9 @@ export namespace Prisma {
 
   export const TripScalarFieldEnum: {
     id: 'id',
-    busId: 'busId',
-    routeId: 'routeId',
     busRouteId: 'busRouteId',
-    departureAt: 'departureAt',
-    arrivalAt: 'arrivalAt',
+    departureTime: 'departureTime',
+    arrivalTime: 'arrivalTime',
     durationMin: 'durationMin',
     baseFare: 'baseFare',
     currency: 'currency',
@@ -19621,7 +19502,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityListRelationFilter
     busImages?: BusImageListRelationFilter
     busRoutes?: BusRouteListRelationFilter
-    trips?: TripListRelationFilter
   }
 
   export type BusOrderByWithRelationInput = {
@@ -19648,7 +19528,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityOrderByRelationAggregateInput
     busImages?: BusImageOrderByRelationAggregateInput
     busRoutes?: BusRouteOrderByRelationAggregateInput
-    trips?: TripOrderByRelationAggregateInput
   }
 
   export type BusWhereUniqueInput = Prisma.AtLeast<{
@@ -19678,7 +19557,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityListRelationFilter
     busImages?: BusImageListRelationFilter
     busRoutes?: BusRouteListRelationFilter
-    trips?: TripListRelationFilter
   }, "id" | "registrationNo">
 
   export type BusOrderByWithAggregationInput = {
@@ -19929,7 +19807,6 @@ export namespace Prisma {
     isDeleted?: BoolFilter<"Route"> | boolean
     stops?: RouteStopListRelationFilter
     busRoutes?: BusRouteListRelationFilter
-    trips?: TripListRelationFilter
     cancellationPolicies?: CancellationPolicyListRelationFilter
   }
 
@@ -19946,7 +19823,6 @@ export namespace Prisma {
     isDeleted?: SortOrder
     stops?: RouteStopOrderByRelationAggregateInput
     busRoutes?: BusRouteOrderByRelationAggregateInput
-    trips?: TripOrderByRelationAggregateInput
     cancellationPolicies?: CancellationPolicyOrderByRelationAggregateInput
   }
 
@@ -19966,7 +19842,6 @@ export namespace Prisma {
     isDeleted?: BoolFilter<"Route"> | boolean
     stops?: RouteStopListRelationFilter
     busRoutes?: BusRouteListRelationFilter
-    trips?: TripListRelationFilter
     cancellationPolicies?: CancellationPolicyListRelationFilter
   }, "id">
 
@@ -20185,11 +20060,9 @@ export namespace Prisma {
     OR?: TripWhereInput[]
     NOT?: TripWhereInput | TripWhereInput[]
     id?: StringFilter<"Trip"> | string
-    busId?: StringFilter<"Trip"> | string
-    routeId?: StringFilter<"Trip"> | string
-    busRouteId?: StringNullableFilter<"Trip"> | string | null
-    departureAt?: DateTimeFilter<"Trip"> | Date | string
-    arrivalAt?: DateTimeFilter<"Trip"> | Date | string
+    busRouteId?: StringFilter<"Trip"> | string
+    departureTime?: StringFilter<"Trip"> | string
+    arrivalTime?: StringFilter<"Trip"> | string
     durationMin?: IntNullableFilter<"Trip"> | number | null
     baseFare?: FloatFilter<"Trip"> | number
     currency?: StringFilter<"Trip"> | string
@@ -20204,9 +20077,7 @@ export namespace Prisma {
     isDeleted?: BoolFilter<"Trip"> | boolean
     createdBy?: StringNullableFilter<"Trip"> | string | null
     updatedBy?: StringNullableFilter<"Trip"> | string | null
-    bus?: XOR<BusRelationFilter, BusWhereInput>
-    route?: XOR<RouteRelationFilter, RouteWhereInput>
-    busRoute?: XOR<BusRouteNullableRelationFilter, BusRouteWhereInput> | null
+    busRoute?: XOR<BusRouteRelationFilter, BusRouteWhereInput>
     tripStops?: TripStopListRelationFilter
     tripSeatStates?: TripSeatStateListRelationFilter
     tripLogs?: TripLogListRelationFilter
@@ -20215,11 +20086,9 @@ export namespace Prisma {
 
   export type TripOrderByWithRelationInput = {
     id?: SortOrder
-    busId?: SortOrder
-    routeId?: SortOrder
-    busRouteId?: SortOrderInput | SortOrder
-    departureAt?: SortOrder
-    arrivalAt?: SortOrder
+    busRouteId?: SortOrder
+    departureTime?: SortOrder
+    arrivalTime?: SortOrder
     durationMin?: SortOrderInput | SortOrder
     baseFare?: SortOrder
     currency?: SortOrder
@@ -20234,8 +20103,6 @@ export namespace Prisma {
     isDeleted?: SortOrder
     createdBy?: SortOrderInput | SortOrder
     updatedBy?: SortOrderInput | SortOrder
-    bus?: BusOrderByWithRelationInput
-    route?: RouteOrderByWithRelationInput
     busRoute?: BusRouteOrderByWithRelationInput
     tripStops?: TripStopOrderByRelationAggregateInput
     tripSeatStates?: TripSeatStateOrderByRelationAggregateInput
@@ -20248,11 +20115,9 @@ export namespace Prisma {
     AND?: TripWhereInput | TripWhereInput[]
     OR?: TripWhereInput[]
     NOT?: TripWhereInput | TripWhereInput[]
-    busId?: StringFilter<"Trip"> | string
-    routeId?: StringFilter<"Trip"> | string
-    busRouteId?: StringNullableFilter<"Trip"> | string | null
-    departureAt?: DateTimeFilter<"Trip"> | Date | string
-    arrivalAt?: DateTimeFilter<"Trip"> | Date | string
+    busRouteId?: StringFilter<"Trip"> | string
+    departureTime?: StringFilter<"Trip"> | string
+    arrivalTime?: StringFilter<"Trip"> | string
     durationMin?: IntNullableFilter<"Trip"> | number | null
     baseFare?: FloatFilter<"Trip"> | number
     currency?: StringFilter<"Trip"> | string
@@ -20267,9 +20132,7 @@ export namespace Prisma {
     isDeleted?: BoolFilter<"Trip"> | boolean
     createdBy?: StringNullableFilter<"Trip"> | string | null
     updatedBy?: StringNullableFilter<"Trip"> | string | null
-    bus?: XOR<BusRelationFilter, BusWhereInput>
-    route?: XOR<RouteRelationFilter, RouteWhereInput>
-    busRoute?: XOR<BusRouteNullableRelationFilter, BusRouteWhereInput> | null
+    busRoute?: XOR<BusRouteRelationFilter, BusRouteWhereInput>
     tripStops?: TripStopListRelationFilter
     tripSeatStates?: TripSeatStateListRelationFilter
     tripLogs?: TripLogListRelationFilter
@@ -20278,11 +20141,9 @@ export namespace Prisma {
 
   export type TripOrderByWithAggregationInput = {
     id?: SortOrder
-    busId?: SortOrder
-    routeId?: SortOrder
-    busRouteId?: SortOrderInput | SortOrder
-    departureAt?: SortOrder
-    arrivalAt?: SortOrder
+    busRouteId?: SortOrder
+    departureTime?: SortOrder
+    arrivalTime?: SortOrder
     durationMin?: SortOrderInput | SortOrder
     baseFare?: SortOrder
     currency?: SortOrder
@@ -20309,11 +20170,9 @@ export namespace Prisma {
     OR?: TripScalarWhereWithAggregatesInput[]
     NOT?: TripScalarWhereWithAggregatesInput | TripScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Trip"> | string
-    busId?: StringWithAggregatesFilter<"Trip"> | string
-    routeId?: StringWithAggregatesFilter<"Trip"> | string
-    busRouteId?: StringNullableWithAggregatesFilter<"Trip"> | string | null
-    departureAt?: DateTimeWithAggregatesFilter<"Trip"> | Date | string
-    arrivalAt?: DateTimeWithAggregatesFilter<"Trip"> | Date | string
+    busRouteId?: StringWithAggregatesFilter<"Trip"> | string
+    departureTime?: StringWithAggregatesFilter<"Trip"> | string
+    arrivalTime?: StringWithAggregatesFilter<"Trip"> | string
     durationMin?: IntNullableWithAggregatesFilter<"Trip"> | number | null
     baseFare?: FloatWithAggregatesFilter<"Trip"> | number
     currency?: StringWithAggregatesFilter<"Trip"> | string
@@ -20955,7 +20814,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityCreateNestedManyWithoutBusInput
     busImages?: BusImageCreateNestedManyWithoutBusInput
     busRoutes?: BusRouteCreateNestedManyWithoutBusInput
-    trips?: TripCreateNestedManyWithoutBusInput
   }
 
   export type BusUncheckedCreateInput = {
@@ -20981,7 +20839,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityUncheckedCreateNestedManyWithoutBusInput
     busImages?: BusImageUncheckedCreateNestedManyWithoutBusInput
     busRoutes?: BusRouteUncheckedCreateNestedManyWithoutBusInput
-    trips?: TripUncheckedCreateNestedManyWithoutBusInput
   }
 
   export type BusUpdateInput = {
@@ -21007,7 +20864,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityUpdateManyWithoutBusNestedInput
     busImages?: BusImageUpdateManyWithoutBusNestedInput
     busRoutes?: BusRouteUpdateManyWithoutBusNestedInput
-    trips?: TripUpdateManyWithoutBusNestedInput
   }
 
   export type BusUncheckedUpdateInput = {
@@ -21033,7 +20889,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityUncheckedUpdateManyWithoutBusNestedInput
     busImages?: BusImageUncheckedUpdateManyWithoutBusNestedInput
     busRoutes?: BusRouteUncheckedUpdateManyWithoutBusNestedInput
-    trips?: TripUncheckedUpdateManyWithoutBusNestedInput
   }
 
   export type BusCreateManyInput = {
@@ -21321,7 +21176,6 @@ export namespace Prisma {
     isDeleted?: boolean
     stops?: RouteStopCreateNestedManyWithoutRouteInput
     busRoutes?: BusRouteCreateNestedManyWithoutRouteInput
-    trips?: TripCreateNestedManyWithoutRouteInput
     cancellationPolicies?: CancellationPolicyCreateNestedManyWithoutRouteInput
   }
 
@@ -21338,7 +21192,6 @@ export namespace Prisma {
     isDeleted?: boolean
     stops?: RouteStopUncheckedCreateNestedManyWithoutRouteInput
     busRoutes?: BusRouteUncheckedCreateNestedManyWithoutRouteInput
-    trips?: TripUncheckedCreateNestedManyWithoutRouteInput
     cancellationPolicies?: CancellationPolicyUncheckedCreateNestedManyWithoutRouteInput
   }
 
@@ -21355,7 +21208,6 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     stops?: RouteStopUpdateManyWithoutRouteNestedInput
     busRoutes?: BusRouteUpdateManyWithoutRouteNestedInput
-    trips?: TripUpdateManyWithoutRouteNestedInput
     cancellationPolicies?: CancellationPolicyUpdateManyWithoutRouteNestedInput
   }
 
@@ -21372,7 +21224,6 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     stops?: RouteStopUncheckedUpdateManyWithoutRouteNestedInput
     busRoutes?: BusRouteUncheckedUpdateManyWithoutRouteNestedInput
-    trips?: TripUncheckedUpdateManyWithoutRouteNestedInput
     cancellationPolicies?: CancellationPolicyUncheckedUpdateManyWithoutRouteNestedInput
   }
 
@@ -21611,8 +21462,8 @@ export namespace Prisma {
 
   export type TripCreateInput = {
     id?: string
-    departureAt: Date | string
-    arrivalAt: Date | string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -21627,9 +21478,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdBy?: string | null
     updatedBy?: string | null
-    bus: BusCreateNestedOneWithoutTripsInput
-    route: RouteCreateNestedOneWithoutTripsInput
-    busRoute?: BusRouteCreateNestedOneWithoutTripsInput
+    busRoute: BusRouteCreateNestedOneWithoutTripsInput
     tripStops?: TripStopCreateNestedManyWithoutTripInput
     tripSeatStates?: TripSeatStateCreateNestedManyWithoutTripInput
     tripLogs?: TripLogCreateNestedManyWithoutTripInput
@@ -21638,11 +21487,9 @@ export namespace Prisma {
 
   export type TripUncheckedCreateInput = {
     id?: string
-    busId: string
-    routeId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
+    busRouteId: string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -21665,8 +21512,8 @@ export namespace Prisma {
 
   export type TripUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -21681,9 +21528,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    bus?: BusUpdateOneRequiredWithoutTripsNestedInput
-    route?: RouteUpdateOneRequiredWithoutTripsNestedInput
-    busRoute?: BusRouteUpdateOneWithoutTripsNestedInput
+    busRoute?: BusRouteUpdateOneRequiredWithoutTripsNestedInput
     tripStops?: TripStopUpdateManyWithoutTripNestedInput
     tripSeatStates?: TripSeatStateUpdateManyWithoutTripNestedInput
     tripLogs?: TripLogUpdateManyWithoutTripNestedInput
@@ -21692,11 +21537,9 @@ export namespace Prisma {
 
   export type TripUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    busRouteId?: StringFieldUpdateOperationsInput | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -21719,11 +21562,9 @@ export namespace Prisma {
 
   export type TripCreateManyInput = {
     id?: string
-    busId: string
-    routeId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
+    busRouteId: string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -21742,8 +21583,8 @@ export namespace Prisma {
 
   export type TripUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -21762,11 +21603,9 @@ export namespace Prisma {
 
   export type TripUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    busRouteId?: StringFieldUpdateOperationsInput | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -22512,12 +22351,6 @@ export namespace Prisma {
     none?: BusRouteWhereInput
   }
 
-  export type TripListRelationFilter = {
-    every?: TripWhereInput
-    some?: TripWhereInput
-    none?: TripWhereInput
-  }
-
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -22532,10 +22365,6 @@ export namespace Prisma {
   }
 
   export type BusRouteOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type TripOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -23141,6 +22970,16 @@ export namespace Prisma {
     isNot?: BusWhereInput
   }
 
+  export type TripListRelationFilter = {
+    every?: TripWhereInput
+    some?: TripWhereInput
+    none?: TripWhereInput
+  }
+
+  export type TripOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type BusRouteCountOrderByAggregateInput = {
     id?: SortOrder
     busId?: SortOrder
@@ -23213,9 +23052,9 @@ export namespace Prisma {
     not?: NestedEnumPricingStrategyFilter<$PrismaModel> | $Enums.PricingStrategy
   }
 
-  export type BusRouteNullableRelationFilter = {
-    is?: BusRouteWhereInput | null
-    isNot?: BusRouteWhereInput | null
+  export type BusRouteRelationFilter = {
+    is?: BusRouteWhereInput
+    isNot?: BusRouteWhereInput
   }
 
   export type TripLogListRelationFilter = {
@@ -23240,11 +23079,9 @@ export namespace Prisma {
 
   export type TripCountOrderByAggregateInput = {
     id?: SortOrder
-    busId?: SortOrder
-    routeId?: SortOrder
     busRouteId?: SortOrder
-    departureAt?: SortOrder
-    arrivalAt?: SortOrder
+    departureTime?: SortOrder
+    arrivalTime?: SortOrder
     durationMin?: SortOrder
     baseFare?: SortOrder
     currency?: SortOrder
@@ -23270,11 +23107,9 @@ export namespace Prisma {
 
   export type TripMaxOrderByAggregateInput = {
     id?: SortOrder
-    busId?: SortOrder
-    routeId?: SortOrder
     busRouteId?: SortOrder
-    departureAt?: SortOrder
-    arrivalAt?: SortOrder
+    departureTime?: SortOrder
+    arrivalTime?: SortOrder
     durationMin?: SortOrder
     baseFare?: SortOrder
     currency?: SortOrder
@@ -23291,11 +23126,9 @@ export namespace Prisma {
 
   export type TripMinOrderByAggregateInput = {
     id?: SortOrder
-    busId?: SortOrder
-    routeId?: SortOrder
     busRouteId?: SortOrder
-    departureAt?: SortOrder
-    arrivalAt?: SortOrder
+    departureTime?: SortOrder
+    arrivalTime?: SortOrder
     durationMin?: SortOrder
     baseFare?: SortOrder
     currency?: SortOrder
@@ -23776,13 +23609,6 @@ export namespace Prisma {
     connect?: BusRouteWhereUniqueInput | BusRouteWhereUniqueInput[]
   }
 
-  export type TripCreateNestedManyWithoutBusInput = {
-    create?: XOR<TripCreateWithoutBusInput, TripUncheckedCreateWithoutBusInput> | TripCreateWithoutBusInput[] | TripUncheckedCreateWithoutBusInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutBusInput | TripCreateOrConnectWithoutBusInput[]
-    createMany?: TripCreateManyBusInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-  }
-
   export type BusAmenityUncheckedCreateNestedManyWithoutBusInput = {
     create?: XOR<BusAmenityCreateWithoutBusInput, BusAmenityUncheckedCreateWithoutBusInput> | BusAmenityCreateWithoutBusInput[] | BusAmenityUncheckedCreateWithoutBusInput[]
     connectOrCreate?: BusAmenityCreateOrConnectWithoutBusInput | BusAmenityCreateOrConnectWithoutBusInput[]
@@ -23802,13 +23628,6 @@ export namespace Prisma {
     connectOrCreate?: BusRouteCreateOrConnectWithoutBusInput | BusRouteCreateOrConnectWithoutBusInput[]
     createMany?: BusRouteCreateManyBusInputEnvelope
     connect?: BusRouteWhereUniqueInput | BusRouteWhereUniqueInput[]
-  }
-
-  export type TripUncheckedCreateNestedManyWithoutBusInput = {
-    create?: XOR<TripCreateWithoutBusInput, TripUncheckedCreateWithoutBusInput> | TripCreateWithoutBusInput[] | TripUncheckedCreateWithoutBusInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutBusInput | TripCreateOrConnectWithoutBusInput[]
-    createMany?: TripCreateManyBusInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -23895,20 +23714,6 @@ export namespace Prisma {
     deleteMany?: BusRouteScalarWhereInput | BusRouteScalarWhereInput[]
   }
 
-  export type TripUpdateManyWithoutBusNestedInput = {
-    create?: XOR<TripCreateWithoutBusInput, TripUncheckedCreateWithoutBusInput> | TripCreateWithoutBusInput[] | TripUncheckedCreateWithoutBusInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutBusInput | TripCreateOrConnectWithoutBusInput[]
-    upsert?: TripUpsertWithWhereUniqueWithoutBusInput | TripUpsertWithWhereUniqueWithoutBusInput[]
-    createMany?: TripCreateManyBusInputEnvelope
-    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    update?: TripUpdateWithWhereUniqueWithoutBusInput | TripUpdateWithWhereUniqueWithoutBusInput[]
-    updateMany?: TripUpdateManyWithWhereWithoutBusInput | TripUpdateManyWithWhereWithoutBusInput[]
-    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
-  }
-
   export type BusAmenityUncheckedUpdateManyWithoutBusNestedInput = {
     create?: XOR<BusAmenityCreateWithoutBusInput, BusAmenityUncheckedCreateWithoutBusInput> | BusAmenityCreateWithoutBusInput[] | BusAmenityUncheckedCreateWithoutBusInput[]
     connectOrCreate?: BusAmenityCreateOrConnectWithoutBusInput | BusAmenityCreateOrConnectWithoutBusInput[]
@@ -23949,20 +23754,6 @@ export namespace Prisma {
     update?: BusRouteUpdateWithWhereUniqueWithoutBusInput | BusRouteUpdateWithWhereUniqueWithoutBusInput[]
     updateMany?: BusRouteUpdateManyWithWhereWithoutBusInput | BusRouteUpdateManyWithWhereWithoutBusInput[]
     deleteMany?: BusRouteScalarWhereInput | BusRouteScalarWhereInput[]
-  }
-
-  export type TripUncheckedUpdateManyWithoutBusNestedInput = {
-    create?: XOR<TripCreateWithoutBusInput, TripUncheckedCreateWithoutBusInput> | TripCreateWithoutBusInput[] | TripUncheckedCreateWithoutBusInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutBusInput | TripCreateOrConnectWithoutBusInput[]
-    upsert?: TripUpsertWithWhereUniqueWithoutBusInput | TripUpsertWithWhereUniqueWithoutBusInput[]
-    createMany?: TripCreateManyBusInputEnvelope
-    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    update?: TripUpdateWithWhereUniqueWithoutBusInput | TripUpdateWithWhereUniqueWithoutBusInput[]
-    updateMany?: TripUpdateManyWithWhereWithoutBusInput | TripUpdateManyWithWhereWithoutBusInput[]
-    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
   }
 
   export type SeatCreateNestedManyWithoutTemplateInput = {
@@ -24143,13 +23934,6 @@ export namespace Prisma {
     connect?: BusRouteWhereUniqueInput | BusRouteWhereUniqueInput[]
   }
 
-  export type TripCreateNestedManyWithoutRouteInput = {
-    create?: XOR<TripCreateWithoutRouteInput, TripUncheckedCreateWithoutRouteInput> | TripCreateWithoutRouteInput[] | TripUncheckedCreateWithoutRouteInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutRouteInput | TripCreateOrConnectWithoutRouteInput[]
-    createMany?: TripCreateManyRouteInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-  }
-
   export type CancellationPolicyCreateNestedManyWithoutRouteInput = {
     create?: XOR<CancellationPolicyCreateWithoutRouteInput, CancellationPolicyUncheckedCreateWithoutRouteInput> | CancellationPolicyCreateWithoutRouteInput[] | CancellationPolicyUncheckedCreateWithoutRouteInput[]
     connectOrCreate?: CancellationPolicyCreateOrConnectWithoutRouteInput | CancellationPolicyCreateOrConnectWithoutRouteInput[]
@@ -24169,13 +23953,6 @@ export namespace Prisma {
     connectOrCreate?: BusRouteCreateOrConnectWithoutRouteInput | BusRouteCreateOrConnectWithoutRouteInput[]
     createMany?: BusRouteCreateManyRouteInputEnvelope
     connect?: BusRouteWhereUniqueInput | BusRouteWhereUniqueInput[]
-  }
-
-  export type TripUncheckedCreateNestedManyWithoutRouteInput = {
-    create?: XOR<TripCreateWithoutRouteInput, TripUncheckedCreateWithoutRouteInput> | TripCreateWithoutRouteInput[] | TripUncheckedCreateWithoutRouteInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutRouteInput | TripCreateOrConnectWithoutRouteInput[]
-    createMany?: TripCreateManyRouteInputEnvelope
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
   }
 
   export type CancellationPolicyUncheckedCreateNestedManyWithoutRouteInput = {
@@ -24211,20 +23988,6 @@ export namespace Prisma {
     update?: BusRouteUpdateWithWhereUniqueWithoutRouteInput | BusRouteUpdateWithWhereUniqueWithoutRouteInput[]
     updateMany?: BusRouteUpdateManyWithWhereWithoutRouteInput | BusRouteUpdateManyWithWhereWithoutRouteInput[]
     deleteMany?: BusRouteScalarWhereInput | BusRouteScalarWhereInput[]
-  }
-
-  export type TripUpdateManyWithoutRouteNestedInput = {
-    create?: XOR<TripCreateWithoutRouteInput, TripUncheckedCreateWithoutRouteInput> | TripCreateWithoutRouteInput[] | TripUncheckedCreateWithoutRouteInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutRouteInput | TripCreateOrConnectWithoutRouteInput[]
-    upsert?: TripUpsertWithWhereUniqueWithoutRouteInput | TripUpsertWithWhereUniqueWithoutRouteInput[]
-    createMany?: TripCreateManyRouteInputEnvelope
-    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    update?: TripUpdateWithWhereUniqueWithoutRouteInput | TripUpdateWithWhereUniqueWithoutRouteInput[]
-    updateMany?: TripUpdateManyWithWhereWithoutRouteInput | TripUpdateManyWithWhereWithoutRouteInput[]
-    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
   }
 
   export type CancellationPolicyUpdateManyWithoutRouteNestedInput = {
@@ -24267,20 +24030,6 @@ export namespace Prisma {
     update?: BusRouteUpdateWithWhereUniqueWithoutRouteInput | BusRouteUpdateWithWhereUniqueWithoutRouteInput[]
     updateMany?: BusRouteUpdateManyWithWhereWithoutRouteInput | BusRouteUpdateManyWithWhereWithoutRouteInput[]
     deleteMany?: BusRouteScalarWhereInput | BusRouteScalarWhereInput[]
-  }
-
-  export type TripUncheckedUpdateManyWithoutRouteNestedInput = {
-    create?: XOR<TripCreateWithoutRouteInput, TripUncheckedCreateWithoutRouteInput> | TripCreateWithoutRouteInput[] | TripUncheckedCreateWithoutRouteInput[]
-    connectOrCreate?: TripCreateOrConnectWithoutRouteInput | TripCreateOrConnectWithoutRouteInput[]
-    upsert?: TripUpsertWithWhereUniqueWithoutRouteInput | TripUpsertWithWhereUniqueWithoutRouteInput[]
-    createMany?: TripCreateManyRouteInputEnvelope
-    set?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    disconnect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    delete?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    connect?: TripWhereUniqueInput | TripWhereUniqueInput[]
-    update?: TripUpdateWithWhereUniqueWithoutRouteInput | TripUpdateWithWhereUniqueWithoutRouteInput[]
-    updateMany?: TripUpdateManyWithWhereWithoutRouteInput | TripUpdateManyWithWhereWithoutRouteInput[]
-    deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
   }
 
   export type CancellationPolicyUncheckedUpdateManyWithoutRouteNestedInput = {
@@ -24427,18 +24176,6 @@ export namespace Prisma {
     deleteMany?: TripScalarWhereInput | TripScalarWhereInput[]
   }
 
-  export type BusCreateNestedOneWithoutTripsInput = {
-    create?: XOR<BusCreateWithoutTripsInput, BusUncheckedCreateWithoutTripsInput>
-    connectOrCreate?: BusCreateOrConnectWithoutTripsInput
-    connect?: BusWhereUniqueInput
-  }
-
-  export type RouteCreateNestedOneWithoutTripsInput = {
-    create?: XOR<RouteCreateWithoutTripsInput, RouteUncheckedCreateWithoutTripsInput>
-    connectOrCreate?: RouteCreateOrConnectWithoutTripsInput
-    connect?: RouteWhereUniqueInput
-  }
-
   export type BusRouteCreateNestedOneWithoutTripsInput = {
     create?: XOR<BusRouteCreateWithoutTripsInput, BusRouteUncheckedCreateWithoutTripsInput>
     connectOrCreate?: BusRouteCreateOrConnectWithoutTripsInput
@@ -24517,28 +24254,10 @@ export namespace Prisma {
     set?: $Enums.PricingStrategy
   }
 
-  export type BusUpdateOneRequiredWithoutTripsNestedInput = {
-    create?: XOR<BusCreateWithoutTripsInput, BusUncheckedCreateWithoutTripsInput>
-    connectOrCreate?: BusCreateOrConnectWithoutTripsInput
-    upsert?: BusUpsertWithoutTripsInput
-    connect?: BusWhereUniqueInput
-    update?: XOR<XOR<BusUpdateToOneWithWhereWithoutTripsInput, BusUpdateWithoutTripsInput>, BusUncheckedUpdateWithoutTripsInput>
-  }
-
-  export type RouteUpdateOneRequiredWithoutTripsNestedInput = {
-    create?: XOR<RouteCreateWithoutTripsInput, RouteUncheckedCreateWithoutTripsInput>
-    connectOrCreate?: RouteCreateOrConnectWithoutTripsInput
-    upsert?: RouteUpsertWithoutTripsInput
-    connect?: RouteWhereUniqueInput
-    update?: XOR<XOR<RouteUpdateToOneWithWhereWithoutTripsInput, RouteUpdateWithoutTripsInput>, RouteUncheckedUpdateWithoutTripsInput>
-  }
-
-  export type BusRouteUpdateOneWithoutTripsNestedInput = {
+  export type BusRouteUpdateOneRequiredWithoutTripsNestedInput = {
     create?: XOR<BusRouteCreateWithoutTripsInput, BusRouteUncheckedCreateWithoutTripsInput>
     connectOrCreate?: BusRouteCreateOrConnectWithoutTripsInput
     upsert?: BusRouteUpsertWithoutTripsInput
-    disconnect?: BusRouteWhereInput | boolean
-    delete?: BusRouteWhereInput | boolean
     connect?: BusRouteWhereUniqueInput
     update?: XOR<XOR<BusRouteUpdateToOneWithWhereWithoutTripsInput, BusRouteUpdateWithoutTripsInput>, BusRouteUncheckedUpdateWithoutTripsInput>
   }
@@ -25311,68 +25030,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type TripCreateWithoutBusInput = {
-    id?: string
-    departureAt: Date | string
-    arrivalAt: Date | string
-    durationMin?: number | null
-    baseFare: number
-    currency?: string
-    status?: $Enums.TripStatus
-    totalSeats: number
-    availableSeats: number
-    pricingStrategy?: $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    createdBy?: string | null
-    updatedBy?: string | null
-    route: RouteCreateNestedOneWithoutTripsInput
-    busRoute?: BusRouteCreateNestedOneWithoutTripsInput
-    tripStops?: TripStopCreateNestedManyWithoutTripInput
-    tripSeatStates?: TripSeatStateCreateNestedManyWithoutTripInput
-    tripLogs?: TripLogCreateNestedManyWithoutTripInput
-    pricingSnapshots?: PricingSnapshotCreateNestedManyWithoutTripInput
-  }
-
-  export type TripUncheckedCreateWithoutBusInput = {
-    id?: string
-    routeId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
-    durationMin?: number | null
-    baseFare: number
-    currency?: string
-    status?: $Enums.TripStatus
-    totalSeats: number
-    availableSeats: number
-    pricingStrategy?: $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    createdBy?: string | null
-    updatedBy?: string | null
-    tripStops?: TripStopUncheckedCreateNestedManyWithoutTripInput
-    tripSeatStates?: TripSeatStateUncheckedCreateNestedManyWithoutTripInput
-    tripLogs?: TripLogUncheckedCreateNestedManyWithoutTripInput
-    pricingSnapshots?: PricingSnapshotUncheckedCreateNestedManyWithoutTripInput
-  }
-
-  export type TripCreateOrConnectWithoutBusInput = {
-    where: TripWhereUniqueInput
-    create: XOR<TripCreateWithoutBusInput, TripUncheckedCreateWithoutBusInput>
-  }
-
-  export type TripCreateManyBusInputEnvelope = {
-    data: TripCreateManyBusInput | TripCreateManyBusInput[]
-    skipDuplicates?: boolean
-  }
-
   export type SeatTemplateUpsertWithoutBusesInput = {
     update: XOR<SeatTemplateUpdateWithoutBusesInput, SeatTemplateUncheckedUpdateWithoutBusesInput>
     create: XOR<SeatTemplateCreateWithoutBusesInput, SeatTemplateUncheckedCreateWithoutBusesInput>
@@ -25492,48 +25149,6 @@ export namespace Prisma {
     isDeleted?: BoolFilter<"BusRoute"> | boolean
   }
 
-  export type TripUpsertWithWhereUniqueWithoutBusInput = {
-    where: TripWhereUniqueInput
-    update: XOR<TripUpdateWithoutBusInput, TripUncheckedUpdateWithoutBusInput>
-    create: XOR<TripCreateWithoutBusInput, TripUncheckedCreateWithoutBusInput>
-  }
-
-  export type TripUpdateWithWhereUniqueWithoutBusInput = {
-    where: TripWhereUniqueInput
-    data: XOR<TripUpdateWithoutBusInput, TripUncheckedUpdateWithoutBusInput>
-  }
-
-  export type TripUpdateManyWithWhereWithoutBusInput = {
-    where: TripScalarWhereInput
-    data: XOR<TripUpdateManyMutationInput, TripUncheckedUpdateManyWithoutBusInput>
-  }
-
-  export type TripScalarWhereInput = {
-    AND?: TripScalarWhereInput | TripScalarWhereInput[]
-    OR?: TripScalarWhereInput[]
-    NOT?: TripScalarWhereInput | TripScalarWhereInput[]
-    id?: StringFilter<"Trip"> | string
-    busId?: StringFilter<"Trip"> | string
-    routeId?: StringFilter<"Trip"> | string
-    busRouteId?: StringNullableFilter<"Trip"> | string | null
-    departureAt?: DateTimeFilter<"Trip"> | Date | string
-    arrivalAt?: DateTimeFilter<"Trip"> | Date | string
-    durationMin?: IntNullableFilter<"Trip"> | number | null
-    baseFare?: FloatFilter<"Trip"> | number
-    currency?: StringFilter<"Trip"> | string
-    status?: EnumTripStatusFilter<"Trip"> | $Enums.TripStatus
-    totalSeats?: IntFilter<"Trip"> | number
-    availableSeats?: IntFilter<"Trip"> | number
-    pricingStrategy?: EnumPricingStrategyFilter<"Trip"> | $Enums.PricingStrategy
-    pricingMeta?: JsonNullableFilter<"Trip">
-    meta?: JsonNullableFilter<"Trip">
-    createdAt?: DateTimeFilter<"Trip"> | Date | string
-    updatedAt?: DateTimeFilter<"Trip"> | Date | string
-    isDeleted?: BoolFilter<"Trip"> | boolean
-    createdBy?: StringNullableFilter<"Trip"> | string | null
-    updatedBy?: StringNullableFilter<"Trip"> | string | null
-  }
-
   export type SeatCreateWithoutTemplateInput = {
     id?: string
     seatNo: string
@@ -25600,7 +25215,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityCreateNestedManyWithoutBusInput
     busImages?: BusImageCreateNestedManyWithoutBusInput
     busRoutes?: BusRouteCreateNestedManyWithoutBusInput
-    trips?: TripCreateNestedManyWithoutBusInput
   }
 
   export type BusUncheckedCreateWithoutSeatTemplateInput = {
@@ -25625,7 +25239,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityUncheckedCreateNestedManyWithoutBusInput
     busImages?: BusImageUncheckedCreateNestedManyWithoutBusInput
     busRoutes?: BusRouteUncheckedCreateNestedManyWithoutBusInput
-    trips?: TripUncheckedCreateNestedManyWithoutBusInput
   }
 
   export type BusCreateOrConnectWithoutSeatTemplateInput = {
@@ -25922,68 +25535,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type TripCreateWithoutRouteInput = {
-    id?: string
-    departureAt: Date | string
-    arrivalAt: Date | string
-    durationMin?: number | null
-    baseFare: number
-    currency?: string
-    status?: $Enums.TripStatus
-    totalSeats: number
-    availableSeats: number
-    pricingStrategy?: $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    createdBy?: string | null
-    updatedBy?: string | null
-    bus: BusCreateNestedOneWithoutTripsInput
-    busRoute?: BusRouteCreateNestedOneWithoutTripsInput
-    tripStops?: TripStopCreateNestedManyWithoutTripInput
-    tripSeatStates?: TripSeatStateCreateNestedManyWithoutTripInput
-    tripLogs?: TripLogCreateNestedManyWithoutTripInput
-    pricingSnapshots?: PricingSnapshotCreateNestedManyWithoutTripInput
-  }
-
-  export type TripUncheckedCreateWithoutRouteInput = {
-    id?: string
-    busId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
-    durationMin?: number | null
-    baseFare: number
-    currency?: string
-    status?: $Enums.TripStatus
-    totalSeats: number
-    availableSeats: number
-    pricingStrategy?: $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    createdBy?: string | null
-    updatedBy?: string | null
-    tripStops?: TripStopUncheckedCreateNestedManyWithoutTripInput
-    tripSeatStates?: TripSeatStateUncheckedCreateNestedManyWithoutTripInput
-    tripLogs?: TripLogUncheckedCreateNestedManyWithoutTripInput
-    pricingSnapshots?: PricingSnapshotUncheckedCreateNestedManyWithoutTripInput
-  }
-
-  export type TripCreateOrConnectWithoutRouteInput = {
-    where: TripWhereUniqueInput
-    create: XOR<TripCreateWithoutRouteInput, TripUncheckedCreateWithoutRouteInput>
-  }
-
-  export type TripCreateManyRouteInputEnvelope = {
-    data: TripCreateManyRouteInput | TripCreateManyRouteInput[]
-    skipDuplicates?: boolean
-  }
-
   export type CancellationPolicyCreateWithoutRouteInput = {
     id?: string
     operatorUserId?: string | null
@@ -26063,22 +25614,6 @@ export namespace Prisma {
     data: XOR<BusRouteUpdateManyMutationInput, BusRouteUncheckedUpdateManyWithoutRouteInput>
   }
 
-  export type TripUpsertWithWhereUniqueWithoutRouteInput = {
-    where: TripWhereUniqueInput
-    update: XOR<TripUpdateWithoutRouteInput, TripUncheckedUpdateWithoutRouteInput>
-    create: XOR<TripCreateWithoutRouteInput, TripUncheckedCreateWithoutRouteInput>
-  }
-
-  export type TripUpdateWithWhereUniqueWithoutRouteInput = {
-    where: TripWhereUniqueInput
-    data: XOR<TripUpdateWithoutRouteInput, TripUncheckedUpdateWithoutRouteInput>
-  }
-
-  export type TripUpdateManyWithWhereWithoutRouteInput = {
-    where: TripScalarWhereInput
-    data: XOR<TripUpdateManyMutationInput, TripUncheckedUpdateManyWithoutRouteInput>
-  }
-
   export type CancellationPolicyUpsertWithWhereUniqueWithoutRouteInput = {
     where: CancellationPolicyWhereUniqueInput
     update: XOR<CancellationPolicyUpdateWithoutRouteInput, CancellationPolicyUncheckedUpdateWithoutRouteInput>
@@ -26120,7 +25655,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     isDeleted?: boolean
     busRoutes?: BusRouteCreateNestedManyWithoutRouteInput
-    trips?: TripCreateNestedManyWithoutRouteInput
     cancellationPolicies?: CancellationPolicyCreateNestedManyWithoutRouteInput
   }
 
@@ -26136,7 +25670,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     isDeleted?: boolean
     busRoutes?: BusRouteUncheckedCreateNestedManyWithoutRouteInput
-    trips?: TripUncheckedCreateNestedManyWithoutRouteInput
     cancellationPolicies?: CancellationPolicyUncheckedCreateNestedManyWithoutRouteInput
   }
 
@@ -26202,7 +25735,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     busRoutes?: BusRouteUpdateManyWithoutRouteNestedInput
-    trips?: TripUpdateManyWithoutRouteNestedInput
     cancellationPolicies?: CancellationPolicyUpdateManyWithoutRouteNestedInput
   }
 
@@ -26218,7 +25750,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     busRoutes?: BusRouteUncheckedUpdateManyWithoutRouteNestedInput
-    trips?: TripUncheckedUpdateManyWithoutRouteNestedInput
     cancellationPolicies?: CancellationPolicyUncheckedUpdateManyWithoutRouteNestedInput
   }
 
@@ -26276,7 +25807,6 @@ export namespace Prisma {
     seatTemplate?: SeatTemplateCreateNestedOneWithoutBusesInput
     busAmenities?: BusAmenityCreateNestedManyWithoutBusInput
     busImages?: BusImageCreateNestedManyWithoutBusInput
-    trips?: TripCreateNestedManyWithoutBusInput
   }
 
   export type BusUncheckedCreateWithoutBusRoutesInput = {
@@ -26301,7 +25831,6 @@ export namespace Prisma {
     updatedBy?: string | null
     busAmenities?: BusAmenityUncheckedCreateNestedManyWithoutBusInput
     busImages?: BusImageUncheckedCreateNestedManyWithoutBusInput
-    trips?: TripUncheckedCreateNestedManyWithoutBusInput
   }
 
   export type BusCreateOrConnectWithoutBusRoutesInput = {
@@ -26321,7 +25850,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     isDeleted?: boolean
     stops?: RouteStopCreateNestedManyWithoutRouteInput
-    trips?: TripCreateNestedManyWithoutRouteInput
     cancellationPolicies?: CancellationPolicyCreateNestedManyWithoutRouteInput
   }
 
@@ -26337,7 +25865,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     isDeleted?: boolean
     stops?: RouteStopUncheckedCreateNestedManyWithoutRouteInput
-    trips?: TripUncheckedCreateNestedManyWithoutRouteInput
     cancellationPolicies?: CancellationPolicyUncheckedCreateNestedManyWithoutRouteInput
   }
 
@@ -26348,8 +25875,8 @@ export namespace Prisma {
 
   export type TripCreateWithoutBusRouteInput = {
     id?: string
-    departureAt: Date | string
-    arrivalAt: Date | string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -26364,8 +25891,6 @@ export namespace Prisma {
     isDeleted?: boolean
     createdBy?: string | null
     updatedBy?: string | null
-    bus: BusCreateNestedOneWithoutTripsInput
-    route: RouteCreateNestedOneWithoutTripsInput
     tripStops?: TripStopCreateNestedManyWithoutTripInput
     tripSeatStates?: TripSeatStateCreateNestedManyWithoutTripInput
     tripLogs?: TripLogCreateNestedManyWithoutTripInput
@@ -26374,10 +25899,8 @@ export namespace Prisma {
 
   export type TripUncheckedCreateWithoutBusRouteInput = {
     id?: string
-    busId: string
-    routeId: string
-    departureAt: Date | string
-    arrivalAt: Date | string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -26441,7 +25964,6 @@ export namespace Prisma {
     seatTemplate?: SeatTemplateUpdateOneWithoutBusesNestedInput
     busAmenities?: BusAmenityUpdateManyWithoutBusNestedInput
     busImages?: BusImageUpdateManyWithoutBusNestedInput
-    trips?: TripUpdateManyWithoutBusNestedInput
   }
 
   export type BusUncheckedUpdateWithoutBusRoutesInput = {
@@ -26466,7 +25988,6 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     busAmenities?: BusAmenityUncheckedUpdateManyWithoutBusNestedInput
     busImages?: BusImageUncheckedUpdateManyWithoutBusNestedInput
-    trips?: TripUncheckedUpdateManyWithoutBusNestedInput
   }
 
   export type RouteUpsertWithoutBusRoutesInput = {
@@ -26492,7 +26013,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     stops?: RouteStopUpdateManyWithoutRouteNestedInput
-    trips?: TripUpdateManyWithoutRouteNestedInput
     cancellationPolicies?: CancellationPolicyUpdateManyWithoutRouteNestedInput
   }
 
@@ -26508,7 +26028,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     stops?: RouteStopUncheckedUpdateManyWithoutRouteNestedInput
-    trips?: TripUncheckedUpdateManyWithoutRouteNestedInput
     cancellationPolicies?: CancellationPolicyUncheckedUpdateManyWithoutRouteNestedInput
   }
 
@@ -26528,96 +26047,28 @@ export namespace Prisma {
     data: XOR<TripUpdateManyMutationInput, TripUncheckedUpdateManyWithoutBusRouteInput>
   }
 
-  export type BusCreateWithoutTripsInput = {
-    id?: string
-    operatorUserId: string
-    operatorName?: string | null
-    operatorEmail?: string | null
-    operatorPhone?: string | null
-    registrationNo: string
-    brand?: string | null
-    model?: string | null
-    category: $Enums.BusCategory
-    capacity: number
-    totalSeats: number
-    status?: $Enums.BusStatus
-    hasUpperDeck?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    createdBy?: string | null
-    updatedBy?: string | null
-    seatTemplate?: SeatTemplateCreateNestedOneWithoutBusesInput
-    busAmenities?: BusAmenityCreateNestedManyWithoutBusInput
-    busImages?: BusImageCreateNestedManyWithoutBusInput
-    busRoutes?: BusRouteCreateNestedManyWithoutBusInput
-  }
-
-  export type BusUncheckedCreateWithoutTripsInput = {
-    id?: string
-    operatorUserId: string
-    operatorName?: string | null
-    operatorEmail?: string | null
-    operatorPhone?: string | null
-    registrationNo: string
-    brand?: string | null
-    model?: string | null
-    category: $Enums.BusCategory
-    capacity: number
-    totalSeats: number
-    busTemplateId?: string | null
-    status?: $Enums.BusStatus
-    hasUpperDeck?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    createdBy?: string | null
-    updatedBy?: string | null
-    busAmenities?: BusAmenityUncheckedCreateNestedManyWithoutBusInput
-    busImages?: BusImageUncheckedCreateNestedManyWithoutBusInput
-    busRoutes?: BusRouteUncheckedCreateNestedManyWithoutBusInput
-  }
-
-  export type BusCreateOrConnectWithoutTripsInput = {
-    where: BusWhereUniqueInput
-    create: XOR<BusCreateWithoutTripsInput, BusUncheckedCreateWithoutTripsInput>
-  }
-
-  export type RouteCreateWithoutTripsInput = {
-    id?: string
-    sourceCity: string
-    sourceStation?: string | null
-    destinationCity: string
-    destinationStation?: string | null
-    distanceKm?: number | null
-    durationMin?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    stops?: RouteStopCreateNestedManyWithoutRouteInput
-    busRoutes?: BusRouteCreateNestedManyWithoutRouteInput
-    cancellationPolicies?: CancellationPolicyCreateNestedManyWithoutRouteInput
-  }
-
-  export type RouteUncheckedCreateWithoutTripsInput = {
-    id?: string
-    sourceCity: string
-    sourceStation?: string | null
-    destinationCity: string
-    destinationStation?: string | null
-    distanceKm?: number | null
-    durationMin?: number | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    stops?: RouteStopUncheckedCreateNestedManyWithoutRouteInput
-    busRoutes?: BusRouteUncheckedCreateNestedManyWithoutRouteInput
-    cancellationPolicies?: CancellationPolicyUncheckedCreateNestedManyWithoutRouteInput
-  }
-
-  export type RouteCreateOrConnectWithoutTripsInput = {
-    where: RouteWhereUniqueInput
-    create: XOR<RouteCreateWithoutTripsInput, RouteUncheckedCreateWithoutTripsInput>
+  export type TripScalarWhereInput = {
+    AND?: TripScalarWhereInput | TripScalarWhereInput[]
+    OR?: TripScalarWhereInput[]
+    NOT?: TripScalarWhereInput | TripScalarWhereInput[]
+    id?: StringFilter<"Trip"> | string
+    busRouteId?: StringFilter<"Trip"> | string
+    departureTime?: StringFilter<"Trip"> | string
+    arrivalTime?: StringFilter<"Trip"> | string
+    durationMin?: IntNullableFilter<"Trip"> | number | null
+    baseFare?: FloatFilter<"Trip"> | number
+    currency?: StringFilter<"Trip"> | string
+    status?: EnumTripStatusFilter<"Trip"> | $Enums.TripStatus
+    totalSeats?: IntFilter<"Trip"> | number
+    availableSeats?: IntFilter<"Trip"> | number
+    pricingStrategy?: EnumPricingStrategyFilter<"Trip"> | $Enums.PricingStrategy
+    pricingMeta?: JsonNullableFilter<"Trip">
+    meta?: JsonNullableFilter<"Trip">
+    createdAt?: DateTimeFilter<"Trip"> | Date | string
+    updatedAt?: DateTimeFilter<"Trip"> | Date | string
+    isDeleted?: BoolFilter<"Trip"> | boolean
+    createdBy?: StringNullableFilter<"Trip"> | string | null
+    updatedBy?: StringNullableFilter<"Trip"> | string | null
   }
 
   export type BusRouteCreateWithoutTripsInput = {
@@ -26763,110 +26214,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type BusUpsertWithoutTripsInput = {
-    update: XOR<BusUpdateWithoutTripsInput, BusUncheckedUpdateWithoutTripsInput>
-    create: XOR<BusCreateWithoutTripsInput, BusUncheckedCreateWithoutTripsInput>
-    where?: BusWhereInput
-  }
-
-  export type BusUpdateToOneWithWhereWithoutTripsInput = {
-    where?: BusWhereInput
-    data: XOR<BusUpdateWithoutTripsInput, BusUncheckedUpdateWithoutTripsInput>
-  }
-
-  export type BusUpdateWithoutTripsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    operatorUserId?: StringFieldUpdateOperationsInput | string
-    operatorName?: NullableStringFieldUpdateOperationsInput | string | null
-    operatorEmail?: NullableStringFieldUpdateOperationsInput | string | null
-    operatorPhone?: NullableStringFieldUpdateOperationsInput | string | null
-    registrationNo?: StringFieldUpdateOperationsInput | string
-    brand?: NullableStringFieldUpdateOperationsInput | string | null
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    category?: EnumBusCategoryFieldUpdateOperationsInput | $Enums.BusCategory
-    capacity?: IntFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    status?: EnumBusStatusFieldUpdateOperationsInput | $Enums.BusStatus
-    hasUpperDeck?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    seatTemplate?: SeatTemplateUpdateOneWithoutBusesNestedInput
-    busAmenities?: BusAmenityUpdateManyWithoutBusNestedInput
-    busImages?: BusImageUpdateManyWithoutBusNestedInput
-    busRoutes?: BusRouteUpdateManyWithoutBusNestedInput
-  }
-
-  export type BusUncheckedUpdateWithoutTripsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    operatorUserId?: StringFieldUpdateOperationsInput | string
-    operatorName?: NullableStringFieldUpdateOperationsInput | string | null
-    operatorEmail?: NullableStringFieldUpdateOperationsInput | string | null
-    operatorPhone?: NullableStringFieldUpdateOperationsInput | string | null
-    registrationNo?: StringFieldUpdateOperationsInput | string
-    brand?: NullableStringFieldUpdateOperationsInput | string | null
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    category?: EnumBusCategoryFieldUpdateOperationsInput | $Enums.BusCategory
-    capacity?: IntFieldUpdateOperationsInput | number
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    busTemplateId?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumBusStatusFieldUpdateOperationsInput | $Enums.BusStatus
-    hasUpperDeck?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    busAmenities?: BusAmenityUncheckedUpdateManyWithoutBusNestedInput
-    busImages?: BusImageUncheckedUpdateManyWithoutBusNestedInput
-    busRoutes?: BusRouteUncheckedUpdateManyWithoutBusNestedInput
-  }
-
-  export type RouteUpsertWithoutTripsInput = {
-    update: XOR<RouteUpdateWithoutTripsInput, RouteUncheckedUpdateWithoutTripsInput>
-    create: XOR<RouteCreateWithoutTripsInput, RouteUncheckedCreateWithoutTripsInput>
-    where?: RouteWhereInput
-  }
-
-  export type RouteUpdateToOneWithWhereWithoutTripsInput = {
-    where?: RouteWhereInput
-    data: XOR<RouteUpdateWithoutTripsInput, RouteUncheckedUpdateWithoutTripsInput>
-  }
-
-  export type RouteUpdateWithoutTripsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sourceCity?: StringFieldUpdateOperationsInput | string
-    sourceStation?: NullableStringFieldUpdateOperationsInput | string | null
-    destinationCity?: StringFieldUpdateOperationsInput | string
-    destinationStation?: NullableStringFieldUpdateOperationsInput | string | null
-    distanceKm?: NullableFloatFieldUpdateOperationsInput | number | null
-    durationMin?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    stops?: RouteStopUpdateManyWithoutRouteNestedInput
-    busRoutes?: BusRouteUpdateManyWithoutRouteNestedInput
-    cancellationPolicies?: CancellationPolicyUpdateManyWithoutRouteNestedInput
-  }
-
-  export type RouteUncheckedUpdateWithoutTripsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sourceCity?: StringFieldUpdateOperationsInput | string
-    sourceStation?: NullableStringFieldUpdateOperationsInput | string | null
-    destinationCity?: StringFieldUpdateOperationsInput | string
-    destinationStation?: NullableStringFieldUpdateOperationsInput | string | null
-    distanceKm?: NullableFloatFieldUpdateOperationsInput | number | null
-    durationMin?: NullableIntFieldUpdateOperationsInput | number | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    stops?: RouteStopUncheckedUpdateManyWithoutRouteNestedInput
-    busRoutes?: BusRouteUncheckedUpdateManyWithoutRouteNestedInput
-    cancellationPolicies?: CancellationPolicyUncheckedUpdateManyWithoutRouteNestedInput
-  }
-
   export type BusRouteUpsertWithoutTripsInput = {
     update: XOR<BusRouteUpdateWithoutTripsInput, BusRouteUncheckedUpdateWithoutTripsInput>
     create: XOR<BusRouteCreateWithoutTripsInput, BusRouteUncheckedCreateWithoutTripsInput>
@@ -26987,8 +26334,8 @@ export namespace Prisma {
 
   export type TripCreateWithoutTripStopsInput = {
     id?: string
-    departureAt: Date | string
-    arrivalAt: Date | string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -27003,9 +26350,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdBy?: string | null
     updatedBy?: string | null
-    bus: BusCreateNestedOneWithoutTripsInput
-    route: RouteCreateNestedOneWithoutTripsInput
-    busRoute?: BusRouteCreateNestedOneWithoutTripsInput
+    busRoute: BusRouteCreateNestedOneWithoutTripsInput
     tripSeatStates?: TripSeatStateCreateNestedManyWithoutTripInput
     tripLogs?: TripLogCreateNestedManyWithoutTripInput
     pricingSnapshots?: PricingSnapshotCreateNestedManyWithoutTripInput
@@ -27013,11 +26358,9 @@ export namespace Prisma {
 
   export type TripUncheckedCreateWithoutTripStopsInput = {
     id?: string
-    busId: string
-    routeId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
+    busRouteId: string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -27092,8 +26435,8 @@ export namespace Prisma {
 
   export type TripUpdateWithoutTripStopsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -27108,9 +26451,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    bus?: BusUpdateOneRequiredWithoutTripsNestedInput
-    route?: RouteUpdateOneRequiredWithoutTripsNestedInput
-    busRoute?: BusRouteUpdateOneWithoutTripsNestedInput
+    busRoute?: BusRouteUpdateOneRequiredWithoutTripsNestedInput
     tripSeatStates?: TripSeatStateUpdateManyWithoutTripNestedInput
     tripLogs?: TripLogUpdateManyWithoutTripNestedInput
     pricingSnapshots?: PricingSnapshotUpdateManyWithoutTripNestedInput
@@ -27118,11 +26459,9 @@ export namespace Prisma {
 
   export type TripUncheckedUpdateWithoutTripStopsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    busRouteId?: StringFieldUpdateOperationsInput | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -27187,8 +26526,8 @@ export namespace Prisma {
 
   export type TripCreateWithoutTripSeatStatesInput = {
     id?: string
-    departureAt: Date | string
-    arrivalAt: Date | string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -27203,9 +26542,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdBy?: string | null
     updatedBy?: string | null
-    bus: BusCreateNestedOneWithoutTripsInput
-    route: RouteCreateNestedOneWithoutTripsInput
-    busRoute?: BusRouteCreateNestedOneWithoutTripsInput
+    busRoute: BusRouteCreateNestedOneWithoutTripsInput
     tripStops?: TripStopCreateNestedManyWithoutTripInput
     tripLogs?: TripLogCreateNestedManyWithoutTripInput
     pricingSnapshots?: PricingSnapshotCreateNestedManyWithoutTripInput
@@ -27213,11 +26550,9 @@ export namespace Prisma {
 
   export type TripUncheckedCreateWithoutTripSeatStatesInput = {
     id?: string
-    busId: string
-    routeId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
+    busRouteId: string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -27294,8 +26629,8 @@ export namespace Prisma {
 
   export type TripUpdateWithoutTripSeatStatesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -27310,9 +26645,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    bus?: BusUpdateOneRequiredWithoutTripsNestedInput
-    route?: RouteUpdateOneRequiredWithoutTripsNestedInput
-    busRoute?: BusRouteUpdateOneWithoutTripsNestedInput
+    busRoute?: BusRouteUpdateOneRequiredWithoutTripsNestedInput
     tripStops?: TripStopUpdateManyWithoutTripNestedInput
     tripLogs?: TripLogUpdateManyWithoutTripNestedInput
     pricingSnapshots?: PricingSnapshotUpdateManyWithoutTripNestedInput
@@ -27320,11 +26653,9 @@ export namespace Prisma {
 
   export type TripUncheckedUpdateWithoutTripSeatStatesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    busRouteId?: StringFieldUpdateOperationsInput | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -27411,7 +26742,6 @@ export namespace Prisma {
     seatTemplate?: SeatTemplateCreateNestedOneWithoutBusesInput
     busImages?: BusImageCreateNestedManyWithoutBusInput
     busRoutes?: BusRouteCreateNestedManyWithoutBusInput
-    trips?: TripCreateNestedManyWithoutBusInput
   }
 
   export type BusUncheckedCreateWithoutBusAmenitiesInput = {
@@ -27436,7 +26766,6 @@ export namespace Prisma {
     updatedBy?: string | null
     busImages?: BusImageUncheckedCreateNestedManyWithoutBusInput
     busRoutes?: BusRouteUncheckedCreateNestedManyWithoutBusInput
-    trips?: TripUncheckedCreateNestedManyWithoutBusInput
   }
 
   export type BusCreateOrConnectWithoutBusAmenitiesInput = {
@@ -27477,7 +26806,6 @@ export namespace Prisma {
     seatTemplate?: SeatTemplateUpdateOneWithoutBusesNestedInput
     busImages?: BusImageUpdateManyWithoutBusNestedInput
     busRoutes?: BusRouteUpdateManyWithoutBusNestedInput
-    trips?: TripUpdateManyWithoutBusNestedInput
   }
 
   export type BusUncheckedUpdateWithoutBusAmenitiesInput = {
@@ -27502,7 +26830,6 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     busImages?: BusImageUncheckedUpdateManyWithoutBusNestedInput
     busRoutes?: BusRouteUncheckedUpdateManyWithoutBusNestedInput
-    trips?: TripUncheckedUpdateManyWithoutBusNestedInput
   }
 
   export type BusCreateWithoutBusImagesInput = {
@@ -27527,7 +26854,6 @@ export namespace Prisma {
     seatTemplate?: SeatTemplateCreateNestedOneWithoutBusesInput
     busAmenities?: BusAmenityCreateNestedManyWithoutBusInput
     busRoutes?: BusRouteCreateNestedManyWithoutBusInput
-    trips?: TripCreateNestedManyWithoutBusInput
   }
 
   export type BusUncheckedCreateWithoutBusImagesInput = {
@@ -27552,7 +26878,6 @@ export namespace Prisma {
     updatedBy?: string | null
     busAmenities?: BusAmenityUncheckedCreateNestedManyWithoutBusInput
     busRoutes?: BusRouteUncheckedCreateNestedManyWithoutBusInput
-    trips?: TripUncheckedCreateNestedManyWithoutBusInput
   }
 
   export type BusCreateOrConnectWithoutBusImagesInput = {
@@ -27593,7 +26918,6 @@ export namespace Prisma {
     seatTemplate?: SeatTemplateUpdateOneWithoutBusesNestedInput
     busAmenities?: BusAmenityUpdateManyWithoutBusNestedInput
     busRoutes?: BusRouteUpdateManyWithoutBusNestedInput
-    trips?: TripUpdateManyWithoutBusNestedInput
   }
 
   export type BusUncheckedUpdateWithoutBusImagesInput = {
@@ -27618,7 +26942,6 @@ export namespace Prisma {
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
     busAmenities?: BusAmenityUncheckedUpdateManyWithoutBusNestedInput
     busRoutes?: BusRouteUncheckedUpdateManyWithoutBusNestedInput
-    trips?: TripUncheckedUpdateManyWithoutBusNestedInput
   }
 
   export type RouteCreateWithoutCancellationPoliciesInput = {
@@ -27634,7 +26957,6 @@ export namespace Prisma {
     isDeleted?: boolean
     stops?: RouteStopCreateNestedManyWithoutRouteInput
     busRoutes?: BusRouteCreateNestedManyWithoutRouteInput
-    trips?: TripCreateNestedManyWithoutRouteInput
   }
 
   export type RouteUncheckedCreateWithoutCancellationPoliciesInput = {
@@ -27650,7 +26972,6 @@ export namespace Prisma {
     isDeleted?: boolean
     stops?: RouteStopUncheckedCreateNestedManyWithoutRouteInput
     busRoutes?: BusRouteUncheckedCreateNestedManyWithoutRouteInput
-    trips?: TripUncheckedCreateNestedManyWithoutRouteInput
   }
 
   export type RouteCreateOrConnectWithoutCancellationPoliciesInput = {
@@ -27682,7 +27003,6 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     stops?: RouteStopUpdateManyWithoutRouteNestedInput
     busRoutes?: BusRouteUpdateManyWithoutRouteNestedInput
-    trips?: TripUpdateManyWithoutRouteNestedInput
   }
 
   export type RouteUncheckedUpdateWithoutCancellationPoliciesInput = {
@@ -27698,13 +27018,12 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     stops?: RouteStopUncheckedUpdateManyWithoutRouteNestedInput
     busRoutes?: BusRouteUncheckedUpdateManyWithoutRouteNestedInput
-    trips?: TripUncheckedUpdateManyWithoutRouteNestedInput
   }
 
   export type TripCreateWithoutTripLogsInput = {
     id?: string
-    departureAt: Date | string
-    arrivalAt: Date | string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -27719,9 +27038,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdBy?: string | null
     updatedBy?: string | null
-    bus: BusCreateNestedOneWithoutTripsInput
-    route: RouteCreateNestedOneWithoutTripsInput
-    busRoute?: BusRouteCreateNestedOneWithoutTripsInput
+    busRoute: BusRouteCreateNestedOneWithoutTripsInput
     tripStops?: TripStopCreateNestedManyWithoutTripInput
     tripSeatStates?: TripSeatStateCreateNestedManyWithoutTripInput
     pricingSnapshots?: PricingSnapshotCreateNestedManyWithoutTripInput
@@ -27729,11 +27046,9 @@ export namespace Prisma {
 
   export type TripUncheckedCreateWithoutTripLogsInput = {
     id?: string
-    busId: string
-    routeId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
+    busRouteId: string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -27771,8 +27086,8 @@ export namespace Prisma {
 
   export type TripUpdateWithoutTripLogsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -27787,9 +27102,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    bus?: BusUpdateOneRequiredWithoutTripsNestedInput
-    route?: RouteUpdateOneRequiredWithoutTripsNestedInput
-    busRoute?: BusRouteUpdateOneWithoutTripsNestedInput
+    busRoute?: BusRouteUpdateOneRequiredWithoutTripsNestedInput
     tripStops?: TripStopUpdateManyWithoutTripNestedInput
     tripSeatStates?: TripSeatStateUpdateManyWithoutTripNestedInput
     pricingSnapshots?: PricingSnapshotUpdateManyWithoutTripNestedInput
@@ -27797,11 +27110,9 @@ export namespace Prisma {
 
   export type TripUncheckedUpdateWithoutTripLogsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    busRouteId?: StringFieldUpdateOperationsInput | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -27823,8 +27134,8 @@ export namespace Prisma {
 
   export type TripCreateWithoutPricingSnapshotsInput = {
     id?: string
-    departureAt: Date | string
-    arrivalAt: Date | string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -27839,9 +27150,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdBy?: string | null
     updatedBy?: string | null
-    bus: BusCreateNestedOneWithoutTripsInput
-    route: RouteCreateNestedOneWithoutTripsInput
-    busRoute?: BusRouteCreateNestedOneWithoutTripsInput
+    busRoute: BusRouteCreateNestedOneWithoutTripsInput
     tripStops?: TripStopCreateNestedManyWithoutTripInput
     tripSeatStates?: TripSeatStateCreateNestedManyWithoutTripInput
     tripLogs?: TripLogCreateNestedManyWithoutTripInput
@@ -27849,11 +27158,9 @@ export namespace Prisma {
 
   export type TripUncheckedCreateWithoutPricingSnapshotsInput = {
     id?: string
-    busId: string
-    routeId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
+    busRouteId: string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -27891,8 +27198,8 @@ export namespace Prisma {
 
   export type TripUpdateWithoutPricingSnapshotsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -27907,9 +27214,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    bus?: BusUpdateOneRequiredWithoutTripsNestedInput
-    route?: RouteUpdateOneRequiredWithoutTripsNestedInput
-    busRoute?: BusRouteUpdateOneWithoutTripsNestedInput
+    busRoute?: BusRouteUpdateOneRequiredWithoutTripsNestedInput
     tripStops?: TripStopUpdateManyWithoutTripNestedInput
     tripSeatStates?: TripSeatStateUpdateManyWithoutTripNestedInput
     tripLogs?: TripLogUpdateManyWithoutTripNestedInput
@@ -27917,11 +27222,9 @@ export namespace Prisma {
 
   export type TripUncheckedUpdateWithoutPricingSnapshotsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    busRouteId?: StringFieldUpdateOperationsInput | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -27963,28 +27266,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     isDeleted?: boolean
-  }
-
-  export type TripCreateManyBusInput = {
-    id?: string
-    routeId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
-    durationMin?: number | null
-    baseFare: number
-    currency?: string
-    status?: $Enums.TripStatus
-    totalSeats: number
-    availableSeats: number
-    pricingStrategy?: $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    createdBy?: string | null
-    updatedBy?: string | null
   }
 
   export type BusAmenityUpdateWithoutBusInput = {
@@ -28059,80 +27340,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type TripUpdateWithoutBusInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    durationMin?: NullableIntFieldUpdateOperationsInput | number | null
-    baseFare?: FloatFieldUpdateOperationsInput | number
-    currency?: StringFieldUpdateOperationsInput | string
-    status?: EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    pricingStrategy?: EnumPricingStrategyFieldUpdateOperationsInput | $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    route?: RouteUpdateOneRequiredWithoutTripsNestedInput
-    busRoute?: BusRouteUpdateOneWithoutTripsNestedInput
-    tripStops?: TripStopUpdateManyWithoutTripNestedInput
-    tripSeatStates?: TripSeatStateUpdateManyWithoutTripNestedInput
-    tripLogs?: TripLogUpdateManyWithoutTripNestedInput
-    pricingSnapshots?: PricingSnapshotUpdateManyWithoutTripNestedInput
-  }
-
-  export type TripUncheckedUpdateWithoutBusInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    durationMin?: NullableIntFieldUpdateOperationsInput | number | null
-    baseFare?: FloatFieldUpdateOperationsInput | number
-    currency?: StringFieldUpdateOperationsInput | string
-    status?: EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    pricingStrategy?: EnumPricingStrategyFieldUpdateOperationsInput | $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    tripStops?: TripStopUncheckedUpdateManyWithoutTripNestedInput
-    tripSeatStates?: TripSeatStateUncheckedUpdateManyWithoutTripNestedInput
-    tripLogs?: TripLogUncheckedUpdateManyWithoutTripNestedInput
-    pricingSnapshots?: PricingSnapshotUncheckedUpdateManyWithoutTripNestedInput
-  }
-
-  export type TripUncheckedUpdateManyWithoutBusInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    durationMin?: NullableIntFieldUpdateOperationsInput | number | null
-    baseFare?: FloatFieldUpdateOperationsInput | number
-    currency?: StringFieldUpdateOperationsInput | string
-    status?: EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    pricingStrategy?: EnumPricingStrategyFieldUpdateOperationsInput | $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SeatCreateManyTemplateInput = {
@@ -28244,7 +27451,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityUpdateManyWithoutBusNestedInput
     busImages?: BusImageUpdateManyWithoutBusNestedInput
     busRoutes?: BusRouteUpdateManyWithoutBusNestedInput
-    trips?: TripUpdateManyWithoutBusNestedInput
   }
 
   export type BusUncheckedUpdateWithoutSeatTemplateInput = {
@@ -28269,7 +27475,6 @@ export namespace Prisma {
     busAmenities?: BusAmenityUncheckedUpdateManyWithoutBusNestedInput
     busImages?: BusImageUncheckedUpdateManyWithoutBusNestedInput
     busRoutes?: BusRouteUncheckedUpdateManyWithoutBusNestedInput
-    trips?: TripUncheckedUpdateManyWithoutBusNestedInput
   }
 
   export type BusUncheckedUpdateManyWithoutSeatTemplateInput = {
@@ -28370,28 +27575,6 @@ export namespace Prisma {
     isDeleted?: boolean
   }
 
-  export type TripCreateManyRouteInput = {
-    id?: string
-    busId: string
-    busRouteId?: string | null
-    departureAt: Date | string
-    arrivalAt: Date | string
-    durationMin?: number | null
-    baseFare: number
-    currency?: string
-    status?: $Enums.TripStatus
-    totalSeats: number
-    availableSeats: number
-    pricingStrategy?: $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    isDeleted?: boolean
-    createdBy?: string | null
-    updatedBy?: string | null
-  }
-
   export type CancellationPolicyCreateManyRouteInput = {
     id?: string
     operatorUserId?: string | null
@@ -28480,80 +27663,6 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type TripUpdateWithoutRouteInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    durationMin?: NullableIntFieldUpdateOperationsInput | number | null
-    baseFare?: FloatFieldUpdateOperationsInput | number
-    currency?: StringFieldUpdateOperationsInput | string
-    status?: EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    pricingStrategy?: EnumPricingStrategyFieldUpdateOperationsInput | $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    bus?: BusUpdateOneRequiredWithoutTripsNestedInput
-    busRoute?: BusRouteUpdateOneWithoutTripsNestedInput
-    tripStops?: TripStopUpdateManyWithoutTripNestedInput
-    tripSeatStates?: TripSeatStateUpdateManyWithoutTripNestedInput
-    tripLogs?: TripLogUpdateManyWithoutTripNestedInput
-    pricingSnapshots?: PricingSnapshotUpdateManyWithoutTripNestedInput
-  }
-
-  export type TripUncheckedUpdateWithoutRouteInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    durationMin?: NullableIntFieldUpdateOperationsInput | number | null
-    baseFare?: FloatFieldUpdateOperationsInput | number
-    currency?: StringFieldUpdateOperationsInput | string
-    status?: EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    pricingStrategy?: EnumPricingStrategyFieldUpdateOperationsInput | $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    tripStops?: TripStopUncheckedUpdateManyWithoutTripNestedInput
-    tripSeatStates?: TripSeatStateUncheckedUpdateManyWithoutTripNestedInput
-    tripLogs?: TripLogUncheckedUpdateManyWithoutTripNestedInput
-    pricingSnapshots?: PricingSnapshotUncheckedUpdateManyWithoutTripNestedInput
-  }
-
-  export type TripUncheckedUpdateManyWithoutRouteInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    busRouteId?: NullableStringFieldUpdateOperationsInput | string | null
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    durationMin?: NullableIntFieldUpdateOperationsInput | number | null
-    baseFare?: FloatFieldUpdateOperationsInput | number
-    currency?: StringFieldUpdateOperationsInput | string
-    status?: EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
-    totalSeats?: IntFieldUpdateOperationsInput | number
-    availableSeats?: IntFieldUpdateOperationsInput | number
-    pricingStrategy?: EnumPricingStrategyFieldUpdateOperationsInput | $Enums.PricingStrategy
-    pricingMeta?: NullableJsonNullValueInput | InputJsonValue
-    meta?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isDeleted?: BoolFieldUpdateOperationsInput | boolean
-    createdBy?: NullableStringFieldUpdateOperationsInput | string | null
-    updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type CancellationPolicyUpdateWithoutRouteInput = {
     id?: StringFieldUpdateOperationsInput | string
     operatorUserId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28631,10 +27740,8 @@ export namespace Prisma {
 
   export type TripCreateManyBusRouteInput = {
     id?: string
-    busId: string
-    routeId: string
-    departureAt: Date | string
-    arrivalAt: Date | string
+    departureTime: string
+    arrivalTime: string
     durationMin?: number | null
     baseFare: number
     currency?: string
@@ -28653,8 +27760,8 @@ export namespace Prisma {
 
   export type TripUpdateWithoutBusRouteInput = {
     id?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -28669,8 +27776,6 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdBy?: NullableStringFieldUpdateOperationsInput | string | null
     updatedBy?: NullableStringFieldUpdateOperationsInput | string | null
-    bus?: BusUpdateOneRequiredWithoutTripsNestedInput
-    route?: RouteUpdateOneRequiredWithoutTripsNestedInput
     tripStops?: TripStopUpdateManyWithoutTripNestedInput
     tripSeatStates?: TripSeatStateUpdateManyWithoutTripNestedInput
     tripLogs?: TripLogUpdateManyWithoutTripNestedInput
@@ -28679,10 +27784,8 @@ export namespace Prisma {
 
   export type TripUncheckedUpdateWithoutBusRouteInput = {
     id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string
@@ -28705,10 +27808,8 @@ export namespace Prisma {
 
   export type TripUncheckedUpdateManyWithoutBusRouteInput = {
     id?: StringFieldUpdateOperationsInput | string
-    busId?: StringFieldUpdateOperationsInput | string
-    routeId?: StringFieldUpdateOperationsInput | string
-    departureAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    arrivalAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    departureTime?: StringFieldUpdateOperationsInput | string
+    arrivalTime?: StringFieldUpdateOperationsInput | string
     durationMin?: NullableIntFieldUpdateOperationsInput | number | null
     baseFare?: FloatFieldUpdateOperationsInput | number
     currency?: StringFieldUpdateOperationsInput | string

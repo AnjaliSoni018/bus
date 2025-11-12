@@ -1,7 +1,7 @@
 import { prisma } from '../../db/prisma';
 import { AppError } from '../../utils/AppError';
 import { TripSearchQuery, TripSearchResult } from './tripSearch.types';
-import { startOfDay, endOfDay, addHours } from 'date-fns';
+import { startOfDay } from 'date-fns';
 
 export const searchTrips = async (
   query: TripSearchQuery
@@ -9,92 +9,88 @@ export const searchTrips = async (
   const { sourceCity, destinationCity, date, category, minFare, maxFare } =
     query;
 
+  const searchDate = date ? new Date(date) : startOfDay(new Date());
+
   const routes = await prisma.route.findMany({
     where: {
       sourceCity: { equals: sourceCity, mode: 'insensitive' },
       destinationCity: { equals: destinationCity, mode: 'insensitive' },
       isDeleted: false,
     },
-    include: { busRoutes: true },
+    include: {
+      busRoutes: {
+        where: {
+          isDeleted: false,
+          effectiveFrom: { lte: searchDate },
+          effectiveTo: { gte: searchDate },
+        },
+        include: {
+          bus: { include: { busAmenities: true } },
+          trips: {
+            where: {
+              isDeleted: false,
+              status: 'SCHEDULED',
+            },
+            include: {
+              tripStops: {
+                include: { routeStop: true },
+                orderBy: { sequence: 'asc' },
+              },
+            },
+          },
+        },
+      },
+    },
   });
 
   if (!routes.length) {
     throw new AppError('No route found between given cities', 404);
   }
-
-  const dateStart = addHours(startOfDay(new Date(date)), -5.5);
-  const dateEnd = addHours(endOfDay(new Date(date)), -5.5);
-
-  const whereClause: any = {
-    routeId: { in: routes.map((r) => r.id) },
-    departureAt: { gte: dateStart, lte: dateEnd },
-    status: 'SCHEDULED',
-    isDeleted: false,
-  };
-
-  if (minFare !== undefined || maxFare !== undefined) {
-    whereClause.baseFare = {};
-    if (minFare !== undefined) whereClause.baseFare.gte = minFare;
-    if (maxFare !== undefined) whereClause.baseFare.lte = maxFare;
-  }
-
-  if (category) {
-    whereClause.bus = { category: category as any };
-  }
-
-  const trips = await prisma.trip.findMany({
-    where: whereClause,
-    include: {
-      bus: { include: { busAmenities: true } },
-      route: true,
-      tripStops: {
-        include: {
-          routeStop: true,
+  const trips = routes.flatMap((r) =>
+    r.busRoutes.flatMap((br) =>
+      br.trips.map((t) => ({
+        tripId: t.id,
+        bus: {
+          id: br.bus.id,
+          brand: br.bus.brand ?? '',
+          category: br.bus.category,
+          registrationNo: br.bus.registrationNo,
+          amenities: br.bus.busAmenities.map((a) => a.amenity),
         },
-        orderBy: {
-          sequence: 'asc',
+        route: {
+          id: r.id,
+          sourceCity: r.sourceCity,
+          destinationCity: r.destinationCity,
+          distanceKm: r.distanceKm ?? undefined,
+          durationMin: r.durationMin ?? undefined,
         },
-      },
-    },
-    orderBy: { departureAt: 'asc' },
+        tripStops: t.tripStops.map((ts) => ({
+          id: ts.id,
+          name: ts.routeStop.name,
+          city: ts.routeStop.city,
+          sequence: ts.sequence,
+          isBoarding: ts.isBoarding,
+          isDropping: ts.isDropping,
+        })),
+        departureTime: t.departureTime,
+        arrivalTime: t.arrivalTime,
+        availableSeats: t.availableSeats,
+        baseFare: t.baseFare,
+        currency: t.currency,
+      }))
+    )
+  );
+
+  const filteredTrips = trips.filter((t) => {
+    if (category && t.bus.category !== category) return false;
+    if (minFare && t.baseFare < minFare) return false;
+    if (maxFare && t.baseFare > maxFare) return false;
+    return true;
   });
 
-  if (!trips.length) {
+  if (!filteredTrips.length) {
     throw new AppError('No trips found for given criteria', 404);
   }
 
-  const result: TripSearchResult[] = trips.map((t) => ({
-    tripId: t.id,
-    bus: {
-      id: t.bus.id,
-      brand: t.bus.brand ?? '',
-      category: t.bus.category,
-      registrationNo: t.bus.registrationNo,
-      amenities: t.bus.busAmenities.map((a) => a.amenity),
-    },
-    route: {
-      id: t.route.id,
-      sourceCity: t.route.sourceCity,
-      destinationCity: t.route.destinationCity,
-      distanceKm: t.route.distanceKm ?? undefined,
-      durationMin: t.route.durationMin ?? undefined,
-    },
-    tripStops: t.tripStops.map((ts) => ({
-      id: ts.id,
-      name: ts.routeStop.name,
-      city: ts.routeStop.city,
-      sequence: ts.sequence,
-      isBoarding: ts.isBoarding,
-      isDropping: ts.isDropping,
-      scheduledArrival: ts.scheduledArrival,
-      scheduledDeparture: ts.scheduledDeparture,
-    })),
-    departureAt: t.departureAt,
-    arrivalAt: t.arrivalAt,
-    availableSeats: t.availableSeats,
-    baseFare: t.baseFare,
-    currency: t.currency,
-  }));
-
-  return result;
+  return filteredTrips;
 };

@@ -1,10 +1,8 @@
 import { PricingStrategy, TripStatus } from '../../generated/prisma';
 export interface CreateTripDTO {
-  busId: string;
-  routeId: string;
-  busRouteId?: string | null;
-  departureAt: string | Date;
-  arrivalAt: string | Date;
+  busRouteId: string;
+  departureTime: string;
+  arrivalTime: string;
   baseFare: number;
   currency?: string;
   totalSeats?: number;
@@ -15,8 +13,8 @@ export interface CreateTripDTO {
 }
 
 export interface UpdateTripDTO {
-  departureAt?: string | Date;
-  arrivalAt?: string | Date;
+  departureTime?: string;
+  arrivalTime?: string;
   baseFare?: number;
   status?: TripStatus;
   totalSeats?: number;

@@ -35,8 +35,8 @@ export interface TripSearchResult {
     durationMin?: number;
   };
   tripStops: TripStopResult[];
-  departureAt: Date;
-  arrivalAt: Date;
+  departureTime: string;
+  arrivalTime: string;
   availableSeats: number;
   baseFare: number;
   currency: string;

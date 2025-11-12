@@ -94,7 +94,6 @@ model Bus {
   busAmenities BusAmenity[]
   busImages    BusImage[]
   busRoutes    BusRoute[]
-  trips        Trip[]
 }
 
 model SeatTemplate {
@@ -147,7 +146,6 @@ model Route {
 
   stops                RouteStop[]
   busRoutes            BusRoute[]
-  trips                Trip[]
   cancellationPolicies CancellationPolicy[]
 
   @@index([sourceCity, destinationCity])
@@ -193,11 +191,9 @@ model BusRoute {
 
 model Trip {
   id              String          @id @default(uuid())
-  busId           String
-  routeId         String
-  busRouteId      String?
-  departureAt     DateTime
-  arrivalAt       DateTime
+  busRouteId      String
+  departureTime   String // "08:00:00" (store as TIME or string)
+  arrivalTime     String // "12:00:00"
   durationMin     Int?
   baseFare        Float
   currency        String          @default("INR")
@@ -214,16 +210,13 @@ model Trip {
   createdBy String?
   updatedBy String?
 
-  bus              Bus               @relation(fields: [busId], references: [id], onDelete: Cascade)
-  route            Route             @relation(fields: [routeId], references: [id], onDelete: Cascade)
-  busRoute         BusRoute?         @relation(fields: [busRouteId], references: [id])
+  busRoute         BusRoute          @relation(fields: [busRouteId], references: [id], onDelete: Cascade)
   tripStops        TripStop[]
   tripSeatStates   TripSeatState[]
   tripLogs         TripLog[]
   pricingSnapshots PricingSnapshot[]
 
-  @@index([routeId, departureAt])
-  @@index([busId, departureAt])
+  @@index([busRouteId])
 }
 
 model TripStop {

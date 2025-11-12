@@ -1,7 +1,7 @@
 {
   "nodes": {
-    "prisma-client-5196a9ad55b785c04c7fa69e94dcde0fc3d07144b991111fecfeea99966e0ace": {
-      "name": "prisma-client-5196a9ad55b785c04c7fa69e94dcde0fc3d07144b991111fecfeea99966e0ace",
+    "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": {
+      "name": "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba",
       "type": "lib",
       "data": {
         "root": "apps/bus-service/src/generated/prisma",
@@ -46,7 +46,7 @@
             "parallelism": true
           }
         },
-        "name": "prisma-client-5196a9ad55b785c04c7fa69e94dcde0fc3d07144b991111fecfeea99966e0ace",
+        "name": "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba",
         "implicitDependencies": [],
         "tags": []
       }
@@ -9354,7 +9354,7 @@
     }
   },
   "dependencies": {
-    "prisma-client-5196a9ad55b785c04c7fa69e94dcde0fc3d07144b991111fecfeea99966e0ace": [],
+    "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": [],
     "user-service-e2e": [
       {
         "source": "user-service-e2e",
@@ -9614,7 +9614,7 @@
       },
       {
         "source": "bus-service",
-        "target": "prisma-client-5196a9ad55b785c04c7fa69e94dcde0fc3d07144b991111fecfeea99966e0ace",
+        "target": "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba",
         "type": "static"
       }
     ],
@@ -21512,5 +21512,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1762846314820
+  "computedAt": 1762940126787
 }

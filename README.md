@@ -451,240 +451,6 @@ src/
 
 ---
 
-Phase 1 — Bus Service (Production-grade, future-proof roadmap & implementation plan)
-
-Awesome — we’ll implement Phase 1 in small, testable increments so each piece is production-quality and pluggable for later phases. Below is a concrete, prioritized plan (deliverables, API contracts, DB interactions, infra/ops checklist, testing, and “done” criteria) so you can start coding immediately and ship safely.
-
-Goals for Phase 1: provide fully working, secure, observable, and well-documented core Bus capabilities that let operators add buses and seat templates, let admins/operators list and manage them, and let other services (search/booking) read canonical bus data. Everything is implemented with production best practices: validation, RBAC, logging, tracing hooks, schema migrations, and event emission hooks.
-
-Phase 1 scope (high level — what we implement now)
-
-Bus core CRUD (create, read, update, soft-delete)
-
-Seat Templates & Seat definitions (create, read) — seat-map JSON + seat entities
-
-Bus Amenities & Bus Images (attach amenities + images metadata)
-
-Operator link & minimal operator sync (use operatorUserId from user-service; validate existence via JWT claims or user-service lookup)
-
-Search / List API (filter by city/route later — for now filter by operator, category, availability)
-
-Health / readiness (already done) + metrics + request logging
-
-Event emission hooks (publish bus.created, bus.updated, seattemplate.created) to Kafka (producer stubbed; real send in next phase)
-
-Database migrations & seed for a few operators, a bus, and a template
-
-API documentation (basic OpenAPI / swagger for the module)
-
-Tests: unit tests for services + integration tests hitting endpoints with an in-memory DB or test Postgres instance
-
-Prioritization & order of implementation (step-by-step)
-
-Project infra already done (app, prisma, routes, health). ✅
-
-Implement BusModule code skeleton (types, validation, controller, service, routes).
-
-Add SeatTemplateModule (template + seats creation, store layout JSON).
-
-Add BusAmenity + BusImage endpoints (simple attach/detach).
-
-Implement List/Search endpoint with pagination, sorting and filtering.
-
-Add event producer wiring and emit events at create/update points (use Kafka client but publish asynchronously + non-blocking).
-
-Add DB seed and migration scripts.
-
-Add tests, documentation, and example curl requests.
-
-Add monitoring/metrics hooks and readiness enhancements.
-
-We will implement items 2–5 in the first coding pass (this is your Phase 1 deliverable).
-
-Deliverables for Phase 1 (concrete)
-A. APIs (versioned under /api/v1)
-Bus endpoints
-
-POST /api/v1/buses — create bus
-
-Auth: BUS_OPERATOR or ADMIN (JWT)
-
-Body (JSON):
-
-{
-"operatorId":"<uuid>",
-"registrationNo":"KA01AB1234",
-"brand":"Tata",
-"model":"Ultra",
-"category":"SLEEPER_AC",
-"capacity":40,
-"totalSeats":40,
-"busTemplateId":"<uuid|null>",
-"hasUpperDeck":false
-}
-
-Responses: 201 created with created bus DTO, 400 validation error, 401/403 auth.
-
-Side effects: write DB, emit bus.created event (async)
-
-GET /api/v1/buses — list buses (paginated)
-
-Query params: page=1&limit=20&operatorId=&category=&isActive=&search=
-
-Response: paginated list with total, items[] (include amenities, seatTemplate minimal)
-
-GET /api/v1/buses/:id — get bus by id
-
-Response includes seatTemplate (if any), amenities, images (metadata), trip count (optional)
-
-PUT /api/v1/buses/:id — update bus (partial)
-
-Auth: BUS_OPERATOR (owner) or ADMIN
-
-Emits bus.updated
-
-DELETE /api/v1/buses/:id — soft-delete (set isDeleted=true)
-
-Auth: BUS_OPERATOR (owner) or ADMIN
-
-SeatTemplate endpoints
-
-POST /api/v1/seat-templates — create seat template
-
-Body:
-
-{
-"title":"2+2 Sleeper 40",
-"description":"Upper/lower sleeper layout",
-"totalSeats":40,
-"layoutJson": { /_ coordinates & seat metadata used by UI _/ }
-}
-
-Creates SeatTemplate and multiple Seat rows based on layoutJson or separate seats[].
-
-GET /api/v1/seat-templates/:id — get seat template + seats array
-
-GET /api/v1/seat-templates — list templates (for operator)
-
-BusAmenity & BusImage endpoints
-
-PATCH /api/v1/buses/:id/amenities — set amenities (array of Amenity enums)
-
-POST /api/v1/buses/:id/images — add image metadata (URL & type)
-
-B. DTOs / Validation
-
-Use Zod schemas in bus.validators.ts for each endpoint (create/update/list).
-
-Strict validation: UUID checks, enum checks, numeric ranges.
-
-Return precise 4xx messages (shape: { success:false, message, errors?: {...} }).
-
-C. Service layer (Prisma interactions)
-
-Use src/modules/bus/bus.service.ts as internal API:
-
-createBus(dto, actorId) → validate operator ownership (if operator) then prisma.bus.create with nested relations for busAmenities if present.
-
-getBusById(id) → prisma.bus.findUnique({ where: { id }, include: { seatTemplate: true, busAmenities: true, busImages: true }}).
-
-listBuses(query) → prisma.bus.findMany with skip/ take for pagination, orderBy, and where filters (isDeleted=false).
-
-updateBus(id, dto, actor) → ensure RBAC ownership, prisma.bus.update.
-
-softDeleteBus(id) → prisma.bus.update({ data: { isDeleted: true }}).
-
-Important: service methods must be small, testable, and return domain DTOs (map Prisma models to response shapes).
-
-D. RBAC & Auth
-
-Use auth.middleware.ts to validate JWT and attach req.user = { id, role }. For Phase 1, JWT validation can be done by verifying signature and reading sub/role claims (user-service public key verification is recommended).
-
-Authorization rules:
-
-BUS_OPERATOR can create/update/delete only for operatorId matching their user.id.
-
-ADMIN/SUPER_ADMIN can manage everything.
-
-On create: createdBy = req.user.id and updatedBy set.
-
-E. Events (Kafka)
-
-Add kafka/producers/busProducer.ts with functions:
-
-emitBusCreated(payload) — non-blocking: push to Kafka and also write to EventQueue if send fails for retries.
-
-Emit events asynchronously; failures should not block response and should be retried with backoff.
-
-F. Observability & Logging
-
-Use logger (pino) with request ID middleware (generate/propagate X-Request-Id).
-
-Each controller call logs: actor, endpoint, payload size, latency.
-
-Add metrics recording hooks (prom-client or other) for request count, latency histograms, error rates.
-
-G. DB & Indexing (Prisma)
-
-Ensure queries use proper indexes:
-
-@@index([operatorId]) on Bus (we already index on route fields; add explicit operator index if needed).
-
-Partitioning: note TripSeatState is hot — not in Phase 1 but plan for partitioning / sharding later.
-
-H. Testing
-
-Unit tests for bus.service using a mocked Prisma client (or @prisma/client stub).
-
-Integration tests using test Postgres (Docker Compose) that run migrations before tests:
-
-POST /api/v1/buses → GET /api/v1/buses/:id → PUT → DELETE lifecycle test
-
-Add continuous test step in CI pipeline.
-
-I. Docs & Examples
-
-Provide OpenAPI snippets for each endpoint and example curl commands in README.
-
-Example create bus curl:
-
-curl -X POST http://localhost:4002/api/v1/buses \
- -H "Authorization: Bearer <token>" \
- -H "Content-Type: application/json" \
- -d '{ "operatorId":"<uuid>","registrationNo":"KA01AB0001","category":"SEATER","capacity":40,"totalSeats":40 }'
-
-Implementation details & coding conventions (production-grade)
-
-Controllers: thin, just validate, call service, send response.
-
-Services: business logic + Prisma. Handle race conditions (use DB transactions for multi-step operations).
-
-Validators: Zod schemas placed in bus.validators.ts. Reuse schema fragments.
-
-Errors: throw typed errors AppError { message, statusCode, code }. Global error handler maps to responses.
-
-Idempotency: For create endpoints, accept optional idempotency-key header later. For now ensure registrationNo unique constraint prevents duplicates.
-
-Migrations: use prisma migrate in CI and production with blue-green or offline migration strategy (no destructive changes without rollout).
-
-Secrets: use environment variables per 12-factor app. Don’t commit .env.
-
-“Done” criteria for Phase 1 (acceptance)
-
-All API endpoints listed above implemented and passing integration tests.
-
-Prisma migrations applied successfully to test DB; seed script created.
-
-RBAC properly enforced (tested with operator and admin tokens).
-
-Events are emitted on bus/seat template creation (Kafka client integrated, but can be mocked in dev).
-
-OpenAPI docs for these endpoints published (Swagger JSON).
-
-Basic load/latency measurement added (one histogram metric) and logs show request ids.
-
-CI pipeline runs lint, tests, prisma:generate & migration check.
-
 Sample file list to implement immediately (I can generate these files for you)
 src/modules/bus/
 ├── bus.controller.ts // routes handlers
@@ -1010,3 +776,35 @@ Each seat’s status for that trip (free/booked) TripSeatState
 ✅ Flexibility → each bus can have its own seat states per trip.
 ✅ Performance → live booking only touches TripSeatState (fast updates).
 ✅ Accuracy → physical layout never changes, only seat states change trip to trip.
+
+as you know we're making production-grade redbus website in which our lifecycle is:
+Bus-Service → Create Bus
+Registers the physical bus.
+Route-Service → Create Route
+Defines available routes (city-to-city).
+Bus-Service → Assign Route
+Create record in BusRoute table linking them.
+Trip-Service → Schedule Trip
+in which we're adding effective and end date at the time of bus-route linking, and just this:
+{
+"busId": "24347071-2e53-40ac-b580-41bd387f5dd5",
+"routeId": "00df6af3-0199-4476-81b2-93d1163330b2",
+"busRouteId": "9923060d-c99e-485e-981e-c029106b4406",
+"departureAt": "2025-11-06T08:00:00Z",
+"arrivalAt": "2025-11-06T12:00:00Z",
+"durationMin": 240,
+"baseFare": 599,
+"currency": "INR",
+"status": "SCHEDULED",
+"totalSeats": 40,
+"availableSeats": 40,
+"pricingStrategy": "FIXED"
+}
+at the time of trip scheduling, so I want, it shouldn't save date but only time because at the time of bus-route linking, we're adding:
+{
+"busId": "24347071-2e53-40ac-b580-41bd387f5dd5",
+"routeId": "00df6af3-0199-4476-81b2-93d1163330b2",
+"effectiveFrom": "2025-11-01T00:00:00Z",
+"effectiveTo": "2025-12-31T23:59:59Z"
+}
+so it should effective from the dates mentioned above, right, so tell me what I need to change and also explain me clear flow as still I'm not not that much clear about this flow like if we've already linked bus to route then why we're adding bus and route again at the time of trip scheduling, right

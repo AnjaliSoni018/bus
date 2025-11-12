@@ -5,68 +5,43 @@ import { emitBusEvent } from '../../kafka/producers/bus.producer';
 import { logger } from '../../config/logger';
 
 export async function createTrip(dto: CreateTripDTO, actorId?: string) {
-  const bus = await prisma.bus.findUnique({ where: { id: dto.busId } });
-  if (!bus || bus.isDeleted) throw new AppError('Bus not found', 404);
+  const busRoute = await prisma.busRoute.findUnique({
+    where: { id: dto.busRouteId },
+    include: { bus: true, route: true },
+  });
 
-  const route = await prisma.route.findUnique({ where: { id: dto.routeId } });
-  if (!route || route.isDeleted) throw new AppError('Route not found', 404);
+  if (!busRoute || busRoute.isDeleted)
+    throw new AppError('BusRoute not found', 404);
 
-  let busRoute = null;
-  if (dto.busRouteId) {
-    busRoute = await prisma.busRoute.findUnique({
-      where: { id: dto.busRouteId },
-    });
-    if (!busRoute || busRoute.isDeleted)
-      throw new AppError('BusRoute mapping not found', 404);
-    if (busRoute.busId !== dto.busId || busRoute.routeId !== dto.routeId) {
-      throw new AppError(
-        'busRouteId does not match provided busId/routeId',
-        400
-      );
-    }
-  } else {
-    busRoute = await prisma.busRoute.findFirst({
-      where: {
-        busId: dto.busId,
-        routeId: dto.routeId,
-        isDeleted: false,
-      },
-    });
+  if (busRoute.effectiveFrom && new Date(busRoute.effectiveFrom) > new Date()) {
+    throw new AppError('BusRoute is not yet effective', 400);
   }
 
-  const departure = new Date(dto.departureAt);
-  const arrival = new Date(dto.arrivalAt);
-  if (arrival <= departure)
-    throw new AppError('arrivalAt must be after departureAt', 400);
-
-  if (busRoute) {
-    if (
-      busRoute.effectiveFrom &&
-      departure < new Date(busRoute.effectiveFrom)
-    ) {
-      throw new AppError(
-        'Trip departure is before BusRoute effectiveFrom',
-        400
-      );
-    }
-    if (busRoute.effectiveTo && departure > new Date(busRoute.effectiveTo)) {
-      throw new AppError('Trip departure is after BusRoute effectiveTo', 400);
-    }
+  if (busRoute.effectiveTo && new Date(busRoute.effectiveTo) < new Date()) {
+    throw new AppError('BusRoute is no longer active', 400);
   }
 
-  const totalSeats = dto.totalSeats ?? bus.totalSeats;
+  const departureTime = dto.departureTime;
+  const arrivalTime = dto.arrivalTime;
+
+  if (!departureTime || !arrivalTime)
+    throw new AppError('departureTime and arrivalTime are required', 400);
+
+  if (arrivalTime <= departureTime)
+    throw new AppError('arrivalTime must be after departureTime', 400);
+
+  const totalSeats = dto.totalSeats ?? busRoute.bus.totalSeats;
+
   const created = await prisma.trip.create({
     data: {
-      busId: dto.busId,
-      routeId: dto.routeId,
-      busRouteId: dto.busRouteId ?? null,
-      departureAt: departure,
-      arrivalAt: arrival,
+      busRouteId: dto.busRouteId,
+      departureTime,
+      arrivalTime,
       durationMin:
         dto.durationMin ??
         Math.max(
           0,
-          Math.round((arrival.getTime() - departure.getTime()) / 60000)
+          Math.round(timeToMinutes(arrivalTime) - timeToMinutes(departureTime))
         ),
       baseFare: dto.baseFare,
       currency: dto.currency ?? 'INR',
@@ -80,16 +55,20 @@ export async function createTrip(dto: CreateTripDTO, actorId?: string) {
       updatedBy: actorId ?? null,
     },
     include: {
-      bus: { select: { id: true, registrationNo: true, totalSeats: true } },
-      route: true,
-      busRoute: true,
+      busRoute: {
+        include: {
+          bus: {
+            select: { id: true, registrationNo: true, operatorName: true },
+          },
+          route: true,
+        },
+      },
     },
   });
 
   emitBusEvent('trip.created', created.id, {
     id: created.id,
-    busId: created.busId,
-    routeId: created.routeId,
+    busRouteId: created.busRouteId,
   }).catch((e) => logger.warn(e, 'emitBusEvent trip.created'));
 
   return created;
@@ -102,31 +81,18 @@ export async function listTrips(query: any) {
 
   const where: any = { isDeleted: false };
 
-  if (query.busId) where.busId = query.busId;
-  if (query.routeId) where.routeId = query.routeId;
+  if (query.busRouteId) where.busRouteId = query.busRouteId;
   if (query.status) where.status = query.status;
-
-  if (query.date) {
-    const day = new Date(query.date);
-    const start = new Date(
-      Date.UTC(
-        day.getUTCFullYear(),
-        day.getUTCMonth(),
-        day.getUTCDate(),
-        0,
-        0,
-        0
-      )
-    );
-    const end = new Date(start.getTime() + 24 * 60 * 60 * 1000 - 1);
-    where.departureAt = { gte: start, lte: end };
-  }
 
   if (query.search) {
     const q = query.search;
     where.OR = [
       { id: { contains: q, mode: 'insensitive' } },
-      { bus: { registrationNo: { contains: q, mode: 'insensitive' } } } as any,
+      {
+        busRoute: {
+          bus: { registrationNo: { contains: q, mode: 'insensitive' } },
+        },
+      } as any,
     ];
   }
 
@@ -134,12 +100,18 @@ export async function listTrips(query: any) {
     prisma.trip.findMany({
       where,
       include: {
-        bus: { select: { id: true, registrationNo: true, operatorName: true } },
-        route: true,
+        busRoute: {
+          include: {
+            bus: {
+              select: { id: true, registrationNo: true, operatorName: true },
+            },
+            route: true,
+          },
+        },
       },
       skip,
       take: limit,
-      orderBy: { departureAt: 'asc' },
+      orderBy: { createdAt: 'desc' },
     }),
     prisma.trip.count({ where }),
   ]);
@@ -151,13 +123,17 @@ export async function getTripById(id: string) {
   const trip = await prisma.trip.findUnique({
     where: { id },
     include: {
-      bus: true,
-      route: true,
-      busRoute: true,
+      busRoute: {
+        include: {
+          bus: true,
+          route: true,
+        },
+      },
       tripSeatStates: true,
       tripStops: true,
     },
   });
+
   if (!trip || trip.isDeleted) throw new AppError('Trip not found', 404);
   return trip;
 }
@@ -171,24 +147,18 @@ export async function updateTrip(
   if (!existing || existing.isDeleted)
     throw new AppError('Trip not found', 404);
 
-  if (dto.departureAt || dto.arrivalAt) {
-    const departure = dto.departureAt
-      ? new Date(dto.departureAt as any)
-      : existing.departureAt;
-    const arrival = dto.arrivalAt
-      ? new Date(dto.arrivalAt as any)
-      : existing.arrivalAt;
-    if (arrival <= departure)
-      throw new AppError('arrivalAt must be after departureAt', 400);
+  if (dto.departureTime && dto.arrivalTime) {
+    if (dto.arrivalTime <= dto.departureTime)
+      throw new AppError('arrivalTime must be after departureTime', 400);
   }
 
   const updated = await prisma.trip.update({
     where: { id },
     data: {
-      ...(dto.departureAt !== undefined && { departureAt: dto.departureAt }),
-      ...(dto.arrivalAt !== undefined && { arrivalAt: dto.arrivalAt }),
+      ...(dto.departureTime && { departureTime: dto.departureTime }),
+      ...(dto.arrivalTime && { arrivalTime: dto.arrivalTime }),
       ...(dto.baseFare !== undefined && { baseFare: dto.baseFare }),
-      ...(dto.status !== undefined && { status: dto.status }),
+      ...(dto.status && { status: dto.status }),
       ...(dto.totalSeats !== undefined && { totalSeats: dto.totalSeats }),
       ...(dto.pricingMeta !== undefined && { pricingMeta: dto.pricingMeta }),
       ...(dto.meta !== undefined && { meta: dto.meta }),
@@ -199,6 +169,7 @@ export async function updateTrip(
   emitBusEvent('trip.updated', id, { id }).catch((e) =>
     logger.warn(e, 'emitBusEvent trip.updated')
   );
+
   return updated;
 }
 
@@ -215,5 +186,11 @@ export async function softDeleteTrip(id: string, actorId?: string) {
   emitBusEvent('trip.deleted', id, { id }).catch((e) =>
     logger.warn(e, 'emitBusEvent trip.deleted')
   );
+
   return deleted;
+}
+
+function timeToMinutes(time: string): number {
+  const [h, m, s] = time.split(':').map(Number);
+  return h * 60 + m + (s ? s / 60 : 0);
 }

@@ -77,6 +77,7 @@ export async function listBusRoutes(query: any) {
         bus: {
           select: {
             id: true,
+            brand: true,
             registrationNo: true,
             operatorName: true,
             category: true,

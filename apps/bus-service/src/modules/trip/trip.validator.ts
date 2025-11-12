@@ -1,15 +1,9 @@
 import { z } from 'zod';
 
 export const createTripSchema = z.object({
-  busId: z.uuid(),
-  routeId: z.uuid(),
-  busRouteId: z.uuid().optional(),
-  departureAt: z.string().refine((s) => !Number.isNaN(Date.parse(s)), {
-    message: 'Invalid departureAt',
-  }),
-  arrivalAt: z.string().refine((s) => !Number.isNaN(Date.parse(s)), {
-    message: 'Invalid arrivalAt',
-  }),
+  busRouteId: z.uuid(),
+  departureTime: z.string(),
+  arrivalTime: z.string(),
   baseFare: z.number().nonnegative(),
   currency: z.string().optional(),
   totalSeats: z.number().int().positive().optional(),
@@ -20,18 +14,8 @@ export const createTripSchema = z.object({
 
 export const updateTripSchema = z.object({
   params: z.object({ id: z.uuid() }),
-  departureAt: z
-    .string()
-    .refine((s) => !Number.isNaN(Date.parse(s)), {
-      message: 'Invalid departureAt',
-    })
-    .optional(),
-  arrivalAt: z
-    .string()
-    .refine((s) => !Number.isNaN(Date.parse(s)), {
-      message: 'Invalid arrivalAt',
-    })
-    .optional(),
+  departureTime: z.string().optional(),
+  arrivalTime: z.string().optional(),
   baseFare: z.number().nonnegative().optional(),
   status: z
     .enum(['SCHEDULED', 'CANCELLED', 'DEPARTED', 'COMPLETED', 'DELAYED'])
