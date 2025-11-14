@@ -3,11 +3,21 @@ import { AppError } from '../../utils/AppError';
 import { CreateTripDTO, UpdateTripDTO } from './trip.types';
 import { emitBusEvent } from '../../kafka/producers/bus.producer';
 import { logger } from '../../config/logger';
+import { SeatState } from '../../generated/prisma';
 
 export async function createTrip(dto: CreateTripDTO, actorId?: string) {
   const busRoute = await prisma.busRoute.findUnique({
     where: { id: dto.busRouteId },
-    include: { bus: true, route: true },
+    include: {
+      bus: {
+        include: {
+          seatTemplate: {
+            include: { seats: true },
+          },
+        },
+      },
+      route: true,
+    },
   });
 
   if (!busRoute || busRoute.isDeleted)
@@ -31,47 +41,61 @@ export async function createTrip(dto: CreateTripDTO, actorId?: string) {
     throw new AppError('arrivalTime must be after departureTime', 400);
 
   const totalSeats = dto.totalSeats ?? busRoute.bus.totalSeats;
+  const baseFare = dto.baseFare;
 
-  const created = await prisma.trip.create({
-    data: {
-      busRouteId: dto.busRouteId,
-      departureTime,
-      arrivalTime,
-      durationMin:
-        dto.durationMin ??
-        Math.max(
-          0,
-          Math.round(timeToMinutes(arrivalTime) - timeToMinutes(departureTime))
-        ),
-      baseFare: dto.baseFare,
-      currency: dto.currency ?? 'INR',
-      status: 'SCHEDULED',
-      totalSeats,
-      availableSeats: totalSeats,
-      pricingStrategy: dto.pricingStrategy ?? 'FIXED',
-      pricingMeta: dto.pricingMeta ?? null,
-      meta: dto.meta ?? null,
-      createdBy: actorId ?? null,
-      updatedBy: actorId ?? null,
-    },
-    include: {
-      busRoute: {
-        include: {
-          bus: {
-            select: { id: true, registrationNo: true, operatorName: true },
-          },
-          route: true,
-        },
+  const createdTrip = await prisma.$transaction(async (tx) => {
+    const trip = await tx.trip.create({
+      data: {
+        busRouteId: dto.busRouteId,
+        departureTime,
+        arrivalTime,
+        durationMin:
+          dto.durationMin ??
+          Math.max(
+            0,
+            Math.round(
+              timeToMinutes(arrivalTime) - timeToMinutes(departureTime)
+            )
+          ),
+        baseFare,
+        currency: dto.currency ?? 'INR',
+        status: 'SCHEDULED',
+        totalSeats,
+        availableSeats: totalSeats,
+        pricingStrategy: dto.pricingStrategy ?? 'FIXED',
+        pricingMeta: dto.pricingMeta ?? null,
+        meta: dto.meta ?? null,
+        createdBy: actorId ?? null,
+        updatedBy: actorId ?? null,
       },
-    },
+    });
+
+    const seats = busRoute.bus.seatTemplate?.seats ?? [];
+    if (!seats.length)
+      throw new AppError(
+        'No seats found for this bus seat template — cannot create trip seat states',
+        400
+      );
+
+    const tripSeatStates = seats.map((seat) => ({
+      tripId: trip.id,
+      seatId: seat.id,
+      seatLabel: seat.seatLabel ?? seat.seatNo,
+      state: SeatState.AVAILABLE,
+      price: baseFare * (seat.priceFactor ?? 1.0),
+    }));
+
+    await tx.tripSeatState.createMany({ data: tripSeatStates });
+
+    return trip;
   });
 
-  emitBusEvent('trip.created', created.id, {
-    id: created.id,
-    busRouteId: created.busRouteId,
+  emitBusEvent('trip.created', createdTrip.id, {
+    id: createdTrip.id,
+    busRouteId: createdTrip.busRouteId,
   }).catch((e) => logger.warn(e, 'emitBusEvent trip.created'));
 
-  return created;
+  return createdTrip;
 }
 
 export async function listTrips(query: any) {

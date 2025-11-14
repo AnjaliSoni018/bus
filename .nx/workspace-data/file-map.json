@@ -33,52 +33,28 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "apps/tsconfig.json",
-        "hash": "9420862676426701392"
-      },
-      {
-        "file": "apps/eslint.config.js",
-        "hash": "17012108287991280227"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "10052046223518464685"
-      },
-      {
-        "file": "packages/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
         "file": "package-lock.json",
         "hash": "14559716633664282539"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "13455748945344899060"
-      },
-      {
-        "file": "README.md",
-        "hash": "7165304433440806019"
-      },
-      {
-        "file": "tsconfig.json",
-        "hash": "1379983966652230747"
-      },
-      {
-        "file": "apps/tsconfig.app.json",
-        "hash": "3062189852699194213"
       },
       {
         "file": ".vscode/extensions.json",
         "hash": "4934098906304722861"
       },
       {
-        "file": "package.json",
-        "hash": "6127814829631685347"
+        "file": "nx.json",
+        "hash": "14775129647607812896"
+      },
+      {
+        "file": "apps-e2e/tsconfig.json",
+        "hash": "2346920493880922870"
       },
       {
         "file": "eslint.config.js",
         "hash": "8965237677768068718"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "12456585487980810333"
       },
       {
         "file": ".prettierignore",
@@ -89,51 +65,201 @@
         "hash": "3494843969422251966"
       },
       {
-        "file": "nx.json",
-        "hash": "14775129647607812896"
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "10052046223518464685"
+      },
+      {
+        "file": "README.md",
+        "hash": "15949941283180235219"
       },
       {
         "file": "apps/jest.config.ts",
         "hash": "3244421341483603138"
       },
       {
-        "file": "apps-e2e/tsconfig.json",
-        "hash": "2346920493880922870"
-      },
-      {
-        "file": "apps-e2e/jest.config.ts",
-        "hash": "3244421341483603138"
+        "file": "apps/tsconfig.spec.json",
+        "hash": "15632768803430051377"
       },
       {
         "file": "apps-e2e/tsconfig.spec.json",
         "hash": "13058925111467353993"
       },
       {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
+        "file": "apps/tsconfig.json",
+        "hash": "9420862676426701392"
       },
       {
         "file": "apps-e2e/eslint.config.js",
         "hash": "17012108287991280227"
       },
       {
+        "file": "package.json",
+        "hash": "6127814829631685347"
+      },
+      {
         "file": "tmp/user-service/main-with-require-overrides.js",
         "hash": "5803729257484543891"
       },
       {
-        "file": "docker-compose.yml",
-        "hash": "12456585487980810333"
+        "file": "apps/tsconfig.app.json",
+        "hash": "3062189852699194213"
       },
       {
-        "file": "apps/tsconfig.spec.json",
-        "hash": "15632768803430051377"
+        "file": "tsconfig.base.json",
+        "hash": "13455748945344899060"
       },
       {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "1379983966652230747"
+      },
+      {
+        "file": "apps/eslint.config.js",
+        "hash": "17012108287991280227"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "apps-e2e/jest.config.ts",
+        "hash": "3244421341483603138"
       }
     ],
     "projectFileMap": {
+      "bus-service-e2e": [
+        {
+          "file": "apps/bus-service-e2e/eslint.config.js",
+          "hash": "17012108287991280227"
+        },
+        {
+          "file": "apps/bus-service-e2e/jest.config.ts",
+          "hash": "16040300586669143754"
+        },
+        {
+          "file": "apps/bus-service-e2e/project.json",
+          "hash": "9829868153917457007"
+        },
+        {
+          "file": "apps/bus-service-e2e/src/bus-service/bus-service.spec.ts",
+          "hash": "4579662685003779048",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/bus-service-e2e/src/support/global-setup.ts",
+          "hash": "2568409276037275290"
+        },
+        {
+          "file": "apps/bus-service-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "apps/bus-service-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/bus-service-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
+        },
+        {
+          "file": "apps/bus-service-e2e/tsconfig.spec.json",
+          "hash": "13058925111467353993"
+        }
+      ],
+      "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": [
+        {
+          "file": "apps/bus-service/src/generated/prisma/default.d.ts",
+          "hash": "6801102947810818358"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/default.js",
+          "hash": "2742901603506114256"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/edge.d.ts",
+          "hash": "11303388507078878756"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/edge.js",
+          "hash": "12557802981087447084"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/index-browser.js",
+          "hash": "7563516641197999524"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/index.d.ts",
+          "hash": "12637584373188215136"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/index.js",
+          "hash": "13533586022906627159"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node",
+          "hash": "3265119270222735553"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/package.json",
+          "hash": "16989371739402163341"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/edge-esm.js",
+          "hash": "15313229601370783230"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/edge.js",
+          "hash": "9304012550562964105"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/index-browser.d.ts",
+          "hash": "8428496683677604739"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/index-browser.js",
+          "hash": "10266951411384006616"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/library.d.ts",
+          "hash": "18285273706481052034"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/library.js",
+          "hash": "14098999821647302349"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/react-native.js",
+          "hash": "4853633689890394593"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/wasm.js",
+          "hash": "2585500939485510051"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/schema.prisma",
+          "hash": "17727942589867555649"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/wasm.d.ts",
+          "hash": "6801102947810818358"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/wasm.js",
+          "hash": "7563516641197999524"
+        }
+      ],
       "user-service": [
         {
           "file": "apps/user-service/.gitignore",
@@ -365,176 +491,6 @@
         {
           "file": "apps/user-service/tsconfig.spec.json",
           "hash": "16410836228125477868"
-        }
-      ],
-      "bus-service-e2e": [
-        {
-          "file": "apps/bus-service-e2e/eslint.config.js",
-          "hash": "17012108287991280227"
-        },
-        {
-          "file": "apps/bus-service-e2e/jest.config.ts",
-          "hash": "16040300586669143754"
-        },
-        {
-          "file": "apps/bus-service-e2e/project.json",
-          "hash": "9829868153917457007"
-        },
-        {
-          "file": "apps/bus-service-e2e/src/bus-service/bus-service.spec.ts",
-          "hash": "4579662685003779048",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/bus-service-e2e/src/support/global-setup.ts",
-          "hash": "2568409276037275290"
-        },
-        {
-          "file": "apps/bus-service-e2e/src/support/global-teardown.ts",
-          "hash": "5275447082211835490"
-        },
-        {
-          "file": "apps/bus-service-e2e/src/support/test-setup.ts",
-          "hash": "10984585515912236441",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/bus-service-e2e/tsconfig.json",
-          "hash": "15443990093475294480"
-        },
-        {
-          "file": "apps/bus-service-e2e/tsconfig.spec.json",
-          "hash": "13058925111467353993"
-        }
-      ],
-      "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": [
-        {
-          "file": "apps/bus-service/src/generated/prisma/default.d.ts",
-          "hash": "6801102947810818358"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/default.js",
-          "hash": "2742901603506114256"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/edge.d.ts",
-          "hash": "11303388507078878756"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/edge.js",
-          "hash": "12557802981087447084"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/index-browser.js",
-          "hash": "7563516641197999524"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/index.d.ts",
-          "hash": "12637584373188215136"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/index.js",
-          "hash": "13533586022906627159"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node",
-          "hash": "3265119270222735553"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/package.json",
-          "hash": "16989371739402163341"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/edge-esm.js",
-          "hash": "15313229601370783230"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/edge.js",
-          "hash": "9304012550562964105"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/index-browser.d.ts",
-          "hash": "8428496683677604739"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/index-browser.js",
-          "hash": "10266951411384006616"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/library.d.ts",
-          "hash": "18285273706481052034"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/library.js",
-          "hash": "14098999821647302349"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/react-native.js",
-          "hash": "4853633689890394593"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/wasm.js",
-          "hash": "2585500939485510051"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/schema.prisma",
-          "hash": "17727942589867555649"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/wasm.d.ts",
-          "hash": "6801102947810818358"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/wasm.js",
-          "hash": "7563516641197999524"
-        }
-      ],
-      "user-service-e2e": [
-        {
-          "file": "apps/user-service-e2e/eslint.config.js",
-          "hash": "17472210594086834595"
-        },
-        {
-          "file": "apps/user-service-e2e/jest.config.ts",
-          "hash": "14101698721330714857"
-        },
-        {
-          "file": "apps/user-service-e2e/project.json",
-          "hash": "10585251015563642200"
-        },
-        {
-          "file": "apps/user-service-e2e/src/support/global-setup.ts",
-          "hash": "2568409276037275290"
-        },
-        {
-          "file": "apps/user-service-e2e/src/support/global-teardown.ts",
-          "hash": "5275447082211835490"
-        },
-        {
-          "file": "apps/user-service-e2e/src/support/test-setup.ts",
-          "hash": "10984585515912236441",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/user-service-e2e/src/user-service/user-service.spec.ts",
-          "hash": "4579662685003779048",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/user-service-e2e/tsconfig.json",
-          "hash": "15443990093475294480"
-        },
-        {
-          "file": "apps/user-service-e2e/tsconfig.spec.json",
-          "hash": "14954872453723519891"
         }
       ],
       "bus-service": [
@@ -895,7 +851,10 @@
         },
         {
           "file": "apps/bus-service/src/modules/trip/trip.service.ts",
-          "hash": "2948974823982097948"
+          "hash": "9084855916974300764",
+          "deps": [
+            "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba"
+          ]
         },
         {
           "file": "apps/bus-service/src/modules/trip/trip.types.ts",
@@ -927,14 +886,14 @@
         },
         {
           "file": "apps/bus-service/src/modules/tripSearch/tripSearch.service.ts",
-          "hash": "15278297052750230616",
+          "hash": "17489758488032338599",
           "deps": [
             "npm:date-fns"
           ]
         },
         {
           "file": "apps/bus-service/src/modules/tripSearch/tripSearch.types.ts",
-          "hash": "9705300437448329454"
+          "hash": "15344103640343844061"
         },
         {
           "file": "apps/bus-service/src/modules/tripSearch/tripService.validator.ts",
@@ -1016,6 +975,50 @@
         {
           "file": "apps/bus-service/tsconfig.spec.json",
           "hash": "15632768803430051377"
+        }
+      ],
+      "user-service-e2e": [
+        {
+          "file": "apps/user-service-e2e/eslint.config.js",
+          "hash": "17472210594086834595"
+        },
+        {
+          "file": "apps/user-service-e2e/jest.config.ts",
+          "hash": "14101698721330714857"
+        },
+        {
+          "file": "apps/user-service-e2e/project.json",
+          "hash": "10585251015563642200"
+        },
+        {
+          "file": "apps/user-service-e2e/src/support/global-setup.ts",
+          "hash": "2568409276037275290"
+        },
+        {
+          "file": "apps/user-service-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "apps/user-service-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/user-service-e2e/src/user-service/user-service.spec.ts",
+          "hash": "4579662685003779048",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/user-service-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
+        },
+        {
+          "file": "apps/user-service-e2e/tsconfig.spec.json",
+          "hash": "14954872453723519891"
         }
       ]
     }

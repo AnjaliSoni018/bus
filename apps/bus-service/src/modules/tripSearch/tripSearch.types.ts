@@ -18,6 +18,14 @@ export interface TripStopResult {
   scheduledDeparture?: Date | null;
 }
 
+export interface TripSeatStateResult {
+  id: string;
+  seatId: string;
+  seatLabel?: string;
+  state: string;
+  price?: number;
+}
+
 export interface TripSearchResult {
   tripId: string;
   bus: {
@@ -35,6 +43,7 @@ export interface TripSearchResult {
     durationMin?: number;
   };
   tripStops: TripStopResult[];
+  tripSeatStates: TripSeatStateResult[];
   departureTime: string;
   arrivalTime: string;
   availableSeats: number;

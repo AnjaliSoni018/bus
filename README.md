@@ -1,419 +1,6 @@
-generator client {
-provider = "prisma-client-js"
-output = "../src/generated/prisma"
-}
-
-datasource db {
-provider = "postgresql"
-url = env("DATABASE*URL")
-}
-/*
-Enums
-\_/
-enum BusStatus {
-ACTIVE
-INACTIVE
-MAINTENANCE
-RETIRED
-}
-
-enum BusCategory {
-SEATER
-SLEEPER
-SEMI_SLEEPER
-SLEEPER_AC
-SEATER_AC
-VOLVO
-MINI
-}
-
-enum SeatType {
-REGULAR
-LOWER
-UPPER
-MIDDLE
-SIDE_LOWER
-SIDE_UPPER
-WOMAN_ONLY
-WHEELCHAIR
-}
-
-enum SeatState {
-AVAILABLE
-HELD
-BOOKED
-BLOCKED
-}
-
-enum TripStatus {
-SCHEDULED
-CANCELLED
-DEPARTED
-COMPLETED
-DELAYED
-}
-
-enum Amenity {
-WIFI
-CHARGING_POINT
-BLANKET
-WATER_BOTTLE
-AC
-TV
-READING_LIGHT
-LUGGAGE
-SNACK
-}
-
-enum PricingStrategy {
-FIXED
-DYNAMIC
-}
-
-/_
-Core Models
-_/
-
-/_
-Operators: minimal local cache of operator identity.
-operatorUserId is user.id (from user-service). We keep it as string (no FK).
-_/
-model Operator {
-id String @id @default(uuid())
-operatorUserId String @unique
-name String
-email String?
-phone String?
-isVerified Boolean @default(false) // mirror from user-service KYC/approval
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-isDeleted Boolean @default(false)
-
-// relations
-buses Bus[]
-cancellationPolicies CancellationPolicy[]
-}
-
-/_
-Bus: static details about a physical bus.
-_/
-model Bus {
-id String @id @default(uuid())
-operatorId String
-registrationNo String @unique
-brand String?
-model String?
-category BusCategory
-capacity Int
-totalSeats Int
-busTemplateId String? // seat template reference
-status BusStatus @default(ACTIVE)
-hasUpperDeck Boolean @default(false)
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-isDeleted Boolean @default(false)
-
-// audit (user-service user id strings)
-createdBy String?
-updatedBy String?
-
-// relations
-operator Operator @relation(fields: [operatorId], references: [id], onDelete: Cascade)
-seatTemplates SeatTemplate? @relation(fields: [busTemplateId], references: [id])
-busAmenities BusAmenity[]
-busImages BusImage[]
-busRoutes BusRoute[] // many-to-many via BusRoute
-trips Trip[]
-}
-
-/_
-SeatTemplate: declarative seat map for a bus type / operator / bus.
-A seat template maps seats with positions; used to render seat-map UI.
-_/
-model SeatTemplate {
-id String @id @default(uuid())
-title String
-description String?
-totalSeats Int
-layoutJson Json? // full layout + coordinates (for UI rendering)
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-isDeleted Boolean @default(false)
-
-seats Seat[]
-buses Bus[] @relation("TemplateBuses")
-}
-
-/_
-Seat: seat definitions belonging to a template.
-_/
-model Seat {
-id String @id @default(uuid())
-templateId String
-seatNo String
-seatLabel String? // UI label e.g. "1A"
-type SeatType @default(REGULAR)
-row Int?
-column Int?
-deck Int? // 0 => lower, 1 => upper
-priceFactor Float? @default(1.0) // multiplier for base fare if seat-specific pricing
-genderOnly Boolean? @default(false)
-isAvailable Boolean @default(true)
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-isDeleted Boolean @default(false)
-
-template SeatTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
-tripSeatStates TripSeatState[]
-@@index([templateId, seatNo])
-}
-
-/_
-Routes & Stops
-Route is a logical origin-destination (may include many stops)
-_/
-model Route {
-id String @id @default(uuid())
-sourceCity String
-sourceStation String? // optional normalized station
-destinationCity String
-destinationStation String?
-distanceKm Float?
-durationMin Int? // estimated duration
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-isDeleted Boolean @default(false)
-
-stops RouteStop[]
-busRoutes BusRoute[]
-trips Trip[] // convenience relation: trips for this route
-@@index([sourceCity, destinationCity])
-}
-
-/_
-RouteStop: ordered stops for a route (boarding/dropping options)
-_/
-model RouteStop {
-id String @id @default(uuid())
-routeId String
-name String
-city String
-latitude Float?
-longitude Float?
-sequence Int // order in route: 1..n
-arrivalOffsetMin Int? // minutes from route start (estimate)
-isBoardingPoint Boolean @default(true)
-isDroppingPoint Boolean @default(true)
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-isDeleted Boolean @default(false)
-
-route Route @relation(fields: [routeId], references: [id], onDelete: Cascade)
-tripStops TripStop[]
-@@index([routeId, sequence])
-}
-
-/_
-BusRoute: linking bus <-> route for scheduling. A bus can operate on many routes.
-_/
-model BusRoute {
-id String @id @default(uuid())
-busId String
-routeId String
-effectiveFrom DateTime?
-effectiveTo DateTime?
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-isDeleted Boolean @default(false)
-
-bus Bus @relation(fields: [busId], references: [id], onDelete: Cascade)
-route Route @relation(fields: [routeId], references: [id], onDelete: Cascade)
-trips Trip[]
-@@index([routeId, busId])
-}
-
-/_
-Trip: a scheduled run of a bus on a specific date/time.
-_/
-model Trip {
-id String @id @default(uuid())
-busId String
-routeId String
-busRouteId String?
-departureAt DateTime
-arrivalAt DateTime
-durationMin Int?
-baseFare Float
-currency String @default("INR")
-status TripStatus @default(SCHEDULED)
-totalSeats Int
-availableSeats Int
-pricingStrategy PricingStrategy @default(FIXED)
-pricingMeta Json? // e.g. dynamic pricing rules or snapshot
-meta Json? // free-form JSON snapshot (operator notes, tags)
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-isDeleted Boolean @default(false)
-
-// audit & owner references
-createdBy String? // user.id who created (operator/admin)
-updatedBy String?
-
-// relations
-bus Bus @relation(fields: [busId], references: [id], onDelete: Cascade)
-route Route @relation(fields: [routeId], references: [id], onDelete: Cascade)
-busRoute BusRoute? @relation(fields: [busRouteId], references: [id])
-tripStops TripStop[]
-tripSeatStates TripSeatState[]
-tripLogs TripLog[]
-@@index([routeId, departureAt])
-@@index([busId, departureAt])
-}
-
-/_
-TripStop: the actual times for each stop for a specific trip (derived from RouteStop + offsets)
-Used for boarding/dropping points offering to customers.
-_/
-model TripStop {
-id String @id @default(uuid())
-tripId String
-routeStopId String
-scheduledArrival DateTime?
-scheduledDeparture DateTime?
-sequence Int
-isBoarding Boolean @default(true)
-isDropping Boolean @default(true)
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-
-trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
-routeStop RouteStop @relation(fields: [routeStopId], references: [id], onDelete: Cascade)
-@@index([tripId, sequence])
-}
-
-/_
-TripSeatState: dynamic seat status per trip. This is the authoritative seat status in DB.
-High-frequency updates expected; index and partition this table in the DB if needed.
-_/
-model TripSeatState {
-id String @id @default(uuid())
-tripId String
-seatId String // points to Seat.id (from template) OR a seat code string if seats managed per bus
-seatLabel String? // duplicate label for faster read
-state SeatState @default(AVAILABLE)
-holdToken String? // token used for holds (booking-service id or redis hold id)
-heldUntil DateTime? // timestamp when hold expires
-price Float? // final price for this seat
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-isDeleted Boolean @default(false)
-
-trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
-seat Seat? @relation(fields: [seatId], references: [id], onDelete: SetNull)
-@@index([tripId, seatId])
-@@index([tripId, state])
-}
-
-/_
-Amenities & mapping
-_/
-model BusAmenity {
-id String @id @default(uuid())
-busId String
-amenity Amenity
-createdAt DateTime @default(now())
-
-bus Bus @relation(fields: [busId], references: [id], onDelete: Cascade)
-@@unique([busId, amenity])
-}
-
-/_
-Images for buses, seatmaps, operator logos
-_/
-model BusImage {
-id String @id @default(uuid())
-busId String
-url String
-type String? // "seatmap", "banner", "operator_logo"
-caption String?
-createdAt DateTime @default(now())
-
-bus Bus @relation(fields: [busId], references: [id], onDelete: Cascade)
-}
-
-/_
-CancellationPolicy: per-operator or per-route policy
-_/
-model CancellationPolicy {
-id String @id @default(uuid())
-operatorId String?
-routeId String?
-policyJson Json // e.g. [{ "beforeMinutes": 360, "refundPercent": 90 }, ...]
-note String?
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-
-operator Operator? @relation(fields: [operatorId], references: [id], onDelete: Cascade)
-route Route? @relation(fields: [routeId], references: [id], onDelete: Cascade)
-}
-
-/_
-TripLog & AuditLog
-_/
-model TripLog {
-id String @id @default(uuid())
-tripId String
-event String // "DELAY", "BOARDING_STARTED", "CANCELLED", etc.
-payload Json?
-createdAt DateTime @default(now())
-
-trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
-}
-
-model AuditLog {
-id String @id @default(uuid())
-entity String // e.g. "Bus", "Trip", "Route"
-entityId String
-action String // CREATE, UPDATE, DELETE
-performedBy String? // user.id
-payload Json?
-createdAt DateTime @default(now())
-ipAddress String?
-userAgent String?
-@@index([entity, entityId])
-}
-
-/_
-Auxiliary: pricing snapshots, cache tables, etc.
-_/
-model PricingSnapshot {
-id String @id @default(uuid())
-tripId String
-snapshot Json
-createdAt DateTime @default(now())
-
-trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
-}
-
-/_
-EventQueue: optional persistent event log for replay
-_/
-model EventQueue {
-id String @id @default(uuid())
-topic String
-key String?
-payload Json
-status String @default("PENDING") // PENDING, SENT, FAILED
-attempts Int @default(0)
-createdAt DateTime @default(now())
-updatedAt DateTime @updatedAt
-nextRetry DateTime?
-@@index([topic, status])
-}
-
 ---
-
 # folder structure:
+---
 
 src/
 ├── app.ts
@@ -776,3 +363,179 @@ Each seat’s status for that trip (free/booked) TripSeatState
 ✅ Flexibility → each bus can have its own seat states per trip.
 ✅ Performance → live booking only touches TripSeatState (fast updates).
 ✅ Accuracy → physical layout never changes, only seat states change trip to trip.
+
+---
+
+booking-service specific:
+
+generator client {
+provider = "prisma-client-js"
+output = "../src/generated/prisma"
+}
+
+datasource db {
+provider = "postgresql"
+url = env("DATABASE_URL")
+}
+
+enum BookingStatus {
+INITIATED // Created but payment not done yet
+CONFIRMED // Successfully booked
+PAYMENT_FAILED // Payment failed
+CANCELLED // Cancelled by user/operator/system
+COMPLETED // Trip completed
+REFUNDED // Refund issued
+}
+
+enum PaymentStatus {
+PENDING
+SUCCESS
+FAILED
+REFUNDED
+}
+
+enum PaymentMethod {
+UPI
+CARD
+NETBANKING
+WALLET
+CASH
+OTHER
+}
+
+enum RefundStatus {
+INITIATED
+PROCESSING
+SUCCESS
+FAILED
+}
+
+model Booking {
+id String @id @default(uuid())
+bookingRef String @unique // human-readable booking reference like "RBX123456"
+userId String // references user-service.user.id
+tripId String // references bus-service.trip.id
+operatorUserId String? // for quick reporting (redundant cache)
+routeId String? // for analytics & filtering
+busId String? // redundant cache for reporting
+totalAmount Float
+baseFare Float
+taxes Float? @default(0)
+discount Float? @default(0)
+currency String @default("INR")
+status BookingStatus @default(INITIATED)
+paymentStatus PaymentStatus @default(PENDING)
+paymentMethod PaymentMethod?
+transactionId String? // from PaymentGateway
+bookedSeatsCount Int
+bookedSeats BookingSeat[]
+passengers Passenger[]
+cancellation BookingCancellation?
+refund Refund?
+payment Payment?
+
+bookedAt DateTime?  
+ cancelledAt DateTime?
+completedAt DateTime?
+expiresAt DateTime? // hold expiry for temporary bookings
+
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+createdBy String?
+updatedBy String?
+
+auditLogs AuditLog[]
+
+@@index([userId, status])
+@@index([tripId])
+@@index([bookingRef])
+}
+
+model BookingSeat {
+id String @id @default(uuid())
+bookingId String
+tripId String
+seatId String
+seatLabel String?
+fare Float
+state String? // AVAILABLE / BOOKED / CANCELLED
+heldToken String? // For concurrency-safe seat hold
+heldUntil DateTime?
+createdAt DateTime @default(now())
+
+booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+@@unique([tripId, seatId, bookingId])
+@@index([tripId, seatId])
+}
+
+model Passenger {
+id String @id @default(uuid())
+bookingId String
+name String
+gender String?
+age Int?
+seatLabel String?
+phone String?
+email String?
+idProofType String?
+idProofNo String?
+isPrimary Boolean @default(false)
+
+booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model Payment {
+id String @id @default(uuid())
+bookingId String
+amount Float
+method PaymentMethod
+transactionId String? @unique
+gatewayResponse Json?
+status PaymentStatus @default(PENDING)
+initiatedAt DateTime @default(now())
+completedAt DateTime?
+refundId String?
+
+booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model Refund {
+id String @id @default(uuid())
+bookingId String
+amount Float
+status RefundStatus @default(INITIATED)
+initiatedAt DateTime @default(now())
+completedAt DateTime?
+reason String?
+processedBy String?
+
+booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model BookingCancellation {
+id String @id @default(uuid())
+bookingId String
+reason String?
+refundEligible Boolean @default(false)
+refundAmount Float? @default(0)
+policySnapshot Json? // store cancellation policy details from bus-service
+cancelledBy String?
+cancelledAt DateTime @default(now())
+
+booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+id String @id @default(uuid())
+entity String
+entityId String
+action String
+performedBy String?
+payload Json?
+createdAt DateTime @default(now())
+ipAddress String?
+userAgent String?
+
+@@index([entity, entityId])
+}
