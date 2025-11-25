@@ -45,4 +45,10 @@ COPY --from=build /app/apps/bus-service/prisma ./apps/bus-service/prisma
 ENV NODE_ENV=production
 WORKDIR /app/apps/bus-service
 
-CMD ["node", "dist/server.js"]
+# Add migrations execution
+ENTRYPOINT ["sh", "-c", "\
+  echo 'Applying Prisma migrations...'; \
+  npx prisma migrate deploy --schema=./prisma/schema.prisma && \
+  echo 'Migrations applied successfully! Starting server...'; \
+  node dist/server.js \
+"]
