@@ -19924,5 +19924,177 @@
       }
     }
   },
-  "9211464990638127377": {}
+  "9211464990638127377": {},
+  "5703871257049688608": {
+    "apps/user-service": {
+      "targets": {
+        "lint": {
+          "command": "eslint .",
+          "cache": true,
+          "options": {
+            "cwd": "apps/user-service"
+          },
+          "inputs": [
+            "default",
+            "^default",
+            "{workspaceRoot}/eslint.config.js",
+            "{projectRoot}/eslint.config.js",
+            "{workspaceRoot}/tools/eslint-rules/**/*",
+            {
+              "externalDependencies": [
+                "eslint"
+              ]
+            }
+          ],
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "metadata": {
+            "technologies": [
+              "eslint"
+            ],
+            "description": "Runs ESLint on project",
+            "help": {
+              "command": "npx eslint --help",
+              "example": {
+                "options": {
+                  "max-warnings": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "17766173012609976628": {},
+  "12213866151951993344": {
+    "apps/user-service": {
+      "targets": {
+        "lint": {
+          "command": "eslint .",
+          "cache": true,
+          "options": {
+            "cwd": "apps/user-service"
+          },
+          "inputs": [
+            "default",
+            "^default",
+            "{workspaceRoot}/eslint.config.js",
+            "{projectRoot}/eslint.config.js",
+            "{workspaceRoot}/tools/eslint-rules/**/*",
+            {
+              "externalDependencies": [
+                "eslint"
+              ]
+            }
+          ],
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "metadata": {
+            "technologies": [
+              "eslint"
+            ],
+            "description": "Runs ESLint on project",
+            "help": {
+              "command": "npx eslint --help",
+              "example": {
+                "options": {
+                  "max-warnings": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "11804810522129327857": {},
+  "6078881540222973288": {
+    "apps/user-service": {
+      "targets": {
+        "lint": {
+          "command": "eslint .",
+          "cache": true,
+          "options": {
+            "cwd": "apps/user-service"
+          },
+          "inputs": [
+            "default",
+            "^default",
+            "{workspaceRoot}/eslint.config.js",
+            "{projectRoot}/eslint.config.js",
+            "{workspaceRoot}/tools/eslint-rules/**/*",
+            {
+              "externalDependencies": [
+                "eslint"
+              ]
+            }
+          ],
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "metadata": {
+            "technologies": [
+              "eslint"
+            ],
+            "description": "Runs ESLint on project",
+            "help": {
+              "command": "npx eslint --help",
+              "example": {
+                "options": {
+                  "max-warnings": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "10441906438809448313": {},
+  "13591800789273239137": {
+    "apps/user-service": {
+      "targets": {
+        "lint": {
+          "command": "eslint .",
+          "cache": true,
+          "options": {
+            "cwd": "apps/user-service"
+          },
+          "inputs": [
+            "default",
+            "^default",
+            "{workspaceRoot}/eslint.config.js",
+            "{projectRoot}/eslint.config.js",
+            "{workspaceRoot}/tools/eslint-rules/**/*",
+            {
+              "externalDependencies": [
+                "eslint"
+              ]
+            }
+          ],
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "metadata": {
+            "technologies": [
+              "eslint"
+            ],
+            "description": "Runs ESLint on project",
+            "help": {
+              "command": "npx eslint --help",
+              "example": {
+                "options": {
+                  "max-warnings": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "1117898453385412741": {}
 }

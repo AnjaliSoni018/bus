@@ -9407,11 +9407,6 @@
       },
       {
         "source": "user-service",
-        "target": "npm:prisma",
-        "type": "static"
-      },
-      {
-        "source": "user-service",
         "target": "npm:ts-node-dev@2.0.0",
         "type": "static"
       },
@@ -9438,6 +9433,11 @@
       {
         "source": "user-service",
         "target": "npm:class-validator@0.14.2",
+        "type": "static"
+      },
+      {
+        "source": "user-service",
+        "target": "npm:prisma",
         "type": "static"
       },
       {
@@ -21512,5 +21512,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1767093509927
+  "computedAt": 1767100827131
 }

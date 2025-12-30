@@ -37,18 +37,18 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NX_SKIP_POSTINSTALL=1
 
-# Copy built output
 COPY --from=build /app/apps/user-service/dist ./dist
 COPY --from=build /app/apps/user-service/prisma ./prisma
 COPY --from=build /app/apps/user-service/package*.json ./
-COPY --from=build /app/apps/user-service/node_modules ./node_modules
+COPY --from=build /app/node_modules ./node_modules
 
 EXPOSE 3000
 
 ENTRYPOINT ["sh", "-c", "\
   echo 'Running Prisma migrations...'; \
-  node ./node_modules/.bin/prisma migrate deploy --schema=./prisma/schema.prisma\
+  ./node_modules/.bin/prisma migrate deploy --schema=./prisma/schema.prisma && \
   echo 'Migrations applied successfully! Starting app...'; \
   node dist/main.js \
 "]
+
 
