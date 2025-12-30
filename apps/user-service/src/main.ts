@@ -27,6 +27,7 @@ const PORT = process.env.PORT ?? 5000;
 app.listen(PORT, async () => {
   try {
     await prisma.$connect();
+    console.log('hiii....');
     console.log(`User Service running on port ${PORT}`);
     await seedSuperAdmin();
   } catch (err) {
