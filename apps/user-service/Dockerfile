@@ -17,10 +17,10 @@ COPY apps/user-service/prisma ./apps/user-service/prisma
 COPY apps/user-service/src ./apps/user-service/src
 
 # 🔑 Install WITH devDependencies (Prisma lives here)
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps --ignore-scripts
 
 WORKDIR /app/apps/user-service
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps --ignore-scripts
 
 # Generate Prisma client (Prisma 6.x guaranteed)
 WORKDIR /app
