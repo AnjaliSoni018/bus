@@ -17,7 +17,6 @@ import {
   sendOtpSchema,
   verifyOtpSchema,
 } from '../validators/authValidator';
-
 const router = Router();
 
 router.post('/send-otp', validate(sendOtpSchema), sendOtpController);

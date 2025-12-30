@@ -2,7 +2,6 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 
-# Environment to avoid Nx postinstall crash + memory issues
 ENV NX_SKIP_POSTINSTALL=1
 ENV NODE_OPTIONS="--max-old-space-size=512"
 ENV npm_config_cache=/tmp/.npm
@@ -17,37 +16,32 @@ COPY apps/user-service/tsconfig*.json ./apps/user-service/
 COPY apps/user-service/prisma ./apps/user-service/prisma
 COPY apps/user-service/src ./apps/user-service/src
 
-# Install root + service dependencies
-RUN npm install --omit=dev --legacy-peer-deps
+# 🔑 Install WITH devDependencies (Prisma lives here)
+RUN npm install --legacy-peer-deps
+
 WORKDIR /app/apps/user-service
-RUN npm install --omit=dev --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 
-# ✅ Install TypeScript + ts-node temporarily for build
-RUN npm install -g typescript ts-node
-
-# Generate Prisma client
+# Generate Prisma client (Prisma 6.x guaranteed)
 WORKDIR /app
 RUN npx prisma generate --schema=apps/user-service/prisma/schema.prisma
 
 # Build service
 WORKDIR /app/apps/user-service
-RUN npm install --save-dev @types/node
 RUN npm run build
 
 # ========== Production Stage ==========
 FROM node:22-alpine AS prod
 WORKDIR /app
+
 ENV NODE_ENV=production
 ENV NX_SKIP_POSTINSTALL=1
 
-# Copy built files
+# Copy built output
 COPY --from=build /app/apps/user-service/dist ./dist
 COPY --from=build /app/apps/user-service/prisma ./prisma
 COPY --from=build /app/apps/user-service/package*.json ./
 COPY --from=build /app/apps/user-service/node_modules ./node_modules
-
-# Rebuild Prisma client for production (ensures binary compatibility)
-RUN npx prisma generate --schema=./prisma/schema.prisma
 
 EXPOSE 3000
 
@@ -57,3 +51,4 @@ ENTRYPOINT ["sh", "-c", "\
   echo 'Migrations applied successfully! Starting app...'; \
   node dist/main.js \
 "]
+
