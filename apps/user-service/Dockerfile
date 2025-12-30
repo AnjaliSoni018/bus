@@ -47,7 +47,7 @@ EXPOSE 3000
 
 ENTRYPOINT ["sh", "-c", "\
   echo 'Running Prisma migrations...'; \
-  npx prisma migrate deploy --schema=./prisma/schema.prisma && \
+  node ./node_modules/.bin/prisma migrate deploy --schema=./prisma/schema.prisma\
   echo 'Migrations applied successfully! Starting app...'; \
   node dist/main.js \
 "]
