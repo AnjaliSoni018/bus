@@ -1,5 +1,5 @@
 import prisma from '../config/prisma.service';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { errorMessages } from '../constants/errorMessages';
 import { SUCCESS_MESSAGES } from '../constants/SuccessMessages';
 
