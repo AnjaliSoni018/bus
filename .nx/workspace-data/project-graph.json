@@ -964,15 +964,6 @@
         "hash": "3374144094349980031"
       }
     },
-    "npm:@ioredis/commands@1.4.0": {
-      "type": "npm",
-      "name": "npm:@ioredis/commands@1.4.0",
-      "data": {
-        "version": "1.4.0",
-        "packageName": "@ioredis/commands",
-        "hash": "11337317790160839055"
-      }
-    },
     "npm:@prisma/client@5.22.0": {
       "type": "npm",
       "name": "npm:@prisma/client@5.22.0",
@@ -1142,15 +1133,6 @@
         "version": "10.0.0",
         "packageName": "@types/uuid",
         "hash": "7180686293583578281"
-      }
-    },
-    "npm:@types/validator@13.15.3": {
-      "type": "npm",
-      "name": "npm:@types/validator@13.15.3",
-      "data": {
-        "version": "13.15.3",
-        "packageName": "@types/validator",
-        "hash": "6839053206174042153"
       }
     },
     "npm:@typescript-eslint/eslint-plugin@6.21.0": {
@@ -1366,7 +1348,7 @@
       "data": {
         "version": "4.4.3",
         "packageName": "debug",
-        "hash": "3487785747232863392"
+        "hash": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA=="
       }
     },
     "npm:ms@2.0.0": {
@@ -1441,33 +1423,6 @@
         "hash": "sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A=="
       }
     },
-    "npm:class-transformer@0.5.1": {
-      "type": "npm",
-      "name": "npm:class-transformer@0.5.1",
-      "data": {
-        "version": "0.5.1",
-        "packageName": "class-transformer",
-        "hash": "3646029824372493786"
-      }
-    },
-    "npm:class-validator@0.14.2": {
-      "type": "npm",
-      "name": "npm:class-validator@0.14.2",
-      "data": {
-        "version": "0.14.2",
-        "packageName": "class-validator",
-        "hash": "15660285141154977429"
-      }
-    },
-    "npm:cluster-key-slot@1.1.2": {
-      "type": "npm",
-      "name": "npm:cluster-key-slot@1.1.2",
-      "data": {
-        "version": "1.1.2",
-        "packageName": "cluster-key-slot",
-        "hash": "355026280493712455"
-      }
-    },
     "npm:cookie@0.7.1": {
       "type": "npm",
       "name": "npm:cookie@0.7.1",
@@ -1484,15 +1439,6 @@
         "version": "0.5.0",
         "packageName": "cookie",
         "hash": "sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw=="
-      }
-    },
-    "npm:denque@2.1.0": {
-      "type": "npm",
-      "name": "npm:denque@2.1.0",
-      "data": {
-        "version": "2.1.0",
-        "packageName": "denque",
-        "hash": "8987869895585129574"
       }
     },
     "npm:dir-glob@3.0.1": {
@@ -1783,15 +1729,6 @@
         "hash": "3569740462065157590"
       }
     },
-    "npm:ioredis@5.8.1": {
-      "type": "npm",
-      "name": "npm:ioredis@5.8.1",
-      "data": {
-        "version": "5.8.1",
-        "packageName": "ioredis",
-        "hash": "10301617417004541599"
-      }
-    },
     "npm:is-binary-path@2.1.0": {
       "type": "npm",
       "name": "npm:is-binary-path@2.1.0",
@@ -1837,15 +1774,6 @@
         "hash": "9156494394045873282"
       }
     },
-    "npm:libphonenumber-js@1.12.24": {
-      "type": "npm",
-      "name": "npm:libphonenumber-js@1.12.24",
-      "data": {
-        "version": "1.12.24",
-        "packageName": "libphonenumber-js",
-        "hash": "715338699650034959"
-      }
-    },
     "npm:locate-path@6.0.0": {
       "type": "npm",
       "name": "npm:locate-path@6.0.0",
@@ -1862,24 +1790,6 @@
         "version": "5.0.0",
         "packageName": "locate-path",
         "hash": "sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g=="
-      }
-    },
-    "npm:lodash.defaults@4.2.0": {
-      "type": "npm",
-      "name": "npm:lodash.defaults@4.2.0",
-      "data": {
-        "version": "4.2.0",
-        "packageName": "lodash.defaults",
-        "hash": "4550125651116359908"
-      }
-    },
-    "npm:lodash.isarguments@3.1.0": {
-      "type": "npm",
-      "name": "npm:lodash.isarguments@3.1.0",
-      "data": {
-        "version": "3.1.0",
-        "packageName": "lodash.isarguments",
-        "hash": "13799771979232534923"
       }
     },
     "npm:merge-descriptors@1.0.3": {
@@ -2107,24 +2017,6 @@
         "hash": "15228413643169718949"
       }
     },
-    "npm:redis-errors@1.2.0": {
-      "type": "npm",
-      "name": "npm:redis-errors@1.2.0",
-      "data": {
-        "version": "1.2.0",
-        "packageName": "redis-errors",
-        "hash": "15905115989151995463"
-      }
-    },
-    "npm:redis-parser@3.0.0": {
-      "type": "npm",
-      "name": "npm:redis-parser@3.0.0",
-      "data": {
-        "version": "3.0.0",
-        "packageName": "redis-parser",
-        "hash": "12999068200675202149"
-      }
-    },
     "npm:safe-stable-stringify@2.5.0": {
       "type": "npm",
       "name": "npm:safe-stable-stringify@2.5.0",
@@ -2213,15 +2105,6 @@
         "version": "0.5.19",
         "packageName": "source-map-support",
         "hash": "sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw=="
-      }
-    },
-    "npm:standard-as-callback@2.1.0": {
-      "type": "npm",
-      "name": "npm:standard-as-callback@2.1.0",
-      "data": {
-        "version": "2.1.0",
-        "packageName": "standard-as-callback",
-        "hash": "16391467996810435820"
       }
     },
     "npm:strip-bom@3.0.0": {
@@ -2413,15 +2296,6 @@
         "hash": "17269348367601967726"
       }
     },
-    "npm:validator@13.15.15": {
-      "type": "npm",
-      "name": "npm:validator@13.15.15",
-      "data": {
-        "version": "13.15.15",
-        "packageName": "validator",
-        "hash": "4408866285381849202"
-      }
-    },
     "npm:xtend@4.0.2": {
       "type": "npm",
       "name": "npm:xtend@4.0.2",
@@ -2456,42 +2330,6 @@
         "version": "4.28.10",
         "packageName": "@types/ioredis",
         "hash": "9068661597117731727"
-      }
-    },
-    "npm:dayjs@1.11.18": {
-      "type": "npm",
-      "name": "npm:dayjs@1.11.18",
-      "data": {
-        "version": "1.11.18",
-        "packageName": "dayjs",
-        "hash": "5969127046626572790"
-      }
-    },
-    "npm:scmp@2.1.0": {
-      "type": "npm",
-      "name": "npm:scmp@2.1.0",
-      "data": {
-        "version": "2.1.0",
-        "packageName": "scmp",
-        "hash": "10780189283939304755"
-      }
-    },
-    "npm:twilio@5.10.3": {
-      "type": "npm",
-      "name": "npm:twilio@5.10.3",
-      "data": {
-        "version": "5.10.3",
-        "packageName": "twilio",
-        "hash": "13186939467289426914"
-      }
-    },
-    "npm:xmlbuilder@13.0.2": {
-      "type": "npm",
-      "name": "npm:xmlbuilder@13.0.2",
-      "data": {
-        "version": "13.0.2",
-        "packageName": "xmlbuilder",
-        "hash": "6029679996940110033"
       }
     },
     "npm:@babel/code-frame": {
@@ -3889,6 +3727,15 @@
         "hash": "sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ=="
       }
     },
+    "npm:@ioredis/commands": {
+      "type": "npm",
+      "name": "npm:@ioredis/commands",
+      "data": {
+        "version": "1.4.0",
+        "packageName": "@ioredis/commands",
+        "hash": "sha512-aFT2yemJJo+TZCmieA7qnYGQooOS7QfNmYrzGtsYd3g9j5iDP8AimYYAesf79ohjbLG12XxC4nG5DyEnC88AsQ=="
+      }
+    },
     "npm:@istanbuljs/load-nyc-config": {
       "type": "npm",
       "name": "npm:@istanbuljs/load-nyc-config",
@@ -5230,6 +5077,15 @@
         "hash": "sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw=="
       }
     },
+    "npm:@types/validator": {
+      "type": "npm",
+      "name": "npm:@types/validator",
+      "data": {
+        "version": "13.15.10",
+        "packageName": "@types/validator",
+        "hash": "sha512-T8L6i7wCuyoK8A/ZeLYt1+q0ty3Zb9+qbSSvrIVitzT3YjZqkTZ40IbRsPanlB4h1QB3JVL1SYCdR6ngtFYcuA=="
+      }
+    },
     "npm:@types/yargs": {
       "type": "npm",
       "name": "npm:@types/yargs",
@@ -5869,6 +5725,24 @@
         "hash": "sha512-9z8TZaGM1pfswYeXrUpzPrkx8UnWYdhJclsiYMm6x/w5+nN+8Tf/LnAgfLGQCm59qAOxU8WwHEq2vNwF6i4j+Q=="
       }
     },
+    "npm:class-transformer": {
+      "type": "npm",
+      "name": "npm:class-transformer",
+      "data": {
+        "version": "0.5.1",
+        "packageName": "class-transformer",
+        "hash": "sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw=="
+      }
+    },
+    "npm:class-validator": {
+      "type": "npm",
+      "name": "npm:class-validator",
+      "data": {
+        "version": "0.14.3",
+        "packageName": "class-validator",
+        "hash": "sha512-rXXekcjofVN1LTOSw+u4u9WXVEUvNBVjORW154q/IdmYWy1nMbOU9aNtZB0t8m+FJQ9q91jlr2f9CwwUFdFMRA=="
+      }
+    },
     "npm:cli-cursor": {
       "type": "npm",
       "name": "npm:cli-cursor",
@@ -5903,6 +5777,15 @@
         "version": "1.0.4",
         "packageName": "clone",
         "hash": "sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg=="
+      }
+    },
+    "npm:cluster-key-slot": {
+      "type": "npm",
+      "name": "npm:cluster-key-slot",
+      "data": {
+        "version": "1.1.2",
+        "packageName": "cluster-key-slot",
+        "hash": "sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA=="
       }
     },
     "npm:co": {
@@ -6121,6 +6004,15 @@
         "hash": "sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA=="
       }
     },
+    "npm:dayjs": {
+      "type": "npm",
+      "name": "npm:dayjs",
+      "data": {
+        "version": "1.11.19",
+        "packageName": "dayjs",
+        "hash": "sha512-t5EcLVS6QPBNqM2z8fakk/NKel+Xzshgt8FFKAn+qwlD1pzZWxh0nVCrvFK7ZDb6XucZeF9z8C7CBWTRIVApAw=="
+      }
+    },
     "npm:dedent": {
       "type": "npm",
       "name": "npm:dedent",
@@ -6200,6 +6092,15 @@
         "version": "1.0.0",
         "packageName": "delegates",
         "hash": "sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ=="
+      }
+    },
+    "npm:denque": {
+      "type": "npm",
+      "name": "npm:denque",
+      "data": {
+        "version": "2.1.0",
+        "packageName": "denque",
+        "hash": "sha512-HVQE3AAb/pxF8fQAoiqpvg9i3evqug3hoiwakOyZAwJm+6vZehbkYXZ0l4JxS+I3QxM97v5aaRNhj8v5oBhekw=="
       }
     },
     "npm:depd": {
@@ -7174,6 +7075,15 @@
         "hash": "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ=="
       }
     },
+    "npm:ioredis": {
+      "type": "npm",
+      "name": "npm:ioredis",
+      "data": {
+        "version": "5.8.2",
+        "packageName": "ioredis",
+        "hash": "sha512-C6uC+kleiIMmjViJINWk80sOQw5lEzse1ZmvD+S/s8p8CWapftSaC+kocGTx6xrbrJ4WmYQGC08ffHLr6ToR6Q=="
+      }
+    },
     "npm:ipaddr.js": {
       "type": "npm",
       "name": "npm:ipaddr.js",
@@ -7786,6 +7696,15 @@
         "hash": "sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ=="
       }
     },
+    "npm:libphonenumber-js": {
+      "type": "npm",
+      "name": "npm:libphonenumber-js",
+      "data": {
+        "version": "1.12.33",
+        "packageName": "libphonenumber-js",
+        "hash": "sha512-r9kw4OA6oDO4dPXkOrXTkArQAafIKAU71hChInV4FxZ69dxCfbwQGDPzqR5/vea94wU705/3AZroEbSoeVWrQw=="
+      }
+    },
     "npm:lines-and-columns": {
       "type": "npm",
       "name": "npm:lines-and-columns",
@@ -7813,6 +7732,15 @@
         "hash": "sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow=="
       }
     },
+    "npm:lodash.defaults": {
+      "type": "npm",
+      "name": "npm:lodash.defaults",
+      "data": {
+        "version": "4.2.0",
+        "packageName": "lodash.defaults",
+        "hash": "sha512-qjxPLHd3r5DnsdGacqOMU6pb/avJzdh9tFX2ymgoZE27BmjXrNy/y4LoaiTeAb+O3gL8AfpJGtqfX/ae2leYYQ=="
+      }
+    },
     "npm:lodash.includes": {
       "type": "npm",
       "name": "npm:lodash.includes",
@@ -7820,6 +7748,15 @@
         "version": "4.3.0",
         "packageName": "lodash.includes",
         "hash": "sha512-W3Bx6mdkRTGtlJISOvVD/lbqjTlPPUDTMnlXZFnVwi9NKJ6tiAk6LVdlhZMm17VZisqhKcgzpO5Wz91PCt5b0w=="
+      }
+    },
+    "npm:lodash.isarguments": {
+      "type": "npm",
+      "name": "npm:lodash.isarguments",
+      "data": {
+        "version": "3.1.0",
+        "packageName": "lodash.isarguments",
+        "hash": "sha512-chi4NHZlZqZD18a0imDHnZPrDeBbTtVN7GXMwuGdRH9qotxAjYs3aVLKc7zNOG9eddR5Ksd8rvFEBc9SsggPpg=="
       }
     },
     "npm:lodash.isboolean": {
@@ -8569,6 +8506,24 @@
         "hash": "sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg=="
       }
     },
+    "npm:redis-errors": {
+      "type": "npm",
+      "name": "npm:redis-errors",
+      "data": {
+        "version": "1.2.0",
+        "packageName": "redis-errors",
+        "hash": "sha512-1qny3OExCf0UvUV/5wpYKf2YwPcOqXzkwKKSmKHiE6ZMQs5heeE/c8eXK+PNllPvmjgAbfnsbpkGZWy8cBpn9w=="
+      }
+    },
+    "npm:redis-parser": {
+      "type": "npm",
+      "name": "npm:redis-parser",
+      "data": {
+        "version": "3.0.0",
+        "packageName": "redis-parser",
+        "hash": "sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A=="
+      }
+    },
     "npm:regenerate": {
       "type": "npm",
       "name": "npm:regenerate",
@@ -8684,6 +8639,15 @@
         "version": "2.1.2",
         "packageName": "safer-buffer",
         "hash": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
+      }
+    },
+    "npm:scmp": {
+      "type": "npm",
+      "name": "npm:scmp",
+      "data": {
+        "version": "2.1.0",
+        "packageName": "scmp",
+        "hash": "sha512-o/mRQGk9Rcer/jEEw/yw4mwo3EU/NvYvp577/Btqrym9Qy5/MdWGBqipbALgd2lrdWTJ5/gqDusxfnQBxOxT2Q=="
       }
     },
     "npm:secure-json-parse": {
@@ -8828,6 +8792,15 @@
         "version": "2.0.6",
         "packageName": "stack-utils",
         "hash": "sha512-XlkWvfIm6RmsWtNJx+uqtKLS8eqFbxUg0ZzLXqY0caEy9l7hruX8IpiDnjsLavoBgqCCR71TqWO8MaXYheJ3RQ=="
+      }
+    },
+    "npm:standard-as-callback": {
+      "type": "npm",
+      "name": "npm:standard-as-callback",
+      "data": {
+        "version": "2.1.0",
+        "packageName": "standard-as-callback",
+        "hash": "sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A=="
       }
     },
     "npm:statuses": {
@@ -9037,6 +9010,15 @@
         "hash": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
       }
     },
+    "npm:twilio": {
+      "type": "npm",
+      "name": "npm:twilio",
+      "data": {
+        "version": "5.11.1",
+        "packageName": "twilio",
+        "hash": "sha512-LQuLrAwWk7dsu7S5JQWzLRe17qdD4/7OJcwZG6kYWMJILtxI7pXDHksu9DcIF/vKpSpL1F0/sA9uSF3xuVizMQ=="
+      }
+    },
     "npm:type-check": {
       "type": "npm",
       "name": "npm:type-check",
@@ -9190,6 +9172,15 @@
         "hash": "sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ=="
       }
     },
+    "npm:validator": {
+      "type": "npm",
+      "name": "npm:validator",
+      "data": {
+        "version": "13.15.26",
+        "packageName": "validator",
+        "hash": "sha512-spH26xU080ydGggxRyR1Yhcbgx+j3y5jbNXk/8L+iRvdIEQ4uTRH2Sgf2dokud6Q4oAtsbNvJ1Ft+9xmm6IZcA=="
+      }
+    },
     "npm:vary": {
       "type": "npm",
       "name": "npm:vary",
@@ -9296,6 +9287,15 @@
         "version": "4.0.2",
         "packageName": "write-file-atomic",
         "hash": "sha512-7KxauUdBmSdWnmpaGFg+ppNjKF8uNLry8LyzjauQDOVONfFLNKrKvQOxZ/VuTIcS/gge/YNahf5RIIQWTSarlg=="
+      }
+    },
+    "npm:xmlbuilder": {
+      "type": "npm",
+      "name": "npm:xmlbuilder",
+      "data": {
+        "version": "13.0.2",
+        "packageName": "xmlbuilder",
+        "hash": "sha512-Eux0i2QdDYKbdbA6AM6xE4m6ZTZr4G4xF9kahI2ukSEMCzwce2eX9WlTI5J3s+NU7hpasFsr8hWIONae7LluAQ=="
       }
     },
     "npm:y18n": {
@@ -9427,12 +9427,12 @@
       },
       {
         "source": "user-service",
-        "target": "npm:class-transformer@0.5.1",
+        "target": "npm:class-transformer",
         "type": "static"
       },
       {
         "source": "user-service",
-        "target": "npm:class-validator@0.14.2",
+        "target": "npm:class-validator",
         "type": "static"
       },
       {
@@ -9457,7 +9457,7 @@
       },
       {
         "source": "user-service",
-        "target": "npm:ioredis@5.8.1",
+        "target": "npm:ioredis",
         "type": "static"
       },
       {
@@ -9472,7 +9472,7 @@
       },
       {
         "source": "user-service",
-        "target": "npm:twilio@5.10.3",
+        "target": "npm:twilio",
         "type": "static"
       },
       {
@@ -9549,12 +9549,12 @@
       },
       {
         "source": "bus-service",
-        "target": "npm:class-transformer@0.5.1",
+        "target": "npm:class-transformer",
         "type": "static"
       },
       {
         "source": "bus-service",
-        "target": "npm:class-validator@0.14.2",
+        "target": "npm:class-validator",
         "type": "static"
       },
       {
@@ -9579,7 +9579,7 @@
       },
       {
         "source": "bus-service",
-        "target": "npm:ioredis@5.8.1",
+        "target": "npm:ioredis",
         "type": "static"
       },
       {
@@ -10132,23 +10132,6 @@
         "type": "static"
       }
     ],
-    "npm:class-validator@0.14.2": [
-      {
-        "source": "npm:class-validator@0.14.2",
-        "target": "npm:@types/validator@13.15.3",
-        "type": "static"
-      },
-      {
-        "source": "npm:class-validator@0.14.2",
-        "target": "npm:libphonenumber-js@1.12.24",
-        "type": "static"
-      },
-      {
-        "source": "npm:class-validator@0.14.2",
-        "target": "npm:validator@13.15.15",
-        "type": "static"
-      }
-    ],
     "npm:dir-glob@3.0.1": [
       {
         "source": "npm:dir-glob@3.0.1",
@@ -10687,53 +10670,6 @@
         "type": "static"
       }
     ],
-    "npm:ioredis@5.8.1": [
-      {
-        "source": "npm:ioredis@5.8.1",
-        "target": "npm:@ioredis/commands@1.4.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:ioredis@5.8.1",
-        "target": "npm:cluster-key-slot@1.1.2",
-        "type": "static"
-      },
-      {
-        "source": "npm:ioredis@5.8.1",
-        "target": "npm:debug",
-        "type": "static"
-      },
-      {
-        "source": "npm:ioredis@5.8.1",
-        "target": "npm:denque@2.1.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:ioredis@5.8.1",
-        "target": "npm:lodash.defaults@4.2.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:ioredis@5.8.1",
-        "target": "npm:lodash.isarguments@3.1.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:ioredis@5.8.1",
-        "target": "npm:redis-errors@1.2.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:ioredis@5.8.1",
-        "target": "npm:redis-parser@3.0.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:ioredis@5.8.1",
-        "target": "npm:standard-as-callback@2.1.0",
-        "type": "static"
-      }
-    ],
     "npm:is-binary-path@2.1.0": [
       {
         "source": "npm:is-binary-path@2.1.0",
@@ -10881,13 +10817,6 @@
       {
         "source": "npm:readdirp@3.6.0",
         "target": "npm:picomatch@2.3.1",
-        "type": "static"
-      }
-    ],
-    "npm:redis-parser@3.0.0": [
-      {
-        "source": "npm:redis-parser@3.0.0",
-        "target": "npm:redis-errors@1.2.0",
         "type": "static"
       }
     ],
@@ -11204,50 +11133,6 @@
       {
         "source": "npm:@types/node@24.7.2",
         "target": "npm:undici-types@7.14.0",
-        "type": "static"
-      }
-    ],
-    "npm:debug": [
-      {
-        "source": "npm:debug",
-        "target": "npm:ms",
-        "type": "static"
-      }
-    ],
-    "npm:twilio@5.10.3": [
-      {
-        "source": "npm:twilio@5.10.3",
-        "target": "npm:axios",
-        "type": "static"
-      },
-      {
-        "source": "npm:twilio@5.10.3",
-        "target": "npm:dayjs@1.11.18",
-        "type": "static"
-      },
-      {
-        "source": "npm:twilio@5.10.3",
-        "target": "npm:https-proxy-agent",
-        "type": "static"
-      },
-      {
-        "source": "npm:twilio@5.10.3",
-        "target": "npm:jsonwebtoken",
-        "type": "static"
-      },
-      {
-        "source": "npm:twilio@5.10.3",
-        "target": "npm:qs@6.13.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:twilio@5.10.3",
-        "target": "npm:scmp@2.1.0",
-        "type": "static"
-      },
-      {
-        "source": "npm:twilio@5.10.3",
-        "target": "npm:xmlbuilder@13.0.2",
         "type": "static"
       }
     ],
@@ -17065,6 +16950,23 @@
         "type": "static"
       }
     ],
+    "npm:class-validator": [
+      {
+        "source": "npm:class-validator",
+        "target": "npm:@types/validator",
+        "type": "static"
+      },
+      {
+        "source": "npm:class-validator",
+        "target": "npm:libphonenumber-js",
+        "type": "static"
+      },
+      {
+        "source": "npm:class-validator",
+        "target": "npm:validator",
+        "type": "static"
+      }
+    ],
     "npm:cli-cursor": [
       {
         "source": "npm:cli-cursor",
@@ -17219,6 +17121,13 @@
       {
         "source": "npm:cross-spawn",
         "target": "npm:which",
+        "type": "static"
+      }
+    ],
+    "npm:debug": [
+      {
+        "source": "npm:debug",
+        "target": "npm:ms",
         "type": "static"
       }
     ],
@@ -18438,6 +18347,53 @@
       {
         "source": "npm:inflight",
         "target": "npm:wrappy",
+        "type": "static"
+      }
+    ],
+    "npm:ioredis": [
+      {
+        "source": "npm:ioredis",
+        "target": "npm:@ioredis/commands",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:cluster-key-slot",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:debug",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:denque",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:lodash.defaults",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:lodash.isarguments",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:redis-errors",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:redis-parser",
+        "type": "static"
+      },
+      {
+        "source": "npm:ioredis",
+        "target": "npm:standard-as-callback",
         "type": "static"
       }
     ],
@@ -20643,6 +20599,13 @@
         "type": "static"
       }
     ],
+    "npm:redis-parser": [
+      {
+        "source": "npm:redis-parser",
+        "target": "npm:redis-errors",
+        "type": "static"
+      }
+    ],
     "npm:regenerate-unicode-properties": [
       {
         "source": "npm:regenerate-unicode-properties",
@@ -21299,6 +21262,43 @@
         "type": "static"
       }
     ],
+    "npm:twilio": [
+      {
+        "source": "npm:twilio",
+        "target": "npm:axios",
+        "type": "static"
+      },
+      {
+        "source": "npm:twilio",
+        "target": "npm:dayjs",
+        "type": "static"
+      },
+      {
+        "source": "npm:twilio",
+        "target": "npm:https-proxy-agent",
+        "type": "static"
+      },
+      {
+        "source": "npm:twilio",
+        "target": "npm:jsonwebtoken",
+        "type": "static"
+      },
+      {
+        "source": "npm:twilio",
+        "target": "npm:qs",
+        "type": "static"
+      },
+      {
+        "source": "npm:twilio",
+        "target": "npm:scmp",
+        "type": "static"
+      },
+      {
+        "source": "npm:twilio",
+        "target": "npm:xmlbuilder",
+        "type": "static"
+      }
+    ],
     "npm:type-check": [
       {
         "source": "npm:type-check",
@@ -21512,5 +21512,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1767155633477
+  "computedAt": 1767157966105
 }
