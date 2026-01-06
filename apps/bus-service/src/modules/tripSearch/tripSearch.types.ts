@@ -35,6 +35,8 @@ export interface TripSearchResult {
     registrationNo: string;
     amenities?: string[];
   };
+  seatTemplate: SeatTemplateResult | null;
+
   route: {
     id: string;
     sourceCity: string;
@@ -49,4 +51,24 @@ export interface TripSearchResult {
   availableSeats: number;
   baseFare: number;
   currency: string;
+}
+export interface SeatTemplateSeatResult {
+  id: string;
+  seatNo: string;
+  seatLabel?: string;
+  type: string;
+  row?: number | null;
+  column?: number | null;
+  deck?: number | null;
+  genderOnly: boolean;
+  isAvailable: boolean;
+  priceFactor: number;
+}
+
+export interface SeatTemplateResult {
+  id: string;
+  title: string;
+  totalSeats: number;
+  layoutJson?: any;
+  seats: SeatTemplateSeatResult[];
 }

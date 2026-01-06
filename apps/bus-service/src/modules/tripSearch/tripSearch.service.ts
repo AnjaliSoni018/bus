@@ -25,7 +25,18 @@ export const searchTrips = async (
           effectiveTo: { gte: searchDate },
         },
         include: {
-          bus: { include: { busAmenities: true } },
+          bus: {
+            include: {
+              busAmenities: true,
+              seatTemplate: {
+                include: {
+                  seats: {
+                    where: { isDeleted: false },
+                  },
+                },
+              },
+            },
+          },
           trips: {
             where: {
               isDeleted: false,
@@ -58,6 +69,26 @@ export const searchTrips = async (
           registrationNo: br.bus.registrationNo,
           amenities: br.bus.busAmenities.map((a) => a.amenity),
         },
+        seatTemplate: br.bus.seatTemplate
+          ? {
+              id: br.bus.seatTemplate.id,
+              title: br.bus.seatTemplate.title,
+              totalSeats: br.bus.seatTemplate.totalSeats,
+              layoutJson: br.bus.seatTemplate.layoutJson,
+              seats: br.bus.seatTemplate.seats.map((s) => ({
+                id: s.id,
+                seatNo: s.seatNo,
+                seatLabel: s.seatLabel ?? undefined,
+                type: s.type,
+                row: s.row,
+                column: s.column,
+                deck: s.deck,
+                genderOnly: s.genderOnly ?? false,
+                isAvailable: s.isAvailable,
+                priceFactor: s.priceFactor ?? 1,
+              })),
+            }
+          : null,
         route: {
           id: r.id,
           sourceCity: r.sourceCity,
