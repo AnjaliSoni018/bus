@@ -51,6 +51,161 @@
         "tags": []
       }
     },
+    "booking-service-e2e": {
+      "name": "booking-service-e2e",
+      "type": "e2e",
+      "data": {
+        "root": "apps/booking-service-e2e",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "apps/booking-service-e2e",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.spec.json",
+              "{projectRoot}/jest.config.ts",
+              "{projectRoot}/src/**/*.ts",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/apps/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/apps/dist/out-tsc/**/*.d.ts.map",
+              "{workspaceRoot}/apps/dist/out-tsc/tsconfig.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "apps/booking-service-e2e",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.js",
+              "{projectRoot}/eslint.config.js",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "options": {
+              "cwd": "apps/booking-service-e2e",
+              "command": "jest"
+            },
+            "metadata": {
+              "technologies": [
+                "jest"
+              ],
+              "description": "Run Jest Tests",
+              "help": {
+                "command": "npx jest --help",
+                "example": {
+                  "options": {
+                    "coverage": true
+                  }
+                }
+              }
+            },
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js",
+              {
+                "externalDependencies": [
+                  "jest"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/apps/coverage/booking-service-e2e"
+            ],
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "e2e": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{e2eProjectRoot}"
+            ],
+            "options": {
+              "jestConfig": "booking-service-e2e/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "dependsOn": [
+              "booking-service:build"
+            ],
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "booking-service-e2e",
+        "$schema": "../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "implicitDependencies": [
+          "booking-service"
+        ],
+        "tags": []
+      }
+    },
     "user-service-e2e": {
       "name": "user-service-e2e",
       "type": "e2e",
@@ -67,7 +222,11 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.spec.json",
+              "{projectRoot}/jest.config.ts",
+              "{projectRoot}/src/**/*.ts",
               "^production",
               {
                 "externalDependencies": [
@@ -76,20 +235,8 @@
               }
             ],
             "outputs": [
-              "{projectRoot}/**/*.js",
-              "{projectRoot}/**/*.cjs",
-              "{projectRoot}/**/*.mjs",
-              "{projectRoot}/**/*.jsx",
-              "{projectRoot}/**/*.js.map",
-              "{projectRoot}/**/*.jsx.map",
-              "{projectRoot}/**/*.d.ts",
-              "{projectRoot}/**/*.d.cts",
-              "{projectRoot}/**/*.d.mts",
-              "{projectRoot}/**/*.d.ts.map",
-              "{projectRoot}/**/*.d.cts.map",
-              "{projectRoot}/**/*.d.mts.map",
-              "{projectRoot}/tsconfig.tsbuildinfo",
               "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts.map",
               "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -177,6 +324,204 @@
         "tags": []
       }
     },
+    "booking-service": {
+      "name": "booking-service",
+      "type": "app",
+      "data": {
+        "root": "apps/booking-service",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "apps/booking-service",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.app.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{projectRoot}/**/*.spec.ts",
+              "!{projectRoot}/**/*.test.ts",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts.map",
+              "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "apps/booking-service",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.js",
+              "{projectRoot}/eslint.config.js",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "options": {
+              "cwd": "apps/booking-service",
+              "command": "jest"
+            },
+            "metadata": {
+              "technologies": [
+                "jest"
+              ],
+              "description": "Run Jest Tests",
+              "help": {
+                "command": "npx jest --help",
+                "example": {
+                  "options": {
+                    "coverage": true
+                  }
+                }
+              }
+            },
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js",
+              {
+                "externalDependencies": [
+                  "jest"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/coverage/booking-service"
+            ],
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "@nx/esbuild:esbuild",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "defaultConfiguration": "production",
+            "options": {
+              "platform": "node",
+              "outputPath": "dist/apps/booking-service",
+              "format": [
+                "cjs"
+              ],
+              "bundle": false,
+              "main": "apps/booking-service/src/main.ts",
+              "tsConfig": "apps/booking-service/tsconfig.app.json",
+              "assets": [
+                "apps/booking-service/src/assets"
+              ],
+              "generatePackageJson": true
+            },
+            "configurations": {
+              "development": {
+                "esbuildOptions": {
+                  "sourcemap": true
+                }
+              },
+              "production": {
+                "esbuildOptions": {
+                  "sourcemap": false
+                }
+              }
+            },
+            "parallelism": true,
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ]
+          },
+          "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+              "buildTarget": "booking-service:build"
+            },
+            "configurations": {
+              "development": {
+                "buildTarget": "booking-service:build:development"
+              },
+              "production": {
+                "buildTarget": "booking-service:build:production"
+              }
+            },
+            "parallelism": true
+          }
+        },
+        "name": "booking-service",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/booking-service/src",
+        "projectType": "application",
+        "implicitDependencies": [],
+        "tags": []
+      }
+    },
     "bus-service-e2e": {
       "name": "bus-service-e2e",
       "type": "e2e",
@@ -193,7 +538,11 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.spec.json",
+              "{projectRoot}/jest.config.ts",
+              "{projectRoot}/src/**/*.ts",
               "^production",
               {
                 "externalDependencies": [
@@ -202,20 +551,8 @@
               }
             ],
             "outputs": [
-              "{projectRoot}/**/*.js",
-              "{projectRoot}/**/*.cjs",
-              "{projectRoot}/**/*.mjs",
-              "{projectRoot}/**/*.jsx",
-              "{projectRoot}/**/*.js.map",
-              "{projectRoot}/**/*.jsx.map",
-              "{projectRoot}/**/*.d.ts",
-              "{projectRoot}/**/*.d.cts",
-              "{projectRoot}/**/*.d.mts",
-              "{projectRoot}/**/*.d.ts.map",
-              "{projectRoot}/**/*.d.cts.map",
-              "{projectRoot}/**/*.d.mts.map",
-              "{projectRoot}/tsconfig.tsbuildinfo",
               "{workspaceRoot}/apps/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/apps/dist/out-tsc/**/*.d.ts.map",
               "{workspaceRoot}/apps/dist/out-tsc/tsconfig.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -319,7 +656,18 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.app.json",
+              "{projectRoot}/tsconfig.spec.json",
+              "{projectRoot}/src/**/*",
+              "{projectRoot}/jest.config.ts",
+              "{projectRoot}/src/**/*.test.ts",
+              "{projectRoot}/src/**/*.spec.ts",
+              "{projectRoot}/src/**/*.d.ts",
+              "!{projectRoot}/node_modules",
+              "!{projectRoot}/dist",
               "^production",
               {
                 "externalDependencies": [
@@ -328,22 +676,11 @@
               }
             ],
             "outputs": [
-              "{projectRoot}/**/*.js",
-              "{projectRoot}/**/*.cjs",
-              "{projectRoot}/**/*.mjs",
-              "{projectRoot}/**/*.jsx",
-              "{projectRoot}/**/*.js.map",
-              "{projectRoot}/**/*.jsx.map",
-              "{projectRoot}/**/*.d.ts",
-              "{projectRoot}/**/*.d.cts",
-              "{projectRoot}/**/*.d.mts",
-              "{projectRoot}/**/*.d.ts.map",
-              "{projectRoot}/**/*.d.cts.map",
-              "{projectRoot}/**/*.d.mts.map",
-              "{projectRoot}/tsconfig.tsbuildinfo",
               "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/dist/**/*.d.ts.map",
               "{projectRoot}/*.tsbuildinfo",
               "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts.map",
               "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -609,7 +946,12 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/src/**/*",
+              "!{projectRoot}/node_modules",
+              "!{projectRoot}/dist",
               "^production",
               {
                 "externalDependencies": [
@@ -619,6 +961,7 @@
             ],
             "outputs": [
               "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/dist/**/*.d.ts.map",
               "{projectRoot}/*.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -9103,6 +9446,18 @@
   },
   "dependencies": {
     "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": [],
+    "booking-service-e2e": [
+      {
+        "source": "booking-service-e2e",
+        "target": "booking-service",
+        "type": "implicit"
+      },
+      {
+        "source": "booking-service-e2e",
+        "target": "npm:axios",
+        "type": "static"
+      }
+    ],
     "user-service-e2e": [
       {
         "source": "user-service-e2e",
@@ -9112,6 +9467,13 @@
       {
         "source": "user-service-e2e",
         "target": "npm:axios",
+        "type": "static"
+      }
+    ],
+    "booking-service": [
+      {
+        "source": "booking-service",
+        "target": "npm:express",
         "type": "static"
       }
     ],
@@ -21008,5 +21370,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1767589321902
+  "computedAt": 1767677277277
 }

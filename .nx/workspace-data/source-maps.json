@@ -1,4 +1,592 @@
 {
+  "apps/booking-service": {
+    "root": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "apps/booking-service/tsconfig.app.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "apps/booking-service/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.lint": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.cache": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.inputs": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.outputs": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.executor": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.cwd": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.command": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies.0": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.description": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.command": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.example": [
+      "apps/booking-service/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.test": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "apps/booking-service/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.defaultConfiguration": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.platform": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.format": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.bundle": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.main": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.generatePackageJson": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.esbuildOptions": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.esbuildOptions": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "apps/booking-service/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "apps/booking-service-e2e": {
+    "root": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.dependsOn": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.cache": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.inputs": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.outputs": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.syncGenerators": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.executor": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.cwd": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.options.command": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.technologies.0": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.description": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.command": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.typecheck.metadata.help.example": [
+      "apps/booking-service-e2e/tsconfig.json",
+      "@nx/js/typescript"
+    ],
+    "targets.lint": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.cache": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.inputs": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.outputs": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.executor": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.cwd": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.options.command": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.technologies.0": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.description": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.command": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.lint.metadata.help.example": [
+      "apps/booking-service-e2e/eslint.config.js",
+      "@nx/eslint/plugin"
+    ],
+    "targets.test": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.cache": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.inputs": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.outputs": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.executor": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.cwd": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.options.command": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.technologies.0": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.description": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.command": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "targets.test.metadata.help.example": [
+      "apps/booking-service-e2e/jest.config.ts",
+      "@nx/jest/plugin"
+    ],
+    "name": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.booking-service": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.executor": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.outputs": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.dependsOn": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options.jestConfig": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options.passWithNoTests": [
+      "apps/booking-service-e2e/project.json",
+      "nx/core/project-json"
+    ]
+  },
   "apps/bus-service": {
     "root": [
       "apps/bus-service/project.json",
