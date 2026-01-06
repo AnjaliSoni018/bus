@@ -11,4 +11,5 @@ app.get('/', (req, res) => {
 
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
+  console.log('hiii......');
 });
