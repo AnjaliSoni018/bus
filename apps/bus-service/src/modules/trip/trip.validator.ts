@@ -44,3 +44,9 @@ export const listTripsSchema = z.object({
 export const tripIdParamSchema = z.object({
   id: z.uuid(),
 });
+
+export const holdSeatsSchema = z.object({
+  seatIds: z.array(z.string().uuid()).min(1),
+  bookingId: z.string().min(5),
+  holdUntil: z.string().datetime(),
+});

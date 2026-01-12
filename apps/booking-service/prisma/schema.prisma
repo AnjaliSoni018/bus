@@ -1,0 +1,179 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BookingStatus {
+  INITIATED // Created but payment not done yet
+  CONFIRMED // Successfully booked
+  PAYMENT_FAILED // Payment failed
+  CANCELLED // Cancelled by user/operator/system
+  COMPLETED // Trip completed
+  REFUNDED // Refund issued
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  UPI
+  CARD
+  NETBANKING
+  WALLET
+  CASH
+  OTHER
+}
+
+enum RefundStatus {
+  INITIATED
+  PROCESSING
+  SUCCESS
+  FAILED
+}
+
+model Booking {
+  id               String               @id @default(uuid())
+  bookingRef       String               @unique // human-readable booking reference like "RBX123456"
+  userId           String // references user-service.user.id
+  tripId           String // references bus-service.trip.id
+  operatorUserId   String? // for quick reporting (redundant cache)
+  routeId          String? // for analytics & filtering
+  busId            String? // redundant cache for reporting
+  totalAmount      Float
+  baseFare         Float
+  taxes            Float?               @default(0)
+  discount         Float?               @default(0)
+  currency         String               @default("INR")
+  status           BookingStatus        @default(INITIATED)
+  paymentStatus    PaymentStatus        @default(PENDING)
+  paymentMethod    PaymentMethod?
+  transactionId    String? // from PaymentGateway
+  bookedSeatsCount Int
+  bookedSeats      BookingSeat[]
+  passengers       Passenger[]
+  cancellation     BookingCancellation?
+  refund           Refund?
+  payment          Payment?
+
+  bookedAt    DateTime?
+  cancelledAt DateTime?
+  completedAt DateTime?
+  expiresAt   DateTime? // hold expiry for temporary bookings
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdBy String?
+  updatedBy String?
+
+  auditLogs AuditLog[]
+
+  @@index([userId, status])
+  @@index([tripId])
+  @@index([bookingRef])
+}
+
+model BookingSeat {
+  id        String    @id @default(uuid())
+  bookingId String    @unique
+  tripId    String
+  seatId    String
+  seatLabel String?
+  fare      Float
+  state     String? // AVAILABLE / BOOKED / CANCELLED
+  heldToken String? // For concurrency-safe seat hold
+  heldUntil DateTime?
+  createdAt DateTime  @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@unique([tripId, seatId, bookingId])
+  @@index([tripId, seatId])
+}
+
+model Passenger {
+  id          String  @id @default(uuid())
+  bookingId   String  @unique
+  name        String
+  gender      String?
+  age         Int?
+  seatLabel   String?
+  phone       String?
+  email       String?
+  idProofType String?
+  idProofNo   String?
+  isPrimary   Boolean @default(false)
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model Payment {
+  id              String        @id @default(uuid())
+  bookingId       String        @unique
+  amount          Float
+  method          PaymentMethod
+  transactionId   String?       @unique
+  gatewayResponse Json?
+  status          PaymentStatus @default(PENDING)
+  initiatedAt     DateTime      @default(now())
+  completedAt     DateTime?
+  refundId        String?
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model Refund {
+  id          String       @id @default(uuid())
+  bookingId   String       @unique
+  amount      Float
+  status      RefundStatus @default(INITIATED)
+  initiatedAt DateTime     @default(now())
+  completedAt DateTime?
+  reason      String?
+  processedBy String?
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model BookingCancellation {
+  id             String   @id @default(uuid())
+  bookingId      String   @unique
+  reason         String?
+  refundEligible Boolean  @default(false)
+  refundAmount   Float?   @default(0)
+  policySnapshot Json? // store cancellation policy details from bus-service
+  cancelledBy    String?
+  cancelledAt    DateTime @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  entity      String
+  entityId    String
+  action      String
+  performedBy String?
+  payload     Json?
+  createdAt   DateTime @default(now())
+  ipAddress   String?
+  userAgent   String?
+  booking     Booking? @relation(fields: [bookingId], references: [id])
+  bookingId   String?
+
+  @@index([entity, entityId])
+}

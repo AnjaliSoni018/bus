@@ -76,129 +76,249 @@
       "apps/booking-service/tsconfig.json",
       "@nx/js/typescript"
     ],
-    "targets.lint": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.cache": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.options": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.inputs": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.outputs": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.executor": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.options.cwd": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.options.command": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.technologies": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.technologies.0": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.description": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.help": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.help.command": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.lint.metadata.help.example": [
-      "apps/booking-service/eslint.config.js",
-      "@nx/eslint/plugin"
-    ],
-    "targets.test": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.options": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.metadata": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.cache": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.inputs": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.outputs": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.executor": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.options.cwd": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.options.command": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.metadata.technologies": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.metadata.technologies.0": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.metadata.description": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.metadata.help": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.metadata.help.command": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
-    "targets.test.metadata.help.example": [
-      "apps/booking-service/jest.config.ts",
-      "@nx/jest/plugin"
-    ],
     "name": [
       "apps/booking-service/project.json",
       "nx/core/project-json"
+    ],
+    "tags": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.2": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.3": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.4": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.5": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.executor": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options.script": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.scriptContent": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.runCommand": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.executor": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.options": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.options.script": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata.scriptContent": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata.runCommand": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.executor": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.options": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.metadata": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.options.script": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.metadata.scriptContent": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:generate.metadata.runCommand": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.executor": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.options": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.metadata": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.options.script": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.metadata.scriptContent": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prisma:migrate.metadata.runCommand": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.executor": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options.script": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.scriptContent": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.runCommand": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.executor": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.options": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.metadata": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.options.script": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.metadata.scriptContent": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.test.metadata.runCommand": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "apps/booking-service/package.json",
+      "nx/core/package-json"
     ],
     "$schema": [
       "apps/booking-service/project.json",

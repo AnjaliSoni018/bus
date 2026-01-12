@@ -22,6 +22,7 @@ src/
 │ ├── trip/
 │ ├── seat/
 │ └── common/
+other modules
 │ ├── health.controller.ts
 │ ├── health.routes.ts
 ├── middlewares/
