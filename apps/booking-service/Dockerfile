@@ -6,12 +6,16 @@ FROM node:22-alpine AS build
 WORKDIR /app
 RUN apk add --no-cache openssl libssl3 libcrypto3
 
-COPY package*.json nx.json tsconfig.base.json ./
+# 🔑 COPY ROOT CONFIGS (YOU WERE MISSING THESE)
+COPY package*.json nx.json tsconfig.base.json eslint.config.js jest.preset.js ./
+
+# Copy apps
 COPY apps ./apps
 
+# Install deps
 RUN npm install --legacy-peer-deps
 
-# ⬅️ USE NX (STOP MANUAL TSC)
+# Build via Nx
 RUN npx nx build booking-service
 
 
@@ -29,5 +33,5 @@ COPY --from=build /app/apps/booking-service/prisma ./apps/booking-service/prisma
 
 ENV NODE_ENV=production
 
-# ✅ THIS FILE EXISTS — Nx guarantees it
-ENTRYPOINT ["sh", "-c", "npx prisma migrate deploy && node dist/apps/booking-service/server.cjs"]
+# ✅ Migrations + run
+ENTRYPOINT ["sh", "-c", "npx prisma migrate deploy --schema=apps/booking-service/prisma/schema.prisma && node dist/apps/booking-service/server.cjs"]
