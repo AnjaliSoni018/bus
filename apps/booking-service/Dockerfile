@@ -33,6 +33,10 @@ COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/prisma ./apps/booking-service/prisma
 
+# Prisma expects ./prisma/schema.prisma at runtime
+RUN mkdir -p /app/prisma \
+ && cp -r /app/apps/booking-service/prisma/* /app/prisma/
+
 # 🔥 CRITICAL FIX — create expected runtime path
 # Ensure runtime expects ./app next to server.cjs
 RUN cd dist/apps/booking-service \
