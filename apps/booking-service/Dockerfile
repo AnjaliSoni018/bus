@@ -11,7 +11,7 @@ COPY apps/booking-service/tsconfig*.json ./apps/booking-service/
 COPY apps/booking-service/prisma ./apps/booking-service/prisma
 COPY apps/booking-service/src ./apps/booking-service/src
 
-RUN npm ci --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 
 WORKDIR /app/apps/booking-service
 
