@@ -34,9 +34,10 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/prisma ./apps/booking-service/prisma
 
 # 🔥 CRITICAL FIX — create expected runtime path
-RUN mkdir -p dist/apps/booking-service/app \
- && cp -r dist/apps/booking-service/apps/booking-service/src/app/* \
-       dist/apps/booking-service/app/
+# Ensure runtime expects ./app next to server.cjs
+RUN cd dist/apps/booking-service \
+ && if [ -f app.cjs ]; then mkdir -p app && mv app.cjs app/index.cjs; fi \
+ && if [ -f app.js ]; then mkdir -p app && mv app.js app/index.js; fi
 
 # Optional: migrations at startup (Render-safe)
 CMD npx prisma migrate deploy \
