@@ -356,7 +356,13 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.app.json",
+              "{projectRoot}/src/**/*.ts",
+              "!{projectRoot}/**/*.spec.ts",
+              "!{projectRoot}/**/*.test.ts",
               "^production",
               {
                 "externalDependencies": [
@@ -378,8 +384,8 @@
               "{projectRoot}/**/*.d.cts.map",
               "{projectRoot}/**/*.d.mts.map",
               "{projectRoot}/tsconfig.tsbuildinfo",
-              "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
-              "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
+              "dist/booking-service/**/*.d.ts",
+              "dist/*.tsbuildinfo"
             ],
             "syncGenerators": [
               "@nx/js:typescript-sync"
@@ -21735,5 +21741,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1768296532572
+  "computedAt": 1768298156841
 }

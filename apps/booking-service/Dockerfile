@@ -6,25 +6,21 @@ FROM node:22-alpine AS build
 WORKDIR /app
 RUN apk add --no-cache openssl libssl3 libcrypto3
 
-# Root files
+# Root config
 COPY package*.json nx.json tsconfig.base.json ./
 
-# App package files
+# App package.json
 COPY apps/booking-service/package*.json ./apps/booking-service/
 
-# Install deps
+# Install deps once
 RUN npm install --legacy-peer-deps
 
-# Copy source
-COPY apps/booking-service/tsconfig*.json ./apps/booking-service/
-COPY apps/booking-service/prisma ./apps/booking-service/prisma
-COPY apps/booking-service/src ./apps/booking-service/src
+# Copy app source
+COPY apps/booking-service ./apps/booking-service
 
-# Prisma client
+# Generate Prisma client + build
 WORKDIR /app/apps/booking-service
-RUN npx prisma generate --schema=prisma/schema.prisma
-
-# Compile
+RUN npx prisma generate
 RUN npx tsc -p tsconfig.app.json
 
 
@@ -34,16 +30,16 @@ RUN npx tsc -p tsconfig.app.json
 FROM node:22-alpine AS prod
 
 WORKDIR /app
+RUN apk add --no-cache openssl libssl3 libcrypto3
 
-# Copy compiled output EXACTLY as produced
-COPY --from=build /app/dist ./dist
+# Copy compiled output
+COPY --from=build /app/dist/booking-service ./dist
 
 # Copy runtime deps
 COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/apps/booking-service/prisma ./apps/booking-service/prisma
+COPY --from=build /app/apps/booking-service/prisma ./prisma
 
 ENV NODE_ENV=production
 
-# 🔥 REAL FIX — ACTUAL FILE THAT EXISTS
-CMD ["node", "dist/apps/booking-service/server.cjs"]
-
+# ✅ MIGRATIONS + START (CORRECT PLACE)
+ENTRYPOINT ["sh", "-c", "npx prisma migrate deploy && node dist/server.js"]
