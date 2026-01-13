@@ -32,7 +32,7 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/node_modules ./apps/booking-service/node_modules
 
 # Copy compiled JS from correct Nx outDir
-COPY --from=build /app/dist/out-tsc ./apps/booking-service/dist
+COPY --from=build /app/dist/out-tsc/apps/booking-service ./apps/booking-service/dist
 
 # Copy prisma & package.json
 COPY --from=build /app/apps/booking-service/package*.json ./apps/booking-service/
@@ -47,3 +47,4 @@ ENTRYPOINT ["sh", "-c", "\
   echo 'Starting booking-service...'; \
   node dist/server.js \
 "]
+
