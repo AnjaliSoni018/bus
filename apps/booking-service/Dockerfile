@@ -8,7 +8,7 @@ RUN apk add --no-cache openssl libssl3 libcrypto3
 
 # Root files
 COPY package*.json nx.json tsconfig.base.json ./
-  
+
 # App package files
 COPY apps/booking-service/package*.json ./apps/booking-service/
 
@@ -35,7 +35,7 @@ FROM node:22-alpine AS prod
 
 WORKDIR /app
 
-# Copy compiled output EXACTLY as Nx produced it
+# Copy compiled output EXACTLY as produced
 COPY --from=build /app/dist ./dist
 
 # Copy runtime deps
@@ -43,7 +43,6 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/prisma ./apps/booking-service/prisma
 
 ENV NODE_ENV=production
-WORKDIR /app
 
-# 🔥 THIS IS THE FIX — correct entrypoint
-CMD ["node", "dist/apps/booking-service/server.cjs"]
+# 🔥 REAL FIX — ACTUAL FILE THAT EXISTS
+CMD ["node", "dist/apps/booking-service/apps/booking-service/src/server.cjs"]
