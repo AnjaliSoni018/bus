@@ -45,4 +45,5 @@ COPY --from=build /app/apps/booking-service/prisma ./apps/booking-service/prisma
 ENV NODE_ENV=production
 
 # 🔥 REAL FIX — ACTUAL FILE THAT EXISTS
-CMD ["node", "dist/apps/booking-service/apps/booking-service/src/server.cjs"]
+CMD ["node", "dist/apps/booking-service/server.cjs"]
+
