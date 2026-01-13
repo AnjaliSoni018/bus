@@ -4,7 +4,7 @@
   "main": "dist/main.js",
   "license": "ISC",
   "scripts": {
-    "build": "tsc -p tsconfig.app.json",
+    "build": "tsc -p tsconfig.app.json && cp -r src/generated dist/",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --clear --respawn src/server.ts",
     "prisma:generate": "prisma generate",

@@ -520,7 +520,7 @@
                 "cjs"
               ],
               "bundle": false,
-              "main": "apps/booking-service/src/main.ts",
+              "main": "apps/booking-service/src/server.ts",
               "tsConfig": "apps/booking-service/tsconfig.app.json",
               "assets": [
                 "apps/booking-service/src/assets"
@@ -21735,5 +21735,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1768210564092
+  "computedAt": 1768286813783
 }

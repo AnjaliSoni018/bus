@@ -2,6 +2,7 @@ import { prisma } from '../../db/prisma';
 import { InitiateBookingDTO } from './initiate-booking.dto';
 import { AppError } from '../../utils/AppError';
 import { BusServiceClient } from '../../clients/bus-service.client';
+import { Prisma } from '@prisma/client';
 
 export async function initiateBooking(userId: string, dto: InitiateBookingDTO) {
   if (!dto.seats?.length) {
@@ -50,7 +51,7 @@ export async function initiateBooking(userId: string, dto: InitiateBookingDTO) {
     holdUntil,
   });
 
-  return prisma.$transaction(async (tx) => {
+  return prisma.$transaction(async (tx: Prisma.TransactionClient) => {
     const booking = await tx.booking.create({
       data: {
         bookingRef: holdToken,

@@ -52,4 +52,4 @@ function isFile(s) {
 }
 
 // Call the user-defined main.
-module.exports = require('./apps/booking-service/src/main.cjs');
+module.exports = require('./apps/booking-service/src/server.cjs');

@@ -14,7 +14,7 @@
         "outputPath": "dist/apps/booking-service",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/booking-service/src/main.ts",
+        "main": "apps/booking-service/src/server.ts",
         "tsConfig": "apps/booking-service/tsconfig.app.json",
         "assets": ["apps/booking-service/src/assets"],
         "generatePackageJson": true
