@@ -6,16 +6,17 @@ FROM node:22-alpine AS build
 WORKDIR /app
 RUN apk add --no-cache openssl libssl3 libcrypto3
 
-# 🔑 COPY ROOT CONFIGS (YOU WERE MISSING THESE)
 COPY package*.json nx.json tsconfig.base.json eslint.config.js jest.preset.js ./
-
-# Copy apps
 COPY apps ./apps
 
-# Install deps
 RUN npm install --legacy-peer-deps
 
-# Build via Nx
+# Prisma client
+WORKDIR /app/apps/booking-service
+RUN npx prisma generate
+
+# Build using Nx (single source of truth)
+WORKDIR /app
 RUN npx nx build booking-service
 
 
@@ -25,13 +26,18 @@ RUN npx nx build booking-service
 FROM node:22-alpine AS prod
 
 WORKDIR /app
-RUN apk add --no-cache openssl libssl3 libcrypto3
+ENV NODE_ENV=production
 
+# Copy build output
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/prisma ./apps/booking-service/prisma
 
-ENV NODE_ENV=production
+# 🔥 CRITICAL FIX — create expected runtime path
+RUN mkdir -p dist/apps/booking-service/app \
+ && cp -r dist/apps/booking-service/apps/booking-service/src/app/* \
+       dist/apps/booking-service/app/
 
-# ✅ Migrations + run
-ENTRYPOINT ["sh", "-c", "npx prisma migrate deploy --schema=apps/booking-service/prisma/schema.prisma && node dist/apps/booking-service/server.cjs"]
+# Optional: migrations at startup (Render-safe)
+CMD npx prisma migrate deploy \
+ && node dist/apps/booking-service/server.cjs
