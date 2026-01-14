@@ -1,42 +1,43 @@
 # =========================
 # BUILD STAGE
 # =========================
-FROM node:22-alpine AS build
+FROM node:22-slim AS build
 
 WORKDIR /app
-RUN apk add --no-cache openssl
 
-# Root configs REQUIRED by Nx
+# Required system deps
+RUN apt-get update && apt-get install -y openssl ca-certificates && rm -rf /var/lib/apt/lists/*
+
+# Root configs required by Nx
 COPY package*.json nx.json tsconfig.base.json eslint.config.js jest.preset.js ./
 
 # Apps
 COPY apps ./apps
 
-# Install deps
+# Install deps (Nx postinstall will NOT crash here)
 RUN npm install --legacy-peer-deps
 
-# Prisma (explicit schema path — no guessing)
+# Prisma
 WORKDIR /app/apps/booking-service
 RUN npx prisma generate --schema=prisma/schema.prisma
 
-# Build ONLY booking-service
+# Build booking-service only
 WORKDIR /app
 RUN npx nx build booking-service
 
 # =========================
 # PRODUCTION STAGE
 # =========================
-FROM node:22-alpine AS prod
+FROM node:22-slim AS prod
 
 WORKDIR /app
-RUN apk add --no-cache openssl
+RUN apt-get update && apt-get install -y openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 
 ENV NODE_ENV=production
 
-# Copy runtime artifacts
+# Copy runtime artifacts only
 COPY --from=build /app/dist/apps/booking-service ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/prisma ./prisma
 
-# ✅ THIS FILE EXISTS — you verified it
 CMD ["node", "dist/server.cjs"]
