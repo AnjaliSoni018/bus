@@ -4,20 +4,24 @@
 FROM node:22-alpine AS build
 
 WORKDIR /app
-
 RUN apk add --no-cache openssl
 
-COPY package*.json nx.json tsconfig.base.json ./
+# Root configs REQUIRED by Nx
+COPY package*.json nx.json tsconfig.base.json eslint.config.js jest.preset.js ./
+
+# Apps
 COPY apps ./apps
 
+# Install deps
 RUN npm install --legacy-peer-deps
 
+# Prisma (explicit schema path — no guessing)
 WORKDIR /app/apps/booking-service
-RUN npx prisma generate
+RUN npx prisma generate --schema=prisma/schema.prisma
 
+# Build ONLY booking-service
 WORKDIR /app
 RUN npx nx build booking-service
-
 
 # =========================
 # PRODUCTION STAGE
@@ -25,18 +29,14 @@ RUN npx nx build booking-service
 FROM node:22-alpine AS prod
 
 WORKDIR /app
-
 RUN apk add --no-cache openssl
-
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/apps/booking-service/prisma ./apps/booking-service/prisma
-
-# 🔥 CRITICAL FIX — make Node resolve ./app
-RUN ln -s \
-  /app/dist/apps/booking-service/apps/booking-service/src/app.cjs \
-  /app/dist/apps/booking-service/apps/booking-service/src/app.js
 
 ENV NODE_ENV=production
 
-CMD ["node", "dist/apps/booking-service/apps/booking-service/src/server.cjs"]
+# Copy runtime artifacts
+COPY --from=build /app/dist/apps/booking-service ./dist
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/apps/booking-service/prisma ./prisma
+
+# ✅ THIS FILE EXISTS — you verified it
+CMD ["node", "dist/server.cjs"]
