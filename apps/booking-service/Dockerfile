@@ -17,7 +17,7 @@ COPY apps ./apps
 # Install deps (Nx postinstall will NOT crash here)
 RUN npm install --legacy-peer-deps
 
-# Prisma
+# Prisma    
 WORKDIR /app/apps/booking-service
 RUN npx prisma generate --schema=prisma/schema.prisma
 
@@ -39,5 +39,7 @@ ENV NODE_ENV=production
 COPY --from=build /app/dist/apps/booking-service ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/prisma ./prisma
+
+WORKDIR /app/dist
 
 CMD ["node", "dist/server.cjs"]
