@@ -1,7 +1,7 @@
 # =========================
 # BUILD STAGE
 # =========================
-FROM node:22-alpine AS build
+FROM node:22-bullseye AS build
 
 WORKDIR /app
 RUN apk add --no-cache openssl libssl3 libcrypto3
@@ -23,7 +23,7 @@ RUN npx nx build booking-service
 # =========================
 # PRODUCTION STAGE
 # =========================
-FROM node:22-alpine AS prod
+FROM node:22-bullseye AS prod
 
 WORKDIR /app
 ENV NODE_ENV=production
