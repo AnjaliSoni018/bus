@@ -33,84 +33,72 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "apps/tsconfig.spec.json",
-        "hash": "15632768803430051377"
-      },
-      {
-        "file": "tmp/user-service/main-with-require-overrides.js",
-        "hash": "5803729257484543891"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "3494843969422251966"
-      },
-      {
-        "file": "apps/eslint.config.js",
-        "hash": "17012108287991280227"
-      },
-      {
-        "file": "apps-e2e/eslint.config.js",
-        "hash": "17012108287991280227"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "2491311267947930595"
-      },
-      {
         "file": "apps-e2e/tsconfig.json",
         "hash": "2346920493880922870"
-      },
-      {
-        "file": "apps/tsconfig.json",
-        "hash": "9420862676426701392"
-      },
-      {
-        "file": "apps-e2e/tsconfig.spec.json",
-        "hash": "13058925111467353993"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": "eslint.config.js",
-        "hash": "8965237677768068718"
-      },
-      {
-        "file": "apps-e2e/jest.config.ts",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "docker-compose.yml",
-        "hash": "12456585487980810333"
       },
       {
         "file": "nx.json",
         "hash": "1705966357152182942"
       },
       {
-        "file": "package.json",
-        "hash": "3039864995030125786"
+        "file": "apps/eslint.config.js",
+        "hash": "17012108287991280227"
       },
       {
-        "file": "packages/.gitkeep",
+        "file": "apps-e2e/jest.config.ts",
         "hash": "3244421341483603138"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "10052046223518464685"
-      },
-      {
-        "file": "tsconfig.json",
-        "hash": "1379983966652230747"
       },
       {
         "file": ".prettierignore",
         "hash": "14688272390704683536"
       },
       {
-        "file": "apps/tsconfig.app.json",
-        "hash": "3062189852699194213"
+        "file": "package.json",
+        "hash": "3039864995030125786"
+      },
+      {
+        "file": "apps-e2e/eslint.config.js",
+        "hash": "17012108287991280227"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "12456585487980810333"
+      },
+      {
+        "file": "tmp/booking-service/main-with-require-overrides.js",
+        "hash": "13654617909261350095"
+      },
+      {
+        "file": "apps-e2e/tsconfig.spec.json",
+        "hash": "13058925111467353993"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "13455748945344899060"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "8965237677768068718"
+      },
+      {
+        "file": "apps/jest.config.ts",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "apps/tsconfig.json",
+        "hash": "9420862676426701392"
+      },
+      {
+        "file": "tmp/user-service/main-with-require-overrides.js",
+        "hash": "5803729257484543891"
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "2491311267947930595"
       },
       {
         "file": ".vscode/extensions.json",
@@ -121,20 +109,32 @@
         "hash": "14528656903263167087"
       },
       {
-        "file": "tmp/booking-service/main-with-require-overrides.js",
-        "hash": "13654617909261350095"
+        "file": ".gitignore",
+        "hash": "10052046223518464685"
+      },
+      {
+        "file": "apps/tsconfig.spec.json",
+        "hash": "15632768803430051377"
       },
       {
         "file": ".prettierrc",
         "hash": "16267754514737964994"
       },
       {
-        "file": "apps/jest.config.ts",
-        "hash": "3244421341483603138"
+        "file": "apps/tsconfig.app.json",
+        "hash": "3062189852699194213"
       },
       {
-        "file": "tsconfig.base.json",
-        "hash": "13455748945344899060"
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "1379983966652230747"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "3494843969422251966"
       }
     ],
     "projectFileMap": {
@@ -1076,7 +1076,7 @@
         },
         {
           "file": "apps/booking-service/Dockerfile",
-          "hash": "2106213662541886943"
+          "hash": "11780635943662562946"
         },
         {
           "file": "apps/booking-service/eslint.config.js",
