@@ -39,4 +39,9 @@ COPY --from=build /app/apps/booking-service/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/prisma ./prisma
 
 EXPOSE 3000
-CMD ["node", "dist/main.js"]
+ENTRYPOINT ["sh", "-c", "\
+  echo 'Applying Prisma migrations...'; \
+  npx prisma migrate deploy --schema=./prisma/schema.prisma && \
+  echo 'Migrations applied successfully! Starting server...'; \
+  node dist/main.js \
+"]
