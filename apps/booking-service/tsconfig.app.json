@@ -1,9 +1,16 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "../../../dist/apps/booking-service/apps/booking-service/src"
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

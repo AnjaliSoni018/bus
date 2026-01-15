@@ -1,45 +1,42 @@
-# =========================
-# BUILD STAGE
-# =========================
-FROM node:22-slim AS build
-
+# ========== Build Stage ==========
+FROM node:22-alpine AS build
 WORKDIR /app
 
-# Required system deps
-RUN apt-get update && apt-get install -y openssl ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache libc6-compat openssl
 
-# Root configs required by Nx
-COPY package*.json nx.json tsconfig.base.json eslint.config.js jest.preset.js ./
+ENV NODE_ENV=development
+ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
-# Apps
-COPY apps ./apps
-
-# Install deps (Nx postinstall will NOT crash here)
+# Root workspace
+COPY package.json package-lock.json nx.json tsconfig.base.json ./
 RUN npm install --legacy-peer-deps
 
-# Prisma    
+# Booking service
+COPY apps/booking-service ./apps/booking-service
+
+# ⛔ THIS STEP WAS MISSING IN YOUR MENTAL MODEL
 WORKDIR /app/apps/booking-service
-RUN npx prisma generate --schema=prisma/schema.prisma
+RUN npm install --legacy-peer-deps
 
-# Build booking-service only
+# Generate Prisma client (now @prisma/client EXISTS)
+RUN npx prisma generate
+
+# Build
 WORKDIR /app
-RUN npx nx build booking-service
+RUN npx tsc -p apps/booking-service/tsconfig.app.json --outDir dist/apps/booking-service
 
-# =========================
-# PRODUCTION STAGE
-# =========================
-FROM node:22-slim AS prod
-
+# ========== Production ==========
+FROM node:22-alpine AS prod
 WORKDIR /app
-RUN apt-get update && apt-get install -y openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 
+RUN apk add --no-cache libc6-compat openssl
 ENV NODE_ENV=production
+ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
-# Copy runtime artifacts only
 COPY --from=build /app/dist/apps/booking-service ./dist
 COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/apps/booking-service/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/prisma ./prisma
 
-WORKDIR /app/dist
-
-CMD ["node", "dist/server.cjs"]
+EXPOSE 3000
+CMD ["node", "dist/main.cjs"]

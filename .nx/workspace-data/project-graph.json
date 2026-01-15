@@ -356,13 +356,7 @@
             },
             "cache": true,
             "inputs": [
-              "{projectRoot}/package.json",
-              "{workspaceRoot}/tsconfig.base.json",
-              "{projectRoot}/tsconfig.json",
-              "{projectRoot}/tsconfig.app.json",
-              "{projectRoot}/src/**/*.ts",
-              "!{projectRoot}/**/*.spec.ts",
-              "!{projectRoot}/**/*.test.ts",
+              "production",
               "^production",
               {
                 "externalDependencies": [
@@ -384,8 +378,10 @@
               "{projectRoot}/**/*.d.cts.map",
               "{projectRoot}/**/*.d.mts.map",
               "{projectRoot}/tsconfig.tsbuildinfo",
-              "dist/apps/booking-service/apps/booking-service/src/**/*.d.ts",
-              "dist/apps/booking-service/apps/booking-service/*.tsbuildinfo"
+              "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/*.tsbuildinfo",
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
             ],
             "syncGenerators": [
               "@nx/js:typescript-sync"
@@ -526,7 +522,7 @@
                 "cjs"
               ],
               "bundle": false,
-              "main": "apps/booking-service/src/server.ts",
+              "main": "apps/booking-service/src/main.ts",
               "tsConfig": "apps/booking-service/tsconfig.app.json",
               "assets": [
                 "apps/booking-service/src/assets"
@@ -536,7 +532,10 @@
             "configurations": {
               "development": {
                 "esbuildOptions": {
-                  "sourcemap": true
+                  "sourcemap": true,
+                  "outExtension": {
+                    ".js": ".js"
+                  }
                 }
               },
               "production": {
@@ -21741,5 +21740,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1768374960886
+  "computedAt": 1768396684328
 }
