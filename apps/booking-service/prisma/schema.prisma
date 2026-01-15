@@ -88,7 +88,7 @@ model Booking {
 
 model BookingSeat {
   id        String    @id @default(uuid())
-  bookingId String    @unique
+  bookingId String    
   tripId    String
   seatId    String
   seatLabel String?
