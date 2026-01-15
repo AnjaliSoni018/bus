@@ -39,4 +39,4 @@ COPY --from=build /app/apps/booking-service/node_modules ./node_modules
 COPY --from=build /app/apps/booking-service/prisma ./prisma
 
 EXPOSE 3000
-CMD ["node", "dist/main.cjs"]
+CMD ["node", "dist/main.js"]
