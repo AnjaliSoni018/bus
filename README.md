@@ -161,4 +161,36 @@ booking-service (cron / worker)
   bus-service
 - release seats
 
-No expiry = memory leak of inventory.
+## No expiry = memory leak of inventory.
+
+---
+
+#folder structure:
+src/
+├── app.ts
+├── main.ts
+├── routes.ts
+├── config/
+│ ├── env.ts
+│ ├── logger.ts
+├── db/
+│ └── prisma.ts
+├── modules/
+│ ├── payment/
+│ │ ├── payment.controller.ts
+│ │ ├── payment.service.ts
+│ │ ├── payment.routes.ts
+│ │ ├── payment.types.ts
+│ │ ├── payment.validators.ts
+│ │ ├── payment.events.ts
+│ │ └── gateways/
+│ │ ├── gateway.interface.ts
+│ │ ├── mock.gateway.ts
+│ │ └── index.ts
+│ ├── refund/
+│ │ ├── refund.service.ts
+│ │ └── refund.events.ts
+│ └── health/
+├── middlewares/
+├── utils/
+└── kafka/ (empty for now)

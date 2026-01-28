@@ -2,7 +2,7 @@ import { prisma } from '../../db/prisma';
 import { InitiateBookingDTO } from './initiate-booking.dto';
 import { AppError } from '../../utils/AppError';
 import { BusServiceClient } from '../../clients/bus-service.client';
-import { Prisma } from '@prisma/client';
+import { emitBookingCreated } from './booking.events';
 
 export async function initiateBooking(userId: string, dto: InitiateBookingDTO) {
   if (!dto.seats?.length) {
@@ -10,11 +10,7 @@ export async function initiateBooking(userId: string, dto: InitiateBookingDTO) {
   }
 
   const trip = await BusServiceClient.getTrip(dto.tripId);
-
-  if (!trip) {
-    throw new AppError('Trip not found', 404);
-  }
-
+  if (!trip) throw new AppError('Trip not found', 404);
   if (!Array.isArray(trip.tripSeatStates)) {
     throw new AppError('Invalid seat data from bus-service', 500);
   }
@@ -24,11 +20,9 @@ export async function initiateBooking(userId: string, dto: InitiateBookingDTO) {
 
   for (const seat of trip.tripSeatStates) {
     if (!requestedSeatIds.has(seat.seatId)) continue;
-
     if (seat.state !== 'AVAILABLE') {
       throw new AppError(`Seat ${seat.seatId} is not available`, 409);
     }
-
     seatFareMap[seat.seatId] = seat.price;
   }
 
@@ -51,17 +45,16 @@ export async function initiateBooking(userId: string, dto: InitiateBookingDTO) {
     holdUntil,
   });
 
-  return prisma.$transaction(async (tx: Prisma.TransactionClient) => {
+  // 🔒 TRANSACTION — DB ONLY
+  const booking = await prisma.$transaction(async (tx) => {
     const booking = await tx.booking.create({
       data: {
         bookingRef: holdToken,
         userId,
         tripId: dto.tripId,
-
         operatorUserId: trip.busRoute.bus.operatorUserId,
         routeId: trip.busRoute.routeId,
         busId: trip.busRoute.busId,
-
         baseFare: trip.baseFare,
         totalAmount,
         bookedSeatsCount: requestedSeatIds.size,
@@ -98,4 +91,15 @@ export async function initiateBooking(userId: string, dto: InitiateBookingDTO) {
 
     return booking;
   });
+
+  // 🚀 AFTER COMMIT — SAFE
+  await emitBookingCreated({
+    bookingId: booking.id,
+    bookingRef: booking.bookingRef,
+    userId,
+    amount: booking.totalAmount,
+    currency: booking.currency,
+  });
+
+  return booking;
 }

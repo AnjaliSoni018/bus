@@ -17,6 +17,7 @@ enum BookingStatus {
   INITIATED // Created but payment not done yet
   CONFIRMED // Successfully booked
   PAYMENT_FAILED // Payment failed
+  EXPIRED
   CANCELLED // Cancelled by user/operator/system
   COMPLETED // Trip completed
   REFUNDED // Refund issued

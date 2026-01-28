@@ -44,7 +44,9 @@
         "apps-e2e/**/*",
         "apps/user-service-e2e/**/*",
         "apps/bus-service-e2e/**/*",
-        "booking-service-e2e/**/*"
+        "booking-service-e2e/**/*",
+        "apps/payment-service-e2e/**/*",
+        "apps/notification-service-e2e/**/*"
       ]
     }
   ],

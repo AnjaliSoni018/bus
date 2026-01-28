@@ -1,5 +1,56 @@
 {
   "nodes": {
+    "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497": {
+      "name": "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497",
+      "type": "lib",
+      "data": {
+        "root": "apps/payment-service/src/generated/prisma",
+        "targets": {
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "apps/payment-service/src/generated/prisma",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.js",
+              "{workspaceRoot}/apps/payment-service/eslint.config.js",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497",
+        "implicitDependencies": [],
+        "tags": []
+      }
+    },
     "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": {
       "name": "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba",
       "type": "lib",
@@ -49,6 +100,346 @@
         "name": "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba",
         "implicitDependencies": [],
         "tags": []
+      }
+    },
+    "notification-service-e2e": {
+      "name": "notification-service-e2e",
+      "type": "e2e",
+      "data": {
+        "root": "apps/notification-service-e2e",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "apps/notification-service-e2e",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{projectRoot}/**/*.js",
+              "{projectRoot}/**/*.cjs",
+              "{projectRoot}/**/*.mjs",
+              "{projectRoot}/**/*.jsx",
+              "{projectRoot}/**/*.js.map",
+              "{projectRoot}/**/*.jsx.map",
+              "{projectRoot}/**/*.d.ts",
+              "{projectRoot}/**/*.d.cts",
+              "{projectRoot}/**/*.d.mts",
+              "{projectRoot}/**/*.d.ts.map",
+              "{projectRoot}/**/*.d.cts.map",
+              "{projectRoot}/**/*.d.mts.map",
+              "{projectRoot}/tsconfig.tsbuildinfo",
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "apps/notification-service-e2e",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.js",
+              "{projectRoot}/eslint.config.js",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "e2e": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{e2eProjectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/notification-service-e2e/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "dependsOn": [
+              "notification-service:build"
+            ],
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "notification-service-e2e",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "implicitDependencies": [
+          "notification-service"
+        ],
+        "tags": []
+      }
+    },
+    "notification-service": {
+      "name": "notification-service",
+      "type": "app",
+      "data": {
+        "root": "apps/notification-service",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "apps/notification-service",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{projectRoot}/**/*.js",
+              "{projectRoot}/**/*.cjs",
+              "{projectRoot}/**/*.mjs",
+              "{projectRoot}/**/*.jsx",
+              "{projectRoot}/**/*.js.map",
+              "{projectRoot}/**/*.jsx.map",
+              "{projectRoot}/**/*.d.ts",
+              "{projectRoot}/**/*.d.cts",
+              "{projectRoot}/**/*.d.mts",
+              "{projectRoot}/**/*.d.ts.map",
+              "{projectRoot}/**/*.d.cts.map",
+              "{projectRoot}/**/*.d.mts.map",
+              "{projectRoot}/tsconfig.tsbuildinfo",
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "apps/notification-service",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.js",
+              "{projectRoot}/eslint.config.js",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "options": {
+              "cwd": "apps/notification-service",
+              "command": "jest"
+            },
+            "metadata": {
+              "technologies": [
+                "jest"
+              ],
+              "description": "Run Jest Tests",
+              "help": {
+                "command": "npx jest --help",
+                "example": {
+                  "options": {
+                    "coverage": true
+                  }
+                }
+              }
+            },
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js",
+              {
+                "externalDependencies": [
+                  "jest"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/coverage/apps/notification-service"
+            ],
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "@nx/esbuild:esbuild",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "defaultConfiguration": "production",
+            "options": {
+              "platform": "node",
+              "outputPath": "dist/apps/notification-service",
+              "format": [
+                "cjs"
+              ],
+              "bundle": false,
+              "main": "apps/notification-service/src/main.ts",
+              "tsConfig": "apps/notification-service/tsconfig.app.json",
+              "assets": [
+                "apps/notification-service/src/assets"
+              ],
+              "generatePackageJson": true,
+              "esbuildOptions": {
+                "sourcemap": true,
+                "outExtension": {
+                  ".js": ".js"
+                }
+              }
+            },
+            "configurations": {
+              "development": {},
+              "production": {
+                "esbuildOptions": {
+                  "sourcemap": false,
+                  "outExtension": {
+                    ".js": ".js"
+                  }
+                }
+              }
+            },
+            "parallelism": true,
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ]
+          },
+          "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "dependsOn": [
+              "build"
+            ],
+            "options": {
+              "buildTarget": "notification-service:build",
+              "runBuildTargetDependencies": false
+            },
+            "configurations": {
+              "development": {
+                "buildTarget": "notification-service:build:development"
+              },
+              "production": {
+                "buildTarget": "notification-service:build:production"
+              }
+            },
+            "parallelism": true
+          }
+        },
+        "name": "notification-service",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/notification-service/src",
+        "projectType": "application",
+        "tags": [],
+        "implicitDependencies": []
       }
     },
     "booking-service-e2e": {
@@ -214,6 +605,132 @@
         "tags": []
       }
     },
+    "payment-service-e2e": {
+      "name": "payment-service-e2e",
+      "type": "e2e",
+      "data": {
+        "root": "apps/payment-service-e2e",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "apps/payment-service-e2e",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{projectRoot}/**/*.js",
+              "{projectRoot}/**/*.cjs",
+              "{projectRoot}/**/*.mjs",
+              "{projectRoot}/**/*.jsx",
+              "{projectRoot}/**/*.js.map",
+              "{projectRoot}/**/*.jsx.map",
+              "{projectRoot}/**/*.d.ts",
+              "{projectRoot}/**/*.d.cts",
+              "{projectRoot}/**/*.d.mts",
+              "{projectRoot}/**/*.d.ts.map",
+              "{projectRoot}/**/*.d.cts.map",
+              "{projectRoot}/**/*.d.mts.map",
+              "{projectRoot}/tsconfig.tsbuildinfo",
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "apps/payment-service-e2e",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/eslint.config.js",
+              "{projectRoot}/eslint.config.js",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "e2e": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{e2eProjectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/payment-service-e2e/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "dependsOn": [
+              "payment-service:build"
+            ],
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "name": "payment-service-e2e",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "implicitDependencies": [
+          "payment-service"
+        ],
+        "tags": []
+      }
+    },
     "user-service-e2e": {
       "name": "user-service-e2e",
       "type": "e2e",
@@ -356,7 +873,15 @@
             },
             "cache": true,
             "inputs": [
-              "production",
+              "{projectRoot}/package.json",
+              "{workspaceRoot}/tsconfig.base.json",
+              "{projectRoot}/tsconfig.json",
+              "{projectRoot}/tsconfig.app.json",
+              "{projectRoot}/tsconfig.spec.json",
+              "{projectRoot}/jest.config.ts",
+              "{projectRoot}/src/**/*.test.ts",
+              "{projectRoot}/src/**/*.spec.ts",
+              "{projectRoot}/src/**/*.d.ts",
               "^production",
               {
                 "externalDependencies": [
@@ -365,22 +890,11 @@
               }
             ],
             "outputs": [
-              "{projectRoot}/**/*.js",
-              "{projectRoot}/**/*.cjs",
-              "{projectRoot}/**/*.mjs",
-              "{projectRoot}/**/*.jsx",
-              "{projectRoot}/**/*.js.map",
-              "{projectRoot}/**/*.jsx.map",
-              "{projectRoot}/**/*.d.ts",
-              "{projectRoot}/**/*.d.cts",
-              "{projectRoot}/**/*.d.mts",
-              "{projectRoot}/**/*.d.ts.map",
-              "{projectRoot}/**/*.d.cts.map",
-              "{projectRoot}/**/*.d.mts.map",
-              "{projectRoot}/tsconfig.tsbuildinfo",
               "{projectRoot}/dist/**/*.d.ts",
+              "{projectRoot}/dist/**/*.d.ts.map",
               "{projectRoot}/*.tsbuildinfo",
               "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts.map",
               "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
             ],
             "syncGenerators": [
@@ -458,7 +972,7 @@
               "script": "start"
             },
             "metadata": {
-              "scriptContent": "node dist/server.js",
+              "scriptContent": "node dist/main.js",
               "runCommand": "npm run start"
             },
             "configurations": {},
@@ -470,7 +984,7 @@
               "script": "dev"
             },
             "metadata": {
-              "scriptContent": "ts-node-dev --clear --respawn src/server.ts",
+              "scriptContent": "ts-node-dev --clear --respawn src/main.ts",
               "runCommand": "npm run dev"
             },
             "configurations": {},
@@ -722,6 +1236,268 @@
           "bus-service"
         ],
         "tags": []
+      }
+    },
+    "payment-service": {
+      "name": "payment-service",
+      "type": "app",
+      "data": {
+        "root": "apps/payment-service",
+        "targets": {
+          "typecheck": {
+            "dependsOn": [
+              "^typecheck"
+            ],
+            "options": {
+              "cwd": "apps/payment-service",
+              "command": "tsc --build --emitDeclarationOnly"
+            },
+            "cache": true,
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "outputs": [
+              "{projectRoot}/**/*.js",
+              "{projectRoot}/**/*.cjs",
+              "{projectRoot}/**/*.mjs",
+              "{projectRoot}/**/*.jsx",
+              "{projectRoot}/**/*.js.map",
+              "{projectRoot}/**/*.jsx.map",
+              "{projectRoot}/**/*.d.ts",
+              "{projectRoot}/**/*.d.cts",
+              "{projectRoot}/**/*.d.mts",
+              "{projectRoot}/**/*.d.ts.map",
+              "{projectRoot}/**/*.d.cts.map",
+              "{projectRoot}/**/*.d.mts.map",
+              "{projectRoot}/tsconfig.tsbuildinfo",
+              "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
+              "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
+            ],
+            "syncGenerators": [
+              "@nx/js:typescript-sync"
+            ],
+            "metadata": {
+              "technologies": [
+                "typescript"
+              ],
+              "description": "Runs type-checking for the project.",
+              "help": {
+                "command": "npx tsc --build --help",
+                "example": {
+                  "args": [
+                    "--force"
+                  ]
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "lint"
+            },
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              },
+              "scriptContent": "eslint . --ext .ts",
+              "runCommand": "npm run lint"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "test"
+            },
+            "metadata": {
+              "technologies": [
+                "jest"
+              ],
+              "description": "Run Jest Tests",
+              "help": {
+                "command": "npx jest --help",
+                "example": {
+                  "options": {
+                    "coverage": true
+                  }
+                }
+              },
+              "scriptContent": "echo \"Error: no test specified\" && exit 1",
+              "runCommand": "npm run test"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "start": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "start"
+            },
+            "metadata": {
+              "scriptContent": "node dist/main.js",
+              "runCommand": "npm run start"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "dev": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "dev"
+            },
+            "metadata": {
+              "scriptContent": "ts-node-dev --clear --respawn src/main.ts",
+              "runCommand": "npm run dev"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "prisma:generate": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "prisma:generate"
+            },
+            "metadata": {
+              "scriptContent": "prisma generate",
+              "runCommand": "npm run prisma:generate"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "prisma:migrate": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "prisma:migrate"
+            },
+            "metadata": {
+              "scriptContent": "prisma migrate dev",
+              "runCommand": "npm run prisma:migrate"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "nx-release-publish": {
+            "executor": "@nx/js:release-publish",
+            "dependsOn": [
+              "^nx-release-publish"
+            ],
+            "options": {},
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "@nx/esbuild:esbuild",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "defaultConfiguration": "production",
+            "options": {
+              "platform": "node",
+              "outputPath": "dist/apps/payment-service",
+              "format": [
+                "cjs"
+              ],
+              "bundle": false,
+              "main": "apps/payment-service/src/main.ts",
+              "tsConfig": "apps/payment-service/tsconfig.app.json",
+              "assets": [
+                "apps/payment-service/src/assets"
+              ],
+              "generatePackageJson": true,
+              "esbuildOptions": {
+                "sourcemap": true,
+                "outExtension": {
+                  ".js": ".js"
+                }
+              }
+            },
+            "configurations": {
+              "development": {},
+              "production": {
+                "esbuildOptions": {
+                  "sourcemap": false,
+                  "outExtension": {
+                    ".js": ".js"
+                  }
+                }
+              }
+            },
+            "parallelism": true,
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ]
+          },
+          "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "dependsOn": [
+              "build"
+            ],
+            "options": {
+              "buildTarget": "payment-service:build",
+              "runBuildTargetDependencies": false
+            },
+            "configurations": {
+              "development": {
+                "buildTarget": "payment-service:build:development"
+              },
+              "production": {
+                "buildTarget": "payment-service:build:production"
+              }
+            },
+            "parallelism": true
+          }
+        },
+        "name": "payment-service",
+        "tags": [
+          "npm:public"
+        ],
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "start",
+              "dev",
+              "prisma:generate",
+              "prisma:migrate",
+              "lint",
+              "test"
+            ]
+          },
+          "js": {
+            "packageName": "payment-service",
+            "packageMain": "dist/main.js",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/payment-service/src",
+        "projectType": "application",
+        "implicitDependencies": []
       }
     },
     "user-service": {
@@ -1484,6 +2260,15 @@
         "hash": "sha512-jnHMsrd0Mwa9Cf4IdOzbz543y4XJepXrbia2T4b6+spXC2We3t1y6K44D3mR8XMFSXMCf3/l7rCgddfx7UNVBA=="
       }
     },
+    "npm:@types/express-serve-static-core@5.1.1": {
+      "type": "npm",
+      "name": "npm:@types/express-serve-static-core@5.1.1",
+      "data": {
+        "version": "5.1.1",
+        "packageName": "@types/express-serve-static-core",
+        "hash": "sha512-v4zIMr/cX7/d2BpAEX3KNKL/JrT1s43s96lLvvdTmza1oEvDudCqK9aF/djc/SWgy8Yh0h30TZx5VpzqFCxk5A=="
+      }
+    },
     "npm:@types/express-serve-static-core": {
       "type": "npm",
       "name": "npm:@types/express-serve-static-core",
@@ -1509,6 +2294,15 @@
         "version": "20.19.21",
         "packageName": "@types/node",
         "hash": "16185708539648130893"
+      }
+    },
+    "npm:@types/node@25.0.9": {
+      "type": "npm",
+      "name": "npm:@types/node@25.0.9",
+      "data": {
+        "version": "25.0.9",
+        "packageName": "@types/node",
+        "hash": "sha512-/rpCXHlCWeqClNBwUhDcusJxXYDjZTyE8v5oTO7WbL8eij2nKhUeU89/6xgjU7N4/Vh3He0BtyhJdQbDyhiXAw=="
       }
     },
     "npm:@types/node@24.7.2": {
@@ -5174,6 +5968,15 @@
         "hash": "sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA=="
       }
     },
+    "npm:@types/node-cron": {
+      "type": "npm",
+      "name": "npm:@types/node-cron",
+      "data": {
+        "version": "3.0.11",
+        "packageName": "@types/node-cron",
+        "hash": "sha512-0ikrnug3/IyneSHqCBeslAhlK2aBfYek1fGo4bP4QnZPmiqSGRK+Oy7ZMisLWkesffJvQ1cqAcBnJC+8+nxIAg=="
+      }
+    },
     "npm:@types/parse-json": {
       "type": "npm",
       "name": "npm:@types/parse-json",
@@ -8207,6 +9010,15 @@
         "hash": "sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw=="
       }
     },
+    "npm:node-cron": {
+      "type": "npm",
+      "name": "npm:node-cron",
+      "data": {
+        "version": "4.2.1",
+        "packageName": "node-cron",
+        "hash": "sha512-lgimEHPE/QDgFlywTd8yTR61ptugX3Qer29efeyWw2rv259HtGBNn1vZVmp8lB9uo9wC0t/AT4iGqXxia+CJFg=="
+      }
+    },
     "npm:node-fetch-native": {
       "type": "npm",
       "name": "npm:node-fetch-native",
@@ -9631,7 +10443,27 @@
     }
   },
   "dependencies": {
+    "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497": [],
     "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": [],
+    "notification-service-e2e": [
+      {
+        "source": "notification-service-e2e",
+        "target": "notification-service",
+        "type": "implicit"
+      },
+      {
+        "source": "notification-service-e2e",
+        "target": "npm:axios",
+        "type": "static"
+      }
+    ],
+    "notification-service": [
+      {
+        "source": "notification-service",
+        "target": "npm:express",
+        "type": "static"
+      }
+    ],
     "booking-service-e2e": [
       {
         "source": "booking-service-e2e",
@@ -9640,6 +10472,18 @@
       },
       {
         "source": "booking-service-e2e",
+        "target": "npm:axios",
+        "type": "static"
+      }
+    ],
+    "payment-service-e2e": [
+      {
+        "source": "payment-service-e2e",
+        "target": "payment-service",
+        "type": "implicit"
+      },
+      {
+        "source": "payment-service-e2e",
         "target": "npm:axios",
         "type": "static"
       }
@@ -9670,6 +10514,11 @@
       {
         "source": "booking-service",
         "target": "npm:@types/node@25.0.3",
+        "type": "static"
+      },
+      {
+        "source": "booking-service",
+        "target": "npm:@types/node-cron",
         "type": "static"
       },
       {
@@ -9769,6 +10618,11 @@
       },
       {
         "source": "booking-service",
+        "target": "npm:node-cron",
+        "type": "static"
+      },
+      {
+        "source": "booking-service",
         "target": "npm:pino",
         "type": "static"
       },
@@ -9797,6 +10651,143 @@
       {
         "source": "bus-service-e2e",
         "target": "npm:axios",
+        "type": "static"
+      }
+    ],
+    "payment-service": [
+      {
+        "source": "payment-service",
+        "target": "npm:@types/cors",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:@types/express@5.0.6",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:@types/node@25.0.9",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:@types/uuid",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:@typescript-eslint/eslint-plugin@6.21.0",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:@typescript-eslint/parser@6.21.0",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:eslint@8.57.1",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:prisma@5.22.0",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:ts-node-dev",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:typescript",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:@prisma/client@5.22.0",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:axios",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:body-parser",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:class-transformer",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:class-validator",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:cors",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:date-fns",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:dotenv",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:express",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:ioredis",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:jsonwebtoken",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:kafkajs",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:pino",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:pino-pretty",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:uuid",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "npm:zod",
+        "type": "static"
+      },
+      {
+        "source": "payment-service",
+        "target": "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497",
         "type": "static"
       }
     ],
@@ -10166,6 +11157,11 @@
         "source": "npm:@types/express@5.0.6",
         "target": "npm:@types/serve-static@2.2.0",
         "type": "static"
+      },
+      {
+        "source": "npm:@types/express@5.0.6",
+        "target": "npm:@types/express-serve-static-core@5.1.1",
+        "type": "static"
       }
     ],
     "npm:@types/express-serve-static-core@5.1.0": [
@@ -10206,6 +11202,11 @@
       {
         "source": "npm:@types/serve-static@2.2.0",
         "target": "npm:@types/node@25.0.3",
+        "type": "static"
+      },
+      {
+        "source": "npm:@types/serve-static@2.2.0",
+        "target": "npm:@types/node@25.0.9",
         "type": "static"
       }
     ],
@@ -11263,6 +12264,35 @@
       {
         "source": "npm:thread-stream@2.7.0",
         "target": "npm:real-require",
+        "type": "static"
+      }
+    ],
+    "npm:@types/express-serve-static-core@5.1.1": [
+      {
+        "source": "npm:@types/express-serve-static-core@5.1.1",
+        "target": "npm:@types/node@25.0.9",
+        "type": "static"
+      },
+      {
+        "source": "npm:@types/express-serve-static-core@5.1.1",
+        "target": "npm:@types/qs",
+        "type": "static"
+      },
+      {
+        "source": "npm:@types/express-serve-static-core@5.1.1",
+        "target": "npm:@types/range-parser",
+        "type": "static"
+      },
+      {
+        "source": "npm:@types/express-serve-static-core@5.1.1",
+        "target": "npm:@types/send",
+        "type": "static"
+      }
+    ],
+    "npm:@types/node@25.0.9": [
+      {
+        "source": "npm:@types/node@25.0.9",
+        "target": "npm:undici-types",
         "type": "static"
       }
     ],
@@ -21740,5 +22770,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1768814104027
+  "computedAt": 1769508142128
 }
