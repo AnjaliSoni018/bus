@@ -16,7 +16,7 @@ export const kafka = new Kafka({
   clientId: 'booking-service',
   brokers: process.env.KAFKA_BROKERS!.split(','),
   ssl: {
-    ca: [caCert],
+    ca: [caCert!],
   },
   sasl: {
     mechanism: 'scram-sha-256',

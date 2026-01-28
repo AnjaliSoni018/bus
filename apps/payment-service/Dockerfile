@@ -11,21 +11,21 @@ ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 COPY package.json package-lock.json nx.json tsconfig.base.json ./
 RUN npm install --legacy-peer-deps
 
-# Booking service
-COPY apps/booking-service ./apps/booking-service
+# Payment service
+COPY apps/payment-service ./apps/payment-service
 
-# ⛔ THIS STEP WAS MISSING IN YOUR MENTAL MODEL
-WORKDIR /app/apps/booking-service
+# 🔴 REQUIRED: install app-level deps
+WORKDIR /app/apps/payment-service
 RUN npm install --legacy-peer-deps
 
-# Generate Prisma client (now @prisma/client EXISTS)
+# Generate Prisma client
 RUN npx prisma generate
 
 # Build
 WORKDIR /app
-RUN npx tsc -p apps/booking-service/tsconfig.app.json --outDir dist/apps/booking-service
+RUN npx tsc -p apps/payment-service/tsconfig.app.json --outDir dist/apps/payment-service
 
-# ========== Production ==========  
+# ========== Production Stage ==========
 FROM node:22-alpine AS prod
 WORKDIR /app
 
@@ -33,12 +33,14 @@ RUN apk add --no-cache libc6-compat openssl
 ENV NODE_ENV=production
 ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
-COPY --from=build /app/dist/apps/booking-service ./dist
+# Copy build output
+COPY --from=build /app/dist/apps/payment-service ./dist
 COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/apps/booking-service/node_modules ./node_modules
-COPY --from=build /app/apps/booking-service/prisma ./prisma
+COPY --from=build /app/apps/payment-service/node_modules ./node_modules
+COPY --from=build /app/apps/payment-service/prisma ./prisma
 
 EXPOSE 3000
+
 ENTRYPOINT ["sh", "-c", "\
   echo 'Applying Prisma migrations...'; \
   npx prisma migrate deploy --schema=./prisma/schema.prisma && \

@@ -9,7 +9,7 @@ async function bootstrap() {
   await startBookingConsumer();
   logger.info('✅ Booking consumer started');
 
-  app.listen(env.PORT, () => {
+  app.listen(env.PORT, '0.0.0.0', () => {
     logger.info(`🚀 payment service running on port ${env.PORT}`);
   });
 }
