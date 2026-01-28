@@ -1,5 +1,5 @@
 import { Kafka } from 'kafkajs';
-import fs from 'fs';
+// import fs from 'fs';
 
 console.log({
   mechanism: process.env.KAFKA_SASL_MECHANISM,
@@ -8,11 +8,15 @@ console.log({
   kafkabroker: process.env.KAFKA_BROKERS,
 });
 
+const caCert = Buffer.from(process.env.KAFKA_CA_CERT!, 'base64').toString(
+  'utf-8'
+);
+
 export const kafka = new Kafka({
   clientId: 'booking-service',
   brokers: process.env.KAFKA_BROKERS!.split(','),
   ssl: {
-    ca: [fs.readFileSync('certs/aiven-ca.pem', 'utf-8')],
+    ca: [caCert],
   },
   sasl: {
     mechanism: 'scram-sha-256',

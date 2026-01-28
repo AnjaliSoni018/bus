@@ -1,5 +1,5 @@
 import { Kafka } from 'kafkajs';
-import fs from 'fs';
+// import fs from 'fs';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -9,13 +9,16 @@ console.log({
   username: process.env.KAFKA_USERNAME,
   passwordLength: process.env.KAFKA_PASSWORD?.length,
   kafkabroker: process.env.KAFKA_BROKERS,
+  ca: process.env.KAFKA_CA_CERT,
 });
-
+const caCert = Buffer.from(process.env.KAFKA_CA_CERT!, 'base64').toString(
+  'utf-8'
+);
 export const kafka = new Kafka({
   clientId: 'booking-service',
   brokers: process.env.KAFKA_BROKERS!.split(','),
   ssl: {
-    ca: [fs.readFileSync('certs/aiven-ca.pem', 'utf-8')],
+    ca: [caCert!],
   },
   sasl: {
     mechanism: 'scram-sha-256',
