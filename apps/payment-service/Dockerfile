@@ -23,7 +23,7 @@ RUN npx prisma generate
 
 # Build
 WORKDIR /app
-RUN npx tsc -p apps/payment-service/tsconfig.app.json 
+RUN npx tsc -p apps/payment-service/tsconfig.app.json --outDir dist/apps/payment-service
 
 # ========== Production Stage ==========
 FROM node:22-alpine AS prod
