@@ -23,7 +23,7 @@ RUN npx prisma generate
 
 # Build
 WORKDIR /app
-RUN npx tsc -p apps/payment-service/tsconfig.app.json --outDir dist/apps/payment-service
+RUN npx tsc -p apps/payment-service/tsconfig.app.json 
 
 # ========== Production Stage ==========
 FROM node:22-alpine AS prod
@@ -45,5 +45,5 @@ ENTRYPOINT ["sh", "-c", "\
   echo 'Applying Prisma migrations...'; \
   npx prisma migrate deploy --schema=./prisma/schema.prisma && \
   echo 'Migrations applied successfully! Starting server...'; \
-  node dist/apps/payment-service/main.js \
+  node dist/main.js \
 "]
