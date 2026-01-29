@@ -3,10 +3,10 @@ import { env } from './config/env';
 import { logger } from './config/logger';
 import { startBookingConsumer } from './kafka/booking.consumer';
 import { paymentProducer } from './kafka/payment.producer';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
-dotenv.config();
-
+// dotenv.config();
+console.log(env.PORT);
 async function bootstrap() {
   await paymentProducer.connect();
   await startBookingConsumer();

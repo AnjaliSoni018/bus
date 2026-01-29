@@ -14,7 +14,7 @@ RUN npm install --legacy-peer-deps
 # Payment service
 COPY apps/payment-service ./apps/payment-service
 
-# 🔴 REQUIRED: install app-level deps
+# Install app-level deps
 WORKDIR /app/apps/payment-service
 RUN npm install --legacy-peer-deps
 
@@ -35,8 +35,11 @@ ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
 # Copy build output
 COPY --from=build /app/dist/apps/payment-service ./dist
+
+# ✅ COPY NODE_MODULES ONLY ONCE (FIX)
 COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/apps/payment-service/node_modules ./node_modules
+
+# Prisma schema
 COPY --from=build /app/apps/payment-service/prisma ./prisma
 
 EXPOSE 3000

@@ -1260,9 +1260,7 @@
               "{projectRoot}/tsconfig.app.json",
               "{projectRoot}/tsconfig.spec.json",
               "{projectRoot}/src/**/*.ts",
-              "!{projectRoot}/jest.config.ts",
-              "!{projectRoot}/src/**/*.spec.ts",
-              "!{projectRoot}/src/**/*.test.ts",
+              "!{projectRoot}/**/*.spec.ts",
               "^production",
               {
                 "externalDependencies": [
@@ -1284,8 +1282,8 @@
               "{projectRoot}/**/*.d.cts.map",
               "{projectRoot}/**/*.d.mts.map",
               "{projectRoot}/tsconfig.tsbuildinfo",
-              "{projectRoot}/dist/**/*.d.ts",
-              "{projectRoot}/dist/tsconfig.tsbuildinfo",
+              "{workspaceRoot}/dist/apps/payment-service/**/*.d.ts",
+              "{workspaceRoot}/dist/apps/*.tsbuildinfo",
               "{workspaceRoot}/dist/out-tsc/**/*.d.ts",
               "{workspaceRoot}/dist/out-tsc/tsconfig.tsbuildinfo"
             ],
@@ -22780,5 +22778,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1769666344677
+  "computedAt": 1769682952235
 }
