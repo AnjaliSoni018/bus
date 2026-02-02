@@ -14,16 +14,17 @@ RUN npm install --legacy-peer-deps
 # Payment service
 COPY apps/payment-service ./apps/payment-service
 
-# Install app-level deps
+# App-level deps
 WORKDIR /app/apps/payment-service
 RUN npm install --legacy-peer-deps
 
 # Generate Prisma client
 RUN npx prisma generate
 
-# Build
+# Build TS → JS
 WORKDIR /app
 RUN npx tsc -p apps/payment-service/tsconfig.app.json --outDir dist/apps/payment-service
+
 
 # ========== Production Stage ==========
 FROM node:22-alpine AS prod
@@ -33,17 +34,17 @@ RUN apk add --no-cache libc6-compat openssl
 ENV NODE_ENV=production
 ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
-# Build output
+# Compiled app
 COPY --from=build /app/dist/apps/payment-service ./dist
 
-# Node modules (root only)
+# Dependencies (root only)
 COPY --from=build /app/node_modules ./node_modules
 
 # Prisma schema
 COPY --from=build /app/apps/payment-service/prisma ./prisma
 
-# 🔥 REQUIRED: Prisma generated client
-COPY --from=build /app/apps/payment-service/generated ./generated
+# ✅ Prisma generated client (FIXED PATH)
+COPY --from=build /app/apps/payment-service/src/generated ./generated
 
 EXPOSE 3000
 
@@ -51,4 +52,3 @@ ENTRYPOINT ["sh", "-c", "\
   npx prisma migrate deploy --schema=./prisma/schema.prisma && \
   node dist/main.js \
 "]
-
