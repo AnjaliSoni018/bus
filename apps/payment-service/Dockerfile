@@ -33,20 +33,22 @@ RUN apk add --no-cache libc6-compat openssl
 ENV NODE_ENV=production
 ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
-# Copy build output
+# Build output
 COPY --from=build /app/dist/apps/payment-service ./dist
 
-# ✅ COPY NODE_MODULES ONLY ONCE (FIX)
+# Node modules (root only)
 COPY --from=build /app/node_modules ./node_modules
 
 # Prisma schema
 COPY --from=build /app/apps/payment-service/prisma ./prisma
 
+# 🔥 REQUIRED: Prisma generated client
+COPY --from=build /app/apps/payment-service/generated ./generated
+
 EXPOSE 3000
 
 ENTRYPOINT ["sh", "-c", "\
-  echo 'Applying Prisma migrations...'; \
   npx prisma migrate deploy --schema=./prisma/schema.prisma && \
-  echo 'Migrations applied successfully! Starting server...'; \
   node dist/main.js \
 "]
+

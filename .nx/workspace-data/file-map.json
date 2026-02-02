@@ -33,12 +33,48 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "libs/contracts/src/events/payment.events.ts",
-        "hash": "18249978617003061429"
+        "file": "apps/tsconfig.spec.json",
+        "hash": "15632768803430051377"
       },
       {
-        "file": "apps/tsconfig.json",
-        "hash": "9420862676426701392"
+        "file": "apps-e2e/tsconfig.json",
+        "hash": "2346920493880922870"
+      },
+      {
+        "file": "apps/tsconfig.app.json",
+        "hash": "3062189852699194213"
+      },
+      {
+        "file": "apps-e2e/jest.config.ts",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "apps/eslint.config.js",
+        "hash": "17012108287991280227"
+      },
+      {
+        "file": "package.json",
+        "hash": "3039864995030125786"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "10052046223518464685"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "4934098906304722861"
+      },
+      {
+        "file": "apps-e2e/eslint.config.js",
+        "hash": "17012108287991280227"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "README.md",
+        "hash": "11757856477838580407"
       },
       {
         "file": "libs/contracts/src/events/seat.events.ts",
@@ -49,56 +85,24 @@
         "hash": "12456585487980810333"
       },
       {
-        "file": "package.json",
-        "hash": "3039864995030125786"
-      },
-      {
         "file": "package-lock.json",
         "hash": "12088681071966494754"
-      },
-      {
-        "file": "tmp/user-service/main-with-require-overrides.js",
-        "hash": "5803729257484543891"
-      },
-      {
-        "file": "apps-e2e/jest.config.ts",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "10052046223518464685"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": "apps-e2e/tsconfig.spec.json",
-        "hash": "13058925111467353993"
-      },
-      {
-        "file": "apps/tsconfig.spec.json",
-        "hash": "15632768803430051377"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
       },
       {
         "file": "jest.config.ts",
         "hash": "3494843969422251966"
       },
       {
-        "file": "README.md",
-        "hash": "11757856477838580407"
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
       },
       {
-        "file": "apps/eslint.config.js",
-        "hash": "17012108287991280227"
+        "file": "apps-e2e/tsconfig.spec.json",
+        "hash": "13058925111467353993"
+      },
+      {
+        "file": "apps/tsconfig.json",
+        "hash": "9420862676426701392"
       },
       {
         "file": "tmp/booking-service/main-with-require-overrides.js",
@@ -109,24 +113,12 @@
         "hash": "3209231531948470880"
       },
       {
-        "file": "apps/jest.config.ts",
+        "file": "libs/contracts/src/events/payment.events.ts",
+        "hash": "18249978617003061429"
+      },
+      {
+        "file": "packages/.gitkeep",
         "hash": "3244421341483603138"
-      },
-      {
-        "file": "tsconfig.json",
-        "hash": "1379983966652230747"
-      },
-      {
-        "file": "apps-e2e/tsconfig.json",
-        "hash": "2346920493880922870"
-      },
-      {
-        "file": "apps-e2e/eslint.config.js",
-        "hash": "17012108287991280227"
-      },
-      {
-        "file": "apps/tsconfig.app.json",
-        "hash": "3062189852699194213"
       },
       {
         "file": "eslint.config.js",
@@ -137,16 +129,24 @@
         "hash": "2463859306574450161"
       },
       {
-        "file": "tsconfig.base.json",
-        "hash": "13455748945344899060"
+        "file": "tsconfig.json",
+        "hash": "1379983966652230747"
       },
       {
-        "file": "packages/.gitkeep",
+        "file": "tmp/user-service/main-with-require-overrides.js",
+        "hash": "5803729257484543891"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": "apps/jest.config.ts",
         "hash": "3244421341483603138"
       },
       {
-        "file": ".vscode/extensions.json",
-        "hash": "4934098906304722861"
+        "file": "tsconfig.base.json",
+        "hash": "13455748945344899060"
       }
     ],
     "projectFileMap": {
@@ -449,7 +449,7 @@
         },
         {
           "file": "apps/payment-service/Dockerfile",
-          "hash": "14601685261192679344"
+          "hash": "17804186167654939444"
         },
         {
           "file": "apps/payment-service/certs/aiven-ca.pem",
