@@ -14,6 +14,8 @@ COPY apps/bus-service/tsconfig*.json ./apps/bus-service/
 COPY apps/bus-service/prisma ./apps/bus-service/prisma
 COPY apps/bus-service/src ./apps/bus-service/src
 
+ENV NX_SKIP_NATIVE=true
+
 # Install ALL deps (including dev deps)
 RUN npm ci --legacy-peer-deps
 
