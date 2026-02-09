@@ -33,108 +33,64 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "apps-e2e/tsconfig.json",
-        "hash": "2346920493880922870"
+        "file": "apps/tsconfig.json",
+        "hash": "9420862676426701392"
       },
       {
-        "file": "apps/tsconfig.app.json",
-        "hash": "3062189852699194213"
+        "file": "apps-e2e/eslint.config.js",
+        "hash": "17012108287991280227"
       },
       {
         "file": "tsconfig.json",
         "hash": "1379983966652230747"
       },
       {
-        "file": ".vscode/extensions.json",
-        "hash": "4934098906304722861"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "13455748945344899060"
-      },
-      {
-        "file": "nx.json",
-        "hash": "3209231531948470880"
-      },
-      {
-        "file": "apps/eslint.config.js",
-        "hash": "17012108287991280227"
-      },
-      {
-        "file": "libs/contracts/src/events/seat.events.ts",
-        "hash": "13002871282786731860"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "3494843969422251966"
-      },
-      {
-        "file": "apps/tsconfig.json",
-        "hash": "9420862676426701392"
-      },
-      {
-        "file": "package.json",
-        "hash": "3039864995030125786"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "10052046223518464685"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": "eslint.config.js",
-        "hash": "8965237677768068718"
-      },
-      {
-        "file": "packages/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "apps-e2e/jest.config.ts",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "12088681071966494754"
-      },
-      {
-        "file": "tmp/booking-service/main-with-require-overrides.js",
-        "hash": "17277858630086987336"
-      },
-      {
-        "file": "README.md",
-        "hash": "11757856477838580407"
-      },
-      {
-        "file": "apps/tsconfig.spec.json",
-        "hash": "15632768803430051377"
-      },
-      {
-        "file": "docker-compose.yml",
-        "hash": "12456585487980810333"
+        "file": "apps-e2e/tsconfig.json",
+        "hash": "2346920493880922870"
       },
       {
         "file": "apps-e2e/tsconfig.spec.json",
         "hash": "13058925111467353993"
       },
       {
+        "file": ".gitignore",
+        "hash": "10052046223518464685"
+      },
+      {
         "file": ".prettierignore",
         "hash": "14688272390704683536"
       },
       {
-        "file": "apps/jest.config.ts",
+        "file": "tsconfig.base.json",
+        "hash": "13455748945344899060"
+      },
+      {
+        "file": "apps/tsconfig.app.json",
+        "hash": "3062189852699194213"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "12456585487980810333"
+      },
+      {
+        "file": "apps-e2e/jest.config.ts",
         "hash": "3244421341483603138"
       },
       {
-        "file": "libs/contracts/src/events/payment.events.ts",
-        "hash": "18249978617003061429"
+        "file": "libs/contracts/src/events/seat.events.ts",
+        "hash": "13002871282786731860"
+      },
+      {
+        "file": "README.md",
+        "hash": "11757856477838580407"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "4934098906304722861"
+      },
+      {
+        "file": "apps/tsconfig.spec.json",
+        "hash": "15632768803430051377"
       },
       {
         "file": "tmp/user-service/main-with-require-overrides.js",
@@ -145,588 +101,90 @@
         "hash": "2463859306574450161"
       },
       {
-        "file": "apps-e2e/eslint.config.js",
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "apps/jest.config.ts",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "12088681071966494754"
+      },
+      {
+        "file": "package.json",
+        "hash": "3039864995030125786"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "3494843969422251966"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "libs/contracts/src/events/payment.events.ts",
+        "hash": "18249978617003061429"
+      },
+      {
+        "file": "apps/eslint.config.js",
         "hash": "17012108287991280227"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "8965237677768068718"
+      },
+      {
+        "file": "tmp/booking-service/main-with-require-overrides.js",
+        "hash": "17277858630086987336"
+      },
+      {
+        "file": "nx.json",
+        "hash": "3209231531948470880"
       }
     ],
     "projectFileMap": {
-      "booking-service": [
+      "notification-service": [
         {
-          "file": "apps/booking-service/.gitignore",
-          "hash": "13301744766005274183"
-        },
-        {
-          "file": "apps/booking-service/Dockerfile",
-          "hash": "15249570482311022867"
-        },
-        {
-          "file": "apps/booking-service/certs/aiven-ca.pem",
-          "hash": "10963558660624524346"
-        },
-        {
-          "file": "apps/booking-service/certs/service.cert",
-          "hash": "10582690327232143793"
-        },
-        {
-          "file": "apps/booking-service/certs/service.key",
-          "hash": "124233599990282927"
-        },
-        {
-          "file": "apps/booking-service/eslint.config.js",
-          "hash": "17012108287991280227"
-        },
-        {
-          "file": "apps/booking-service/jest.config.ts",
-          "hash": "4100215717693998847"
-        },
-        {
-          "file": "apps/booking-service/package.json",
-          "hash": "13575631152701665131",
-          "deps": [
-            "npm:@types/cors",
-            "npm:@types/express@5.0.6",
-            "npm:@types/node@25.0.3",
-            "npm:@types/node-cron",
-            "npm:@types/uuid",
-            "npm:@typescript-eslint/eslint-plugin@6.21.0",
-            "npm:@typescript-eslint/parser@6.21.0",
-            "npm:eslint@8.57.1",
-            "npm:prisma@5.22.0",
-            "npm:ts-node-dev",
-            "npm:typescript",
-            "npm:@prisma/client@5.22.0",
-            "npm:axios",
-            "npm:body-parser",
-            "npm:class-transformer",
-            "npm:class-validator",
-            "npm:cors",
-            "npm:date-fns",
-            "npm:dotenv",
-            "npm:express",
-            "npm:ioredis",
-            "npm:jsonwebtoken",
-            "npm:kafkajs",
-            "npm:node-cron",
-            "npm:pino",
-            "npm:pino-pretty",
-            "npm:uuid",
-            "npm:zod"
-          ]
-        },
-        {
-          "file": "apps/booking-service/prisma.config.ts",
-          "hash": "455749580409383361",
-          "deps": [
-            "npm:dotenv",
-            "npm:prisma@5.22.0"
-          ]
-        },
-        {
-          "file": "apps/booking-service/prisma/migrations/20260108060640_init/migration.sql",
-          "hash": "2364444768166178833"
-        },
-        {
-          "file": "apps/booking-service/prisma/migrations/20260115063048_fix_booking_seat_relation/migration.sql",
-          "hash": "10139440730384281385"
-        },
-        {
-          "file": "apps/booking-service/prisma/migrations/20260120063922_add_expired_booking_status/migration.sql",
-          "hash": "18037367451986944777"
-        },
-        {
-          "file": "apps/booking-service/prisma/migrations/migration_lock.toml",
-          "hash": "11493296588214560035"
-        },
-        {
-          "file": "apps/booking-service/prisma/schema.prisma",
-          "hash": "6923987767005694409"
-        },
-        {
-          "file": "apps/booking-service/project.json",
-          "hash": "12877486345093755760"
-        },
-        {
-          "file": "apps/booking-service/src/app.ts",
-          "hash": "3373591860897397639",
-          "deps": [
-            "npm:express",
-            "npm:cors"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/clients/bus-service.client.ts",
-          "hash": "857723477362849574",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/config/env.ts",
-          "hash": "2032432090006697173",
-          "deps": [
-            "npm:dotenv"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/config/logger.ts",
-          "hash": "7319766892368642945",
-          "deps": [
-            "npm:pino"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/db/prisma.ts",
-          "hash": "12514808444106901723",
-          "deps": [
-            "npm:@prisma/client@5.22.0"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/kafka/booking.producer.ts",
-          "hash": "14704119959044218908"
-        },
-        {
-          "file": "apps/booking-service/src/kafka/kafka.ts",
-          "hash": "2713748610766844521",
-          "deps": [
-            "npm:kafkajs",
-            "npm:dotenv"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/kafka/payment.consumer.ts",
-          "hash": "860297343880941681"
-        },
-        {
-          "file": "apps/booking-service/src/kafka/payment.handlers.ts",
-          "hash": "6604162592301038749",
-          "deps": [
-            "npm:@prisma/client@5.22.0"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/main.ts",
-          "hash": "15731432998649474158",
-          "deps": [
-            "npm:dotenv"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/middlewares/NotFound.middleware.ts",
-          "hash": "13513148918872186955",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/middlewares/auth.middleware.ts",
-          "hash": "5187070666469698801",
-          "deps": [
-            "npm:express",
-            "npm:jsonwebtoken"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/middlewares/error.middleware.ts",
-          "hash": "11087243646562862013",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/middlewares/validation.middleware.ts",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/booking.controller.ts",
-          "hash": "6669621302558060941",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/booking.events.ts",
-          "hash": "11149080020182932904"
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/booking.handlers.ts",
-          "hash": "14355163579418521522"
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/booking.routes.ts",
-          "hash": "8907929384479323081",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/booking.service.ts",
-          "hash": "18322870652788001681"
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/booking.state-machine.ts",
-          "hash": "15195453247491991753"
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/booking.types.ts",
-          "hash": "2312260219861650794"
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/booking.validators.ts",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/initiate-booking.dto.ts",
-          "hash": "17909062276569088125",
-          "deps": [
-            "npm:zod"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/modules/booking/workers/booking-expiry.worker.ts",
-          "hash": "2789203903877320113"
-        },
-        {
-          "file": "apps/booking-service/src/modules/common/health.controller.ts",
-          "hash": "13556098785504585432",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/modules/common/health.routes.ts",
-          "hash": "17842868172501411044",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/routes.ts",
-          "hash": "7720128210646501804",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/types/express.d.ts",
-          "hash": "11882691820950755932",
-          "deps": [
-            "npm:jsonwebtoken"
-          ]
-        },
-        {
-          "file": "apps/booking-service/src/utils/AppError.ts",
-          "hash": "5072858829092300032"
-        },
-        {
-          "file": "apps/booking-service/src/utils/apiResponse.ts",
-          "hash": "13817355922530402996"
-        },
-        {
-          "file": "apps/booking-service/src/utils/asyncHandler.ts",
-          "hash": "17402069544203588344",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/booking-service/tsconfig.app.json",
-          "hash": "17508108027708373712"
-        },
-        {
-          "file": "apps/booking-service/tsconfig.json",
-          "hash": "3490524966360018312"
-        },
-        {
-          "file": "apps/booking-service/tsconfig.spec.json",
-          "hash": "16410836228125477868"
-        }
-      ],
-      "payment-service": [
-        {
-          "file": "apps/payment-service/.gitignore",
-          "hash": "12975187279384539528"
-        },
-        {
-          "file": "apps/payment-service/Dockerfile",
-          "hash": "2768475732464275990"
-        },
-        {
-          "file": "apps/payment-service/certs/aiven-ca.pem",
-          "hash": "10963558660624524346"
-        },
-        {
-          "file": "apps/payment-service/eslint.config.js",
+          "file": "apps/notification-service/eslint.config.js",
           "hash": "17472210594086834595"
         },
         {
-          "file": "apps/payment-service/jest.config.ts",
-          "hash": "14078674186628210558"
+          "file": "apps/notification-service/jest.config.ts",
+          "hash": "12334798595149594669"
         },
         {
-          "file": "apps/payment-service/package.json",
-          "hash": "10066842117529395364",
-          "deps": [
-            "npm:@types/cors",
-            "npm:@types/express@5.0.6",
-            "npm:@types/node@25.0.9",
-            "npm:@types/uuid",
-            "npm:@typescript-eslint/eslint-plugin@6.21.0",
-            "npm:@typescript-eslint/parser@6.21.0",
-            "npm:eslint@8.57.1",
-            "npm:prisma@5.22.0",
-            "npm:ts-node-dev",
-            "npm:typescript",
-            "npm:@prisma/client@5.22.0",
-            "npm:axios",
-            "npm:body-parser",
-            "npm:class-transformer",
-            "npm:class-validator",
-            "npm:cors",
-            "npm:date-fns",
-            "npm:dotenv",
-            "npm:express",
-            "npm:ioredis",
-            "npm:jsonwebtoken",
-            "npm:kafkajs",
-            "npm:pino",
-            "npm:pino-pretty",
-            "npm:uuid",
-            "npm:zod"
-          ]
+          "file": "apps/notification-service/project.json",
+          "hash": "2392544487026076426"
         },
         {
-          "file": "apps/payment-service/prisma/migrations/20260119103129_init/migration.sql",
-          "hash": "5666886336108046884"
-        },
-        {
-          "file": "apps/payment-service/prisma/migrations/migration_lock.toml",
-          "hash": "11493296588214560035"
-        },
-        {
-          "file": "apps/payment-service/prisma/schema.prisma",
-          "hash": "4641038284862710505"
-        },
-        {
-          "file": "apps/payment-service/project.json",
-          "hash": "15456594338796052161"
-        },
-        {
-          "file": "apps/payment-service/src/app.ts",
-          "hash": "15822034873054054762",
-          "deps": [
-            "npm:express",
-            "npm:cors"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/assets/.gitkeep",
+          "file": "apps/notification-service/src/assets/.gitkeep",
           "hash": "3244421341483603138"
         },
         {
-          "file": "apps/payment-service/src/config/env.ts",
-          "hash": "13005503635695532117",
-          "deps": [
-            "npm:dotenv"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/config/logger.ts",
-          "hash": "10761340751654198626",
-          "deps": [
-            "npm:pino"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/db/prisma.ts",
-          "hash": "9946530996176183769",
-          "deps": [
-            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/kafka/booking.consumer.ts",
-          "hash": "3300453875625975764",
-          "deps": [
-            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/kafka/kafka.ts",
-          "hash": "3448108154447320697",
-          "deps": [
-            "npm:kafkajs"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/kafka/payment.producer.ts",
-          "hash": "2435107422380923350"
-        },
-        {
-          "file": "apps/payment-service/src/main.ts",
-          "hash": "16612806436043178855"
-        },
-        {
-          "file": "apps/payment-service/src/middlewares/auth.middleware.ts",
-          "hash": "5187070666469698801",
-          "deps": [
-            "npm:express",
-            "npm:jsonwebtoken"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/middlewares/error.middleware.ts",
-          "hash": "11087243646562862013",
+          "file": "apps/notification-service/src/main.ts",
+          "hash": "12003555863464044675",
           "deps": [
             "npm:express"
           ]
         },
         {
-          "file": "apps/payment-service/src/middlewares/notFound.middleware.ts",
-          "hash": "13513148918872186955",
-          "deps": [
-            "npm:express"
-          ]
+          "file": "apps/notification-service/tsconfig.app.json",
+          "hash": "1558509971940032459"
         },
         {
-          "file": "apps/payment-service/src/modules/common/health.controller.ts",
-          "hash": "15487816304355138898",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/modules/common/health.routes.ts",
-          "hash": "17842868172501411044",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/modules/payment/gateways/gateway.interface.ts",
-          "hash": "4310975896829666681",
-          "deps": [
-            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/modules/payment/gateways/mock.gateway.ts",
-          "hash": "1128968124713096080",
-          "deps": [
-            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497",
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/modules/payment/payment.controller.ts",
-          "hash": "3034924244476975529",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/modules/payment/payment.events.ts",
-          "hash": "7403527098859393400"
-        },
-        {
-          "file": "apps/payment-service/src/modules/payment/payment.routes.ts",
-          "hash": "802963364442239100",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/modules/payment/payment.service.ts",
-          "hash": "10762797587870045536",
-          "deps": [
-            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/modules/payment/payment.validators.ts",
-          "hash": "2470107375708808973",
-          "deps": [
-            "npm:zod",
-            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/routes.ts",
-          "hash": "1016362759114949172",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/payment-service/src/utils/AppError.ts",
-          "hash": "5072858829092300032"
-        },
-        {
-          "file": "apps/payment-service/src/utils/apiResponse.ts",
-          "hash": "13817355922530402996"
-        },
-        {
-          "file": "apps/payment-service/src/utils/asyncHandler.ts",
-          "hash": "17402069544203588344",
-          "deps": [
-            "npm:express"
-          ]
-        },
-        {
-          "file": "apps/payment-service/tsconfig.app.json",
-          "hash": "5363932455950931745"
-        },
-        {
-          "file": "apps/payment-service/tsconfig.json",
+          "file": "apps/notification-service/tsconfig.json",
           "hash": "3490524966360018312"
         },
         {
-          "file": "apps/payment-service/tsconfig.spec.json",
+          "file": "apps/notification-service/tsconfig.spec.json",
           "hash": "11550347367511341917"
-        }
-      ],
-      "payment-service-e2e": [
-        {
-          "file": "apps/payment-service-e2e/eslint.config.js",
-          "hash": "17472210594086834595"
-        },
-        {
-          "file": "apps/payment-service-e2e/jest.config.ts",
-          "hash": "3675373953433954805"
-        },
-        {
-          "file": "apps/payment-service-e2e/project.json",
-          "hash": "1188512185170232947"
-        },
-        {
-          "file": "apps/payment-service-e2e/src/payment-service/payment-service.spec.ts",
-          "hash": "4579662685003779048",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/payment-service-e2e/src/support/global-setup.ts",
-          "hash": "2568409276037275290"
-        },
-        {
-          "file": "apps/payment-service-e2e/src/support/global-teardown.ts",
-          "hash": "5275447082211835490"
-        },
-        {
-          "file": "apps/payment-service-e2e/src/support/test-setup.ts",
-          "hash": "10984585515912236441",
-          "deps": [
-            "npm:axios"
-          ]
-        },
-        {
-          "file": "apps/payment-service-e2e/tsconfig.json",
-          "hash": "15443990093475294480"
-        },
-        {
-          "file": "apps/payment-service-e2e/tsconfig.spec.json",
-          "hash": "14954872453723519891"
         }
       ],
       "booking-service-e2e": [
@@ -773,48 +231,130 @@
           "hash": "13058925111467353993"
         }
       ],
-      "notification-service-e2e": [
+      "bus-service-e2e": [
         {
-          "file": "apps/notification-service-e2e/eslint.config.js",
-          "hash": "17472210594086834595"
+          "file": "apps/bus-service-e2e/eslint.config.js",
+          "hash": "17012108287991280227"
         },
         {
-          "file": "apps/notification-service-e2e/jest.config.ts",
-          "hash": "14891852607668677250"
+          "file": "apps/bus-service-e2e/jest.config.ts",
+          "hash": "16040300586669143754"
         },
         {
-          "file": "apps/notification-service-e2e/project.json",
-          "hash": "7968218434574018835"
+          "file": "apps/bus-service-e2e/project.json",
+          "hash": "9829868153917457007"
         },
         {
-          "file": "apps/notification-service-e2e/src/notification-service/notification-service.spec.ts",
+          "file": "apps/bus-service-e2e/src/bus-service/bus-service.spec.ts",
           "hash": "4579662685003779048",
           "deps": [
             "npm:axios"
           ]
         },
         {
-          "file": "apps/notification-service-e2e/src/support/global-setup.ts",
+          "file": "apps/bus-service-e2e/src/support/global-setup.ts",
           "hash": "2568409276037275290"
         },
         {
-          "file": "apps/notification-service-e2e/src/support/global-teardown.ts",
+          "file": "apps/bus-service-e2e/src/support/global-teardown.ts",
           "hash": "5275447082211835490"
         },
         {
-          "file": "apps/notification-service-e2e/src/support/test-setup.ts",
+          "file": "apps/bus-service-e2e/src/support/test-setup.ts",
           "hash": "10984585515912236441",
           "deps": [
             "npm:axios"
           ]
         },
         {
-          "file": "apps/notification-service-e2e/tsconfig.json",
+          "file": "apps/bus-service-e2e/tsconfig.json",
           "hash": "15443990093475294480"
         },
         {
-          "file": "apps/notification-service-e2e/tsconfig.spec.json",
-          "hash": "14954872453723519891"
+          "file": "apps/bus-service-e2e/tsconfig.spec.json",
+          "hash": "13058925111467353993"
+        }
+      ],
+      "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": [
+        {
+          "file": "apps/bus-service/src/generated/prisma/default.d.ts",
+          "hash": "6801102947810818358"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/default.js",
+          "hash": "2742901603506114256"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/edge.d.ts",
+          "hash": "11303388507078878756"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/edge.js",
+          "hash": "12557802981087447084"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/index-browser.js",
+          "hash": "7563516641197999524"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/index.d.ts",
+          "hash": "12637584373188215136"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/index.js",
+          "hash": "13533586022906627159"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node",
+          "hash": "3265119270222735553"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/package.json",
+          "hash": "16989371739402163341"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/edge-esm.js",
+          "hash": "15313229601370783230"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/edge.js",
+          "hash": "9304012550562964105"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/index-browser.d.ts",
+          "hash": "8428496683677604739"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/index-browser.js",
+          "hash": "10266951411384006616"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/library.d.ts",
+          "hash": "18285273706481052034"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/library.js",
+          "hash": "14098999821647302349"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/react-native.js",
+          "hash": "4853633689890394593"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/runtime/wasm.js",
+          "hash": "2585500939485510051"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/schema.prisma",
+          "hash": "17727942589867555649"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/wasm.d.ts",
+          "hash": "6801102947810818358"
+        },
+        {
+          "file": "apps/bus-service/src/generated/prisma/wasm.js",
+          "hash": "7563516641197999524"
         }
       ],
       "bus-service": [
@@ -1301,170 +841,6 @@
           "hash": "15632768803430051377"
         }
       ],
-      "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": [
-        {
-          "file": "apps/bus-service/src/generated/prisma/default.d.ts",
-          "hash": "6801102947810818358"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/default.js",
-          "hash": "2742901603506114256"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/edge.d.ts",
-          "hash": "11303388507078878756"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/edge.js",
-          "hash": "12557802981087447084"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/index-browser.js",
-          "hash": "7563516641197999524"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/index.d.ts",
-          "hash": "12637584373188215136"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/index.js",
-          "hash": "13533586022906627159"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node",
-          "hash": "3265119270222735553"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/package.json",
-          "hash": "16989371739402163341"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/edge-esm.js",
-          "hash": "15313229601370783230"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/edge.js",
-          "hash": "9304012550562964105"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/index-browser.d.ts",
-          "hash": "8428496683677604739"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/index-browser.js",
-          "hash": "10266951411384006616"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/library.d.ts",
-          "hash": "18285273706481052034"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/library.js",
-          "hash": "14098999821647302349"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/react-native.js",
-          "hash": "4853633689890394593"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/runtime/wasm.js",
-          "hash": "2585500939485510051"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/schema.prisma",
-          "hash": "17727942589867555649"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/wasm.d.ts",
-          "hash": "6801102947810818358"
-        },
-        {
-          "file": "apps/bus-service/src/generated/prisma/wasm.js",
-          "hash": "7563516641197999524"
-        }
-      ],
-      "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497": [
-        {
-          "file": "apps/payment-service/src/generated/prisma/default.d.ts",
-          "hash": "6801102947810818358"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/default.js",
-          "hash": "2742901603506114256"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/edge.d.ts",
-          "hash": "11303388507078878756"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/edge.js",
-          "hash": "10632162526897821232"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/index-browser.js",
-          "hash": "2776318965480235407"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/index.d.ts",
-          "hash": "17554647184821437551"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/index.js",
-          "hash": "7036411403986337401"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node",
-          "hash": "3265119270222735553"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/package.json",
-          "hash": "11822891040928946314"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/runtime/edge-esm.js",
-          "hash": "15313229601370783230"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/runtime/edge.js",
-          "hash": "9304012550562964105"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/runtime/index-browser.d.ts",
-          "hash": "8428496683677604739"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/runtime/index-browser.js",
-          "hash": "10266951411384006616"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/runtime/library.d.ts",
-          "hash": "18285273706481052034"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/runtime/library.js",
-          "hash": "14098999821647302349"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/runtime/react-native.js",
-          "hash": "4853633689890394593"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/runtime/wasm.js",
-          "hash": "2585500939485510051"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/schema.prisma",
-          "hash": "2106278514429779008"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/wasm.d.ts",
-          "hash": "6801102947810818358"
-        },
-        {
-          "file": "apps/payment-service/src/generated/prisma/wasm.js",
-          "hash": "2776318965480235407"
-        }
-      ],
       "user-service": [
         {
           "file": "apps/user-service/.gitignore",
@@ -1698,85 +1074,86 @@
           "hash": "16410836228125477868"
         }
       ],
-      "notification-service": [
+      "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497": [
         {
-          "file": "apps/notification-service/eslint.config.js",
-          "hash": "17472210594086834595"
+          "file": "apps/payment-service/src/generated/prisma/default.d.ts",
+          "hash": "6801102947810818358"
         },
         {
-          "file": "apps/notification-service/jest.config.ts",
-          "hash": "12334798595149594669"
+          "file": "apps/payment-service/src/generated/prisma/default.js",
+          "hash": "2742901603506114256"
         },
         {
-          "file": "apps/notification-service/project.json",
-          "hash": "2392544487026076426"
+          "file": "apps/payment-service/src/generated/prisma/edge.d.ts",
+          "hash": "11303388507078878756"
         },
         {
-          "file": "apps/notification-service/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
+          "file": "apps/payment-service/src/generated/prisma/edge.js",
+          "hash": "10632162526897821232"
         },
         {
-          "file": "apps/notification-service/src/main.ts",
-          "hash": "12003555863464044675",
-          "deps": [
-            "npm:express"
-          ]
+          "file": "apps/payment-service/src/generated/prisma/index-browser.js",
+          "hash": "2776318965480235407"
         },
         {
-          "file": "apps/notification-service/tsconfig.app.json",
-          "hash": "1558509971940032459"
+          "file": "apps/payment-service/src/generated/prisma/index.d.ts",
+          "hash": "17554647184821437551"
         },
         {
-          "file": "apps/notification-service/tsconfig.json",
-          "hash": "3490524966360018312"
+          "file": "apps/payment-service/src/generated/prisma/index.js",
+          "hash": "7036411403986337401"
         },
         {
-          "file": "apps/notification-service/tsconfig.spec.json",
-          "hash": "11550347367511341917"
-        }
-      ],
-      "bus-service-e2e": [
-        {
-          "file": "apps/bus-service-e2e/eslint.config.js",
-          "hash": "17012108287991280227"
+          "file": "apps/payment-service/src/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node",
+          "hash": "3265119270222735553"
         },
         {
-          "file": "apps/bus-service-e2e/jest.config.ts",
-          "hash": "16040300586669143754"
+          "file": "apps/payment-service/src/generated/prisma/package.json",
+          "hash": "11822891040928946314"
         },
         {
-          "file": "apps/bus-service-e2e/project.json",
-          "hash": "9829868153917457007"
+          "file": "apps/payment-service/src/generated/prisma/runtime/edge-esm.js",
+          "hash": "15313229601370783230"
         },
         {
-          "file": "apps/bus-service-e2e/src/bus-service/bus-service.spec.ts",
-          "hash": "4579662685003779048",
-          "deps": [
-            "npm:axios"
-          ]
+          "file": "apps/payment-service/src/generated/prisma/runtime/edge.js",
+          "hash": "9304012550562964105"
         },
         {
-          "file": "apps/bus-service-e2e/src/support/global-setup.ts",
-          "hash": "2568409276037275290"
+          "file": "apps/payment-service/src/generated/prisma/runtime/index-browser.d.ts",
+          "hash": "8428496683677604739"
         },
         {
-          "file": "apps/bus-service-e2e/src/support/global-teardown.ts",
-          "hash": "5275447082211835490"
+          "file": "apps/payment-service/src/generated/prisma/runtime/index-browser.js",
+          "hash": "10266951411384006616"
         },
         {
-          "file": "apps/bus-service-e2e/src/support/test-setup.ts",
-          "hash": "10984585515912236441",
-          "deps": [
-            "npm:axios"
-          ]
+          "file": "apps/payment-service/src/generated/prisma/runtime/library.d.ts",
+          "hash": "18285273706481052034"
         },
         {
-          "file": "apps/bus-service-e2e/tsconfig.json",
-          "hash": "15443990093475294480"
+          "file": "apps/payment-service/src/generated/prisma/runtime/library.js",
+          "hash": "14098999821647302349"
         },
         {
-          "file": "apps/bus-service-e2e/tsconfig.spec.json",
-          "hash": "13058925111467353993"
+          "file": "apps/payment-service/src/generated/prisma/runtime/react-native.js",
+          "hash": "4853633689890394593"
+        },
+        {
+          "file": "apps/payment-service/src/generated/prisma/runtime/wasm.js",
+          "hash": "2585500939485510051"
+        },
+        {
+          "file": "apps/payment-service/src/generated/prisma/schema.prisma",
+          "hash": "2106278514429779008"
+        },
+        {
+          "file": "apps/payment-service/src/generated/prisma/wasm.d.ts",
+          "hash": "6801102947810818358"
+        },
+        {
+          "file": "apps/payment-service/src/generated/prisma/wasm.js",
+          "hash": "2776318965480235407"
         }
       ],
       "user-service-e2e": [
@@ -1820,6 +1197,636 @@
         },
         {
           "file": "apps/user-service-e2e/tsconfig.spec.json",
+          "hash": "14954872453723519891"
+        }
+      ],
+      "payment-service": [
+        {
+          "file": "apps/payment-service/.gitignore",
+          "hash": "12975187279384539528"
+        },
+        {
+          "file": "apps/payment-service/Dockerfile",
+          "hash": "2768475732464275990"
+        },
+        {
+          "file": "apps/payment-service/certs/aiven-ca.pem",
+          "hash": "10963558660624524346"
+        },
+        {
+          "file": "apps/payment-service/eslint.config.js",
+          "hash": "17472210594086834595"
+        },
+        {
+          "file": "apps/payment-service/jest.config.ts",
+          "hash": "14078674186628210558"
+        },
+        {
+          "file": "apps/payment-service/package.json",
+          "hash": "10066842117529395364",
+          "deps": [
+            "npm:@types/cors",
+            "npm:@types/express@5.0.6",
+            "npm:@types/node@25.0.9",
+            "npm:@types/uuid",
+            "npm:@typescript-eslint/eslint-plugin@6.21.0",
+            "npm:@typescript-eslint/parser@6.21.0",
+            "npm:eslint@8.57.1",
+            "npm:prisma@5.22.0",
+            "npm:ts-node-dev",
+            "npm:typescript",
+            "npm:@prisma/client@5.22.0",
+            "npm:axios",
+            "npm:body-parser",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:cors",
+            "npm:date-fns",
+            "npm:dotenv",
+            "npm:express",
+            "npm:ioredis",
+            "npm:jsonwebtoken",
+            "npm:kafkajs",
+            "npm:pino",
+            "npm:pino-pretty",
+            "npm:uuid",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/payment-service/prisma/migrations/20260119103129_init/migration.sql",
+          "hash": "5666886336108046884"
+        },
+        {
+          "file": "apps/payment-service/prisma/migrations/migration_lock.toml",
+          "hash": "11493296588214560035"
+        },
+        {
+          "file": "apps/payment-service/prisma/schema.prisma",
+          "hash": "4641038284862710505"
+        },
+        {
+          "file": "apps/payment-service/project.json",
+          "hash": "15456594338796052161"
+        },
+        {
+          "file": "apps/payment-service/src/app.ts",
+          "hash": "15822034873054054762",
+          "deps": [
+            "npm:express",
+            "npm:cors"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/payment-service/src/config/env.ts",
+          "hash": "13005503635695532117",
+          "deps": [
+            "npm:dotenv"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/config/logger.ts",
+          "hash": "10761340751654198626",
+          "deps": [
+            "npm:pino"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/db/prisma.ts",
+          "hash": "9946530996176183769",
+          "deps": [
+            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/kafka/booking.consumer.ts",
+          "hash": "3300453875625975764",
+          "deps": [
+            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/kafka/kafka.ts",
+          "hash": "3448108154447320697",
+          "deps": [
+            "npm:kafkajs"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/kafka/payment.producer.ts",
+          "hash": "2435107422380923350"
+        },
+        {
+          "file": "apps/payment-service/src/main.ts",
+          "hash": "16612806436043178855"
+        },
+        {
+          "file": "apps/payment-service/src/middlewares/auth.middleware.ts",
+          "hash": "5187070666469698801",
+          "deps": [
+            "npm:express",
+            "npm:jsonwebtoken"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/middlewares/error.middleware.ts",
+          "hash": "11087243646562862013",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/middlewares/notFound.middleware.ts",
+          "hash": "13513148918872186955",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/modules/common/health.controller.ts",
+          "hash": "15487816304355138898",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/modules/common/health.routes.ts",
+          "hash": "17842868172501411044",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/modules/payment/gateways/gateway.interface.ts",
+          "hash": "4310975896829666681",
+          "deps": [
+            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/modules/payment/gateways/index.ts",
+          "hash": "2946093219229526901",
+          "deps": [
+            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/modules/payment/gateways/mock.gateway.ts",
+          "hash": "17602465739724324728",
+          "deps": [
+            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497",
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/modules/payment/payment.controller.ts",
+          "hash": "2559979278531884257",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/modules/payment/payment.events.ts",
+          "hash": "7403527098859393400"
+        },
+        {
+          "file": "apps/payment-service/src/modules/payment/payment.routes.ts",
+          "hash": "802963364442239100",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/modules/payment/payment.service.ts",
+          "hash": "5396728669139314345",
+          "deps": [
+            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/modules/payment/payment.validators.ts",
+          "hash": "2470107375708808973",
+          "deps": [
+            "npm:zod",
+            "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/routes.ts",
+          "hash": "1016362759114949172",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/payment-service/src/utils/AppError.ts",
+          "hash": "5072858829092300032"
+        },
+        {
+          "file": "apps/payment-service/src/utils/apiResponse.ts",
+          "hash": "13817355922530402996"
+        },
+        {
+          "file": "apps/payment-service/src/utils/asyncHandler.ts",
+          "hash": "17402069544203588344",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/payment-service/tsconfig.app.json",
+          "hash": "5363932455950931745"
+        },
+        {
+          "file": "apps/payment-service/tsconfig.json",
+          "hash": "3490524966360018312"
+        },
+        {
+          "file": "apps/payment-service/tsconfig.spec.json",
+          "hash": "11550347367511341917"
+        }
+      ],
+      "booking-service": [
+        {
+          "file": "apps/booking-service/.gitignore",
+          "hash": "13301744766005274183"
+        },
+        {
+          "file": "apps/booking-service/Dockerfile",
+          "hash": "15249570482311022867"
+        },
+        {
+          "file": "apps/booking-service/certs/aiven-ca.pem",
+          "hash": "10963558660624524346"
+        },
+        {
+          "file": "apps/booking-service/certs/service.cert",
+          "hash": "10582690327232143793"
+        },
+        {
+          "file": "apps/booking-service/certs/service.key",
+          "hash": "124233599990282927"
+        },
+        {
+          "file": "apps/booking-service/eslint.config.js",
+          "hash": "17012108287991280227"
+        },
+        {
+          "file": "apps/booking-service/jest.config.ts",
+          "hash": "4100215717693998847"
+        },
+        {
+          "file": "apps/booking-service/package.json",
+          "hash": "13575631152701665131",
+          "deps": [
+            "npm:@types/cors",
+            "npm:@types/express@5.0.6",
+            "npm:@types/node@25.0.3",
+            "npm:@types/node-cron",
+            "npm:@types/uuid",
+            "npm:@typescript-eslint/eslint-plugin@6.21.0",
+            "npm:@typescript-eslint/parser@6.21.0",
+            "npm:eslint@8.57.1",
+            "npm:prisma@5.22.0",
+            "npm:ts-node-dev",
+            "npm:typescript",
+            "npm:@prisma/client@5.22.0",
+            "npm:axios",
+            "npm:body-parser",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:cors",
+            "npm:date-fns",
+            "npm:dotenv",
+            "npm:express",
+            "npm:ioredis",
+            "npm:jsonwebtoken",
+            "npm:kafkajs",
+            "npm:node-cron",
+            "npm:pino",
+            "npm:pino-pretty",
+            "npm:uuid",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/booking-service/prisma.config.ts",
+          "hash": "455749580409383361",
+          "deps": [
+            "npm:dotenv",
+            "npm:prisma@5.22.0"
+          ]
+        },
+        {
+          "file": "apps/booking-service/prisma/migrations/20260108060640_init/migration.sql",
+          "hash": "2364444768166178833"
+        },
+        {
+          "file": "apps/booking-service/prisma/migrations/20260115063048_fix_booking_seat_relation/migration.sql",
+          "hash": "10139440730384281385"
+        },
+        {
+          "file": "apps/booking-service/prisma/migrations/20260120063922_add_expired_booking_status/migration.sql",
+          "hash": "18037367451986944777"
+        },
+        {
+          "file": "apps/booking-service/prisma/migrations/migration_lock.toml",
+          "hash": "11493296588214560035"
+        },
+        {
+          "file": "apps/booking-service/prisma/schema.prisma",
+          "hash": "6923987767005694409"
+        },
+        {
+          "file": "apps/booking-service/project.json",
+          "hash": "12877486345093755760"
+        },
+        {
+          "file": "apps/booking-service/src/app.ts",
+          "hash": "3373591860897397639",
+          "deps": [
+            "npm:express",
+            "npm:cors"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/clients/bus-service.client.ts",
+          "hash": "857723477362849574",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/config/env.ts",
+          "hash": "2032432090006697173",
+          "deps": [
+            "npm:dotenv"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/config/logger.ts",
+          "hash": "7319766892368642945",
+          "deps": [
+            "npm:pino"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/db/prisma.ts",
+          "hash": "12514808444106901723",
+          "deps": [
+            "npm:@prisma/client@5.22.0"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/kafka/booking.producer.ts",
+          "hash": "14704119959044218908"
+        },
+        {
+          "file": "apps/booking-service/src/kafka/kafka.ts",
+          "hash": "2713748610766844521",
+          "deps": [
+            "npm:kafkajs",
+            "npm:dotenv"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/kafka/payment.consumer.ts",
+          "hash": "860297343880941681"
+        },
+        {
+          "file": "apps/booking-service/src/kafka/payment.handlers.ts",
+          "hash": "6604162592301038749",
+          "deps": [
+            "npm:@prisma/client@5.22.0"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/main.ts",
+          "hash": "15731432998649474158",
+          "deps": [
+            "npm:dotenv"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/middlewares/NotFound.middleware.ts",
+          "hash": "13513148918872186955",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/middlewares/auth.middleware.ts",
+          "hash": "5187070666469698801",
+          "deps": [
+            "npm:express",
+            "npm:jsonwebtoken"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/middlewares/error.middleware.ts",
+          "hash": "11087243646562862013",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/middlewares/validation.middleware.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/booking.controller.ts",
+          "hash": "6669621302558060941",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/booking.events.ts",
+          "hash": "11149080020182932904"
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/booking.handlers.ts",
+          "hash": "14355163579418521522"
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/booking.routes.ts",
+          "hash": "8907929384479323081",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/booking.service.ts",
+          "hash": "18322870652788001681"
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/booking.state-machine.ts",
+          "hash": "15195453247491991753"
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/booking.types.ts",
+          "hash": "2312260219861650794"
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/booking.validators.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/initiate-booking.dto.ts",
+          "hash": "17909062276569088125",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/modules/booking/workers/booking-expiry.worker.ts",
+          "hash": "2789203903877320113"
+        },
+        {
+          "file": "apps/booking-service/src/modules/common/health.controller.ts",
+          "hash": "13556098785504585432",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/modules/common/health.routes.ts",
+          "hash": "17842868172501411044",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/routes.ts",
+          "hash": "7720128210646501804",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/types/express.d.ts",
+          "hash": "11882691820950755932",
+          "deps": [
+            "npm:jsonwebtoken"
+          ]
+        },
+        {
+          "file": "apps/booking-service/src/utils/AppError.ts",
+          "hash": "5072858829092300032"
+        },
+        {
+          "file": "apps/booking-service/src/utils/apiResponse.ts",
+          "hash": "13817355922530402996"
+        },
+        {
+          "file": "apps/booking-service/src/utils/asyncHandler.ts",
+          "hash": "17402069544203588344",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/booking-service/tsconfig.app.json",
+          "hash": "17508108027708373712"
+        },
+        {
+          "file": "apps/booking-service/tsconfig.json",
+          "hash": "3490524966360018312"
+        },
+        {
+          "file": "apps/booking-service/tsconfig.spec.json",
+          "hash": "16410836228125477868"
+        }
+      ],
+      "notification-service-e2e": [
+        {
+          "file": "apps/notification-service-e2e/eslint.config.js",
+          "hash": "17472210594086834595"
+        },
+        {
+          "file": "apps/notification-service-e2e/jest.config.ts",
+          "hash": "14891852607668677250"
+        },
+        {
+          "file": "apps/notification-service-e2e/project.json",
+          "hash": "7968218434574018835"
+        },
+        {
+          "file": "apps/notification-service-e2e/src/notification-service/notification-service.spec.ts",
+          "hash": "4579662685003779048",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/notification-service-e2e/src/support/global-setup.ts",
+          "hash": "2568409276037275290"
+        },
+        {
+          "file": "apps/notification-service-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "apps/notification-service-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/notification-service-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
+        },
+        {
+          "file": "apps/notification-service-e2e/tsconfig.spec.json",
+          "hash": "14954872453723519891"
+        }
+      ],
+      "payment-service-e2e": [
+        {
+          "file": "apps/payment-service-e2e/eslint.config.js",
+          "hash": "17472210594086834595"
+        },
+        {
+          "file": "apps/payment-service-e2e/jest.config.ts",
+          "hash": "3675373953433954805"
+        },
+        {
+          "file": "apps/payment-service-e2e/project.json",
+          "hash": "1188512185170232947"
+        },
+        {
+          "file": "apps/payment-service-e2e/src/payment-service/payment-service.spec.ts",
+          "hash": "4579662685003779048",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/payment-service-e2e/src/support/global-setup.ts",
+          "hash": "2568409276037275290"
+        },
+        {
+          "file": "apps/payment-service-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "apps/payment-service-e2e/src/support/test-setup.ts",
+          "hash": "10984585515912236441",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/payment-service-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
+        },
+        {
+          "file": "apps/payment-service-e2e/tsconfig.spec.json",
           "hash": "14954872453723519891"
         }
       ]

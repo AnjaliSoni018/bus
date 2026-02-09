@@ -1,10 +1,8 @@
 import { prisma } from '../../db/prisma';
 import { GatewayProvider, PaymentStatus } from '../../generated/prisma';
 import { AppError } from '../../utils/AppError';
-import { MockGateway } from './gateways/mock.gateway';
 import { emitPaymentFailed, emitPaymentSuccess } from './payment.events';
-
-const gateway = new MockGateway();
+import { getGateway } from './gateways';
 
 export async function initiatePayment(input: {
   bookingId: string;
@@ -31,6 +29,8 @@ export async function initiatePayment(input: {
       },
     },
   });
+
+  const gateway = getGateway(input.gateway);
 
   const { gatewayOrderId } = await gateway.initiate(payment);
 
