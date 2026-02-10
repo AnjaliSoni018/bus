@@ -1,10 +1,9 @@
 # ========== Build Stage ==========
-FROM node:22-alpine AS build
+FROM node:20-slim AS build
 WORKDIR /app
 
 RUN apk add --no-cache libc6-compat openssl
 
-ENV NX_SKIP_NATIVE=true
 ENV NODE_ENV=development
 ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
@@ -22,11 +21,10 @@ RUN npx tsc -p apps/payment-service/tsconfig.app.json --outDir dist/apps/payment
 
 
 # ========== Production Stage ==========
-FROM node:22-alpine AS prod
+FROM node:20-slim AS prod
 WORKDIR /app
 
 RUN apk add --no-cache libc6-compat openssl
-ENV NX_SKIP_NATIVE=true
 ENV NODE_ENV=production
 ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
