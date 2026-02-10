@@ -4,6 +4,7 @@ WORKDIR /app
 
 RUN apk add --no-cache libc6-compat openssl
 
+ENV NX_SKIP_NATIVE=true
 ENV NODE_ENV=development
 ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
@@ -25,6 +26,7 @@ FROM node:22-alpine AS prod
 WORKDIR /app
 
 RUN apk add --no-cache libc6-compat openssl
+ENV NX_SKIP_NATIVE=true
 ENV NODE_ENV=production
 ENV PRISMA_CLIENT_ENGINE_TYPE=binary
 
