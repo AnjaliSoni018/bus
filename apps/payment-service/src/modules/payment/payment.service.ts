@@ -3,6 +3,7 @@ import { GatewayProvider, PaymentStatus } from '../../generated/prisma';
 import { AppError } from '../../utils/AppError';
 import { emitPaymentFailed, emitPaymentSuccess } from './payment.events';
 import { getGateway } from './gateways';
+import { RazorpayGateway } from './gateways/razorpay.gateway';
 
 export async function initiatePayment(input: {
   bookingId: string;
@@ -34,14 +35,12 @@ export async function initiatePayment(input: {
 
   const { gatewayOrderId } = await gateway.initiate(payment);
 
-  await prisma.payment.update({
+  const updatedPayment = await prisma.payment.update({
     where: { id: payment.id },
     data: { gatewayOrderId },
   });
 
-  await gateway.simulateCallback(gatewayOrderId);
-
-  return payment;
+  return updatedPayment;
 }
 
 export async function handleGatewayCallback(payload: {
@@ -104,4 +103,71 @@ export async function handleGatewayCallback(payload: {
       reason: payload.failureReason,
     });
   }
+}
+
+export async function handleRazorpayVerification(payload: {
+  razorpay_order_id: string;
+  razorpay_payment_id: string;
+  razorpay_signature: string;
+}) {
+  const payment = await prisma.payment.findFirst({
+    where: { gatewayOrderId: payload.razorpay_order_id },
+  });
+
+  if (!payment) {
+    throw new AppError('Payment not found for this order', 404);
+  }
+
+  if (payment.status !== PaymentStatus.PENDING) {
+    return; // idempotent
+  }
+
+  const gateway = new RazorpayGateway();
+
+  const isValid = gateway.verifySignature(payload);
+
+  if (!isValid) {
+    await prisma.payment.update({
+      where: { id: payment.id },
+      data: {
+        status: PaymentStatus.FAILED,
+        failureReason: 'Invalid Razorpay signature',
+        events: {
+          create: {
+            type: 'PAYMENT_FAILED',
+            payload,
+          },
+        },
+      },
+    });
+
+    await emitPaymentFailed({
+      bookingId: payment.bookingId,
+      paymentId: payment.id,
+      reason: 'Invalid Razorpay signature',
+    });
+
+    throw new AppError('Invalid Razorpay signature', 400);
+  }
+
+  await prisma.payment.update({
+    where: { id: payment.id },
+    data: {
+      status: PaymentStatus.SUCCESS,
+      gatewayPaymentId: payload.razorpay_payment_id,
+      completedAt: new Date(),
+      events: {
+        create: {
+          type: 'PAYMENT_SUCCESS',
+          payload,
+        },
+      },
+    },
+  });
+
+  await emitPaymentSuccess({
+    bookingId: payment.bookingId,
+    paymentId: payment.id,
+    transactionId: payload.razorpay_payment_id,
+  });
 }

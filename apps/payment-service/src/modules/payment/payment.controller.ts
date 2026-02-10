@@ -1,7 +1,11 @@
 import { Request, Response } from 'express';
 import crypto from 'crypto';
 import { initiatePaymentSchema } from './payment.validators';
-import { initiatePayment, handleGatewayCallback } from './payment.service';
+import {
+  initiatePayment,
+  handleGatewayCallback,
+  handleRazorpayVerification,
+} from './payment.service';
 import { asyncHandler } from '../../utils/asyncHandler';
 import { AppError } from '../../utils/AppError';
 
@@ -43,6 +47,25 @@ export const mockGatewayCallbackController = asyncHandler(
     }
 
     await handleGatewayCallback(req.body);
+
+    res.status(200).json({ success: true });
+  }
+);
+
+export const razorpayVerifyController = asyncHandler(
+  async (req: Request, res: Response) => {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+      req.body;
+
+    if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
+      throw new AppError('Missing Razorpay verification fields', 400);
+    }
+
+    await handleRazorpayVerification({
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature,
+    });
 
     res.status(200).json({ success: true });
   }

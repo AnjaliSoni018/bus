@@ -25,12 +25,12 @@ RUN npx prisma generate --schema=prisma/schema.prisma
 
 # Build TypeScript
 RUN npm run build
-
+  
 
 # ========== PRODUCTION STAGE ==========
 FROM node:22-alpine AS prod
 WORKDIR /app
-
+ 
 RUN apk add --no-cache openssl libssl3 libcrypto3
 
 # Copy only production deps

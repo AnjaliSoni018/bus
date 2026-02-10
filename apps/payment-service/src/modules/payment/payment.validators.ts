@@ -6,5 +6,5 @@ export const initiatePaymentSchema = z.object({
   amount: z.number().positive(),
   currency: z.string().default('INR'),
   method: z.nativeEnum(PaymentMethod),
-  gateway: z.nativeEnum(GatewayProvider).default(GatewayProvider.MOCK),
+  gateway: z.nativeEnum(GatewayProvider),
 });

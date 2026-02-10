@@ -9,7 +9,7 @@ import {
 } from './trip.validator';
 import { authMiddleware } from '../../middlewares/auth.middleware';
 
-const router = Router();
+const router: Router = Router();
 
 router.get('/', validate(listTripsSchema, 'query'), controller.list);
 router.get('/:id', validate(tripIdParamSchema, 'params'), controller.getById);
