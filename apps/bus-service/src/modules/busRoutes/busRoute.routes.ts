@@ -8,7 +8,7 @@ import {
 } from './busRoute.validators';
 import { authMiddleware } from '../../middlewares/auth.middleware';
 
-const router = Router();
+const router: Router = Router();
 
 router.post(
   '/',

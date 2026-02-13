@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
 import { json, urlencoded } from 'express';
 import router from './routes';
@@ -6,7 +6,7 @@ import { errorHandler } from './middlewares/error.middleware';
 import { notFoundHandler } from './middlewares/NotFound.middleware';
 import { logger } from './config/logger';
 
-const app = express();
+const app: Express = express();
 
 app.use(cors());
 app.use(json());

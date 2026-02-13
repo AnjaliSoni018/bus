@@ -32,5 +32,5 @@ router.delete(
   validate(tripIdParamSchema, 'params'),
   controller.remove
 );
-router.post('/trips/:tripId/hold-seats', controller.holdTripSeats);
+// router.post('/trips/:tripId/hold-seats', controller.holdTripSeats);
 export default router;

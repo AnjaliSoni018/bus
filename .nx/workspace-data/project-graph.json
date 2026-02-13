@@ -51,8 +51,8 @@
         "tags": []
       }
     },
-    "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": {
-      "name": "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba",
+    "prisma-client-c16af742e1242e18f3a1ed03ee4446ba7d4a56239fce970c36632822ba30c913": {
+      "name": "prisma-client-c16af742e1242e18f3a1ed03ee4446ba7d4a56239fce970c36632822ba30c913",
       "type": "lib",
       "data": {
         "root": "apps/bus-service/src/generated/prisma",
@@ -84,7 +84,7 @@
               ],
               "description": "Runs ESLint on project",
               "help": {
-                "command": "npx eslint --help",
+                "command": "pnpm exec eslint --help",
                 "example": {
                   "options": {
                     "max-warnings": 0
@@ -97,7 +97,7 @@
             "parallelism": true
           }
         },
-        "name": "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba",
+        "name": "prisma-client-c16af742e1242e18f3a1ed03ee4446ba7d4a56239fce970c36632822ba30c913",
         "implicitDependencies": [],
         "tags": []
       }
@@ -932,7 +932,7 @@
               ],
               "description": "Runs ESLint on project",
               "help": {
-                "command": "npx eslint --help",
+                "command": "pnpm exec eslint --help",
                 "example": {
                   "options": {
                     "max-warnings": 0
@@ -956,7 +956,7 @@
               ],
               "description": "Run Jest Tests",
               "help": {
-                "command": "npx jest --help",
+                "command": "pnpm exec jest --help",
                 "example": {
                   "options": {
                     "coverage": true
@@ -1596,7 +1596,7 @@
               ],
               "description": "Runs ESLint on project",
               "help": {
-                "command": "npx eslint --help",
+                "command": "pnpm exec eslint --help",
                 "example": {
                   "options": {
                     "max-warnings": 0
@@ -1619,7 +1619,7 @@
               ],
               "description": "Run Jest Tests",
               "help": {
-                "command": "npx jest --help",
+                "command": "pnpm exec jest --help",
                 "example": {
                   "options": {
                     "coverage": true
@@ -9333,7 +9333,7 @@
   },
   "dependencies": {
     "prisma-client-aaf6d565861d352a54d5dd560fc6445a7628045d73be830498be796b33bc0497": [],
-    "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba": [],
+    "prisma-client-c16af742e1242e18f3a1ed03ee4446ba7d4a56239fce970c36632822ba30c913": [],
     "notification-service-e2e": [
       {
         "source": "notification-service-e2e",
@@ -9457,7 +9457,7 @@
       },
       {
         "source": "booking-service",
-        "target": "npm:dotenv",
+        "target": "npm:dotenv@16.4.7",
         "type": "static"
       },
       {
@@ -9561,7 +9561,7 @@
       },
       {
         "source": "payment-service",
-        "target": "npm:dotenv",
+        "target": "npm:dotenv@16.4.7",
         "type": "static"
       },
       {
@@ -9770,7 +9770,7 @@
       },
       {
         "source": "bus-service",
-        "target": "prisma-client-c25b2eb35a1f1bdb4e828d44938e2b85c47f3fd6c525ad8fd88af6dffd375fba",
+        "target": "prisma-client-c16af742e1242e18f3a1ed03ee4446ba7d4a56239fce970c36632822ba30c913",
         "type": "static"
       }
     ],
@@ -19690,5 +19690,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1770723771127
+  "computedAt": 1770976605000
 }

@@ -4,24 +4,31 @@ import { AppError } from '../utils/AppError';
 const BUS_SERVICE_URL = process.env.BUS_SERVICE_URL!;
 
 export const BusServiceClient = {
-  async getTrip(tripId: string) {
-    const { data } = await axios.get(
-      `${BUS_SERVICE_URL}/api/v1/trip-routes/${tripId}`
-    );
-    return data?.data;
+  async getTripInstance(tripInstanceId: string) {
+    try {
+      const { data } = await axios.get(
+        `${BUS_SERVICE_URL}/api/v1/trip-instances/${tripInstanceId}`
+      );
+
+      return data?.data;
+    } catch (err) {
+      throw new AppError('TripInstance fetch failed', 404, err);
+    }
   },
 
   async holdSeats(payload: {
-    tripId: string;
+    tripInstanceId: string;
     seatIds: string[];
     bookingId: string;
     holdUntil: Date;
   }) {
     try {
-      await axios.post(
-        `${BUS_SERVICE_URL}/api/v1/trip-routes/trips/${payload.tripId}/hold-seats`,
+      const { data } = await axios.post(
+        `${BUS_SERVICE_URL}/api/v1/trip-instances/${payload.tripInstanceId}/hold-seats`,
         payload
       );
+
+      return data?.data;
     } catch (err) {
       throw new AppError('Seat hold failed', 409, err);
     }

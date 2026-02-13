@@ -3,13 +3,12 @@ import { AppError } from '../../utils/AppError';
 import { CreateTripDTO, UpdateTripDTO } from './trip.types';
 import { emitBusEvent } from '../../kafka/producers/bus.producer';
 import { logger } from '../../config/logger';
-import { SeatState } from '../../generated/prisma';
 
-interface HoldSeatsInput {
-  seatIds: string[];
-  bookingId: string;
-  holdUntil: string;
-}
+// interface HoldSeatsInput {
+//   seatIds: string[];
+//   bookingId: string;
+//   holdUntil: string;
+// }
 
 export async function createTrip(dto: CreateTripDTO, actorId?: string) {
   const busRoute = await prisma.busRoute.findUnique({
@@ -83,16 +82,6 @@ export async function createTrip(dto: CreateTripDTO, actorId?: string) {
         400
       );
 
-    const tripSeatStates = seats.map((seat) => ({
-      tripId: trip.id,
-      seatId: seat.id,
-      seatLabel: seat.seatLabel ?? seat.seatNo,
-      state: SeatState.AVAILABLE,
-      price: baseFare * (seat.priceFactor ?? 1.0),
-    }));
-
-    await tx.tripSeatState.createMany({ data: tripSeatStates });
-
     return trip;
   });
 
@@ -159,7 +148,6 @@ export async function getTripById(id: string) {
           route: true,
         },
       },
-      tripSeatStates: true,
       tripStops: true,
     },
   });
@@ -225,47 +213,43 @@ function timeToMinutes(time: string): number {
   return h * 60 + m + (s ? s / 60 : 0);
 }
 
-export async function holdSeats(
-  tripId: string,
-  { seatIds, bookingId, holdUntil }: HoldSeatsInput
-) {
-  const holdUntilDate = new Date(holdUntil);
+// export async function holdSeats(
+//   tripInstanceId: string,
+//   { seatIds, bookingId, holdUntil }: HoldSeatsInput
+// ) {
+//   const holdUntilDate = new Date(holdUntil);
 
-  return prisma.$transaction(async (tx) => {
-    // 1️⃣ Try to atomically lock AVAILABLE seats only
-    const result = await tx.tripSeatState.updateMany({
-      where: {
-        tripId,
-        seatId: { in: seatIds },
-        state: 'AVAILABLE',
-        isDeleted: false,
-      },
-      data: {
-        state: 'HELD',
-        holdToken: bookingId,
-        heldUntil: holdUntilDate,
-      },
-    });
+//   return prisma.$transaction(async (tx) => {
+//     // 1️⃣ Try to atomically lock AVAILABLE seats only
+//     const result = await tx.tripSeatState.updateMany({
+//       where: {
+//         tripInstanceId,
+//         seatId: { in: seatIds },
+//         state: 'AVAILABLE',
+//         isDeleted: false,
+//       },
+//       data: {
+//         state: 'HELD',
+//         holdToken: bookingId,
+//         heldUntil: holdUntilDate,
+//       },
+//     });
 
-    // 2️⃣ If not all seats were updated → conflict
-    if (result.count !== seatIds.length) {
-      throw new AppError('One or more seats are no longer available', 409);
-    }
+//     // 2️⃣ If not all seats were updated → conflict
+//     if (result.count !== seatIds.length) {
+//       throw new AppError('One or more seats are no longer available', 409);
+//     }
 
-    // 3️⃣ Decrement available seats
-    await tx.trip.update({
-      where: { id: tripId },
-      data: {
-        availableSeats: {
-          decrement: seatIds.length,
-        },
-      },
-    });
+//     // 3️⃣ Decrement available seats
+//     await tx.tripInstance.update({
+//       where: { id: tripInstanceId },
+//       data: { availableSeats: { decrement: seatIds.length } },
+//     });
 
-    return {
-      tripId,
-      heldSeats: seatIds,
-      heldUntil: holdUntilDate,
-    };
-  });
-}
+//     return {
+//       tripInstanceId,
+//       heldSeats: seatIds,
+//       heldUntil: holdUntilDate,
+//     };
+//   });
+// }

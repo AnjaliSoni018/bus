@@ -1,6 +1,8 @@
 import { z } from 'zod';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const passwordRegex =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 export const loginSchema = z.object({
   email: z.string().regex(emailRegex, { message: 'Invalid email address' }),
@@ -23,7 +25,13 @@ export const verifyOtpSchema = z.object({
 
 export const registerOperatorSchema = z.object({
   email: z.string().regex(emailRegex, { message: 'Invalid email address' }),
-  password: z.string().min(6),
+  password: z
+    .string()
+    .min(8, 'Password must be at least 8 characters')
+    .regex(
+      passwordRegex,
+      'Password must contain uppercase, lowercase, number, and special character'
+    ),
   travelsName: z.string(),
   ownerName: z.string(),
   businessBackground: z.string(),
@@ -41,4 +49,23 @@ export const registerOperatorSchema = z.object({
   isMSMERegistered: z.boolean().optional(),
   msmeNumber: z.string().optional(),
   cin: z.string().optional(),
+});
+
+export const createAdminSchema = z.object({
+  email: z
+    .string()
+    .regex(emailRegex, { message: 'Invalid email address' })
+    .toLowerCase(),
+  password: z
+    .string()
+    .min(8, 'Password must be at least 8 characters')
+    .regex(
+      passwordRegex,
+      'Password must contain uppercase, lowercase, number, and special character'
+    ),
+  name: z
+    .string()
+    .min(2, 'Name must be at least 2 characters')
+    .max(100, 'Name must be less than 100 characters')
+    .optional(),
 });

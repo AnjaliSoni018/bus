@@ -12,7 +12,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
+  
 enum BookingStatus {
   INITIATED // Created but payment not done yet
   CONFIRMED // Successfully booked
@@ -47,23 +47,27 @@ enum RefundStatus {
 }
 
 model Booking {
-  id               String               @id @default(uuid())
-  bookingRef       String               @unique // human-readable booking reference like "RBX123456"
-  userId           String // references user-service.user.id
-  tripId           String // references bus-service.trip.id
-  operatorUserId   String? // for quick reporting (redundant cache)
-  routeId          String? // for analytics & filtering
-  busId            String? // redundant cache for reporting
+  id               String @id @default(uuid())
+  bookingRef       String @unique
+  userId           String
+
+  tripId           String
+  tripInstanceId   String   // ✅ NEW (required)
+
+  operatorUserId   String?
+  routeId          String?
+  busId            String?
   totalAmount      Float
   baseFare         Float
-  taxes            Float?               @default(0)
-  discount         Float?               @default(0)
-  currency         String               @default("INR")
-  status           BookingStatus        @default(INITIATED)
-  paymentStatus    PaymentStatus        @default(PENDING)
+  taxes            Float? @default(0)
+  discount         Float? @default(0)
+  currency         String @default("INR")
+  status           BookingStatus @default(INITIATED)
+  paymentStatus    PaymentStatus @default(PENDING)
   paymentMethod    PaymentMethod?
-  transactionId    String? // from PaymentGateway
+  transactionId    String?
   bookedSeatsCount Int
+
   bookedSeats      BookingSeat[]
   passengers       Passenger[]
   cancellation     BookingCancellation?
@@ -73,7 +77,7 @@ model Booking {
   bookedAt    DateTime?
   cancelledAt DateTime?
   completedAt DateTime?
-  expiresAt   DateTime? // hold expiry for temporary bookings
+  expiresAt   DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -84,30 +88,32 @@ model Booking {
 
   @@index([userId, status])
   @@index([tripId])
+  @@index([tripInstanceId]) // ✅ NEW
   @@index([bookingRef])
 }
 
 model BookingSeat {
-  id        String    @id @default(uuid())
-  bookingId String    
-  tripId    String
-  seatId    String
-  seatLabel String?
-  fare      Float
-  state     String? // AVAILABLE / BOOKED / CANCELLED
-  heldToken String? // For concurrency-safe seat hold
-  heldUntil DateTime?
-  createdAt DateTime  @default(now())
+  id             String   @id @default(uuid())
+  bookingId      String
+  tripId         String
+  tripInstanceId String   // ✅ NEW
+  seatId         String
+  seatLabel      String?
+  fare           Float
+  state          String?
+  heldToken      String?
+  heldUntil      DateTime?
+  createdAt      DateTime @default(now())
 
   booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
 
-  @@unique([tripId, seatId, bookingId])
-  @@index([tripId, seatId])
+  @@unique([tripInstanceId, seatId, bookingId]) // ✅ update
+  @@index([tripInstanceId, seatId])             // ✅ update
 }
 
 model Passenger {
   id          String  @id @default(uuid())
-  bookingId   String  @unique
+  bookingId   String  
   name        String
   gender      String?
   age         Int?

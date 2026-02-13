@@ -8,7 +8,7 @@ import {
 } from './bus.validators';
 import { authMiddleware } from '../../middlewares/auth.middleware';
 
-const router = Router();
+const router: Router = Router();
 
 router.get('/', validate(listBusesSchema, 'query'), controller.getAllBuses);
 router.get('/my-buses', authMiddleware, controller.getMyBuses);

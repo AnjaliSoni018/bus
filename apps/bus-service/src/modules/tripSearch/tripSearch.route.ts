@@ -3,7 +3,7 @@ import { validate } from '../../middlewares/validation.middleware';
 import { tripSearchSchema } from './tripService.validator';
 import * as controller from './tripSearch.controller';
 
-const router = Router();
+const router: Router = Router();
 
 router.get(
   '/trips',

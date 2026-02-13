@@ -395,8 +395,6 @@ export const createAdmin = async (
   payload: { email: string; password: string; name?: string }
 ) => {
   const { email, password, name } = payload;
-  if (!email || !password)
-    throw new AppError('Email and password required', 400);
 
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) throw new AppError('Email already exists', 400);

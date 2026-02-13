@@ -246,9 +246,21 @@ exports.Prisma.TripStopScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.TripSeatStateScalarFieldEnum = {
+exports.Prisma.TripInstanceScalarFieldEnum = {
   id: 'id',
   tripId: 'tripId',
+  journeyDate: 'journeyDate',
+  status: 'status',
+  totalSeats: 'totalSeats',
+  availableSeats: 'availableSeats',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isDeleted: 'isDeleted'
+};
+
+exports.Prisma.TripSeatStateScalarFieldEnum = {
+  id: 'id',
+  tripInstanceId: 'tripInstanceId',
   seatId: 'seatId',
   seatLabel: 'seatLabel',
   state: 'state',
@@ -423,6 +435,7 @@ exports.Prisma.ModelName = {
   BusRoute: 'BusRoute',
   Trip: 'Trip',
   TripStop: 'TripStop',
+  TripInstance: 'TripInstance',
   TripSeatState: 'TripSeatState',
   BusAmenity: 'BusAmenity',
   BusImage: 'BusImage',

@@ -28,6 +28,7 @@ export interface TripSeatStateResult {
 
 export interface TripSearchResult {
   tripId: string;
+  tripInstanceId: string;
   bus: {
     id: string;
     brand?: string;

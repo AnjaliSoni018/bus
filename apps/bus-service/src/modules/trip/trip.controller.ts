@@ -8,8 +8,8 @@ import {
 } from './trip.service';
 import { asyncHandler } from '../../utils/asyncHandler';
 import { apiResponse } from '../../utils/apiResponse';
-import { holdSeatsSchema } from './trip.validator';
-import { holdSeats } from './trip.service';
+// import { holdSeatsSchema } from './trip.validator';
+// import { holdSeats } from './trip.service';
 
 export const create = asyncHandler(async (req: Request, res: Response) => {
   const actor = req.user?.id;
@@ -39,16 +39,16 @@ export const remove = asyncHandler(async (req: Request, res: Response) => {
   return apiResponse.success(res, deleted, 'Trip deleted');
 });
 
-export const holdTripSeats = asyncHandler(
-  async (req: Request, res: Response) => {
-    const { tripId } = req.params;
-    const payload = holdSeatsSchema.parse(req.body);
+// export const holdTripSeats = asyncHandler(
+//   async (req: Request, res: Response) => {
+//     const { tripId } = req.params;
+//     const payload = holdSeatsSchema.parse(req.body);
 
-    const result = await holdSeats(tripId, payload);
+//     const result = await holdSeats(tripId, payload);
 
-    res.status(200).json({
-      success: true,
-      data: result,
-    });
-  }
-);
+//     res.status(200).json({
+//       success: true,
+//       data: result,
+//     });
+//   }
+// );

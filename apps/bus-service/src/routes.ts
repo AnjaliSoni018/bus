@@ -9,8 +9,9 @@ import routeStopRoutes from './modules/routeStop/routeStop.routes';
 import seatTemplateRoutes from './modules/seatTemplate/seatTemplate.route';
 import seatRoutes from './modules/seat/seat.route';
 import searchRoute from './modules/tripSearch/tripSearch.route';
+import tripInstanceRoutes from './modules/tripInstance/tripInstance.routes';
 
-const router = Router();
+const router: Router = Router();
 
 // Common & internal routes
 router.use('/', healthRoutes);
@@ -25,5 +26,6 @@ router.use('/route-stop', routeStopRoutes);
 router.use('/seat-template', seatTemplateRoutes);
 router.use('/seat', seatRoutes);
 router.use('/search', searchRoute);
+router.use('/trip-instances', tripInstanceRoutes);
 
 export default router;

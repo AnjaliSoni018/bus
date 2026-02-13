@@ -12,6 +12,7 @@ import { requireRole } from '../middlewares/requireRole';
 import { requireAuth } from '../middlewares/auth.middleware';
 import { validate } from '../middlewares/zod.middleware';
 import {
+  createAdminSchema,
   loginSchema,
   registerOperatorSchema,
   sendOtpSchema,
@@ -31,6 +32,7 @@ router.post(
   '/',
   requireAuth,
   requireRole('SUPER_ADMIN'),
+  validate(createAdminSchema),
   createAdminController
 );
 router.patch(

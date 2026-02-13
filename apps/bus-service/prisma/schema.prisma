@@ -212,7 +212,7 @@ model Trip {
 
   busRoute         BusRoute          @relation(fields: [busRouteId], references: [id], onDelete: Cascade)
   tripStops        TripStop[]
-  tripSeatStates   TripSeatState[]
+  tripInstances TripInstance[]
   tripLogs         TripLog[]
   pricingSnapshots PricingSnapshot[]
 
@@ -237,24 +237,46 @@ model TripStop {
   @@index([tripId, sequence])
 }
 
+model TripInstance {
+  id           String     @id @default(uuid())
+  tripId       String
+  journeyDate  DateTime   // date of travel (normalized to 00:00)
+  status       TripStatus @default(SCHEDULED)
+
+  totalSeats     Int
+  availableSeats Int
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  isDeleted    Boolean  @default(false)
+
+  trip         Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  seatStates   TripSeatState[]
+
+  @@unique([tripId, journeyDate])
+  @@index([tripId, journeyDate])
+}
+
 model TripSeatState {
-  id        String    @id @default(uuid())
-  tripId    String
-  seatId    String
-  seatLabel String?
-  state     SeatState @default(AVAILABLE)
-  holdToken String?
-  heldUntil DateTime?
-  price     Float?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  isDeleted Boolean   @default(false)
+  id             String   @id @default(uuid())
 
-  trip Trip  @relation(fields: [tripId], references: [id], onDelete: Cascade)
-  seat Seat? @relation(fields: [seatId], references: [id], onDelete: SetNull)
+  tripInstanceId String
 
-  @@index([tripId, seatId])
-  @@index([tripId, state])
+  seatId         String
+  seatLabel      String?
+  state          SeatState @default(AVAILABLE)
+  holdToken      String?
+  heldUntil      DateTime?
+  price          Float?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  isDeleted      Boolean   @default(false)
+
+  tripInstance TripInstance @relation(fields: [tripInstanceId], references: [id], onDelete: Cascade)
+  seat           Seat?         @relation(fields: [seatId], references: [id], onDelete: SetNull)
+
+  @@index([tripInstanceId, seatId])
+  @@index([tripInstanceId, state])
 }
 
 model BusAmenity {

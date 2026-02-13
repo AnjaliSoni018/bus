@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const initiateBookingSchema = z
   .object({
-    tripId: z.uuid(),
+    tripInstanceId: z.uuid(),
 
     seats: z
       .array(

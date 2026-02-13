@@ -75,7 +75,10 @@ export const createAdminController = async (
   next: NextFunction
 ) => {
   try {
-    const creatorId = req.user!.id;
+    if (!req.user) {
+      return res.status(401).json({ success: false, message: 'Unauthorized' });
+    }
+    const creatorId = req.user.id;
     const { email, password, name } = req.body;
     const admin = await authService.createAdmin(creatorId, {
       email,
